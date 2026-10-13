@@ -1025,7 +1025,7 @@ tailwind.config = {
     imgs[i] = im;
   });
 
-  /* ── scroll-driven state (plain rAF — no library in the critical path) ── */
+  /* ── scroll-driven state (plain rAF, no library in the critical path) ── */
   var heroStates = Array.prototype.slice.call(document.querySelectorAll('.hero-state'));
   var metaStates = Array.prototype.slice.call(document.querySelectorAll('.meta-state'));
   var topics     = Array.prototype.slice.call(document.querySelectorAll('.topic'));
@@ -1222,7 +1222,7 @@ tailwind.config = {
         var s = window.getSelection();
         s.removeAllRanges();
         s.addRange(r);
-        copyNote.textContent = 'Selected above — press Ctrl/Cmd + C to copy.';
+        copyNote.textContent = 'Selected above. Press Ctrl/Cmd + C to copy.';
         copyNote.hidden = false;
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
