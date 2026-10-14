@@ -238,7 +238,7 @@ textarea.cmd{width:100%;min-height:120px;resize:vertical;border-radius:12px;bord
     <button class="btn" id="bRutin" type="button" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Rutinitas: on</span></button>
     <button class="btn" data-r="makan" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 1-3 4-3 8h3"/></svg>Makan siang</button>
     <button class="btn" data-r="rooftop" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>Ke rooftop</button>
-    <button class="btn" data-r="salat" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>Waktu salat</button>
+    <button class="btn" data-r="salat" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>Waktu ibadah</button>
     <button class="btn" data-r="kerja" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>Kembali kerja</button>
     <span class="sep"></span>
     <button class="btn" id="bIn" type="button" aria-label="Perbesar">+</button>
@@ -372,7 +372,7 @@ function teksLantai(teks, w, h, warna = "rgba(74,58,44,.62)") {
 /* ---- gedung ---- */
 const FH = 5.4, FW = 46, FD = 32, FX = FW / 2, FZ = FD / 2;
 const LANTAI = [
-  { no: 1, kode: "FL.01", nama: "Lobi & Vault", desk: "Resepsionis, Vault, musala" },
+  { no: 1, kode: "FL.01", nama: "Lobi & Vault", desk: "Resepsionis, Vault, musala & kapel" },
   { no: 2, kode: "FL.02", nama: "Dapur & makan", desk: "Meja makan bersama" },
   { no: 3, kode: "FL.03", nama: "Workspace", desk: "Seluruh tim agen" },
   { no: 4, kode: "FL.04", nama: "Rooftop", desk: "Udara segar & istirahat" },
@@ -607,11 +607,25 @@ function bangunLobi(g) {
   for (let i = 0; i < 5; i++) { const sj = kotak(0.9, 0.03, 1.6, i % 2 ? "#B5524A" : "#C9A44A", m0x + 1 + i * 1.6, 0.05, m0z + 1.6); sj.castShadow = false; g.add(sj); SPOT[1].push({ x: m0x + 1 + i * 1.6, z: m0z + 2.0, face: Math.PI, act: "salat di musala" }); }
   const mt = teksLantai("MUSALA", 4, 0.9, "rgba(255,255,255,.75)"); mt.position.set(m0x + 4, 0.06, m0z + 5); g.add(mt);
   for (let i = 0; i < 5; i++) SPOT[1].push({ x: m0x + 1 + i * 1.6, z: m0z + 4.0, face: Math.PI, act: "salat di musala" });
+  // kapel
+  const k0x = -21, k0z = 1;
+  const ks0 = kotak(9, 0.04, 7, "#7E8CA8", k0x + 4.5, 0.02, k0z + 3.5); ks0.castShadow = false; g.add(ks0);
+  for (let r = 0; r < 3; r++) {
+    const zb = k0z + 2.6 + r * 1.5;
+    g.add(kotak(5.4, 0.45, 0.5, "#8C6A49", k0x + 4.5, 0.32, zb));
+    g.add(kotak(5.4, 0.55, 0.16, "#7A5B3E", k0x + 4.5, 0.75, zb + 0.3));
+    for (let s = 0; s < 2; s++) SPOT[1].push({ x: k0x + 3.2 + s * 2.6, z: zb - 0.1, face: Math.PI, duduk: true, act: "berdoa di kapel" });
+  }
+  g.add(kotak(1.8, 0.85, 0.7, "#EFE7D8", k0x + 4.5, 0.42, k0z + 1));
+  g.add(kotak(0.16, 1.15, 0.16, "#8C6A49", k0x + 4.5, 1.45, k0z + 0.5));
+  g.add(kotak(0.72, 0.16, 0.16, "#8C6A49", k0x + 4.5, 1.72, k0z + 0.5));
+  const kpt = teksLantai("KAPEL", 4, 0.9, "rgba(255,255,255,.75)"); kpt.position.set(k0x + 4.5, 0.06, k0z + 6.2); g.add(kpt);
+  SPOT[1].push({ x: k0x + 4.5, z: k0z + 2, face: Math.PI, act: "berdoa di kapel" });
   // sofa tunggu
   g.add(kotak(4, 0.5, 1.1, "#B9CDB0", -8, 0.4, 8)); g.add(kotak(4, 0.8, 0.3, "#AFC4A6", -8, 0.9, 8.5));
   for (const x of [-9.3, -6.7]) SPOT[1].push({ x, z: 7.8, face: Math.PI, duduk: true, sofa: true, act: "menunggu di lobi" });
-  // kios Telegram
-  const kt = kanvas(256, 160, (c, W, H) => { c.fillStyle = "#229ED9"; c.fillRect(0, 0, W, H); c.fillStyle = "#fff"; c.font = "800 26px Plus Jakarta Sans,sans-serif"; c.fillText("Telegram", 20, 52); c.font = "600 19px Plus Jakarta Sans,sans-serif"; c.fillText("→ antrean kantor", 20, 92); c.fillText("perintah pemilik", 20, 122); });
+  // kios antrean
+  const kt = kanvas(256, 160, (c, W, H) => { c.fillStyle = "#6E7F8C"; c.fillRect(0, 0, W, H); c.fillStyle = "#fff"; c.font = "800 26px Plus Jakarta Sans,sans-serif"; c.fillText("Antrean", 20, 52); c.font = "600 19px Plus Jakarta Sans,sans-serif"; c.fillText("→ antrean kantor", 20, 92); c.fillText("perintah pemilik", 20, 122); });
   const ki = new THREE.Group(); ki.position.set(-2, 0, 4);
   ki.add(kotak(0.4, 1.2, 0.4, "#3E3530", 0, 0.6, 0));
   const ks = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.9, 0.08), [mat("#222"), mat("#222"), mat("#222"), mat("#222"), new THREE.MeshBasicMaterial({ map: kt }), mat("#222")]); ks.position.y = 1.6; ki.add(ks);
@@ -709,7 +723,7 @@ function tujuanUntuk(o, p) {
   if (k === "off") { const s = ambilSpot(o, 4, SPOT[4]); return { lantai: 4, ...s }; }
   if (mode === "makan") return { lantai: 2, ...ambilSpot(o, 2, SPOT[2]) };
   if (mode === "rooftop") return { lantai: 4, ...ambilSpot(o, 4, SPOT[4]) };
-  if (mode === "salat") return { lantai: 1, ...ambilSpot(o, 1, SPOT[1], (s) => s.act === "salat di musala") };
+  if (mode === "salat") return { lantai: 1, ...ambilSpot(o, 1, SPOT[1], (s) => s.act === "salat di musala" || s.act === "berdoa di kapel") };
   lepasSpot(o); return o.meja ? { lantai: 3, ...o.meja, duduk: true, act: "santai" } : { lantai: 3, ...ambilSpot(o, 3, SPOT[3]) };
 }
 const LORONG_Z = [-8.4, 2.6], PENGHUBUNG_X = [-7.8, 6.1];
@@ -914,7 +928,7 @@ function catatAmb(id, aksi) { if (!life) return; feed.unshift({ ts: new Date().t
 let tFeed = 0; function jadwalFeed() { clearTimeout(tFeed); tFeed = setTimeout(renderFeed, 120); }
 function renderFeed() {
   const list = feed.filter((f) => life || !f.amb);
-  $("feed").innerHTML = list.length ? list.slice(0, 80).map((f) => { const p = staff.get(f.who) || { id: f.who, name: f.who }; return `<div class="row${f.amb ? " amb" : ""}" data-id="${esc(f.who)}"><span class="tm">${jam(f.ts)}</span><span class="tx">${chipP(p)}${f.html}</span></div>`; }).join("") : '<div class="kosong">Belum ada aktivitas. Kirim perintah lewat Telegram atau tombol Perintah.</div>';
+  $("feed").innerHTML = list.length ? list.slice(0, 80).map((f) => { const p = staff.get(f.who) || { id: f.who, name: f.who }; return `<div class="row${f.amb ? " amb" : ""}" data-id="${esc(f.who)}"><span class="tm">${jam(f.ts)}</span><span class="tx">${chipP(p)}${f.html}</span></div>`; }).join("") : '<div class="kosong">Belum ada aktivitas. Kirim perintah lewat tombol Perintah.</div>';
   $("feed").querySelectorAll(".row").forEach((r) => (r.onclick = () => pilih(r.dataset.id)));
 }
 function masukEvent(e, anim) {
@@ -973,7 +987,7 @@ let pindahMode = false;
 const SURUH = {
   istirahat: [4, () => SPOT[4], "istirahat ke rooftop"],
   makan: [2, () => SPOT[2], "makan di dapur"],
-  ibadah: [1, () => SPOT[1].filter((s) => s.act === "salat di musala"), "beribadah di musala"],
+  ibadah: [1, () => SPOT[1].filter((s) => s.act === "salat di musala" || s.act === "berdoa di kapel"), "beribadah di musala atau kapel"],
   lounge: [3, () => SPOT[3].filter((s) => s.sofa), "santai di lounge"],
 };
 function catatPemilik(id, teks) { const p = staff.get(id); if (!p) return; feed.unshift({ ts: new Date().toISOString(), who: id, html: `<b>Pemilik</b> · ${esc(namaPendek(p))} ${esc(teks)}`, amb: false }); feed = feed.slice(0, 120); jadwalFeed(); }
@@ -1013,7 +1027,7 @@ function renderSheet() {
     B.querySelectorAll("[data-d]").forEach((b) => (b.onclick = () => tandaiTugas(ow[+b.dataset.d], true, b)));
     B.querySelectorAll("[data-u]").forEach((b) => (b.onclick = () => tandaiTugas(sd[+b.dataset.u], false, b)));
   } else if (tabSheet === "laporan") {
-    // Hasil kerja kantor: sumber sama dengan laporan Telegram (Vault/tasks/office-board.md, skills/lapor_pemilik.py).
+    // Hasil kerja kantor: sumber sama dengan laporan kantor (Vault/tasks/office-board.md, skills/lapor_pemilik.py).
     const hs = board.filter((b) => b.kind === "hasil").sort((a, b) => (a.pos || 0) - (b.pos || 0));
     B.innerHTML = `<p class="t" style="margin:0 0 10px">Laporan hasil kerja kantor, terbaru di atas. Tugas yang perlu Anda kerjakan ada di tab <b>Tugas saya</b>.</p>` +
       (hs.length ? hs.map((b) => `<div class="kd"><span class="tg">HASIL</span><b>${esc(b.title)}</b>${b.detail ? `<div class="t lap">${esc(b.detail)}</div>` : ""}</div>`).join("") : '<div class="kosong">Belum ada laporan hasil.</div>');
@@ -1031,7 +1045,7 @@ function renderSheet() {
     B.querySelectorAll("[data-a]").forEach((b) => (b.onclick = () => unduhArsip(arsip[+b.dataset.a], b)));
   } else {
     const SL = { baru: "terkirim", antre: "antre", dikerjakan: "dikerjakan", selesai: "selesai", gagal: "gagal" };
-    B.innerHTML = `<label for="cmdT" style="font-weight:700">Tulis perintah</label><p class="t" style="margin:4px 0 8px">Masuk antrean yang sama dengan bot Telegram. Manajer (COO) membaca, mendelegasikan ke pegawai yang tepat, dan balasan dikirim ke Telegram. Ctrl+Enter untuk kirim.</p>
+    B.innerHTML = `<label for="cmdT" style="font-weight:700">Tulis perintah</label><p class="t" style="margin:4px 0 8px">Masuk ke antrean kantor. Manajer (COO) membaca, mendelegasikan ke pegawai yang tepat, lalu balasannya dikirim kembali. Ctrl+Enter untuk kirim.</p>
       <textarea class="cmd" id="cmdT" maxlength="4000" placeholder='Contoh: "cek laporan baru dan rangkum", atau "[Pegawai: engineering-sre] cek uptime 24 jam terakhir"'></textarea>
       <div class="cmdbar"><button class="btn dark" type="button" id="cmdK">Kirim perintah →</button><span class="t" id="cmdM" role="status"></span></div>
       <div class="t" style="font-weight:700;margin-bottom:6px">Riwayat perintah</div>
@@ -1059,7 +1073,7 @@ async function tandaiTugas(item, selesai, tombol) {
   if (DEMO) { ubahLokal(); toast(selesai ? "Ditandai sudah (mode demo)." : "Dibatalkan (mode demo)."); return; }
   const { error } = await sb.rpc("owner_tugas_selesai", { p_judul: item.title, p_selesai: selesai });
   if (error) { tombol.disabled = false; toast(error.code === "42501" ? "Hanya pemilik (dengan MFA) yang bisa menandai tugas." : "Gagal menyimpan. Coba lagi."); return; }
-  ubahLokal(); toast(selesai ? "Tugas ditandai sudah. Laporan Telegram ikut diperbarui." : "Tugas dikembalikan ke daftar.");
+  ubahLokal(); toast(selesai ? "Tugas ditandai sudah. Laporan kantor ikut diperbarui." : "Tugas dikembalikan ke daftar.");
 }
 let arsip = null;
 async function muatArsip() {
@@ -1099,7 +1113,7 @@ const setLife = () => { $("bLife").setAttribute("aria-pressed", String(life)); r
 $("bLife").onclick = () => { life = !life; store.set("kb-life", life ? "1" : "0"); setLife(); };
 $("bPause").onclick = () => { paused = !paused; $("bPause").querySelector("span").textContent = paused ? "Lanjut" : "Jeda"; $("bPause").setAttribute("aria-pressed", String(paused)); };
 $("bRutin").onclick = () => { rutin = !rutin; $("bRutin").setAttribute("aria-pressed", String(rutin)); $("bRutin").querySelector("span").textContent = "Rutinitas: " + (rutin ? "on" : "off"); if (!rutin) for (const id of staff.keys()) if (kunci(staff.get(id)) === "free") rencanakan(id); };
-const NAMA_R = { makan: "Makan siang di FL.02", rooftop: "Pegawai free ke rooftop", salat: "Waktu salat di musala FL.01", kerja: "Kembali ke meja" };
+const NAMA_R = { makan: "Makan siang di FL.02", rooftop: "Pegawai free ke rooftop", salat: "Waktu ibadah di FL.01", kerja: "Kembali ke meja" };
 document.querySelectorAll("[data-r]").forEach((b) => (b.onclick = () => {
   mode = b.dataset.r; if (mode === "kerja") for (const o of orang.values()) o.manual = null;
   for (const id of staff.keys()) if (kunci(staff.get(id)) === "free" || mode === "kerja") rencanakan(id);
@@ -1195,11 +1209,11 @@ function langganan() {
 function demo() {
   setLive("demo");
   const daftar = [["executive_bittybe_coo", "COO / Orkestrator", true], ["executive_bittybe_observer", "Observer (audit kepatuhan)", true], ["finance_bittybe_cost", "Finance, Biaya & Payout", true], ["legal_bittybe_compliance", "Legal & Compliance", true], ["product_bittybe_roadmap", "Product Manager & Dokumentasi", true], ["product-manager", "Product Manager", false], ["research_bittybe_investigator", "Riset & Data (Investigator)", true], ["design_bittybe_ux", "Desain Produk & Brand (UX/UI)", true], ["marketing_bittybe_growth", "Growth, Konten & Komunitas", true], ["marketing-content-creator", "Content Creator", false], ["engineering_bittybe_fullstack", "Fullstack Developer (backend + PWA)", true], ["engineering_bittybe_realtime", "Realtime & Video Engineer", true], ["engineering_bittybe_review", "Reviewer", true], ["engineering-database-optimizer", "Database Optimizer", false], ["engineering-frontend-developer", "Frontend Developer", false], ["engineering-i18n-engineer", "Internationalization Engineer", false], ["engineering-payments-billing-engineer", "Payments & Billing Engineer", false], ["engineering-sre", "SRE (Site Reliability Engineer)", false], ["engineering-video-streaming-engineer", "Video Streaming Engineer", false], ["security_bittybe_audit", "Security Auditor", true], ["security-appsec-engineer", "Application Security Engineer", false], ["testing-test-automation-engineer", "Test Automation Engineer", false], ["operations_bittybe_devops", "DevOps & Monitoring", true], ["operations_bittybe_moderation", "Trust & Safety", true], ["operations_bittybe_qa", "QA", true], ["data-privacy-officer", "Data Privacy Officer", false], ["support-executive-summary-generator", "Executive Summary Generator", false]];
-  const TUGAS = ["Memperbaiki filter penemuan", "Menguji alur PayPal sandbox", "Audit RLS tabel chat", "Menulis ringkasan harian", "Menerjemahkan teks baru ke 5 bahasa", "Optimasi indeks cari_kandidat", "Menyiapkan token LiveKit", "Review PR #65", "Konten Instagram minggu ini"];
+  const TUGAS = ["Memperbaiki filter penemuan", "Menguji alur pembayaran di sandbox", "Audit izin akses tabel chat", "Menulis ringkasan harian", "Menerjemahkan teks baru ke 5 bahasa", "Optimasi indeks cari_kandidat", "Menyiapkan token panggilan video", "Review PR #65", "Konten media sosial minggu ini"];
   const st = () => { const r = Math.random(); return r < 0.4 ? "coding" : r < 0.5 ? "riset" : r < 0.62 ? "meeting" : r < 0.95 ? "idle" : "off"; };
   const rows = daftar.map(([id, name, core]) => { const s = st(); return { id, name, core, unit: core ? "Inti · Kepala departemen" : "", status: s, task: s === "idle" || s === "off" ? null : TUGAS[hash(id) % TUGAS.length], updated_at: new Date(Date.now() - 60000).toISOString() }; });
-  board = [{ id: 1, kind: "item", title: "Perbaiki dropdown terjemahan", state: "done", dept: "Engineering" }, { id: 2, kind: "item", title: "Kantor 3D realtime", state: "doing", dept: "Desain" }, { id: 3, kind: "item", title: "Integrasi Doku QRIS", state: "todo", dept: "Engineering" }, { id: 4, kind: "item", title: "Set secrets LiveKit", state: "todo", dept: "DevOps" }, { id: 5, kind: "item", title: "Uji panggilan video", state: "doing", dept: "QA" },
-    { id: 9, kind: "owner", tag: "KEPUTUSAN", title: "Aktifkan Doku untuk QRIS?", detail: "Butuh persetujuan pemilik sebelum kode pembayaran ditulis." },
+  board = [{ id: 1, kind: "item", title: "Perbaiki dropdown terjemahan", state: "done", dept: "Engineering" }, { id: 2, kind: "item", title: "Kantor 3D realtime", state: "doing", dept: "Desain" }, { id: 3, kind: "item", title: "Integrasi pembayaran kode QR", state: "todo", dept: "Engineering" }, { id: 4, kind: "item", title: "Set secrets panggilan video", state: "todo", dept: "DevOps" }, { id: 5, kind: "item", title: "Uji panggilan video", state: "doing", dept: "QA" },
+    { id: 9, kind: "owner", tag: "KEPUTUSAN", title: "Aktifkan penyedia pembayaran kode QR?", detail: "Butuh persetujuan pemilik sebelum kode pembayaran ditulis." },
     { id: 10, kind: "hasil", title: "Contoh laporan hasil", detail: "Ringkasan satu kalimat.\nApa yang dikerjakan: contoh.\nHasilnya: 10 dari 10 uji lulus.\nCara cek: buka Admin.\nYang perlu Anda lakukan: tidak ada." }];
   terapkanStaff(rows, true); tulisPapan(); renderHeader();
   let nid = 1;
