@@ -986,10 +986,6 @@ tailwind.config = {
 
     </div>
 
-      <div class="mt-7">
-        <a id="profilePdf" class="btn-ghost" href="profile/albertus-freddi-en.pdf" download>Download profile (PDF)</a>
-      </div>
-
     <form id="briefForm" novalidate data-reveal>
       <div class="space-y-4">
         <div><label class="label" for="f-name">Name</label>
@@ -1055,7 +1051,8 @@ tailwind.config = {
 <footer class="bg-ink border-t border-white/10 px-5 sm:px-8 py-10">
   <div class="mx-auto max-w-[1280px] flex flex-wrap items-center justify-between gap-5">
     <p class="text-[12.5px] text-white/40">&copy; 2026 Albertus Freddi &middot; The Automation Architect</p>
-    <nav class="flex flex-wrap gap-6 text-[12.5px] text-white/55">
+    <nav class="flex flex-wrap items-center gap-6 text-[12.5px] text-white/55">
+      <a class="hover:text-white transition-colors" id="profilePdf" href="profile/albertus-freddi-en.pdf" download>Download profile (PDF)</a>
       <a class="hover:text-white transition-colors" href="#contact">Contact</a>
     </nav>
   </div>
