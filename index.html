@@ -72,72 +72,141 @@ tailwind.config = {
     box-shadow: 0 10px 44px rgba(209,22,26,.14);
   }
   /* ── service accordion ─────────────────────────────────────────────────── */
-  .disc-row { border-bottom: 1px solid rgba(255,255,255,.08); }
+  .disc-row { position: relative; border-bottom: 1px solid rgba(255,255,255,.08); }
   .disc-row:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+  .disc-row::before {
+    content: ""; position: absolute; left: 0; right: 0; top: -1px; bottom: -1px; pointer-events: none;
+    background: linear-gradient(90deg, rgba(209,22,26,.10) 0%, rgba(209,22,26,.03) 38%, transparent 72%);
+    opacity: 0; transition: opacity .5s ease;
+  }
+  .disc-row::after {
+    content: ""; position: absolute; left: 0; top: -1px; bottom: -1px; width: 2px; background: #D1161A;
+    transform: scaleY(0); transform-origin: top; transition: transform .55s cubic-bezier(.65,0,.35,1);
+  }
+  .disc-row.is-open::before { opacity: 1; }
+  .disc-row.is-open::after { transform: scaleY(1); }
   .disc-btn {
-    width: 100%; text-align: left; background: none; border: none; color: inherit;
-    display: grid; gap: 0 16px; padding: 20px 0; cursor: pointer;
-    grid-template-columns: 36px 1fr auto 30px;
-    align-items: center;
+    position: relative; width: 100%; text-align: left; background: none; border: none; color: inherit;
+    display: grid; gap: 0 18px; padding: 24px 6px 24px 18px; cursor: pointer;
+    grid-template-columns: 34px 1fr auto 38px; align-items: center;
   }
-  .disc-btn:hover .disc-name { color: #fff; }
+  .disc-btn:focus-visible { outline: 2px solid #D1161A; outline-offset: -2px; }
   .disc-ltr {
-    font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
-    color: rgba(255,255,255,.24); font-weight: 500;
-    transition: color .28s ease;
-    align-self: start; padding-top: 3px;
+    font-family: "Instrument Serif", Georgia, serif; font-style: italic;
+    font-size: 26px; line-height: 1; color: rgba(255,255,255,.22);
+    transition: color .35s ease, transform .5s cubic-bezier(.22,1,.36,1);
   }
-  .disc-row.is-open .disc-ltr { color: #D1161A; }
+  .disc-btn:hover .disc-ltr { color: rgba(255,255,255,.55); }
+  .disc-row.is-open .disc-ltr { color: #D1161A; transform: scale(1.12); }
+  .disc-head { transition: transform .5s cubic-bezier(.22,1,.36,1); }
+  .disc-btn:hover .disc-head { transform: translateX(6px); }
   .disc-name {
-    font-size: clamp(17px, 2.4vw, 21px); font-weight: 700; line-height: 1.2;
-    color: rgba(255,255,255,.82);
-    transition: color .22s ease;
+    font-size: clamp(18px, 2.4vw, 23px); font-weight: 700; line-height: 1.2;
+    color: rgba(255,255,255,.80); transition: color .3s ease;
   }
-  .disc-blurb {
-    font-size: 12.5px; color: rgba(255,255,255,.36);
-    margin-top: 4px; line-height: 1.4;
-  }
+  .disc-btn:hover .disc-name, .disc-row.is-open .disc-name { color: #fff; }
+  .disc-blurb { font-size: 13px; color: rgba(255,255,255,.38); margin-top: 5px; line-height: 1.45; transition: color .3s ease; }
+  .disc-row.is-open .disc-blurb { color: rgba(255,255,255,.55); }
   .disc-count {
-    font-size: 11.5px; color: rgba(255,255,255,.28);
-    white-space: nowrap; letter-spacing: .04em;
-    align-self: start; padding-top: 5px;
+    font-size: 11px; color: rgba(255,255,255,.32); white-space: nowrap;
+    letter-spacing: .14em; text-transform: uppercase; font-variant-numeric: tabular-nums;
   }
   .disc-icon {
-    font-size: 22px; font-weight: 300;
-    color: rgba(255,255,255,.30);
-    transition: transform .38s cubic-bezier(.4,0,.2,1), color .28s;
-    line-height: 1; align-self: start; padding-top: 1px;
+    position: relative; width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.7);
+    transition: background-color .35s ease, border-color .35s ease, transform .55s cubic-bezier(.22,1,.36,1);
   }
-  .disc-row.is-open .disc-icon { transform: rotate(45deg); color: #D1161A; }
+  .disc-icon::before, .disc-icon::after {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; margin: -.75px 0 0 -6px;
+    background: currentColor; border-radius: 2px; transition: transform .55s cubic-bezier(.22,1,.36,1);
+  }
+  .disc-icon::after { transform: rotate(90deg); }
+  .disc-btn:hover .disc-icon { border-color: rgba(255,255,255,.4); }
+  .disc-row.is-open .disc-icon { background: #D1161A; border-color: #D1161A; color: #fff; transform: rotate(180deg); }
+  .disc-row.is-open .disc-icon::after { transform: rotate(0deg); }
   .disc-body { overflow: hidden; height: 0; }
-  .disc-tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 22px; }
+  .disc-tags-wrap { display: flex; flex-wrap: wrap; gap: 9px; padding: 0 6px 28px 70px; }
   .svc-tag {
-    display: inline-flex; align-items: center;
-    padding: 7px 16px; border-radius: 100px;
-    border: 1px solid rgba(255,255,255,.12);
-    font-size: 13px; color: rgba(255,255,255,.60);
-    transition: border-color .22s ease, color .22s ease;
-    cursor: default; opacity: 0;
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 8px 16px 8px 12px; border-radius: 100px;
+    border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.025);
+    font-size: 13.5px; color: rgba(255,255,255,.72);
+    transition: border-color .25s ease, color .25s ease, background-color .25s ease, transform .25s ease;
+    cursor: default;
   }
-  .svc-tag.visible { opacity: 1; }
-  .svc-tag:hover { border-color: rgba(255,255,255,.28); color: rgba(255,255,255,.92); }
+  .svc-tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #D1161A; opacity: .8; }
+  .svc-tag:hover { border-color: rgba(209,22,26,.55); background: rgba(209,22,26,.08); color: #fff; transform: translateY(-2px); }
+  @media (max-width: 640px) {
+    .disc-btn { grid-template-columns: 26px 1fr 34px; padding: 20px 2px 20px 14px; gap: 0 12px; }
+    .disc-count { display: none; }
+    .disc-icon { width: 34px; height: 34px; }
+    .disc-tags-wrap { padding: 0 2px 22px 14px; }
+    .disc-ltr { font-size: 22px; }
+  }
 
-  /* ── portfolio cards ───────────────────────────────────────────────────── */
-  .pf-card {
-    position: relative; overflow: hidden;
-    border-radius: 16px; display: block;
-    text-decoration: none; color: inherit;
-    border: 1px solid rgba(255,255,255,.08);
-    transition: border-color .3s ease, transform .35s ease;
+  /* ── client logo wall ──────────────────────────────────────────────────── */
+  .pf-wall {
+    --mx: 50%; --my: -400px;
+    position: relative; display: grid; gap: 1px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background:
+      radial-gradient(420px circle at var(--mx) var(--my), rgba(209,22,26,.6), transparent 62%),
+      rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.09); border-radius: 20px; overflow: hidden;
   }
-  .pf-card:hover { border-color: rgba(255,255,255,.22); transform: translateY(-3px); }
-  .pf-card img { width: 100%; height: 190px; object-fit: cover; object-position: top; display: block; filter: brightness(.88); transition: filter .35s ease; }
-  .pf-card:hover img { filter: brightness(1); }
-  .pf-card-body { padding: 14px 16px 16px; background: #141414; }
-  .pf-card-name { font-size: 14px; font-weight: 600; line-height: 1.3; }
-  .pf-card-sector { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-top: 5px; }
-  .pf-card-arrow { position: absolute; top: 12px; right: 14px; font-size: 13px; color: rgba(255,255,255,.5); background: rgba(0,0,0,.45); border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; transition: background .25s, color .25s; }
-  .pf-card:hover .pf-card-arrow { background: #D1161A; color: #fff; }
+  @media (min-width: 1024px) { .pf-wall { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
+  .pf-logo {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 1 / .82; padding: 22px 18px 34px; background: #0B0B0B;
+    text-decoration: none; color: inherit; overflow: hidden; min-width: 0;
+    transition: background-color .45s ease;
+  }
+  .pf-logo::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: radial-gradient(240px circle at var(--lx, 50%) var(--ly, 50%), rgba(255,255,255,.07), transparent 70%);
+    transition: opacity .4s ease;
+  }
+  .pf-logo:hover { background: #121212; }
+  .pf-logo:hover::before { opacity: 1; }
+  .pf-logo img {
+    position: relative; max-width: 74%; max-height: 46px; width: auto; height: auto; object-fit: contain;
+    filter: brightness(0) invert(1); opacity: .52;
+    transition: filter .5s ease, opacity .5s ease, transform .6s cubic-bezier(.22,1,.36,1);
+  }
+  .pf-logo.pf-tall img { max-height: 64px; }
+  .pf-logo.pf-xl img { max-height: 78px; }
+  .pf-logo.pf-wide img { max-width: 88%; }
+  .pf-logo.pf-soft img { filter: grayscale(1) brightness(1.6) contrast(.9); }
+  .pf-logo:hover img { opacity: 1; transform: translateY(-8px) scale(1.06); }
+  .pf-logo.pf-color:hover img { filter: none; }
+  .pf-word {
+    position: relative; text-align: center; color: rgba(255,255,255,.52); line-height: 1;
+    transition: color .5s ease, transform .6s cubic-bezier(.22,1,.36,1);
+  }
+  .pf-word b { display: block; font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 30px; letter-spacing: .02em; }
+  .pf-word small { display: block; margin-top: 6px; font-size: 9.5px; letter-spacing: .38em; text-transform: uppercase; }
+  .pf-logo:hover .pf-word { color: #fff; transform: translateY(-8px) scale(1.04); }
+  .pf-cap {
+    position: absolute; left: 0; right: 0; bottom: 12px; padding: 0 10px; text-align: center;
+    opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .pf-cap-name { display: block; font-size: 12px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pf-cap-sector { display: block; margin-top: 3px; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: #D1161A; }
+  .pf-logo:hover .pf-cap { opacity: 1; transform: none; }
+  .pf-arrow {
+    position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 11px; color: #fff; background: #D1161A;
+    opacity: 0; transform: scale(.6) rotate(-45deg); transition: opacity .35s ease, transform .45s cubic-bezier(.22,1,.36,1);
+  }
+  .pf-logo:hover .pf-arrow { opacity: 1; transform: none; }
+  @media (hover: none) {
+    .pf-logo img { opacity: .8; }
+    .pf-logo .pf-cap { opacity: .9; transform: none; }
+    .pf-cap-name { font-size: 11px; color: rgba(255,255,255,.7); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pf-logo img, .pf-word, .pf-cap, .disc-row::after, .disc-icon, .disc-head { transition: none !important; }
+  }
 
   .grid-faint {
     background-image:
@@ -724,9 +793,9 @@ tailwind.config = {
       <div class="disc-row">
         <button class="disc-btn" aria-expanded="false">
           <span class="disc-ltr">A</span>
-          <div><p class="disc-name">AI &amp; Automation</p><p class="disc-blurb">Systems that read, decide and act while you sleep.</p></div>
-          <span class="disc-count">5 services</span>
-          <span class="disc-icon">+</span>
+          <div class="disc-head"><p class="disc-name">AI &amp; Automation</p><p class="disc-blurb">Systems that read, decide and act while you sleep.</p></div>
+          <span class="disc-count">05 services</span>
+          <span class="disc-icon" aria-hidden="true"></span>
         </button>
         <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">AI Agents &amp; Workflow Orchestration</span>
@@ -740,9 +809,9 @@ tailwind.config = {
       <div class="disc-row">
         <button class="disc-btn" aria-expanded="false">
           <span class="disc-ltr">B</span>
-          <div><p class="disc-name">Web, Apps &amp; Code</p><p class="disc-blurb">Sites, apps, and the code behind them.</p></div>
-          <span class="disc-count">4 services</span>
-          <span class="disc-icon">+</span>
+          <div class="disc-head"><p class="disc-name">Web, Apps &amp; Code</p><p class="disc-blurb">Sites, apps, and the code behind them.</p></div>
+          <span class="disc-count">04 services</span>
+          <span class="disc-icon" aria-hidden="true"></span>
         </button>
         <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Websites &amp; Landing Pages</span>
@@ -755,9 +824,9 @@ tailwind.config = {
       <div class="disc-row">
         <button class="disc-btn" aria-expanded="false">
           <span class="disc-ltr">C</span>
-          <div><p class="disc-name">Data, Research &amp; Strategy</p><p class="disc-blurb">Raw numbers turned into a decision you can defend.</p></div>
-          <span class="disc-count">5 services</span>
-          <span class="disc-icon">+</span>
+          <div class="disc-head"><p class="disc-name">Data, Research &amp; Strategy</p><p class="disc-blurb">Raw numbers turned into a decision you can defend.</p></div>
+          <span class="disc-count">05 services</span>
+          <span class="disc-icon" aria-hidden="true"></span>
         </button>
         <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Dashboards &amp; Business Intelligence</span>
@@ -771,9 +840,9 @@ tailwind.config = {
       <div class="disc-row">
         <button class="disc-btn" aria-expanded="false">
           <span class="disc-ltr">D</span>
-          <div><p class="disc-name">Content &amp; Copy</p><p class="disc-blurb">Words that rank, convert, and sound like you.</p></div>
-          <span class="disc-count">8 services</span>
-          <span class="disc-icon">+</span>
+          <div class="disc-head"><p class="disc-name">Content &amp; Copy</p><p class="disc-blurb">Words that rank, convert, and sound like you.</p></div>
+          <span class="disc-count">08 services</span>
+          <span class="disc-icon" aria-hidden="true"></span>
         </button>
         <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">SEO Blog &amp; Article Writing</span>
@@ -790,9 +859,9 @@ tailwind.config = {
       <div class="disc-row">
         <button class="disc-btn" aria-expanded="false">
           <span class="disc-ltr">E</span>
-          <div><p class="disc-name">Social, Brand &amp; Design</p><p class="disc-blurb">Presence, visuals, and calendars that keep moving.</p></div>
-          <span class="disc-count">4 services</span>
-          <span class="disc-icon">+</span>
+          <div class="disc-head"><p class="disc-name">Social, Brand &amp; Design</p><p class="disc-blurb">Presence, visuals, and calendars that keep moving.</p></div>
+          <span class="disc-count">04 services</span>
+          <span class="disc-icon" aria-hidden="true"></span>
         </button>
         <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Social Media Management</span>
@@ -805,9 +874,9 @@ tailwind.config = {
       <div class="disc-row">
         <button class="disc-btn" aria-expanded="false">
           <span class="disc-ltr">F</span>
-          <div><p class="disc-name">Cloud, Security &amp; Infrastructure</p><p class="disc-blurb">Solid foundations and hardened perimeters.</p></div>
-          <span class="disc-count">3 services</span>
-          <span class="disc-icon">+</span>
+          <div class="disc-head"><p class="disc-name">Cloud, Security &amp; Infrastructure</p><p class="disc-blurb">Solid foundations and hardened perimeters.</p></div>
+          <span class="disc-count">03 services</span>
+          <span class="disc-icon" aria-hidden="true"></span>
         </button>
         <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Cloud Infrastructure &amp; Deployment</span>
@@ -828,37 +897,49 @@ tailwind.config = {
 
 <script>
 (function () {
-  function openRow(row) {
-    var body = row.querySelector('.disc-body');
-    var wrap = row.querySelector('.disc-tags-wrap');
-    var tags = row.querySelectorAll('.svc-tag');
-    row.classList.add('is-open');
-    row.querySelector('.disc-btn').setAttribute('aria-expanded', 'true');
-    gsap.set(body, { height: 'auto' });
-    var h = body.offsetHeight;
-    gsap.fromTo(body, { height: 0 }, { height: h, duration: .38, ease: 'power3.out' });
-    gsap.fromTo(tags,
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, stagger: .045, duration: .26, delay: .14, ease: 'power2.out',
-        onComplete: function () { tags.forEach(function(t){ t.style.opacity=''; }); } }
-    );
+  var root = document.getElementById('discAccordion');
+  if (!root) return;
+  var rows = Array.prototype.slice.call(root.querySelectorAll('.disc-row'));
+  var G = window.gsap, RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setOpen(row, on) {
+    row.classList.toggle('is-open', on);
+    row.querySelector('.disc-btn').setAttribute('aria-expanded', on ? 'true' : 'false');
+  }
+  function openRow(row, instant) {
+    var body = row.querySelector('.disc-body'), tags = row.querySelectorAll('.svc-tag');
+    setOpen(row, true);
+    if (!G || RM || instant) { body.style.height = 'auto'; return; }
+    G.killTweensOf([body, tags]);
+    G.fromTo(body, { height: body.offsetHeight }, {
+      height: body.scrollHeight, duration: .62, ease: 'expo.out',
+      onComplete: function () { body.style.height = 'auto'; }
+    });
+    G.fromTo(tags, { autoAlpha: 0, y: 16, scale: .94 }, {
+      autoAlpha: 1, y: 0, scale: 1, duration: .5, ease: 'back.out(1.6)',
+      stagger: { each: .035 }, delay: .08, clearProps: 'opacity,visibility,transform'
+    });
   }
   function closeRow(row) {
-    var body = row.querySelector('.disc-body');
-    row.classList.remove('is-open');
-    row.querySelector('.disc-btn').setAttribute('aria-expanded', 'false');
-    gsap.to(body, { height: 0, duration: .28, ease: 'power3.in' });
-    row.querySelectorAll('.svc-tag').forEach(function(t){ t.style.opacity = '0'; });
+    if (!row.classList.contains('is-open')) return;
+    var body = row.querySelector('.disc-body'), tags = row.querySelectorAll('.svc-tag');
+    setOpen(row, false);
+    if (!G || RM) { body.style.height = '0px'; return; }
+    G.killTweensOf([body, tags]);
+    G.to(tags, { autoAlpha: 0, y: -6, duration: .18, ease: 'power1.in', stagger: { each: .012, from: 'end' } });
+    G.fromTo(body, { height: body.offsetHeight }, {
+      height: 0, duration: .48, ease: 'expo.inOut',
+      onComplete: function () { G.set(tags, { clearProps: 'opacity,visibility,transform' }); }
+    });
   }
-  var rows = document.querySelectorAll('#discAccordion .disc-row');
   rows.forEach(function (row) {
     row.querySelector('.disc-btn').addEventListener('click', function () {
-      var isOpen = row.classList.contains('is-open');
+      var wasOpen = row.classList.contains('is-open');
       rows.forEach(function (r) { if (r !== row) closeRow(r); });
-      if (isOpen) closeRow(row); else openRow(row);
+      if (wasOpen) closeRow(row); else openRow(row);
     });
   });
-  if (rows.length) openRow(rows[0]);
+  if (rows.length) openRow(rows[0], true);
 })();
 </script>
   </div>
@@ -969,135 +1050,107 @@ tailwind.config = {
       </div>
     </div>
 
-    <div class="mt-10 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" data-reveal>
-
-      <a href="https://www.bluewater-express.com/reservation/" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/bluewater.jpg" alt="Bluewater Express website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Bluewater Express</p>
-          <p class="pf-card-sector">Transport</p>
-        </div>
+    <div class="pf-wall mt-10 sm:mt-14" id="pfWall">
+      <a class="pf-logo pf-color pf-soft pf-wide" href="https://www.bluewater-express.com/reservation/" target="_blank" rel="noopener" aria-label="Bluewater Express, Transport">
+        <img src="portfolio-logos/bluewater.png" alt="Bluewater Express logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Bluewater Express</span><span class="pf-cap-sector">Transport</span></span>
       </a>
-
-      <a href="https://jasmineelizabeth.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/jasmine.jpg" alt="Jasmine Elizabeth website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Jasmine Elizabeth</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo" href="https://jasmineelizabeth.com" target="_blank" rel="noopener" aria-label="Jasmine Elizabeth, Premium Hospitality">
+        <img src="portfolio-logos/jasmine.svg" alt="Jasmine Elizabeth logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Jasmine Elizabeth</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://hotelnikkobali-benoabeach.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/nikko.jpg" alt="Hotel Nikko Bali Benoa Beach website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Hotel Nikko Bali Benoa Beach</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo pf-tall" href="https://hotelnikkobali-benoabeach.com" target="_blank" rel="noopener" aria-label="Hotel Nikko Bali Benoa Beach, Premium Hospitality">
+        <img src="portfolio-logos/nikko.png" alt="Hotel Nikko Bali Benoa Beach logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Hotel Nikko Bali Benoa Beach</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://www.santrian.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/santrian.jpg" alt="Santrian Group website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Santrian Group</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo pf-color pf-wide" href="https://www.santrian.com" target="_blank" rel="noopener" aria-label="Santrian Group, Premium Hospitality">
+        <img src="portfolio-logos/santrian-white.png" alt="Santrian Group logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Santrian Group</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://www.mataking.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/mataking.jpg" alt="Mataking Reef Resort website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Mataking Reef Resort</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo pf-color pf-tall" href="https://www.mataking.com" target="_blank" rel="noopener" aria-label="Mataking Reef Resort, Premium Hospitality">
+        <img src="portfolio-logos/mataking-white.png" alt="Mataking Reef Resort logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Mataking Reef Resort</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://www.thebidadarivillasandspa.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/bidadari.jpg" alt="Bidadari Villas and Spa website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Bidadari Villas &amp; Spa</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo pf-color pf-tall" href="https://www.thebidadarivillasandspa.com" target="_blank" rel="noopener" aria-label="Bidadari Villas &amp; Spa, Premium Hospitality">
+        <img src="portfolio-logos/bidadari.svg" alt="Bidadari Villas &amp; Spa logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Bidadari Villas &amp; Spa</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://lumbungarchitect.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/lumbung.jpg" alt="Studio Lumbung Architect website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Studio Lumbung Architect</p>
-          <p class="pf-card-sector">Private Enterprise</p>
-        </div>
+      <a class="pf-logo" href="https://lumbungarchitect.com" target="_blank" rel="noopener" aria-label="Studio Lumbung Architect, Private Enterprise">
+        <img src="portfolio-logos/lumbung.png" alt="Studio Lumbung Architect logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Studio Lumbung Architect</span><span class="pf-cap-sector">Private Enterprise</span></span>
       </a>
-
-      <a href="https://mundukmodingplantation.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/munduk.jpg" alt="Munduk Moding Plantation website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Munduk Moding Plantation</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo pf-tall" href="https://mundukmodingplantation.com" target="_blank" rel="noopener" aria-label="Munduk Moding Plantation, Premium Hospitality">
+        <img src="portfolio-logos/munduk.png" alt="Munduk Moding Plantation logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Munduk Moding Plantation</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://kkprajaampat.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/kkp.jpg" alt="KKP Raja Ampat website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">KKP Raja Ampat</p>
-          <p class="pf-card-sector">Government</p>
-        </div>
+      <a class="pf-logo pf-color pf-wide pf-tall" href="https://kkprajaampat.com" target="_blank" rel="noopener" aria-label="KKP Raja Ampat, Government">
+        <img src="portfolio-logos/kkp.png" alt="KKP Raja Ampat logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">KKP Raja Ampat</span><span class="pf-cap-sector">Government</span></span>
       </a>
-
-      <a href="https://www.hattenwines.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/hatten.jpg" alt="Hatten Wines website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Hatten Wines</p>
-          <p class="pf-card-sector">Private Enterprise</p>
-        </div>
+      <a class="pf-logo pf-color pf-xl" href="https://www.hattenwines.com" target="_blank" rel="noopener" aria-label="Hatten Wines, Private Enterprise">
+        <img src="portfolio-logos/hatten.svg" alt="Hatten Wines logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Hatten Wines</span><span class="pf-cap-sector">Private Enterprise</span></span>
       </a>
-
-      <a href="https://seasaltseminyak.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/seasalt.jpg" alt="Seasalt Seminyak website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Seasalt Seminyak</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <div class="pf-logo">
+        <span class="pf-word"><b>Seasalt</b><small>Seminyak</small></span>
+        <span class="pf-cap"><span class="pf-cap-name">Seasalt Seminyak</span><span class="pf-cap-sector">Premium Hospitality</span></span>
+      </div>
+      <a class="pf-logo pf-color pf-tall" href="https://www.mermaid-liveaboards.com" target="_blank" rel="noopener" aria-label="Mermaid Liveaboards, Premium Hospitality">
+        <img src="portfolio-logos/mermaid.png" alt="Mermaid Liveaboards logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Mermaid Liveaboards</span><span class="pf-cap-sector">Premium Hospitality</span></span>
       </a>
-
-      <a href="https://www.mermaid-liveaboards.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/mermaid.jpg" alt="Mermaid Liveaboard website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Mermaid Liveaboard</p>
-          <p class="pf-card-sector">Premium Hospitality</p>
-        </div>
+      <a class="pf-logo pf-color" href="https://plazarenon.com" target="_blank" rel="noopener" aria-label="Plaza Renon, Private Enterprise">
+        <img src="portfolio-logos/plazarenon.svg" alt="Plaza Renon logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Plaza Renon</span><span class="pf-cap-sector">Private Enterprise</span></span>
       </a>
-
-      <a href="https://plazarenon.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/plazarenon.jpg" alt="Plaza Renon website" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Plaza Renon</p>
-          <p class="pf-card-sector">Private Enterprise</p>
-        </div>
+      <a class="pf-logo pf-color pf-soft" href="https://bittybe.com" target="_blank" rel="noopener" aria-label="Bittybe, Social App">
+        <img src="portfolio-logos/bittybe.svg" alt="Bittybe logo" loading="lazy" decoding="async">
+        <span class="pf-arrow" aria-hidden="true">&#8599;</span>
+        <span class="pf-cap"><span class="pf-cap-name">Bittybe</span><span class="pf-cap-sector">Social App</span></span>
       </a>
-
-      <a href="https://bittybe.com" target="_blank" rel="noopener" class="pf-card">
-        <img src="portfolio-thumbs/bittybe.jpg" alt="Bittybe social app" loading="lazy">
-        <span class="pf-card-arrow">&#8599;</span>
-        <div class="pf-card-body">
-          <p class="pf-card-name">Bittybe</p>
-          <p class="pf-card-sector">Social App</p>
-        </div>
-      </a>
-
     </div>
+
+<script>
+(function () {
+  var wall = document.getElementById('pfWall');
+  if (!wall) return;
+  var fine = window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine) {
+    wall.addEventListener('pointermove', function (e) {
+      var r = wall.getBoundingClientRect();
+      wall.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      wall.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      var c = e.target.closest('.pf-logo');
+      if (c) { var q = c.getBoundingClientRect(); c.style.setProperty('--lx', (e.clientX - q.left) + 'px'); c.style.setProperty('--ly', (e.clientY - q.top) + 'px'); }
+    });
+    wall.addEventListener('pointerleave', function () { wall.style.setProperty('--my', '-400px'); });
+  }
+  var G = window.gsap, RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!G || !window.ScrollTrigger || RM) return;
+  var items = wall.querySelectorAll('.pf-logo img, .pf-logo .pf-word');
+  G.set(items, { autoAlpha: 0, y: 24 });
+  ScrollTrigger.create({
+    trigger: wall, start: 'top 85%', once: true,
+    onEnter: function () {
+      var base = fine ? .52 : .8;
+      G.to(items, { autoAlpha: function (i, el) { return el.tagName === 'IMG' ? base : 1; }, y: 0, duration: .9, ease: 'expo.out',
+        stagger: { each: .06 }, clearProps: 'opacity,visibility,transform' });
+    }
+  });
+})();
+</script>
   </div>
 </section>
 
