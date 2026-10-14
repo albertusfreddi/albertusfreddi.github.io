@@ -71,6 +71,34 @@ tailwind.config = {
     border: 1px solid rgba(209,22,26,.38); border-radius: 18px;
     box-shadow: 0 10px 44px rgba(209,22,26,.14);
   }
+  /* ── service tags (full menu) ─────────────────────────────────────────── */
+  .svc-tag {
+    display: inline-flex; align-items: center;
+    padding: 6px 15px; border-radius: 100px;
+    border: 1px solid rgba(255,255,255,.12);
+    font-size: 13px; color: rgba(255,255,255,.62);
+    transition: border-color .22s ease, color .22s ease;
+    cursor: default;
+  }
+  .svc-tag:hover { border-color: rgba(255,255,255,.28); color: rgba(255,255,255,.92); }
+
+  /* ── portfolio cards ───────────────────────────────────────────────────── */
+  .pf-card {
+    position: relative; overflow: hidden;
+    border-radius: 16px; display: block;
+    text-decoration: none; color: inherit;
+    border: 1px solid rgba(255,255,255,.08);
+    transition: border-color .3s ease, transform .35s ease;
+  }
+  .pf-card:hover { border-color: rgba(255,255,255,.22); transform: translateY(-3px); }
+  .pf-card img { width: 100%; height: 190px; object-fit: cover; object-position: top; display: block; filter: brightness(.88); transition: filter .35s ease; }
+  .pf-card:hover img { filter: brightness(1); }
+  .pf-card-body { padding: 14px 16px 16px; background: #141414; }
+  .pf-card-name { font-size: 14px; font-weight: 600; line-height: 1.3; }
+  .pf-card-sector { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-top: 5px; }
+  .pf-card-arrow { position: absolute; top: 12px; right: 14px; font-size: 13px; color: rgba(255,255,255,.5); background: rgba(0,0,0,.45); border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; transition: background .25s, color .25s; }
+  .pf-card:hover .pf-card-arrow { background: #D1161A; color: #fff; }
+
   .grid-faint {
     background-image:
       linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
@@ -651,76 +679,105 @@ tailwind.config = {
 
     </div>
 
-    <div class="mt-12 grid md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4 items-start">
-      <div class="card-dark p-6 sm:p-7" data-reveal>
-        <p class="eyebrow">A &middot; AI &amp; Automation</p>
-        <ul class="mt-5 space-y-3 text-[14px] text-white/72 leading-snug">
-          <li class="menu-item"><span class="menu-no">01</span><span>AI Agents &amp; Workflow Orchestration</span></li>
-          <li class="menu-item"><span class="menu-no">02</span><span>Custom Automation Scripts</span></li>
-          <li class="menu-item"><span class="menu-no">03</span><span>Prompt Engineering &amp; Prompt Libraries</span></li>
-          <li class="menu-item"><span class="menu-no">04</span><span>Telegram &amp; WhatsApp Bots</span></li>
-          <li class="menu-item"><span class="menu-no">05</span><span>Document &amp; Report Automation</span></li>
-        </ul>
-      </div>
-      <div class="card-dark p-6 sm:p-7" data-reveal>
-        <p class="eyebrow">B &middot; Web, Apps &amp; Code</p>
-        <ul class="mt-5 space-y-3 text-[14px] text-white/72 leading-snug">
-          <li class="menu-item"><span class="menu-no">06</span><span>Websites &amp; Landing Pages</span></li>
-          <li class="menu-item"><span class="menu-no">07</span><span>Android &amp; iOS Apps</span></li>
-          <li class="menu-item"><span class="menu-no">08</span><span>Code Debugging &amp; Refactoring</span></li>
-          <li class="menu-item"><span class="menu-no">09</span><span>Web Scraping &amp; Data Extraction</span></li>
-        </ul>
-      </div>
-      <div class="card-dark p-6 sm:p-7" data-reveal>
-        <p class="eyebrow">C &middot; Data, Research &amp; Strategy</p>
-        <ul class="mt-5 space-y-3 text-[14px] text-white/72 leading-snug">
-          <li class="menu-item"><span class="menu-no">10</span><span>Dashboards &amp; Business Intelligence</span></li>
-          <li class="menu-item"><span class="menu-no">11</span><span>Market &amp; Competitor Research</span></li>
-          <li class="menu-item"><span class="menu-no">12</span><span>Executive Summaries &amp; Document Analysis</span></li>
-          <li class="menu-item"><span class="menu-no">13</span><span>Business Plan Drafting</span></li>
-          <li class="menu-item"><span class="menu-no">14</span><span>Data Formatting &amp; Extraction</span></li>
-        </ul>
-      </div>
-      <div class="card-dark p-6 sm:p-7" data-reveal>
-        <p class="eyebrow">D &middot; Content &amp; Copy</p>
-        <ul class="mt-5 space-y-3 text-[14px] text-white/72 leading-snug">
-          <li class="menu-item"><span class="menu-no">15</span><span>SEO Blog &amp; Article Writing</span></li>
-          <li class="menu-item"><span class="menu-no">16</span><span>Direct Response Copywriting</span></li>
-          <li class="menu-item"><span class="menu-no">17</span><span>Email Marketing Campaigns</span></li>
-          <li class="menu-item"><span class="menu-no">18</span><span>Ghostwriting &amp; E&#8209;books</span></li>
-          <li class="menu-item"><span class="menu-no">19</span><span>Video Scriptwriting</span></li>
-          <li class="menu-item"><span class="menu-no">20</span><span>Translation &amp; Localisation</span></li>
-          <li class="menu-item"><span class="menu-no">21</span><span>Proofreading, Editing &amp; Paraphrasing</span></li>
-          <li class="menu-item"><span class="menu-no">22</span><span>Resume &amp; Cover Letter Revamp</span></li>
-        </ul>
-      </div>
-      <div class="card-dark p-6 sm:p-7" data-reveal>
-        <p class="eyebrow">E &middot; Social, Brand &amp; Design</p>
-        <ul class="mt-5 space-y-3 text-[14px] text-white/72 leading-snug">
-          <li class="menu-item"><span class="menu-no">23</span><span>Social Media Management</span></li>
-          <li class="menu-item"><span class="menu-no">24</span><span>LinkedIn &amp; Instagram Carousels</span></li>
-          <li class="menu-item"><span class="menu-no">25</span><span>Pitch Decks &amp; Presentations</span></li>
-          <li class="menu-item"><span class="menu-no">26</span><span>Brand Identity &amp; Moodboards</span></li>
-        </ul>
-      </div>
-      <div class="card-dark p-6 sm:p-7" data-reveal>
-        <p class="eyebrow">F &middot; Cloud, Security &amp; Infrastructure</p>
-        <ul class="mt-5 space-y-3 text-[14px] text-white/72 leading-snug">
-          <li class="menu-item"><span class="menu-no">27</span><span>Cloud Infrastructure &amp; Deployment</span></li>
-          <li class="menu-item"><span class="menu-no">28</span><span>B2B Portal Development</span></li>
-          <li class="menu-item"><span class="menu-no">29</span><span>Penetration Testing &amp; Security Audit</span></li>
-        </ul>
-      </div>
-      <div class="card-red p-6 sm:p-7 flex flex-col justify-between" data-reveal>
+    <div class="mt-14 divide-y divide-white/8" data-reveal>
+
+      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
         <div>
-          <p class="eyebrow" style="color: rgba(255,255,255,.6)">Not On The List?</p>
-          <p class="mt-5 text-[15px] text-white/80 leading-relaxed">
-            If it is repetitive, written down, or lives in a spreadsheet, it can probably be automated.
-            Describe it in one message and we will tell you straight whether it is worth doing.
-          </p>
+          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">A</p>
+          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">AI &amp; Automation</p>
+          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Systems that read, decide and act while you sleep.</p>
         </div>
-        <a class="btn-red mt-7 self-start" href="#contact">Ask anyway <span class="arrow">&rarr;</span></a>
+        <div class="flex flex-wrap gap-2 lg:pt-2">
+          <span class="svc-tag">AI Agents &amp; Workflow Orchestration</span>
+          <span class="svc-tag">Custom Automation Scripts</span>
+          <span class="svc-tag">Prompt Engineering &amp; Prompt Libraries</span>
+          <span class="svc-tag">Messenger Bots</span>
+          <span class="svc-tag">Document &amp; Report Automation</span>
+        </div>
       </div>
+
+      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">B</p>
+          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Web, Apps &amp; Code</p>
+          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Sites, apps, and the code behind them.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 lg:pt-2">
+          <span class="svc-tag">Websites &amp; Landing Pages</span>
+          <span class="svc-tag">Android &amp; iOS Apps</span>
+          <span class="svc-tag">Code Debugging &amp; Refactoring</span>
+          <span class="svc-tag">Web Scraping &amp; Data Extraction</span>
+        </div>
+      </div>
+
+      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">C</p>
+          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Data, Research &amp; Strategy</p>
+          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Raw numbers turned into a decision you can defend.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 lg:pt-2">
+          <span class="svc-tag">Dashboards &amp; Business Intelligence</span>
+          <span class="svc-tag">Market &amp; Competitor Research</span>
+          <span class="svc-tag">Executive Summaries &amp; Document Analysis</span>
+          <span class="svc-tag">Business Plan Drafting</span>
+          <span class="svc-tag">Data Formatting &amp; Extraction</span>
+        </div>
+      </div>
+
+      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">D</p>
+          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Content &amp; Copy</p>
+          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Words that rank, convert, and sound like you.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 lg:pt-2">
+          <span class="svc-tag">SEO Blog &amp; Article Writing</span>
+          <span class="svc-tag">Direct Response Copywriting</span>
+          <span class="svc-tag">Email Marketing Campaigns</span>
+          <span class="svc-tag">Ghostwriting &amp; E&#8209;books</span>
+          <span class="svc-tag">Video Scriptwriting</span>
+          <span class="svc-tag">Translation &amp; Localisation</span>
+          <span class="svc-tag">Proofreading &amp; Editing</span>
+          <span class="svc-tag">Resume &amp; Cover Letter Revamp</span>
+        </div>
+      </div>
+
+      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">E</p>
+          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Social, Brand &amp; Design</p>
+          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Presence, visuals, and calendars that keep moving.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 lg:pt-2">
+          <span class="svc-tag">Social Media Management</span>
+          <span class="svc-tag">LinkedIn &amp; Instagram Carousels</span>
+          <span class="svc-tag">Pitch Decks &amp; Presentations</span>
+          <span class="svc-tag">Brand Identity &amp; Moodboards</span>
+        </div>
+      </div>
+
+      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">F</p>
+          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Cloud, Security &amp; Infrastructure</p>
+          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Solid foundations and hardened perimeters.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 lg:pt-2">
+          <span class="svc-tag">Cloud Infrastructure &amp; Deployment</span>
+          <span class="svc-tag">B2B Portal Development</span>
+          <span class="svc-tag">Penetration Testing &amp; Security Audit</span>
+        </div>
+      </div>
+
+      <div class="py-10 sm:py-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <p class="max-w-[520px] text-[15px] text-white/60 leading-relaxed">
+          If it is repetitive, written down, or lives in a spreadsheet, it can probably be automated.
+          Describe it in one message and we will tell you straight whether it is worth doing.
+        </p>
+        <a class="btn-red shrink-0" href="#contact">Ask anyway <span class="arrow">&rarr;</span></a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -809,145 +866,153 @@ tailwind.config = {
 <!-- ═══════════════════════════════════ CLIENT WORK ═════════════════════════════════ -->
 <section id="portfolio" class="bg-panel px-5 sm:px-8 py-20 sm:py-28">
   <div class="mx-auto max-w-[1280px]">
-    <div data-reveal>
-      <p class="eyebrow mb-4">Client Work</p>
-      <h2 class="display h-md max-w-[760px]">Premium Digital Work.<em>Built by Our Team<span class="dot-red">.</span></em></h2>
-      <p class="mt-6 max-w-[640px] text-[15px] sm:text-[17px] text-white/62 leading-relaxed">
-        A selection of digital touchpoints our front-end specialists have delivered, spanning government, hospitality, and private enterprise.
-      </p>
-      <div class="mt-4 flex flex-wrap gap-2">
-        <span class="inline-flex items-center text-[10.5px] tracking-[.15em] uppercase text-white/45 border border-white/12 rounded-full px-3 py-1.5">Government</span>
-        <span class="inline-flex items-center text-[10.5px] tracking-[.15em] uppercase text-white/45 border border-white/12 rounded-full px-3 py-1.5">Premium Hospitality</span>
-        <span class="inline-flex items-center text-[10.5px] tracking-[.15em] uppercase text-white/45 border border-white/12 rounded-full px-3 py-1.5">Private Enterprise</span>
+
+    <div class="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-end" data-reveal>
+      <div>
+        <p class="eyebrow mb-4">Client Work</p>
+        <h2 class="display h-md max-w-[700px]">Work That Lives<em>On The Web<span class="dot-red">.</span></em></h2>
+        <p class="mt-6 max-w-[560px] text-[15px] sm:text-[17px] text-white/62 leading-relaxed">
+          A selection of digital touchpoints our front-end specialists have delivered, across government, hospitality, and private enterprise.
+        </p>
+      </div>
+      <div class="flex gap-8 sm:gap-12 lg:gap-10 xl:gap-14 shrink-0 pb-1">
+        <div class="text-right lg:text-left">
+          <p class="text-[44px] sm:text-[52px] font-bold leading-none text-red tabular-nums">150<span class="text-[28px]">+</span></p>
+          <p class="mt-1 text-[12px] text-white/45 leading-snug">Projects<br>delivered</p>
+        </div>
+        <div class="text-right lg:text-left">
+          <p class="text-[44px] sm:text-[52px] font-bold leading-none text-red tabular-nums">3</p>
+          <p class="mt-1 text-[12px] text-white/45 leading-snug">Sectors<br>served</p>
+        </div>
       </div>
     </div>
 
-    <div class="mt-10 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4" data-reveal>
+    <div class="mt-10 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" data-reveal>
 
-      <a href="https://www.bluewater-express.com/reservation/" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Bluewater Express</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://www.bluewater-express.com/reservation/" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/bluewater.jpg" alt="Bluewater Express website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Bluewater Express</p>
+          <p class="pf-card-sector">Transport</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Transport</p>
       </a>
 
-      <a href="https://jasmineelizabeth.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Jasmine Elizabeth</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://jasmineelizabeth.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/jasmine.jpg" alt="Jasmine Elizabeth website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Jasmine Elizabeth</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://hotelnikkobali-benoabeach.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Hotel Nikko Bali Benoa Beach</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://hotelnikkobali-benoabeach.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/nikko.jpg" alt="Hotel Nikko Bali Benoa Beach website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Hotel Nikko Bali Benoa Beach</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://www.santrian.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Santrian Group</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://www.santrian.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/santrian.jpg" alt="Santrian Group website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Santrian Group</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://www.mataking.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Mataking Reef Resort</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://www.mataking.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/mataking.jpg" alt="Mataking Reef Resort website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Mataking Reef Resort</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://www.thebidadarivillasandspa.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Bidadari Villas &amp; Spa</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://www.thebidadarivillasandspa.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/bidadari.jpg" alt="Bidadari Villas and Spa website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Bidadari Villas &amp; Spa</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://lumbungarchitect.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Studio Lumbung Architect</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://lumbungarchitect.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/lumbung.jpg" alt="Studio Lumbung Architect website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Studio Lumbung Architect</p>
+          <p class="pf-card-sector">Private Enterprise</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Private Enterprise</p>
       </a>
 
-      <a href="https://mundukmodingplantation.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Munduk Moding Plantation</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://mundukmodingplantation.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/munduk.jpg" alt="Munduk Moding Plantation website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Munduk Moding Plantation</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://kkprajaampat.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">KKP Raja Ampat</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://kkprajaampat.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/kkp.jpg" alt="KKP Raja Ampat website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">KKP Raja Ampat</p>
+          <p class="pf-card-sector">Government</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Government</p>
       </a>
 
-      <a href="https://www.hattenwines.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Hatten Wines</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://www.hattenwines.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/hatten.jpg" alt="Hatten Wines website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Hatten Wines</p>
+          <p class="pf-card-sector">Private Enterprise</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Private Enterprise</p>
       </a>
 
-      <a href="https://seasaltseminyak.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Seasalt Seminyak</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://seasaltseminyak.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/seasalt.jpg" alt="Seasalt Seminyak website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Seasalt Seminyak</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://www.mermaid-liveaboards.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Mermaid Liveaboard</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://www.mermaid-liveaboards.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/mermaid.jpg" alt="Mermaid Liveaboard website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Mermaid Liveaboard</p>
+          <p class="pf-card-sector">Premium Hospitality</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Premium Hospitality</p>
       </a>
 
-      <a href="https://plazarenon.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Plaza Renon</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://plazarenon.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/plazarenon.jpg" alt="Plaza Renon website" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Plaza Renon</p>
+          <p class="pf-card-sector">Private Enterprise</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Private Enterprise</p>
       </a>
 
-      <a href="https://bittybe.com" target="_blank" rel="noopener"
-         class="card-dark p-5 sm:p-6 flex flex-col gap-3 transition-colors hover:border-white/18 group">
-        <div class="flex items-start justify-between gap-2">
-          <p class="text-[15px] font-semibold leading-snug">Bittybe</p>
-          <span class="text-white/30 group-hover:text-white/60 transition-colors mt-0.5 shrink-0">&#8599;</span>
+      <a href="https://bittybe.com" target="_blank" rel="noopener" class="pf-card">
+        <img src="portfolio-thumbs/bittybe.jpg" alt="Bittybe social app" loading="lazy">
+        <span class="pf-card-arrow">&#8599;</span>
+        <div class="pf-card-body">
+          <p class="pf-card-name">Bittybe</p>
+          <p class="pf-card-sector">Social App</p>
         </div>
-        <p class="text-[11px] tracking-[.14em] uppercase text-white/38">Social App</p>
       </a>
 
     </div>
