@@ -71,15 +71,55 @@ tailwind.config = {
     border: 1px solid rgba(209,22,26,.38); border-radius: 18px;
     box-shadow: 0 10px 44px rgba(209,22,26,.14);
   }
-  /* ── service tags (full menu) ─────────────────────────────────────────── */
+  /* ── service accordion ─────────────────────────────────────────────────── */
+  .disc-row { border-bottom: 1px solid rgba(255,255,255,.08); }
+  .disc-row:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+  .disc-btn {
+    width: 100%; text-align: left; background: none; border: none; color: inherit;
+    display: grid; gap: 0 16px; padding: 20px 0; cursor: pointer;
+    grid-template-columns: 36px 1fr auto 30px;
+    align-items: center;
+  }
+  .disc-btn:hover .disc-name { color: #fff; }
+  .disc-ltr {
+    font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: rgba(255,255,255,.24); font-weight: 500;
+    transition: color .28s ease;
+    align-self: start; padding-top: 3px;
+  }
+  .disc-row.is-open .disc-ltr { color: #D1161A; }
+  .disc-name {
+    font-size: clamp(17px, 2.4vw, 21px); font-weight: 700; line-height: 1.2;
+    color: rgba(255,255,255,.82);
+    transition: color .22s ease;
+  }
+  .disc-blurb {
+    font-size: 12.5px; color: rgba(255,255,255,.36);
+    margin-top: 4px; line-height: 1.4;
+  }
+  .disc-count {
+    font-size: 11.5px; color: rgba(255,255,255,.28);
+    white-space: nowrap; letter-spacing: .04em;
+    align-self: start; padding-top: 5px;
+  }
+  .disc-icon {
+    font-size: 22px; font-weight: 300;
+    color: rgba(255,255,255,.30);
+    transition: transform .38s cubic-bezier(.4,0,.2,1), color .28s;
+    line-height: 1; align-self: start; padding-top: 1px;
+  }
+  .disc-row.is-open .disc-icon { transform: rotate(45deg); color: #D1161A; }
+  .disc-body { overflow: hidden; height: 0; }
+  .disc-tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 22px; }
   .svc-tag {
     display: inline-flex; align-items: center;
-    padding: 6px 15px; border-radius: 100px;
+    padding: 7px 16px; border-radius: 100px;
     border: 1px solid rgba(255,255,255,.12);
-    font-size: 13px; color: rgba(255,255,255,.62);
+    font-size: 13px; color: rgba(255,255,255,.60);
     transition: border-color .22s ease, color .22s ease;
-    cursor: default;
+    cursor: default; opacity: 0;
   }
+  .svc-tag.visible { opacity: 1; }
   .svc-tag:hover { border-color: rgba(255,255,255,.28); color: rgba(255,255,255,.92); }
 
   /* ── portfolio cards ───────────────────────────────────────────────────── */
@@ -667,7 +707,7 @@ tailwind.config = {
   <div class="mx-auto max-w-[1280px]">
     <div data-reveal>
       <p class="eyebrow mb-4">The Full Menu</p>
-      <h2 class="display h-lg max-w-[820px]">Everything I Can Take<em>Off Your Desk<span class="dot-red">.</span></em></h2>
+      <h2 class="display h-lg max-w-[820px]">Everything We Can Take<em>Off Your Desk<span class="dot-red">.</span></em></h2>
       <p class="mt-6 max-w-[640px] text-[15px] sm:text-[17px] text-white/62 leading-relaxed">
         Twenty-nine services across six disciplines. Every deliverable is scoped, reviewed and signed off before it reaches you. That is how a specialist team covers this much ground, and why it comes back in days rather than weeks.
       </p>
@@ -679,59 +719,63 @@ tailwind.config = {
 
     </div>
 
-    <div class="mt-14 divide-y divide-white/8" data-reveal>
+    <div class="mt-14" id="discAccordion" data-reveal>
 
-      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
-        <div>
-          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">A</p>
-          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">AI &amp; Automation</p>
-          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Systems that read, decide and act while you sleep.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 lg:pt-2">
+      <div class="disc-row">
+        <button class="disc-btn" aria-expanded="false">
+          <span class="disc-ltr">A</span>
+          <div><p class="disc-name">AI &amp; Automation</p><p class="disc-blurb">Systems that read, decide and act while you sleep.</p></div>
+          <span class="disc-count">5 services</span>
+          <span class="disc-icon">+</span>
+        </button>
+        <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">AI Agents &amp; Workflow Orchestration</span>
           <span class="svc-tag">Custom Automation Scripts</span>
           <span class="svc-tag">Prompt Engineering &amp; Prompt Libraries</span>
           <span class="svc-tag">Messenger Bots</span>
           <span class="svc-tag">Document &amp; Report Automation</span>
-        </div>
+        </div></div>
       </div>
 
-      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
-        <div>
-          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">B</p>
-          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Web, Apps &amp; Code</p>
-          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Sites, apps, and the code behind them.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 lg:pt-2">
+      <div class="disc-row">
+        <button class="disc-btn" aria-expanded="false">
+          <span class="disc-ltr">B</span>
+          <div><p class="disc-name">Web, Apps &amp; Code</p><p class="disc-blurb">Sites, apps, and the code behind them.</p></div>
+          <span class="disc-count">4 services</span>
+          <span class="disc-icon">+</span>
+        </button>
+        <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Websites &amp; Landing Pages</span>
           <span class="svc-tag">Android &amp; iOS Apps</span>
           <span class="svc-tag">Code Debugging &amp; Refactoring</span>
           <span class="svc-tag">Web Scraping &amp; Data Extraction</span>
-        </div>
+        </div></div>
       </div>
 
-      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
-        <div>
-          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">C</p>
-          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Data, Research &amp; Strategy</p>
-          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Raw numbers turned into a decision you can defend.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 lg:pt-2">
+      <div class="disc-row">
+        <button class="disc-btn" aria-expanded="false">
+          <span class="disc-ltr">C</span>
+          <div><p class="disc-name">Data, Research &amp; Strategy</p><p class="disc-blurb">Raw numbers turned into a decision you can defend.</p></div>
+          <span class="disc-count">5 services</span>
+          <span class="disc-icon">+</span>
+        </button>
+        <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Dashboards &amp; Business Intelligence</span>
           <span class="svc-tag">Market &amp; Competitor Research</span>
           <span class="svc-tag">Executive Summaries &amp; Document Analysis</span>
           <span class="svc-tag">Business Plan Drafting</span>
           <span class="svc-tag">Data Formatting &amp; Extraction</span>
-        </div>
+        </div></div>
       </div>
 
-      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
-        <div>
-          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">D</p>
-          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Content &amp; Copy</p>
-          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Words that rank, convert, and sound like you.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 lg:pt-2">
+      <div class="disc-row">
+        <button class="disc-btn" aria-expanded="false">
+          <span class="disc-ltr">D</span>
+          <div><p class="disc-name">Content &amp; Copy</p><p class="disc-blurb">Words that rank, convert, and sound like you.</p></div>
+          <span class="disc-count">8 services</span>
+          <span class="disc-icon">+</span>
+        </button>
+        <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">SEO Blog &amp; Article Writing</span>
           <span class="svc-tag">Direct Response Copywriting</span>
           <span class="svc-tag">Email Marketing Campaigns</span>
@@ -740,37 +784,39 @@ tailwind.config = {
           <span class="svc-tag">Translation &amp; Localisation</span>
           <span class="svc-tag">Proofreading &amp; Editing</span>
           <span class="svc-tag">Resume &amp; Cover Letter Revamp</span>
-        </div>
+        </div></div>
       </div>
 
-      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
-        <div>
-          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">E</p>
-          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Social, Brand &amp; Design</p>
-          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Presence, visuals, and calendars that keep moving.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 lg:pt-2">
+      <div class="disc-row">
+        <button class="disc-btn" aria-expanded="false">
+          <span class="disc-ltr">E</span>
+          <div><p class="disc-name">Social, Brand &amp; Design</p><p class="disc-blurb">Presence, visuals, and calendars that keep moving.</p></div>
+          <span class="disc-count">4 services</span>
+          <span class="disc-icon">+</span>
+        </button>
+        <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Social Media Management</span>
           <span class="svc-tag">LinkedIn &amp; Instagram Carousels</span>
           <span class="svc-tag">Pitch Decks &amp; Presentations</span>
           <span class="svc-tag">Brand Identity &amp; Moodboards</span>
-        </div>
+        </div></div>
       </div>
 
-      <div class="py-8 sm:py-10 grid lg:grid-cols-[260px_1fr] gap-5 lg:gap-14 items-start">
-        <div>
-          <p class="text-[10px] tracking-[.24em] text-white/28 mb-2 uppercase">F</p>
-          <p class="text-[19px] sm:text-[21px] font-bold leading-tight">Cloud, Security &amp; Infrastructure</p>
-          <p class="mt-2 text-[13px] text-white/42 leading-relaxed">Solid foundations and hardened perimeters.</p>
-        </div>
-        <div class="flex flex-wrap gap-2 lg:pt-2">
+      <div class="disc-row">
+        <button class="disc-btn" aria-expanded="false">
+          <span class="disc-ltr">F</span>
+          <div><p class="disc-name">Cloud, Security &amp; Infrastructure</p><p class="disc-blurb">Solid foundations and hardened perimeters.</p></div>
+          <span class="disc-count">3 services</span>
+          <span class="disc-icon">+</span>
+        </button>
+        <div class="disc-body"><div class="disc-tags-wrap">
           <span class="svc-tag">Cloud Infrastructure &amp; Deployment</span>
           <span class="svc-tag">B2B Portal Development</span>
           <span class="svc-tag">Penetration Testing &amp; Security Audit</span>
-        </div>
+        </div></div>
       </div>
 
-      <div class="py-10 sm:py-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+      <div class="border-t border-white/8 pt-10 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <p class="max-w-[520px] text-[15px] text-white/60 leading-relaxed">
           If it is repetitive, written down, or lives in a spreadsheet, it can probably be automated.
           Describe it in one message and we will tell you straight whether it is worth doing.
@@ -779,6 +825,42 @@ tailwind.config = {
       </div>
 
     </div>
+
+<script>
+(function () {
+  function openRow(row) {
+    var body = row.querySelector('.disc-body');
+    var wrap = row.querySelector('.disc-tags-wrap');
+    var tags = row.querySelectorAll('.svc-tag');
+    row.classList.add('is-open');
+    row.querySelector('.disc-btn').setAttribute('aria-expanded', 'true');
+    gsap.set(body, { height: 'auto' });
+    var h = body.offsetHeight;
+    gsap.fromTo(body, { height: 0 }, { height: h, duration: .38, ease: 'power3.out' });
+    gsap.fromTo(tags,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, stagger: .045, duration: .26, delay: .14, ease: 'power2.out',
+        onComplete: function () { tags.forEach(function(t){ t.style.opacity=''; }); } }
+    );
+  }
+  function closeRow(row) {
+    var body = row.querySelector('.disc-body');
+    row.classList.remove('is-open');
+    row.querySelector('.disc-btn').setAttribute('aria-expanded', 'false');
+    gsap.to(body, { height: 0, duration: .28, ease: 'power3.in' });
+    row.querySelectorAll('.svc-tag').forEach(function(t){ t.style.opacity = '0'; });
+  }
+  var rows = document.querySelectorAll('#discAccordion .disc-row');
+  rows.forEach(function (row) {
+    row.querySelector('.disc-btn').addEventListener('click', function () {
+      var isOpen = row.classList.contains('is-open');
+      rows.forEach(function (r) { if (r !== row) closeRow(r); });
+      if (isOpen) closeRow(row); else openRow(row);
+    });
+  });
+  if (rows.length) openRow(rows[0]);
+})();
+</script>
   </div>
 </section>
 
