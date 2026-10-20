@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Albertus Freddi — Blog (日本語)</title>
+<link>https://albertusfreddi.github.io/blog/ja/</link>
+<description>AI automation, web scraping, and hospitality technology insights from Jakarta</description>
+<language>ja</language>
+<atom:link href="https://albertusfreddi.github.io/blog/rss-ja.xml" rel="self" type="application/rss+xml"/>
+<lastBuildDate>Tue, 20 Oct 2026 20:01:00 GMT</lastBuildDate>
+<managingEditor>albertus.freddi@gmail.com (Albertus Freddi)</managingEditor>
+<webMaster>albertus.freddi@gmail.com (Albertus Freddi)</webMaster>
+<item>
+<title>インドネシアのAI自動化：2026年市場動向</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html</guid>
+<pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアのAI自動化：2026年市場動向</description>
+</item>
+<item>
+<title>インドネシアビジネス向けWhatsAppチャットボット構築</title>
+<link>https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html</guid>
+<pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアビジネス向けWhatsAppチャットボット構築</description>
+</item>
+<item>
+<title>ジャカルタのスタートアップに必要なPython自動化スクリプト</title>
+<link>https://albertusfreddi.github.io/blog/ja/python-automation-scripts-jakarta-startups.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/python-automation-scripts-jakarta-startups.html</guid>
+<pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>ジャカルタのスタートアップに必要なPython自動化スクリプト</description>
+</item>
+<item>
+<title>AIエージェント対従来型RPA：インドネシアでの選択</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html</guid>
+<pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>AIエージェント対従来型RPA：インドネシアでの選択</description>
+</item>
+<item>
+<title>インドネシア企業向け文書処理自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/document-processing-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/document-processing-automation-indonesia.html</guid>
+<pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア企業向け文書処理自動化</description>
+</item>
+<item>
+<title>ROI計算機：インドネシアのAI自動化プロジェクト</title>
+<link>https://albertusfreddi.github.io/blog/ja/cost-roi-ai-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/cost-roi-ai-automation-indonesia.html</guid>
+<pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>ROI計算機：インドネシアのAI自動化プロジェクト</description>
+</item>
+<item>
+<title>ジャカルタ企業向けメール自動化戦略</title>
+<link>https://albertusfreddi.github.io/blog/ja/email-automation-jakarta-businesses.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/email-automation-jakarta-businesses.html</guid>
+<pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>ジャカルタ企業向けメール自動化戦略</description>
+</item>
+<item>
+<title>インドネシア小売業者向け在庫管理自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/inventory-management-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/inventory-management-automation-indonesia.html</guid>
+<pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア小売業者向け在庫管理自動化</description>
+</item>
+<item>
+<title>インドネシア語音声AI：課題と解決策</title>
+<link>https://albertusfreddi.github.io/blog/ja/voice-ai-indonesian-language.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/voice-ai-indonesian-language.html</guid>
+<pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア語音声AI：課題と解決策</description>
+</item>
+<item>
+<title>インドネシア企業向けAI採用スクリーニング</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-recruitment-screening-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-recruitment-screening-indonesia.html</guid>
+<pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア企業向けAI採用スクリーニング</description>
+</item>
+<item>
+<title>インドネシアでのWebスクレイピングは合法？2026年コンプライアンスガイド</title>
+<link>https://albertusfreddi.github.io/blog/ja/web-scraping-legal-indonesia-2026.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/web-scraping-legal-indonesia-2026.html</guid>
+<pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアでのWebスクレイピングは合法？2026年コンプライアンスガイド</description>
+</item>
+<item>
+<title>Python Webスクレイピング：robots.txtとレート制限の遵守</title>
+<link>https://albertusfreddi.github.io/blog/ja/python-scraping-respect-robots-txt.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/python-scraping-respect-robots-txt.html</guid>
+<pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>Python Webスクレイピング：robots.txtとレート制限の遵守</description>
+</item>
+<item>
+<title>インドネシア公開データスクレイピング：できることとできないこと</title>
+<link>https://albertusfreddi.github.io/blog/ja/scraping-public-data-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/scraping-public-data-indonesia.html</guid>
+<pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシア公開データスクレイピング：できることとできないこと</description>
+</item>
+<item>
+<title>インドネシアEコマース価格モニタリング：ベストプラクティス</title>
+<link>https://albertusfreddi.github.io/blog/ja/ecommerce-price-monitoring-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ecommerce-price-monitoring-indonesia.html</guid>
+<pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアEコマース価格モニタリング：ベストプラクティス</description>
+</item>
+<item>
+<title>インドネシアWebサイト向けSelenium vs Playwright</title>
+<link>https://albertusfreddi.github.io/blog/ja/selenium-playwright-indonesia-websites.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/selenium-playwright-indonesia-websites.html</guid>
+<pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアWebサイト向けSelenium vs Playwright</description>
+</item>
+<item>
+<title>アンチスクレイピング対策のバイパス：倫理的な方法</title>
+<link>https://albertusfreddi.github.io/blog/ja/anti-scraping-bypass-ethical.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/anti-scraping-bypass-ethical.html</guid>
+<pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>アンチスクレイピング対策のバイパス：倫理的な方法</description>
+</item>
+<item>
+<title>インドネシアソーシャルメディアスクレイピング：法的境界</title>
+<link>https://albertusfreddi.github.io/blog/ja/scraping-social-media-indonesia-legal.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/scraping-social-media-indonesia-legal.html</guid>
+<pubDate>Mon, 07 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアソーシャルメディアスクレイピング：法的境界</description>
+</item>
+<item>
+<title>API vs Webスクレイピング：インドネシアでの使い分け</title>
+<link>https://albertusfreddi.github.io/blog/ja/data-extraction-api-vs-scraping.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/data-extraction-api-vs-scraping.html</guid>
+<pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>API vs Webスクレイピング：インドネシアでの使い分け</description>
+</item>
+<item>
+<title>インドネシアWebスクレイピング向けプロキシローテーション</title>
+<link>https://albertusfreddi.github.io/blog/ja/proxy-rotation-indonesia-scraping.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/proxy-rotation-indonesia-scraping.html</guid>
+<pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアWebスクレイピング向けプロキシローテーション</description>
+</item>
+<item>
+<title>インドネシア不動産データスクレイピング：市場インサイト</title>
+<link>https://albertusfreddi.github.io/blog/ja/real-estate-data-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/real-estate-data-scraping-indonesia.html</guid>
+<pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシア不動産データスクレイピング：市場インサイト</description>
+</item>
+<item>
+<title>ホテル予約自動化：ジャカルタのROIケーススタディ</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-booking-automation-jakarta.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-booking-automation-jakarta.html</guid>
+<pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテル予約自動化：ジャカルタのROIケーススタディ</description>
+</item>
+<item>
+<title>インドネシアレストランPOS自動化：コスト削減</title>
+<link>https://albertusfreddi.github.io/blog/ja/restaurant-pos-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/restaurant-pos-automation-indonesia.html</guid>
+<pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアレストランPOS自動化：コスト削減</description>
+</item>
+<item>
+<title>ホテルハウスキーピング管理自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-housekeeping-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-housekeeping-management-automation.html</guid>
+<pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテルハウスキーピング管理自動化</description>
+</item>
+<item>
+<title>インドネシアホテル向け動的価格設定自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/dynamic-pricing-hotels-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/dynamic-pricing-hotels-indonesia.html</guid>
+<pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアホテル向け動的価格設定自動化</description>
+</item>
+<item>
+<title>ゲストコミュニケーション自動化：チェックイン前から後まで</title>
+<link>https://albertusfreddi.github.io/blog/ja/guest-communication-automation-hotels.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/guest-communication-automation-hotels.html</guid>
+<pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ゲストコミュニケーション自動化：チェックイン前から後まで</description>
+</item>
+<item>
+<title>ホテル在庫管理自動化：リネン、備品など</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-inventory-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-inventory-management-automation.html</guid>
+<pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテル在庫管理自動化：リネン、備品など</description>
+</item>
+<item>
+<title>セルフチェックインキオスク：インドネシアホテル実装ガイド</title>
+<link>https://albertusfreddi.github.io/blog/ja/check-in-kiosk-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/check-in-kiosk-automation-indonesia.html</guid>
+<pubDate>Thu, 17 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>セルフチェックインキオスク：インドネシアホテル実装ガイド</description>
+</item>
+<item>
+<title>ホテルエネルギー管理自動化：コスト削減</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-energy-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-energy-management-automation.html</guid>
+<pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテルエネルギー管理自動化：コスト削減</description>
+</item>
+<item>
+<title>ホテル評判管理自動化：レビューと返信</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-reputation-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-reputation-management-automation.html</guid>
+<pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテル評判管理自動化：レビューと返信</description>
+</item>
+<item>
+<title>ホテルメンテナンストラッキング自動化：予防と対応</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-maintenance-tracking-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-maintenance-tracking-automation.html</guid>
+<pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテルメンテナンストラッキング自動化：予防と対応</description>
+</item>
+<item>
+<title>インドネシア中小企業向けAI営業自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-sales-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-sales-automation-indonesia.html</guid>
+<pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア中小企業向けAI営業自動化</description>
+</item>
+<item>
+<title>インドネシア企業向け請求書処理自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/invoice-processing-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/invoice-processing-automation-indonesia.html</guid>
+<pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア企業向け請求書処理自動化</description>
+</item>
+<item>
+<title>インドネシアAIカスタマーサポートチケットシステム</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-customer-support-ticketing-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-customer-support-ticketing-indonesia.html</guid>
+<pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアAIカスタマーサポートチケットシステム</description>
+</item>
+<item>
+<title>インドネシアブランド向け自動SNS投稿</title>
+<link>https://albertusfreddi.github.io/blog/ja/automated-social-media-posting-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/automated-social-media-posting-indonesia.html</guid>
+<pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアブランド向け自動SNS投稿</description>
+</item>
+<item>
+<title>インドネシア法務チーム向けAI契約分析</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-contract-analysis-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-contract-analysis-indonesia.html</guid>
+<pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア法務チーム向けAI契約分析</description>
+</item>
+<item>
+<title>インドネシアチーム向けZapierワークフロー自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/workflow-automation-zapier-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/workflow-automation-zapier-indonesia.html</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアチーム向けZapierワークフロー自動化</description>
+</item>
+<item>
+<title>インドネシア市場向けAI翻訳とローカライゼーション</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-translation-localization-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-translation-localization-indonesia.html</guid>
+<pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシア市場向けAI翻訳とローカライゼーション</description>
+</item>
+<item>
+<title>インドネシアB2B企業向けリード生成自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/lead-generation-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/lead-generation-automation-indonesia.html</guid>
+<pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアB2B企業向けリード生成自動化</description>
+</item>
+<item>
+<title>インドネシアEコマース向けAI不正検出</title>
+<link>https://albertusfreddi.github.io/blog/ja/ai-fraud-detection-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/ai-fraud-detection-indonesia.html</guid>
+<pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアEコマース向けAI不正検出</description>
+</item>
+<item>
+<title>インドネシアクリニック向け予約スケジューリング自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/appointment-scheduling-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/appointment-scheduling-automation-indonesia.html</guid>
+<pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>インドネシアクリニック向け予約スケジューリング自動化</description>
+</item>
+<item>
+<title>インドネシア求人サイトスクレイピング：求人集約</title>
+<link>https://albertusfreddi.github.io/blog/ja/job-board-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/job-board-scraping-indonesia.html</guid>
+<pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシア求人サイトスクレイピング：求人集約</description>
+</item>
+<item>
+<title>インドネシアニュース集約Webスクレイピング</title>
+<link>https://albertusfreddi.github.io/blog/ja/news-aggregation-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/news-aggregation-scraping-indonesia.html</guid>
+<pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアニュース集約Webスクレイピング</description>
+</item>
+<item>
+<title>フライト価格スクレイピング：旅行比較ツール構築</title>
+<link>https://albertusfreddi.github.io/blog/ja/flight-price-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/flight-price-scraping-indonesia.html</guid>
+<pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>フライト価格スクレイピング：旅行比較ツール構築</description>
+</item>
+<item>
+<title>インドネシアマーケットプレイス販売者データスクレイピング</title>
+<link>https://albertusfreddi.github.io/blog/ja/marketplace-seller-data-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/marketplace-seller-data-indonesia.html</guid>
+<pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアマーケットプレイス販売者データスクレイピング</description>
+</item>
+<item>
+<title>インドネシアレビュースクレイピングと感情分析</title>
+<link>https://albertusfreddi.github.io/blog/ja/review-sentiment-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/review-sentiment-scraping-indonesia.html</guid>
+<pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアレビュースクレイピングと感情分析</description>
+</item>
+<item>
+<title>インドネシア公共政府データスクレイピング</title>
+<link>https://albertusfreddi.github.io/blog/ja/government-data-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/government-data-scraping-indonesia.html</guid>
+<pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシア公共政府データスクレイピング</description>
+</item>
+<item>
+<title>ジャカルタイベントリストスクレイピング</title>
+<link>https://albertusfreddi.github.io/blog/ja/event-listing-scraping-jakarta.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/event-listing-scraping-jakarta.html</guid>
+<pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>ジャカルタイベントリストスクレイピング</description>
+</item>
+<item>
+<title>インドネシア学術研究向けWebスクレイピング</title>
+<link>https://albertusfreddi.github.io/blog/ja/academic-research-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/academic-research-scraping-indonesia.html</guid>
+<pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシア学術研究向けWebスクレイピング</description>
+</item>
+<item>
+<title>金融データスクレイピング：株価と市場データ</title>
+<link>https://albertusfreddi.github.io/blog/ja/financial-data-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/financial-data-scraping-indonesia.html</guid>
+<pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>金融データスクレイピング：株価と市場データ</description>
+</item>
+<item>
+<title>インドネシアインフルエンサー分析向けInstagram公開データスクレイピング</title>
+<link>https://albertusfreddi.github.io/blog/ja/scraping-instagram-public-data-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/scraping-instagram-public-data-indonesia.html</guid>
+<pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>インドネシアインフルエンサー分析向けInstagram公開データスクレイピング</description>
+</item>
+<item>
+<title>インドネシアホテル向けチャネルマネージャー自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-channel-manager-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-channel-manager-automation.html</guid>
+<pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアホテル向けチャネルマネージャー自動化</description>
+</item>
+<item>
+<title>インドネシアレストラン予約自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/restaurant-reservation-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/restaurant-reservation-automation-indonesia.html</guid>
+<pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアレストラン予約自動化</description>
+</item>
+<item>
+<title>インドネシアホテル向け収益管理システム</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-revenue-management-system-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-revenue-management-system-indonesia.html</guid>
+<pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアホテル向け収益管理システム</description>
+</item>
+<item>
+<title>ホテルスタッフスケジューリング自動化：人件費最適化</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-staff-scheduling-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-staff-scheduling-automation.html</guid>
+<pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテルスタッフスケジューリング自動化：人件費最適化</description>
+</item>
+<item>
+<title>インドネシアホテルロイヤルティプログラム自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-loyalty-program-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-loyalty-program-automation.html</guid>
+<pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアホテルロイヤルティプログラム自動化</description>
+</item>
+<item>
+<title>ホテル調達自動化：サプライヤー管理</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-procurement-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-procurement-automation-indonesia.html</guid>
+<pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテル調達自動化：サプライヤー管理</description>
+</item>
+<item>
+<title>ホテル向け自動アップセル戦略</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-upselling-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-upselling-automation.html</guid>
+<pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテル向け自動アップセル戦略</description>
+</item>
+<item>
+<title>インドネシアリゾート向けスパ＆ウェルネス予約自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/spa-booking-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/spa-booking-automation-indonesia.html</guid>
+<pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアリゾート向けスパ＆ウェルネス予約自動化</description>
+</item>
+<item>
+<title>インドネシアホテル向けAIコンシェルジュチャットボット</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-concierge-chatbot-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-concierge-chatbot-indonesia.html</guid>
+<pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>インドネシアホテル向けAIコンシェルジュチャットボット</description>
+</item>
+<item>
+<title>ホテル向けランドリートラッキング自動化</title>
+<link>https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation.html</guid>
+<pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>ホテル向けランドリートラッキング自動化</description>
+</item>
+</channel>
+</rss>

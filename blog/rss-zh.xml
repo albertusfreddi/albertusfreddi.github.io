@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Albertus Freddi — Blog (中文)</title>
+<link>https://albertusfreddi.github.io/blog/zh/</link>
+<description>AI automation, web scraping, and hospitality technology insights from Jakarta</description>
+<language>zh</language>
+<atom:link href="https://albertusfreddi.github.io/blog/rss-zh.xml" rel="self" type="application/rss+xml"/>
+<lastBuildDate>Tue, 20 Oct 2026 20:01:00 GMT</lastBuildDate>
+<managingEditor>albertus.freddi@gmail.com (Albertus Freddi)</managingEditor>
+<webMaster>albertus.freddi@gmail.com (Albertus Freddi)</webMaster>
+<item>
+<title>印尼人工智能自动化：2026年市场趋势</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html</guid>
+<pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼人工智能自动化：2026年市场趋势</description>
+</item>
+<item>
+<title>为印尼企业构建WhatsApp聊天机器人</title>
+<link>https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html</guid>
+<pubDate>Sun, 23 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>为印尼企业构建WhatsApp聊天机器人</description>
+</item>
+<item>
+<title>雅加达初创公司必备的Python自动化脚本</title>
+<link>https://albertusfreddi.github.io/blog/zh/python-automation-scripts-jakarta-startups.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/python-automation-scripts-jakarta-startups.html</guid>
+<pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>雅加达初创公司必备的Python自动化脚本</description>
+</item>
+<item>
+<title>AI代理与传统RPA：印尼适用方案</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html</guid>
+<pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>AI代理与传统RPA：印尼适用方案</description>
+</item>
+<item>
+<title>印尼企业文档处理自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/document-processing-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/document-processing-automation-indonesia.html</guid>
+<pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼企业文档处理自动化</description>
+</item>
+<item>
+<title>投资回报计算器：印尼AI自动化项目</title>
+<link>https://albertusfreddi.github.io/blog/zh/cost-roi-ai-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/cost-roi-ai-automation-indonesia.html</guid>
+<pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>投资回报计算器：印尼AI自动化项目</description>
+</item>
+<item>
+<title>雅加达企业电子邮件自动化策略</title>
+<link>https://albertusfreddi.github.io/blog/zh/email-automation-jakarta-businesses.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/email-automation-jakarta-businesses.html</guid>
+<pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>雅加达企业电子邮件自动化策略</description>
+</item>
+<item>
+<title>印尼零售商库存管理自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/inventory-management-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/inventory-management-automation-indonesia.html</guid>
+<pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼零售商库存管理自动化</description>
+</item>
+<item>
+<title>印尼语语音AI：挑战与解决方案</title>
+<link>https://albertusfreddi.github.io/blog/zh/voice-ai-indonesian-language.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/voice-ai-indonesian-language.html</guid>
+<pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼语语音AI：挑战与解决方案</description>
+</item>
+<item>
+<title>印尼公司AI招聘筛选</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-recruitment-screening-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-recruitment-screening-indonesia.html</guid>
+<pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼公司AI招聘筛选</description>
+</item>
+<item>
+<title>印尼网络抓取合法吗？2026年合规指南</title>
+<link>https://albertusfreddi.github.io/blog/zh/web-scraping-legal-indonesia-2026.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/web-scraping-legal-indonesia-2026.html</guid>
+<pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼网络抓取合法吗？2026年合规指南</description>
+</item>
+<item>
+<title>Python网络抓取：遵守robots.txt和速率限制</title>
+<link>https://albertusfreddi.github.io/blog/zh/python-scraping-respect-robots-txt.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/python-scraping-respect-robots-txt.html</guid>
+<pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>Python网络抓取：遵守robots.txt和速率限制</description>
+</item>
+<item>
+<title>印尼公共数据抓取：可为与不可为</title>
+<link>https://albertusfreddi.github.io/blog/zh/scraping-public-data-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/scraping-public-data-indonesia.html</guid>
+<pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼公共数据抓取：可为与不可为</description>
+</item>
+<item>
+<title>印尼电商价格监控：最佳实践</title>
+<link>https://albertusfreddi.github.io/blog/zh/ecommerce-price-monitoring-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ecommerce-price-monitoring-indonesia.html</guid>
+<pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼电商价格监控：最佳实践</description>
+</item>
+<item>
+<title>Selenium与Playwright：印尼网站比较</title>
+<link>https://albertusfreddi.github.io/blog/zh/selenium-playwright-indonesia-websites.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/selenium-playwright-indonesia-websites.html</guid>
+<pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>Selenium与Playwright：印尼网站比较</description>
+</item>
+<item>
+<title>绕过反抓取措施：道德方法</title>
+<link>https://albertusfreddi.github.io/blog/zh/anti-scraping-bypass-ethical.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/anti-scraping-bypass-ethical.html</guid>
+<pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>绕过反抓取措施：道德方法</description>
+</item>
+<item>
+<title>印尼社交媒体抓取：法律界限</title>
+<link>https://albertusfreddi.github.io/blog/zh/scraping-social-media-indonesia-legal.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/scraping-social-media-indonesia-legal.html</guid>
+<pubDate>Mon, 07 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼社交媒体抓取：法律界限</description>
+</item>
+<item>
+<title>API与网络抓取：印尼使用场景</title>
+<link>https://albertusfreddi.github.io/blog/zh/data-extraction-api-vs-scraping.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/data-extraction-api-vs-scraping.html</guid>
+<pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>API与网络抓取：印尼使用场景</description>
+</item>
+<item>
+<title>印尼网络抓取代理轮换</title>
+<link>https://albertusfreddi.github.io/blog/zh/proxy-rotation-indonesia-scraping.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/proxy-rotation-indonesia-scraping.html</guid>
+<pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼网络抓取代理轮换</description>
+</item>
+<item>
+<title>印尼房地产数据抓取：市场洞察</title>
+<link>https://albertusfreddi.github.io/blog/zh/real-estate-data-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/real-estate-data-scraping-indonesia.html</guid>
+<pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼房地产数据抓取：市场洞察</description>
+</item>
+<item>
+<title>酒店预订自动化：雅加达投资回报案例研究</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-booking-automation-jakarta.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-booking-automation-jakarta.html</guid>
+<pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店预订自动化：雅加达投资回报案例研究</description>
+</item>
+<item>
+<title>印尼餐厅POS自动化：成本节约</title>
+<link>https://albertusfreddi.github.io/blog/zh/restaurant-pos-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/restaurant-pos-automation-indonesia.html</guid>
+<pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼餐厅POS自动化：成本节约</description>
+</item>
+<item>
+<title>酒店客房管理自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-housekeeping-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-housekeeping-management-automation.html</guid>
+<pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店客房管理自动化</description>
+</item>
+<item>
+<title>印尼酒店动态定价自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/dynamic-pricing-hotels-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/dynamic-pricing-hotels-indonesia.html</guid>
+<pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼酒店动态定价自动化</description>
+</item>
+<item>
+<title>客人沟通自动化：入住前到退房后</title>
+<link>https://albertusfreddi.github.io/blog/zh/guest-communication-automation-hotels.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/guest-communication-automation-hotels.html</guid>
+<pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>客人沟通自动化：入住前到退房后</description>
+</item>
+<item>
+<title>酒店库存管理自动化：床单、用品等</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-inventory-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-inventory-management-automation.html</guid>
+<pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店库存管理自动化：床单、用品等</description>
+</item>
+<item>
+<title>自助入住机：印尼酒店实施指南</title>
+<link>https://albertusfreddi.github.io/blog/zh/check-in-kiosk-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/check-in-kiosk-automation-indonesia.html</guid>
+<pubDate>Thu, 17 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>自助入住机：印尼酒店实施指南</description>
+</item>
+<item>
+<title>酒店能源管理自动化：降低成本</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-energy-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-energy-management-automation.html</guid>
+<pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店能源管理自动化：降低成本</description>
+</item>
+<item>
+<title>酒店声誉管理自动化：评论与回复</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-reputation-management-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-reputation-management-automation.html</guid>
+<pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店声誉管理自动化：评论与回复</description>
+</item>
+<item>
+<title>酒店维护追踪自动化：预防与反应</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-maintenance-tracking-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-maintenance-tracking-automation.html</guid>
+<pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店维护追踪自动化：预防与反应</description>
+</item>
+<item>
+<title>印尼中小企业AI销售自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-sales-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-sales-automation-indonesia.html</guid>
+<pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼中小企业AI销售自动化</description>
+</item>
+<item>
+<title>印尼企业自动化发票处理</title>
+<link>https://albertusfreddi.github.io/blog/zh/invoice-processing-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/invoice-processing-automation-indonesia.html</guid>
+<pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼企业自动化发票处理</description>
+</item>
+<item>
+<title>印尼AI客户支持工单系统</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-customer-support-ticketing-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-customer-support-ticketing-indonesia.html</guid>
+<pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼AI客户支持工单系统</description>
+</item>
+<item>
+<title>印尼品牌自动化社交媒体发布</title>
+<link>https://albertusfreddi.github.io/blog/zh/automated-social-media-posting-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/automated-social-media-posting-indonesia.html</guid>
+<pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼品牌自动化社交媒体发布</description>
+</item>
+<item>
+<title>印尼法律团队AI合同分析</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-contract-analysis-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-contract-analysis-indonesia.html</guid>
+<pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼法律团队AI合同分析</description>
+</item>
+<item>
+<title>使用Zapier为印尼团队自动化工作流程</title>
+<link>https://albertusfreddi.github.io/blog/zh/workflow-automation-zapier-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/workflow-automation-zapier-indonesia.html</guid>
+<pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>使用Zapier为印尼团队自动化工作流程</description>
+</item>
+<item>
+<title>印尼市场AI翻译和本地化</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-translation-localization-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-translation-localization-indonesia.html</guid>
+<pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼市场AI翻译和本地化</description>
+</item>
+<item>
+<title>印尼B2B公司潜在客户生成自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/lead-generation-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/lead-generation-automation-indonesia.html</guid>
+<pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼B2B公司潜在客户生成自动化</description>
+</item>
+<item>
+<title>印尼电商AI欺诈检测</title>
+<link>https://albertusfreddi.github.io/blog/zh/ai-fraud-detection-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/ai-fraud-detection-indonesia.html</guid>
+<pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼电商AI欺诈检测</description>
+</item>
+<item>
+<title>印尼诊所预约调度自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/appointment-scheduling-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/appointment-scheduling-automation-indonesia.html</guid>
+<pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+<category>ai-automation</category>
+<description>印尼诊所预约调度自动化</description>
+</item>
+<item>
+<title>印尼招聘网站抓取：汇总机会</title>
+<link>https://albertusfreddi.github.io/blog/zh/job-board-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/job-board-scraping-indonesia.html</guid>
+<pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼招聘网站抓取：汇总机会</description>
+</item>
+<item>
+<title>印尼新闻聚合网络抓取</title>
+<link>https://albertusfreddi.github.io/blog/zh/news-aggregation-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/news-aggregation-scraping-indonesia.html</guid>
+<pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼新闻聚合网络抓取</description>
+</item>
+<item>
+<title>航班价格抓取：构建旅行比较工具</title>
+<link>https://albertusfreddi.github.io/blog/zh/flight-price-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/flight-price-scraping-indonesia.html</guid>
+<pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>航班价格抓取：构建旅行比较工具</description>
+</item>
+<item>
+<title>印尼市场卖家数据抓取</title>
+<link>https://albertusfreddi.github.io/blog/zh/marketplace-seller-data-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/marketplace-seller-data-indonesia.html</guid>
+<pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼市场卖家数据抓取</description>
+</item>
+<item>
+<title>印尼评论抓取和情感分析</title>
+<link>https://albertusfreddi.github.io/blog/zh/review-sentiment-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/review-sentiment-scraping-indonesia.html</guid>
+<pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼评论抓取和情感分析</description>
+</item>
+<item>
+<title>印尼公共政府数据抓取</title>
+<link>https://albertusfreddi.github.io/blog/zh/government-data-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/government-data-scraping-indonesia.html</guid>
+<pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼公共政府数据抓取</description>
+</item>
+<item>
+<title>雅加达活动列表抓取</title>
+<link>https://albertusfreddi.github.io/blog/zh/event-listing-scraping-jakarta.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/event-listing-scraping-jakarta.html</guid>
+<pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>雅加达活动列表抓取</description>
+</item>
+<item>
+<title>印尼学术研究网络抓取</title>
+<link>https://albertusfreddi.github.io/blog/zh/academic-research-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/academic-research-scraping-indonesia.html</guid>
+<pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>印尼学术研究网络抓取</description>
+</item>
+<item>
+<title>金融数据抓取：股票价格和市场数据</title>
+<link>https://albertusfreddi.github.io/blog/zh/financial-data-scraping-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/financial-data-scraping-indonesia.html</guid>
+<pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>金融数据抓取：股票价格和市场数据</description>
+</item>
+<item>
+<title>抓取Instagram公共数据用于印尼网红分析</title>
+<link>https://albertusfreddi.github.io/blog/zh/scraping-instagram-public-data-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/scraping-instagram-public-data-indonesia.html</guid>
+<pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+<category>web-scraping</category>
+<description>抓取Instagram公共数据用于印尼网红分析</description>
+</item>
+<item>
+<title>印尼酒店渠道管理自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-channel-manager-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-channel-manager-automation.html</guid>
+<pubDate>Sun, 11 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼酒店渠道管理自动化</description>
+</item>
+<item>
+<title>印尼餐厅预订自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/restaurant-reservation-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/restaurant-reservation-automation-indonesia.html</guid>
+<pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼餐厅预订自动化</description>
+</item>
+<item>
+<title>印尼酒店收益管理系统</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-revenue-management-system-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-revenue-management-system-indonesia.html</guid>
+<pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼酒店收益管理系统</description>
+</item>
+<item>
+<title>酒店员工排班自动化：优化人力成本</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-staff-scheduling-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-staff-scheduling-automation.html</guid>
+<pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店员工排班自动化：优化人力成本</description>
+</item>
+<item>
+<title>印尼酒店忠诚度计划自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-loyalty-program-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-loyalty-program-automation.html</guid>
+<pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼酒店忠诚度计划自动化</description>
+</item>
+<item>
+<title>酒店采购自动化：供应商管理</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-procurement-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-procurement-automation-indonesia.html</guid>
+<pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店采购自动化：供应商管理</description>
+</item>
+<item>
+<title>酒店自动化追加销售策略</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-upselling-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-upselling-automation.html</guid>
+<pubDate>Sat, 17 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店自动化追加销售策略</description>
+</item>
+<item>
+<title>印尼度假村水疗和健康预订自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/spa-booking-automation-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/spa-booking-automation-indonesia.html</guid>
+<pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼度假村水疗和健康预订自动化</description>
+</item>
+<item>
+<title>印尼酒店AI礼宾聊天机器人</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-concierge-chatbot-indonesia.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-concierge-chatbot-indonesia.html</guid>
+<pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>印尼酒店AI礼宾聊天机器人</description>
+</item>
+<item>
+<title>酒店洗衣追踪自动化</title>
+<link>https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation.html</link>
+<guid>https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation.html</guid>
+<pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+<category>hospitality</category>
+<description>酒店洗衣追踪自动化</description>
+</item>
+</channel>
+</rss>
