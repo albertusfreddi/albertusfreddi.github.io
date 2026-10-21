@@ -1,54 +1,40 @@
-/**
- * Scheduled Article Publisher (Daily Cron Worker)
- * Reads scheduled-90-articles.json and automatically activates any article scheduled for today or earlier.
- * Runs during GitHub Action cron at 00:00 UTC.
- */
-
+#!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
-const scheduledPath = path.join(__dirname, 'scheduled-90-articles.json');
-const publishedPath = path.join(__dirname, 'published-30-articles.json');
+const blogDataDir = path.join(__dirname, 'blog-data');
 
-if (!fs.existsSync(scheduledPath) || !fs.existsSync(publishedPath)) {
-  console.log('Master article JSON files not found. Skipping daily run.');
+if (!fs.existsSync(blogDataDir)) {
+  console.error('blog-data/ tidak ditemukan');
+  process.exit(1);
+}
+
+const files = fs.readdirSync(blogDataDir)
+  .filter(f => f.endsWith('.json'))
+  .map(f => {
+    const filePath = path.join(blogDataDir, f);
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    return { file: f, path: filePath, data };
+  })
+  .filter(a => a.data.status === 'ready')
+  .sort((a, b) => (a.data.date || '').localeCompare(b.data.date || ''));
+
+if (files.length === 0) {
+  console.log('Tidak ada artikel ready untuk dipublikasi hari ini');
   process.exit(0);
 }
 
-const scheduledArticles = JSON.parse(fs.readFileSync(scheduledPath, 'utf8'));
-const publishedArticles = JSON.parse(fs.readFileSync(publishedPath, 'utf8'));
+const article = files[0];
+console.log(`Publishing: ${article.data.slug}`);
 
-const todayStr = new Date().toISOString().split('T')[0];
-console.log(`Checking scheduled articles up to: ${todayStr}`);
+article.data.status = 'published';
+article.data.date = new Date().toISOString().split('T')[0];
 
-const toPublish = [];
-const remainingScheduled = [];
+fs.writeFileSync(article.path, JSON.stringify(article.data, null, 2), 'utf-8');
+console.log(`Status updated to published`);
 
-scheduledArticles.forEach(art => {
-  if (art.date <= todayStr) {
-    toPublish.push(art);
-  } else {
-    remainingScheduled.push(art);
-  }
-});
+console.log('Rebuilding blog...');
+execSync('node build-blog.js', { stdio: 'inherit' });
 
-if (toPublish.length === 0) {
-  console.log('No articles scheduled for activation today.');
-  process.exit(0);
-}
-
-console.log(`Activating ${toPublish.length} scheduled article(s) today!`);
-
-toPublish.forEach(art => {
-  art.status = 'published';
-  publishedArticles.unshift(art);
-});
-
-// Update JSON state
-fs.writeFileSync(publishedPath, JSON.stringify(publishedArticles, null, 2), 'utf8');
-fs.writeFileSync(scheduledPath, JSON.stringify(remainingScheduled, null, 2), 'utf8');
-
-// Rebuild HTML files and sitemap
-require('./build-production-blog.js');
-
-console.log('Daily publishing and sync complete.');
+console.log(`\nPublished: ${article.data.slug}`);
