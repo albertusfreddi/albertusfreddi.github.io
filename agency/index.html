@@ -790,10 +790,10 @@ function namaDari(id){const p=staff.get(id);return p?namaPendek(p):id;}
 function barisEv(e,dgnNama){const k=norm(e.status),selesai=k==="idle"&&/^\s*selesai/i.test(e.task||"");
   const sym=selesai?'<span class="ok">✓</span>':k==="coding"?'<span class="wr">●</span>':k==="riset"?'<span class="bl">●</span>':k==="meeting"?'<span class="mt">◆</span>':k==="off"?'<span class="dim">○</span>':'<span class="dim">●</span>';
   const lb=selesai?"selesai":LBL[k==="coding"?"kerja":k==="meeting"?"rapat":k==="off"?"off":k==="riset"?"riset":"idle"];
-  return`<div class="ln">${sym} ${dgnNama?`<b>${esc(namaDari(e.actor))}</b> `:""}<span class="dim">${lb}</span>${e.task&&!selesai?" — "+esc(pendek(e.task,160)):selesai?" — "+esc(pendek(String(e.task).replace(/^\s*selesai:?\s*/i,""),160)):""} <span class="dim">· ${jamS(e.ts)}</span></div>`;}
+  return`<div class="ln">${sym} ${dgnNama?`<b>${esc(namaDari(e.actor))}</b> `:""}<span class="dim">${lb}</span>${e.task&&!selesai?", "+esc(pendek(e.task,160)):selesai?", "+esc(pendek(String(e.task).replace(/^\s*selesai:?\s*/i,""),160)):""} <span class="dim">· ${jamS(e.ts)}</span></div>`;}
 function terminal(){const el=$("term"),bawah=el.scrollHeight-el.scrollTop-el.clientHeight<40;
   const ev=[...events].sort((a,b)=>String(a.ts).localeCompare(String(b.ts))).slice(-60);
-  el.innerHTML=`<div class="pr">› pantau kantor — aliran office_events realtime</div>`+(ev.length?`<div class="ln"><span class="dim">●</span> Manajer memantau ${staff.size} pegawai. Peristiwa baru muncul di bawah.</div>`+ev.map(e=>barisEv(e,true)).join(""):`<div class="ln dim">Belum ada peristiwa.</div>`);
+  el.innerHTML=`<div class="pr">› pantau kantor, aliran office_events realtime</div>`+(ev.length?`<div class="ln"><span class="dim">●</span> Manajer memantau ${staff.size} pegawai. Peristiwa baru muncul di bawah.</div>`+ev.map(e=>barisEv(e,true)).join(""):`<div class="ln dim">Belum ada peristiwa.</div>`);
   if(bawah||autoOn)el.scrollTop=el.scrollHeight;
   const a=[...staff.values()].filter(p=>{const d=disp(p);return d==="coding"||d==="riset";}).length;
   $("tCtx").textContent=`ctx ${a}/${staff.size} pegawai aktif (${staff.size?Math.round(a/staff.size*100):0}%)`;}
@@ -894,7 +894,7 @@ function md(t){
 }
 async function buka(jalur){const v=cariJalur(jalur);if(!v)return;tab("memori");$("catatanBox").hidden=false;$("catatanJalur").textContent=v.jalur;$("catatan").innerHTML='<p class="t">Memuat…</p>';
   let isi=null,gagal=false;
-  if(DEMO)isi=`# ${v.judul}\n\nCatatan contoh mode demo di folder **${v.folder}**.\n\n- Tautan: ${(v.tautan||[]).map(t=>"[["+t+"]]").join(", ")||"—"}`;
+  if(DEMO)isi=`# ${v.judul}\n\nCatatan contoh mode demo di folder **${v.folder}**.\n\n- Tautan: ${(v.tautan||[]).map(t=>"[["+t+"]]").join(", ")||", "}`;
   else{const r=await sb.from("vault_catatan").select("isi").eq("jalur",v.jalur).single();if(r.error)gagal=true;else isi=r.data.isi;}
   $("catatan").innerHTML=gagal?'<p class="err">Gagal memuat catatan.</p>':md(isi);
   $("catatan").querySelectorAll("a.wl").forEach(a=>a.onclick=()=>buka(a.dataset.j));
