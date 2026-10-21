@@ -2,9 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const blogDataDir = path.join(__dirname, 'blog-data');
-const distDir = path.join(__dirname, 'dist');
-const blogDir = path.join(distDir, 'blog');
+const blogDataDir = path.join(__dirname, '..', 'blog-data');
+const publicDir = path.join(__dirname, 'public');
+const blogDir = path.join(publicDir, 'blog');
 const langs = ['en', 'id', 'zh', 'ja', 'ko'];
 
 const langNames = {

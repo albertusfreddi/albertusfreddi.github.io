@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python自動化でホテルのチェックイン時間を60％短縮した実践例 | Albertus Freddi</title>
+<meta name="description" content="A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">
+<meta property="og:title" content="Python自動化でホテルのチェックイン時間を60％短縮した実践例">
+<meta property="og:description" content="A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-14T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/how-i-cut-hotel-checkin-time-60-percent.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/how-i-cut-hotel-checkin-time-60-percent.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/how-i-cut-hotel-checkin-time-60-percent.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/how-i-cut-hotel-checkin-time-60-percent.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/how-i-cut-hotel-checkin-time-60-percent.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Python自動化でホテルのチェックイン時間を60％短縮した実践例","datePublished":"2026-10-14T09:00:00+07:00","dateModified":"2026-10-14T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"ja","mainEntityOfPage":"https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a href="/blog/ja/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/how-i-cut-hotel-checkin-time-60-percent.html" class="">English</a><a href="/blog/id/how-i-cut-hotel-checkin-time-60-percent.html" class="">Bahasa Indonesia</a><a href="/blog/zh/how-i-cut-hotel-checkin-time-60-percent.html" class="">中文</a><a href="/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html" class="active">日本語</a><a href="/blog/ko/how-i-cut-hotel-checkin-time-60-percent.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<h1>Python自動化でホテルのチェックイン時間を60％短縮した実践例</h1>
+<div class="meta">
+<span>9 分</span>
+<span>•</span>
+<span>2026-10-14</span>
+</div>
+<article>
+<p>Last year I got a call from the operations manager of a 4-star hotel in South Jakarta. Peak season was approaching, the kind where lobby queues snake out to the parking lot, and their front desk team was drowning. The average check-in was taking <strong>12 minutes</strong>. For a 180-room property, that math doesn't work.</p>
+
+    <p>They had tried a cloud PMS before. It helped with reservations but did nothing for the physical bottleneck: staff still had to manually verify bookings, cross-check OTA data, re-enter guest IDs, and print room keys one at a time. Three systems, zero integration.</p>
+
+    <div class="callout">
+      <p>"We're not looking for a full replacement. We just want the staff to stop doing stupid repetitive things before a guest arrives."</p>
+    </div>
+
+    <p>That framing, <em>remove the stupid repetitive things</em>, is exactly the right way to scope an automation project. I want to walk through how we got there.</p>
+
+    <h2>The Real Problem Was Upstream</h2>
+
+    <p>Most hotels think check-in is slow because front desk staff aren't fast enough. That's almost never true. The real delay is what happens <em>before</em> the guest touches the desk.</p>
+
+    <p>When a guest books through Booking.com, Agoda, or Traveloka, that booking lands in a channel manager, which syncs (imperfectly) to the PMS, which the staff checks manually when the guest arrives. At this hotel, that chain had three known failure points:</p>
+
+    <ul>
+      <li><strong>OTA rate discrepancy</strong>, Booking.com prices sometimes didn't match what the PMS showed, causing staff to call reservations mid-check-in</li>
+      <li><strong>Incomplete guest data</strong>, OTA bookings rarely included ID numbers, which Indonesian law requires for hotel registration</li>
+      <li><strong>Manual key encoding</strong>, the key card system was standalone; staff had to encode each card separately after room assignment</li>
+    </ul>
+
+    <p>None of these are technology problems in the exciting sense. They're data pipeline failures. The fix wasn't AI, it was plumbing.</p>
+
+    <h2>What We Built</h2>
+
+    <h3>1. Pre-arrival Data Aggregation</h3>
+
+    <p>We built a Python service that runs nightly and pulls tomorrow's arrivals from every booking channel via API (Booking.com, Agoda, direct website). It normalizes all fields into a single schema and flags missing data, specifically, any reservation where guest ID or phone number is blank.</p>
+
+    <p>For flagged reservations, an automated WhatsApp message goes out the night before asking guests to complete their registration. By the time they walk in, 70% of incomplete records are already resolved.</p>
+
+    <div class="code-block">
+      <div class="code-header">Python, nightly pre-arrival sync (simplified)</div>
+      <pre>
+def sync_arrivals(date: str) -> list[Reservation]:
+    sources = [
+        booking_com_client.get_arrivals(date),
+        agoda_client.get_arrivals(date),
+        direct_db.query_arrivals(date),
+    ]
+    merged = merge_and_deduplicate(sources)
+
+    for res in merged:
+        if not res.guest_id or not res.phone:
+            whatsapp.send_pre_checkin_link(res)
+            res.status = "pending_completion"
+
+    return merged
+      </pre>
+    </div>
+
+    <h3>2. Room Assignment Pre-processing</h3>
+
+    <p>Room assignment was previously done at check-in time, when staff had to balance room type, floor preference, and availability simultaneously under pressure. We moved this to a morning housekeeping sync: a script reads room status from the PMS (clean/dirty/inspected) and runs a simple assignment algorithm two hours before check-in time begins.</p>
+
+    <p>The algorithm isn't sophisticated, it's basically sorted priority queues, but it works for a property this size. The important thing is that by 1 PM, every arriving guest already has a pre-assigned room. Staff can override it, but rarely need to.</p>
+
+    <h3>3. Key Card Encoding Queue</h3>
+
+    <p>The key card system had a serial port interface, old hardware, but it had documentation. We wrote a driver in Python that reads the pre-assigned room list and pre-encodes keys during the quiet period before check-in. Keys sit labeled in a tray. When a guest arrives and is verified, staff just hand over the labeled envelope.</p>
+
+    <p>This step alone cut 3–4 minutes per check-in.</p>
+
+    <h2>The Results After 60 Days</h2>
+
+    <div class="metrics-grid">
+      <div class="metric">
+        <span class="num">4.8m</span>
+        <span class="label">avg check-in time (was 12.2m)</span>
+      </div>
+      <div class="metric">
+        <span class="num">70%</span>
+        <span class="label">guest data complete pre-arrival</span>
+      </div>
+      <div class="metric">
+        <span class="num">0</span>
+        <span class="label">key card encoding errors (was ~8/week)</span>
+      </div>
+    </div>
+
+    <p>The front desk team was skeptical at first, people usually are when you automate something they've been doing manually for years. After the first peak weekend, the operations manager sent me a WhatsApp photo of an empty lobby queue at 3 PM on a Saturday. That was enough.</p>
+
+    <h2>What Made This Work (and What Would Have Killed It)</h2>
+
+    <h3>What worked</h3>
+
+    <ul>
+      <li><strong>Narrow scope</strong>, We didn't try to replace the PMS or the channel manager. We filled the gaps between them.</li>
+      <li><strong>Data first</strong>, The pre-arrival WhatsApp message was the highest-impact thing we did, and it cost almost nothing to build.</li>
+      <li><strong>Staff buy-in</strong>, We demoed the system to front desk staff before go-live, incorporated their feedback, and made sure overrides were always possible.</li>
+      <li><strong>Gradual rollout</strong>, We ran the automation in "shadow mode" for two weeks (it ran but didn't actually send messages or encode keys) to catch edge cases.</li>
+    </ul>
+
+    <h3>What almost killed it</h3>
+
+    <ul>
+      <li><strong>API rate limits</strong>, Booking.com's API has strict rate limits. Our first sync script hit them on day two. We rewrote it with exponential backoff and off-peak scheduling.</li>
+      <li><strong>Edge cases in OTA data</strong>, Some OTAs send check-in dates in UTC, others in local time. This caused a few guests to appear on the wrong day's list until we standardized timezone handling.</li>
+      <li><strong>Serial port reliability</strong>, The key card encoder occasionally dropped the connection. We added a health check and automatic reconnect; now it's been stable for two months.</li>
+    </ul>
+
+    <h2>The Bigger Lesson</h2>
+
+    <p>Hospitality automation in Indonesia is still mostly about integrating systems that should have been integrated years ago. The bottlenecks aren't front desk speed or staff competence. They're data silos, manual handoffs, and software that was bought piecemeal without thinking about the full workflow.</p>
+
+    <p>You don't need enterprise software to fix this. You need someone who understands both the business process and how to write code that talks to multiple systems at once.</p>
+
+    <p>If your hotel, resort, or F&B operation has a process that involves staff doing the same thing repeatedly, copying from one screen to another, re-entering data, waiting for a system to sync, there's almost certainly a Python script that can take that off their plate.</p>
+
+    <div class="callout">
+      <p>This project took about 6 weeks from first meeting to stable production. Total cost was a fraction of any off-the-shelf enterprise solution, and the property now owns the code outright.</p>
+    </div>
+
+    <p>Questions? I'm available for new projects, <a href="https://albertusfreddi.github.io/#contact">reach out here</a> or find me on <a href="https://www.upwork.com/freelancers/~01e18adca5719ffd57" target="_blank" rel="noopener">Upwork</a>.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+</body>
+</html>

@@ -8,32 +8,345 @@
 <meta name="author" content="Albertus Freddi">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/ja/">
 <style>
-:root { --bg: #0a0a0a; --fg: #e8e8e8; --accent: #D1161A; --border: #2a2a2a; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
-header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 10; }
-nav { display: flex; justify-content: space-between; align-items: center; max-width: 960px; margin: 0 auto; }
-nav a { color: var(--fg); text-decoration: none; margin-left: 1.5rem; }
-nav a:hover { color: var(--accent); }
-.lang-switcher { display: flex; gap: 0.5rem; font-size: 0.9rem; }
-.lang-switcher a { padding: 0.25rem 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin-left: 0; }
-.lang-switcher a.active { background: var(--accent); border-color: var(--accent); }
-main { max-width: 960px; margin: 2rem auto; padding: 0 1.5rem; }
-h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.intro { font-size: 1.1rem; color: #aaa; margin-bottom: 3rem; }
-.post-card { background: #141414; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
-.post-card h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-.post-card h2 a { color: var(--fg); text-decoration: none; }
-.post-card h2 a:hover { color: var(--accent); }
-.post-card p { color: #aaa; margin: 0.5rem 0; }
-.post-card .meta { color: #666; font-size: 0.85rem; margin-top: 0.5rem; }
-footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; color: #888; font-size: 0.9rem; margin-top: 4rem; }
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
 </style>
 </head>
 <body>
 <header>
 <nav>
-<a href="/blog/ja/">Albertus Freddi</a>
+<a href="/blog/ja/" class="brand">Albertus Freddi</a>
 <div class="lang-switcher"><a href="/blog/en/" class="">English</a><a href="/blog/id/" class="">Bahasa Indonesia</a><a href="/blog/zh/" class="">中文</a><a href="/blog/ja/" class="active">日本語</a><a href="/blog/ko/" class="">한국어</a></div>
 </nav>
 </header>
@@ -43,166 +356,166 @@ footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: 
 <article class="post-card">
 <h2><a href="/blog/ja/anti-scraping-bypass-ethical.html">アンチスクレイピング対策のバイパス：倫理的な方法</a></h2>
 <p>インドネシア市場におけるアンチスクレイピング対策のバイパス：倫理的な方法の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-21</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-21</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/selenium-playwright-indonesia-websites.html">インドネシアWebサイト向けSelenium vs Playwright</a></h2>
 <p>インドネシア市場におけるインドネシアWebサイト向けSelenium vs Playwrightの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-20</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-20</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/ecommerce-price-monitoring-indonesia.html">インドネシアEコマース価格モニタリング：ベストプラクティス</a></h2>
 <p>インドネシア市場におけるインドネシアEコマース価格モニタリング：ベストプラクティスの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-19</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-19</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/scraping-public-data-indonesia.html">インドネシア公開データスクレイピング：できることとできないこと</a></h2>
 <p>インドネシア市場におけるインドネシア公開データスクレイピング：できることとできないことの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-18</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-18</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/python-scraping-respect-robots-txt.html">Python Webスクレイピング：robots.txtとレート制限の遵守</a></h2>
 <p>インドネシア市場におけるPython Webスクレイピング：robots.txtとレート制限の遵守の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-17</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-17</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/web-scraping-legal-indonesia-2026.html">インドネシアでのWebスクレイピングは合法？2026年コンプライアンスガイド</a></h2>
 <p>インドネシア市場におけるインドネシアでのWebスクレイピングは合法？2026年コンプライアンスガイドの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-16</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-16</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/ai-recruitment-screening-indonesia.html">インドネシア企業向けAI採用スクリーニング</a></h2>
 <p>インドネシア市場におけるインドネシア企業向けAI採用スクリーニングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-15</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-15</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">Python自動化でホテルのチェックイン時間を60％短縮した実践例</a></h2>
 <p>A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff.</p>
-<div class="meta">9 分 • 2026-10-14</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-14</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/voice-ai-indonesian-language.html">インドネシア語音声AI：課題と解決策</a></h2>
 <p>インドネシア市場におけるインドネシア語音声AI：課題と解決策の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-14</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-14</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/inventory-management-automation-indonesia.html">インドネシア小売業者向け在庫管理自動化</a></h2>
 <p>インドネシア市場におけるインドネシア小売業者向け在庫管理自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-13</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-13</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/email-automation-jakarta-businesses.html">ジャカルタ企業向けメール自動化戦略</a></h2>
 <p>インドネシア市場におけるジャカルタ企業向けメール自動化戦略の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-12</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-12</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/cost-roi-ai-automation-indonesia.html">ROI計算機：インドネシアのAI自動化プロジェクト</a></h2>
 <p>インドネシア市場におけるROI計算機：インドネシアのAI自動化プロジェクトの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-11</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-11</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/document-processing-automation-indonesia.html">インドネシア企業向け文書処理自動化</a></h2>
 <p>インドネシア市場におけるインドネシア企業向け文書処理自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-10</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-10</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/ai-agents-vs-rpa-indonesia.html">AIエージェント対従来型RPA：インドネシアでの選択</a></h2>
 <p>インドネシア市場におけるAIエージェント対従来型RPA：インドネシアでの選択の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-09</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-09</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/python-automation-scripts-jakarta-startups.html">ジャカルタのスタートアップに必要なPython自動化スクリプト</a></h2>
 <p>インドネシア市場におけるジャカルタのスタートアップに必要なPython自動化スクリプトの実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-08</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-08</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/chatbot-whatsapp-business-indonesia.html">インドネシアビジネス向けWhatsAppチャットボット構築</a></h2>
 <p>インドネシア市場におけるインドネシアビジネス向けWhatsAppチャットボット構築の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-07</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-07</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/ai-automation-indonesia-2026-trends.html">インドネシアのAI自動化：2026年市場動向</a></h2>
 <p>インドネシア市場におけるインドネシアのAI自動化：2026年市場動向の実装アーキテクチャ、実運用メトリクス、コード詳細解説。</p>
-<div class="meta">9 分 • 2026-10-06</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-06</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/fastapi-microservices-docker-swarm-indonesia.html">インドネシアのローカルクラウドにおけるDocker SwarmとFastAPIマイクロサービス運用</a></h2>
 <p>大半のスタートアップにとってKubernetesは過剰投資。月額40ドルのVPSクラスタで8つのマイクロサービスを安定運用。</p>
-<div class="meta">9 分 • 2026-10-05</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-05</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/telegram-ops-alert-bot-serverless-python.html">サーバーレスPythonによる高可用性Telegramインシデント通知ボットの設計</a></h2>
 <p>高額なPagerDuty契約を見直し、インタラクティブボタンを備えたサーバーレス障害通知基盤へ移行。</p>
-<div class="meta">9 分 • 2026-10-04</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-04</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/whatsapp-order-management-pipeline-python.html">PythonとWebhookによるWhatsApp注文受付自動化パイプラインの構築</a></h2>
 <p>WhatsApp Business Cloud API経由で複数拠点の注文データを確実にERPへ書き込む設計手法。</p>
-<div class="meta">9 分 • 2026-10-03</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-03</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/automated-seo-content-pipeline-without-spam.html">Googleのスパム判定を完全に回避しながら高評価を得るSEOコンテンツエンジンの構築法</a></h2>
 <p>10本の綿密な技術記事が、500本の浅い自動生成ページを常に上回る理由。</p>
-<div class="meta">9 分 • 2026-10-02</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-02</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/iot-energy-monitoring-hospitality-bali-jakarta.html">バリ島およびジャカルタのリゾート向けIoTスマート空調・電力省エネ自動化</a></h2>
 <p>人感センサー、Zigbeeゲートウェイ、動的温度スケジューリングにより電気代を28％削減。</p>
-<div class="meta">9 分 • 2026-10-01</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-10-01</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/real-time-fraud-detection-fintech-indonesia.html">インドネシアFintech向け50ms以内の不正決済検知システムの設計</a></h2>
 <p>Redisストリーミングとルールエンジンを活用した、QRIS改ざんや不正出金のリアルタイム検知。</p>
-<div class="meta">9 分 • 2026-09-30</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-30</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/why-whatsapp-bots-fail-indonesia.html">インドネシアのビジネスでWhatsAppボットが失敗する理由とその解決策</a></h2>
 <p>Most WhatsApp bots deployed in Indonesian businesses fail within 6 months. Here's why, from API policy violations to cultural friction, and what actually works.</p>
-<div class="meta">9 分 • 2026-09-30</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-30</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/automated-contract-document-generator-python.html">PythonによるB2B法的契約書の自動生成と電子署名ワークフロー</a></h2>
 <p>CRM取引データからNDAや業務委託契約書を自動生成し、電子署名プラットフォームへ自動ルーティング。</p>
-<div class="meta">9 分 • 2026-09-29</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-29</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html">フラッシュセールの高同時アクセスに対応する1000万行規模のPostgreSQL最適化</a></h2>
 <p>テーブルパーティショニングとアドバイザリーロックを活用し、トラフィック急増時でもCPU負荷を15%以下に抑えた方法。</p>
-<div class="meta">9 分 • 2026-09-28</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-28</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/pos-restaurant-system-automation-indonesia.html">多店舗展開レストランにおける厨房オーダーと在庫管理の自動化</a></h2>
 <p>ローカルのPOSサーマルプリンターをクラウドアカウントデータベースと連携させ、月額2,400ドルの食材ロスを削減。</p>
-<div class="meta">9 分 • 2026-09-27</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-27</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html">リアルタイムダッシュボードでAWS LambdaではなくSupabase Edge Functionsを選んだ理由</a></h2>
 <p>ジャカルタのユーザーに近いエッジノードでDenoを実行するゼロコールドスタート設計。APIレイテンシを450msから42msに短縮。</p>
-<div class="meta">9 分 • 2026-09-26</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-26</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html">RFIDとPython自動化でホテルのリネン紛失ロスをゼロにする</a></h2>
 <p>ウブドの80室リゾートでUHF RFIDランドリータグと重量自動測定を活用し、紛失を91％削減した事例。</p>
-<div class="meta">9 分 • 2026-09-25</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-25</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/lp-se-government-procurement-scraper.html">インドネシア政府調達データ（LPSE）のスクレイピング：アーキテクチャとデータパイプライン</a></h2>
 <p>500以上の地域LPSEポータルから入札通知を解析する、レート制限を回避する堅牢なパイプラインの構築法。</p>
-<div class="meta">9 分 • 2026-09-24</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-24</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html">インドネシア語のスラングや略語を正しく解釈するRAG型AIサポートエージェントの設計</a></h2>
 <p>標準的なベクトルモデルが誤認識しやすい口語略語を解決するための独自テキスト前処理パイプライン。</p>
-<div class="meta">9 分 • 2026-09-23</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-23</span></div>
 </article>
 <article class="post-card">
 <h2><a href="/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html">2026年のインドネシアECサイト向け高耐久価格監視ボットの構築</a></h2>
 <p>Cloudflare Turnstile、モバイルAPIセッションのローテーション、動的GraphQLトークンの安全な抽出。</p>
-<div class="meta">9 分 • 2026-09-22</div>
+<div class="meta"><span>9 分</span><span>•</span><span>2026-09-22</span></div>
 </article>
 </main>
 <footer>
-<p>&copy; 2026 Albertus Freddi • <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
 </footer>
 </body>
 </html>
