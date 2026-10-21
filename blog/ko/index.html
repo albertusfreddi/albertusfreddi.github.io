@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>기술 인사이트 및 시스템 아키텍처 블로그 | Albertus Freddi</title>
-<meta name="description" content="시스템 아키텍처, 업무 자동화 파이프라인, 인도네시아 현지 규정 준수에 대한 심층 기술 분석.">
+<title>Blog &amp; Engineering Case Studies | Albertus Freddi</title>
+<meta name="description" content="In-depth technical case studies on automation pipelines, reverse-engineered APIs, resilient scraping, and distributed systems.">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/ko/">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/">
 <style>
-:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#2a2a2a;--card:#1a1a1a;color-scheme:dark}
+:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#222;--card:#141414;color-scheme:dark}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;padding:0}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 header.site{background:var(--card);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
@@ -17,22 +22,30 @@ header.site .logo{font:700 1.1rem/1 sans-serif;color:var(--cream);letter-spacing
 header.site nav{display:flex;gap:1.5rem;font-size:.85rem}
 header.site nav a{color:var(--muted)}
 header.site nav a:hover{color:var(--cream);text-decoration:none}
-.hero{background:linear-gradient(160deg,#1a1410 0%,#0e0e0e 60%);padding:4rem 2rem 3rem;border-bottom:1px solid var(--border)}
-.hero-inner{max-width:760px;margin:0 auto}
-.hero h1{font:700 2.8rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1rem}
-.hero p{font-size:1.1rem;color:var(--muted);max-width:600px}
-main{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
-.articles-list{display:flex;flex-direction:column;gap:2rem}
-.article-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:border-color .2s}
-.article-card:hover{border-color:var(--accent)}
-.article-cat{font:600 .75rem/1 sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-.article-card h2{font:700 1.5rem/1.3 Georgia,serif;margin-bottom:.75rem}
-.article-card h2 a{color:var(--cream)}
-.article-card h2 a:hover{color:var(--accent);text-decoration:none}
-.article-card p{color:#ccc8be;font-size:.95rem;margin-bottom:1.25rem;line-height:1.6}
-.article-meta{display:flex;gap:1.5rem;font-size:.85rem;color:var(--muted)}
-footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
-footer.site p{font-size:.9rem;color:var(--muted)}
+.hero{background:linear-gradient(160deg,#161412 0%,#0e0e0e 65%);padding:4.5rem 2rem 3rem;border-bottom:1px solid var(--border);text-align:center}
+.hero h1{font:700 2.8rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1rem;text-wrap:balance}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto 1.5rem}
+.lang-bar{font-size:.85rem;color:var(--muted)}
+.lang-bar a{color:var(--accent);margin:0 .25rem}
+.lang-bar a.active{color:var(--cream);font-weight:700;pointer-events:none}
+main{max-width:960px;margin:0 auto;padding:4rem 2rem 6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.article-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s,transform .2s}
+.article-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;margin-bottom:1rem}
+.card-cat{color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.card-date{color:var(--muted)}
+.card-title{font:700 1.25rem/1.3 Georgia,serif;color:var(--cream);margin-bottom:.75rem}
+.card-title a{color:var(--cream)}
+.card-title a:hover{color:var(--accent);text-decoration:none}
+.card-desc{font-size:.9rem;color:#aaa;line-height:1.5;margin-bottom:1.5rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-action{border-top:1px solid var(--border);padding-top:1rem}
+.read-link{font-size:.85rem;font-weight:600;color:var(--accent)}
+footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;font-size:.85rem;color:var(--muted)}
+footer.site .links{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem}
+footer.site .links a{color:var(--muted)}
+footer.site .links a:hover{color:var(--cream)}
+@media(max-width:640px){.hero h1{font-size:2rem}.grid{grid-template-columns:1fr}main{padding:2rem 1rem}}
 </style>
 </head>
 <body>
@@ -46,148 +59,441 @@ footer.site p{font-size:.9rem;color:var(--muted)}
 </header>
 
 <div class="hero">
-  <div class="hero-inner">
-    <h1>기사 및 사례 연구</h1>
-    <p>시스템 아키텍처, 업무 자동화 파이프라인, 인도네시아 현지 규정 준수에 대한 심층 기술 분석.</p>
+  <h1>현장 실전 노트, 시스템 아키텍처 및 프로덕션 엔지니어링</h1>
+  <p>안정적인 데이터 파이프라인, 업무 자동화 시스템 및 고성능 백엔드 구축.</p>
+  <div class="lang-bar">
+    <a href="../en/">EN</a> · <a href="../id/">ID</a> · <a href="../zh/">中文</a> · <a href="../ja/">日本語</a> · <a class="active">한국어</a>
   </div>
 </div>
 
 <main>
-  <div class="articles-list">
-    <div class="article-card">
-      <div class="article-cat">SEO Engineering · Content Systems</div>
-      <h2><a href="automated-seo-content-pipeline-without-spam.html">구글 스팸 필터를 우회하고 높은 권위를 인정받는 기술 블로그 콘텐츠 엔진 구축 방법</a></h2>
-      <p>철저히 조사된 10개의 심층 기술 글이 500개의 기계적인 자동 생성 페이지를 압도하는 이유.</p>
-      <div class="article-meta">
-        <span>2026-11-01</span>
-        <span>11 min read</span>
+  <div class="grid">
+    <article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-21 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">IoT · Automation</div>
-      <h2><a href="iot-energy-monitoring-hospitality-bali-jakarta.html">발리 및 자카르타 리조트를 위한 IoT 스마트 냉방 및 에너지 절감 자동화</a></h2>
-      <p>재실 감지 센서, Zigbee 게이트웨이 및 동적 온도 스케줄링을 통해 리조트 전기 요금을 28% 절감한 프로젝트.</p>
-      <div class="article-meta">
-        <span>2026-10-25</span>
-        <span>10 min read</span>
+      <h2 class="card-title">
+        <a href="anti-scraping-bypass-ethical.html">안티 스크래핑 우회: 윤리적 방법</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 안티 스크래핑 우회: 윤리적 방법의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="anti-scraping-bypass-ethical.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Fintech · Security</div>
-      <h2><a href="real-time-fraud-detection-fintech-indonesia.html">인도네시아 핀테크를 위한 50ms 미만 지연시간의 이상 결제 및 사기 탐지 시스템 설계</a></h2>
-      <p>Redis 스트림과 룰 엔진을 활용하여 계정 탈취, QRIS 변조 및 급격한 자금 유출을 실시간 탐지하는 방법.</p>
-      <div class="article-meta">
-        <span>2026-10-19</span>
-        <span>12 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-20 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Enterprise Automation · LegalTech</div>
-      <h2><a href="automated-contract-document-generator-python.html">Python을 활용한 B2B 계약서 자동 생성 및 전자 서명 파이프라인 구축</a></h2>
-      <p>CRM 거래 데이터를 기반으로 NDA 및 용역 계약서를 자동 생성하고 전자 서명 API로 자동 연동하는 시스템.</p>
-      <div class="article-meta">
-        <span>2026-10-17</span>
-        <span>9 min read</span>
+      <h2 class="card-title">
+        <a href="selenium-playwright-indonesia-websites.html">인도네시아 웹사이트용 Selenium vs Playwright</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 웹사이트용 Selenium vs Playwright의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="selenium-playwright-indonesia-websites.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Hospitality Automation · Case Study</div>
-      <h2><a href="how-i-cut-hotel-checkin-time-60-percent.html">Python 자동화로 호텔 체크인 시간을 60% 단축한 실제 구축 사례</a></h2>
-      <p>프론트 데스크 인력을 교체하거나 고가의 엔터프라이즈 솔루션을 도입하지 않고도, Python 자동화 시스템으로 호텔 체크인 대기 시간을 12분에서 5분 미만으로 단축한 사례 연구.</p>
-      <div class="article-meta">
-        <span>2026-10-14</span>
-        <span>8 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-19 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Database · Performance</div>
-      <h2><a href="postgresql-performance-tuning-high-concurrency-jakarta.html">플래시 세일 동시성 트래픽을 견디는 1,000만 행 규모의 PostgreSQL 성능 튜닝</a></h2>
-      <p>테이블 파티셔닝 전략과 자문 락(Advisory Lock)을 통해 대규모 트래픽 발생 시에도 CPU 사용률을 15% 미만으로 유지한 기법.</p>
-      <div class="article-meta">
-        <span>2026-10-10</span>
-        <span>13 min read</span>
+      <h2 class="card-title">
+        <a href="ecommerce-price-monitoring-indonesia.html">인도네시아 전자상거래 가격 모니터링: 모범 사례</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 전자상거래 가격 모니터링: 모범 사례의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="ecommerce-price-monitoring-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Law & Compliance</div>
-      <h2><a href="web-scraping-legal-indonesia-2026.html">인도네시아 웹 스크래핑은 합법인가? 개발자를 위한 법적 가이드 (2026)</a></h2>
-      <p>인도네시아 웹 스크래핑의 합법성을 실무자 관점에서 정리한 가이드: 개인정보보호법(UU PDP) 및 전자정보거래법(UU ITE) 준수 요건.</p>
-      <div class="article-meta">
-        <span>2026-10-07</span>
-        <span>10 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-18 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">AI Agents · NLP</div>
-      <h2><a href="ai-agents-customer-support-rag-indonesian-slang.html">인도네시아어 신조어 및 줄임말을 정확히 이해하는 RAG AI 고객센터 에이전트 구축기</a></h2>
-      <p>현지 줄임말을 표준 의미로 정규화하여 검색 정확도를 극대화한 전처리 파이프라인 개발기.</p>
-      <div class="article-meta">
-        <span>2026-10-05</span>
-        <span>11 min read</span>
+      <h2 class="card-title">
+        <a href="scraping-public-data-indonesia.html">인도네시아 공공 데이터 스크래핑: 허용 사항과 금지 사항</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 공공 데이터 스크래핑: 허용 사항과 금지 사항의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="scraping-public-data-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Hospitality Automation · POS</div>
-      <h2><a href="pos-restaurant-system-automation-indonesia.html">다점포 외식업체를 위한 주방 주문 및 실시간 재고 추적 자동화</a></h2>
-      <p>오프라인 POS 프린터와 클라우드 재고 DB를 연동하여 4개 매장에서 월 2,400달러 상당의 식자재 낭비를 줄인 사례.</p>
-      <div class="article-meta">
-        <span>2026-10-02</span>
-        <span>10 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-17 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">AI Agents · Customer Service Automation</div>
-      <h2><a href="why-whatsapp-bots-fail-indonesia.html">인도네시아 기업의 WhatsApp 챗봇이 실패하는 이유와 해결책</a></h2>
-      <p>인도네시아 기업에 도입된 WhatsApp 챗봇 대부분이 6개월 이내에 실패하는 이유(API 정책 위반, 문화적 소통 차이)와 검증된 해결 아키텍처.</p>
-      <div class="article-meta">
-        <span>2026-09-30</span>
-        <span>9 min read</span>
+      <h2 class="card-title">
+        <a href="python-scraping-respect-robots-txt.html">Python 웹 스크래핑: robots.txt 및 속도 제한 준수</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 Python 웹 스크래핑: robots.txt 및 속도 제한 준수의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="python-scraping-respect-robots-txt.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Cloud Architecture · Performance</div>
-      <h2><a href="supabase-edge-functions-vs-aws-lambda-dashboards.html">실시간 대시보드 구축에 AWS Lambda 대신 Supabase Edge Functions를 선택한 이유</a></h2>
-      <p>자카르타 사용자에게 가장 가까운 에지 노드에서 Deno를 실행하여 API 지연 시간을 450ms에서 42ms로 대폭 단축한 아키텍처.</p>
-      <div class="article-meta">
-        <span>2026-09-27</span>
-        <span>9 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-16 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Architecture</div>
-      <h2><a href="lp-se-government-procurement-scraper.html">인도네시아 정부 조달(LPSE) 데이터 스크래핑: 시스템 아키텍처 및 데이터 파이프라인</a></h2>
-      <p>IP 차단이나 속도 제한 없이 500개 이상의 지역 LPSE 포털에서 입찰 공고를 수집하는 안정적인 데이터 파이프라인 구축기.</p>
-      <div class="article-meta">
-        <span>2026-09-24</span>
-        <span>12 min read</span>
+      <h2 class="card-title">
+        <a href="web-scraping-legal-indonesia-2026.html">인도네시아 웹 스크래핑 합법성: 2026년 규정 가이드</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 웹 스크래핑 합법성: 2026년 규정 가이드의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="web-scraping-legal-indonesia-2026.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Reverse Engineering</div>
-      <h2><a href="tokopedia-shopee-price-monitoring-bot-resilience.html">2026년 인도네시아 오픈마켓을 위한 안정적인 가격 모니터링 봇 구축</a></h2>
-      <p>Cloudflare Turnstile 우회, 모바일 API 세션 로테이션 및 동적 GraphQL 토큰 추출 실전 노하우.</p>
-      <div class="article-meta">
-        <span>2026-09-21</span>
-        <span>11 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-15 · 10 min read</span>
       </div>
-    </div>
+      <h2 class="card-title">
+        <a href="ai-recruitment-screening-indonesia.html">인도네시아 기업 AI 채용 스크리닝</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 기업 AI 채용 스크리닝의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="ai-recruitment-screening-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-14 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="voice-ai-indonesian-language.html">인도네시아어 음성 AI: 과제와 해결책</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아어 음성 AI: 과제와 해결책의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="voice-ai-indonesian-language.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · Case Study</span>
+        <span class="card-date">2026-10-14 · 8 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="how-i-cut-hotel-checkin-time-60-percent.html">Python 자동화로 호텔 체크인 시간을 60% 단축한 실제 구축 사례</a>
+      </h2>
+      <p class="card-desc">프론트 데스크 인력을 교체하거나 고가의 엔터프라이즈 솔루션을 도입하지 않고도, Python 자동화 시스템으로 호텔 체크인 대기 시간을 12분에서 5분 미만으로 단축한 사례 연구.</p>
+      <div class="card-action">
+        <a href="how-i-cut-hotel-checkin-time-60-percent.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-13 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="inventory-management-automation-indonesia.html">인도네시아 소매업체 재고 관리 자동화</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 소매업체 재고 관리 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="inventory-management-automation-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-12 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="email-automation-jakarta-businesses.html">자카르타 기업 이메일 자동화 전략</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 자카르타 기업 이메일 자동화 전략의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="email-automation-jakarta-businesses.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-11 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="cost-roi-ai-automation-indonesia.html">ROI 계산기: 인도네시아 AI 자동화 프로젝트</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 ROI 계산기: 인도네시아 AI 자동화 프로젝트의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="cost-roi-ai-automation-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-10 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="document-processing-automation-indonesia.html">인도네시아 기업 문서 처리 자동화</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 기업 문서 처리 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="document-processing-automation-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-09 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-agents-vs-rpa-indonesia.html">AI 에이전트 vs 전통적 RPA: 인도네시아 적용 사례</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 AI 에이전트 vs 전통적 RPA: 인도네시아 적용 사례의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="ai-agents-vs-rpa-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-08 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="python-automation-scripts-jakarta-startups.html">자카르타 스타트업에 필요한 Python 자동화 스크립트</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 자카르타 스타트업에 필요한 Python 자동화 스크립트의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="python-automation-scripts-jakarta-startups.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-07 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="chatbot-whatsapp-business-indonesia.html">인도네시아 기업을 위한 WhatsApp 챗봇 구축</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 기업을 위한 WhatsApp 챗봇 구축의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="chatbot-whatsapp-business-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-06 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-automation-indonesia-2026-trends.html">인도네시아 AI 자동화: 2026년 시장 동향</a>
+      </h2>
+      <p class="card-desc">인도네시아 실무 환경에서 검증된 인도네시아 AI 자동화: 2026년 시장 동향의 아키텍처 설계, 성능 지표 및 구현 코드 분석.</p>
+      <div class="card-action">
+        <a href="ai-automation-indonesia-2026-trends.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Cloud Architecture · Microservices</span>
+        <span class="card-date">2026-10-05 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="fastapi-microservices-docker-swarm-indonesia.html">인도네시아 로컬 클라우드 환경에서 Docker Swarm 기반 경량 FastAPI 마이크로서비스 구축</a>
+      </h2>
+      <p class="card-desc">Kubernetes의 과도한 리소스 낭비 없이 월 40달러 로컬 VPS 클러스터에서 8개 마이크로서비스를 안정적으로 운영하는 실전 가이드.</p>
+      <div class="card-action">
+        <a href="fastapi-microservices-docker-swarm-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Enterprise Automation · DevOps</span>
+        <span class="card-date">2026-10-04 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="telegram-ops-alert-bot-serverless-python.html">서버리스 Python 기반 고가용성 Telegram 인시던트 알림 봇 아키텍처</a>
+      </h2>
+      <p class="card-desc">고가의 온콜 유료 도구를 대체하여 인터랙티브 에스컬레이션 버튼을 갖춘 서버리스 인시던트 알림 봇 구축.</p>
+      <div class="card-action">
+        <a href="telegram-ops-alert-bot-serverless-python.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · Retail Automation</span>
+        <span class="card-date">2026-10-03 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="whatsapp-order-management-pipeline-python.html">Python 및 Webhook을 활용한 WhatsApp 주문 자동 접수 파이프라인 구축</a>
+      </h2>
+      <p class="card-desc">WhatsApp Business Cloud API를 통해 여러 지점의 고객 주문을 ERP에 실시간 자동 입력하는 아키텍처.</p>
+      <div class="card-action">
+        <a href="whatsapp-order-management-pipeline-python.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">SEO Engineering · Content Systems</span>
+        <span class="card-date">2026-10-02 · 11 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="automated-seo-content-pipeline-without-spam.html">구글 스팸 필터를 우회하고 높은 권위를 인정받는 기술 블로그 콘텐츠 엔진 구축 방법</a>
+      </h2>
+      <p class="card-desc">철저히 조사된 10개의 심층 기술 글이 500개의 기계적인 자동 생성 페이지를 압도하는 이유.</p>
+      <div class="card-action">
+        <a href="automated-seo-content-pipeline-without-spam.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">IoT · Automation</span>
+        <span class="card-date">2026-10-01 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="iot-energy-monitoring-hospitality-bali-jakarta.html">발리 및 자카르타 리조트를 위한 IoT 스마트 냉방 및 에너지 절감 자동화</a>
+      </h2>
+      <p class="card-desc">재실 감지 센서, Zigbee 게이트웨이 및 동적 온도 스케줄링을 통해 리조트 전기 요금을 28% 절감한 프로젝트.</p>
+      <div class="card-action">
+        <a href="iot-energy-monitoring-hospitality-bali-jakarta.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Fintech · Security</span>
+        <span class="card-date">2026-09-30 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="real-time-fraud-detection-fintech-indonesia.html">인도네시아 핀테크를 위한 50ms 미만 지연시간의 이상 결제 및 사기 탐지 시스템 설계</a>
+      </h2>
+      <p class="card-desc">Redis 스트림과 룰 엔진을 활용하여 계정 탈취, QRIS 변조 및 급격한 자금 유출을 실시간 탐지하는 방법.</p>
+      <div class="card-action">
+        <a href="real-time-fraud-detection-fintech-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · Customer Service Automation</span>
+        <span class="card-date">2026-09-30 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="why-whatsapp-bots-fail-indonesia.html">인도네시아 기업의 WhatsApp 챗봇이 실패하는 이유와 해결책</a>
+      </h2>
+      <p class="card-desc">인도네시아 기업에 도입된 WhatsApp 챗봇 대부분이 6개월 이내에 실패하는 이유(API 정책 위반, 문화적 소통 차이)와 검증된 해결 아키텍처.</p>
+      <div class="card-action">
+        <a href="why-whatsapp-bots-fail-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Enterprise Automation · LegalTech</span>
+        <span class="card-date">2026-09-29 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="automated-contract-document-generator-python.html">Python을 활용한 B2B 계약서 자동 생성 및 전자 서명 파이프라인 구축</a>
+      </h2>
+      <p class="card-desc">CRM 거래 데이터를 기반으로 NDA 및 용역 계약서를 자동 생성하고 전자 서명 API로 자동 연동하는 시스템.</p>
+      <div class="card-action">
+        <a href="automated-contract-document-generator-python.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Database · Performance</span>
+        <span class="card-date">2026-09-28 · 13 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="postgresql-performance-tuning-high-concurrency-jakarta.html">플래시 세일 동시성 트래픽을 견디는 1,000만 행 규모의 PostgreSQL 성능 튜닝</a>
+      </h2>
+      <p class="card-desc">테이블 파티셔닝 전략과 자문 락(Advisory Lock)을 통해 대규모 트래픽 발생 시에도 CPU 사용률을 15% 미만으로 유지한 기법.</p>
+      <div class="card-action">
+        <a href="postgresql-performance-tuning-high-concurrency-jakarta.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · POS</span>
+        <span class="card-date">2026-09-27 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="pos-restaurant-system-automation-indonesia.html">다점포 외식업체를 위한 주방 주문 및 실시간 재고 추적 자동화</a>
+      </h2>
+      <p class="card-desc">오프라인 POS 프린터와 클라우드 재고 DB를 연동하여 4개 매장에서 월 2,400달러 상당의 식자재 낭비를 줄인 사례.</p>
+      <div class="card-action">
+        <a href="pos-restaurant-system-automation-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Cloud Architecture · Performance</span>
+        <span class="card-date">2026-09-26 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="supabase-edge-functions-vs-aws-lambda-dashboards.html">실시간 대시보드 구축에 AWS Lambda 대신 Supabase Edge Functions를 선택한 이유</a>
+      </h2>
+      <p class="card-desc">자카르타 사용자에게 가장 가까운 에지 노드에서 Deno를 실행하여 API 지연 시간을 450ms에서 42ms로 대폭 단축한 아키텍처.</p>
+      <div class="card-action">
+        <a href="supabase-edge-functions-vs-aws-lambda-dashboards.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · IoT</span>
+        <span class="card-date">2026-09-25 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="hotel-laundry-tracking-automation-rfid-indonesia.html">RFID 및 Python 자동화로 호텔 린넨 유실 및 세탁 손실을 방지한 사례</a>
+      </h2>
+      <p class="card-desc">우붓의 80개 객실 리조트에서 UHF RFID 세탁 태그와 자동 중량 검증 시스템으로 린넨 분실을 91% 줄인 방법.</p>
+      <div class="card-action">
+        <a href="hotel-laundry-tracking-automation-rfid-indonesia.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Web Scraping · Architecture</span>
+        <span class="card-date">2026-09-24 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="lp-se-government-procurement-scraper.html">인도네시아 정부 조달(LPSE) 데이터 스크래핑: 시스템 아키텍처 및 데이터 파이프라인</a>
+      </h2>
+      <p class="card-desc">IP 차단이나 속도 제한 없이 500개 이상의 지역 LPSE 포털에서 입찰 공고를 수집하는 안정적인 데이터 파이프라인 구축기.</p>
+      <div class="card-action">
+        <a href="lp-se-government-procurement-scraper.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · NLP Architecture</span>
+        <span class="card-date">2026-09-23 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-agents-customer-support-rag-indonesian-slang.html">인도네시아어 신조어 및 줄임말을 정확히 이해하는 RAG AI 고객센터 에이전트 구축기</a>
+      </h2>
+      <p class="card-desc">현지 줄임말을 표준 의미로 정규화하여 검색 정확도를 극대화한 전처리 파이프라인 개발기.</p>
+      <div class="card-action">
+        <a href="ai-agents-customer-support-rag-indonesian-slang.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Web Scraping · Reverse Engineering</span>
+        <span class="card-date">2026-09-22 · 11 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="tokopedia-shopee-price-monitoring-bot-resilience.html">2026년 인도네시아 오픈마켓을 위한 안정적인 가격 모니터링 봇 구축</a>
+      </h2>
+      <p class="card-desc">Cloudflare Turnstile 우회, 모바일 API 세션 로테이션 및 동적 GraphQL 토큰 추출 실전 노하우.</p>
+      <div class="card-action">
+        <a href="tokopedia-shopee-price-monitoring-bot-resilience.html" class="read-link">아키텍처 분석 보기 &#8594;</a>
+      </div>
+    </article>
   </div>
 </main>
 
 <footer class="site">
-  <p>&copy; 2026 Albertus Freddi. <a href="https://albertusfreddi.github.io/">Back to Homepage</a></p>
+  <p>&copy; 2026 Albertus Freddi. All rights reserved.</p>
+  <div class="links">
+    <a href="https://albertusfreddi.github.io/">홈</a>
+    <a href="https://albertusfreddi.github.io/blog/ko/">전체 기사</a>
+    <a href="https://albertusfreddi.github.io/sitemap.xml">사이트맵</a>
+  </div>
 </footer>
 </body>
 </html>

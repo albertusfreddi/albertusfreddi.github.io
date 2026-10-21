@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insights & Engineering Blog | Albertus Freddi</title>
-<meta name="description" content="Honest breakdowns on systems architecture, automation workflows, Indonesian tech compliance, and business process engineering.">
+<title>Blog &amp; Engineering Case Studies | Albertus Freddi</title>
+<meta name="description" content="In-depth technical case studies on automation pipelines, reverse-engineered APIs, resilient scraping, and distributed systems.">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/en/">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/">
 <style>
-:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#2a2a2a;--card:#1a1a1a;color-scheme:dark}
+:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#222;--card:#141414;color-scheme:dark}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;padding:0}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 header.site{background:var(--card);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
@@ -17,22 +22,30 @@ header.site .logo{font:700 1.1rem/1 sans-serif;color:var(--cream);letter-spacing
 header.site nav{display:flex;gap:1.5rem;font-size:.85rem}
 header.site nav a{color:var(--muted)}
 header.site nav a:hover{color:var(--cream);text-decoration:none}
-.hero{background:linear-gradient(160deg,#1a1410 0%,#0e0e0e 60%);padding:4rem 2rem 3rem;border-bottom:1px solid var(--border)}
-.hero-inner{max-width:760px;margin:0 auto}
-.hero h1{font:700 2.8rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1rem}
-.hero p{font-size:1.1rem;color:var(--muted);max-width:600px}
-main{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
-.articles-list{display:flex;flex-direction:column;gap:2rem}
-.article-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:border-color .2s}
-.article-card:hover{border-color:var(--accent)}
-.article-cat{font:600 .75rem/1 sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-.article-card h2{font:700 1.5rem/1.3 Georgia,serif;margin-bottom:.75rem}
-.article-card h2 a{color:var(--cream)}
-.article-card h2 a:hover{color:var(--accent);text-decoration:none}
-.article-card p{color:#ccc8be;font-size:.95rem;margin-bottom:1.25rem;line-height:1.6}
-.article-meta{display:flex;gap:1.5rem;font-size:.85rem;color:var(--muted)}
-footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
-footer.site p{font-size:.9rem;color:var(--muted)}
+.hero{background:linear-gradient(160deg,#161412 0%,#0e0e0e 65%);padding:4.5rem 2rem 3rem;border-bottom:1px solid var(--border);text-align:center}
+.hero h1{font:700 2.8rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1rem;text-wrap:balance}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto 1.5rem}
+.lang-bar{font-size:.85rem;color:var(--muted)}
+.lang-bar a{color:var(--accent);margin:0 .25rem}
+.lang-bar a.active{color:var(--cream);font-weight:700;pointer-events:none}
+main{max-width:960px;margin:0 auto;padding:4rem 2rem 6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.article-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s,transform .2s}
+.article-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;margin-bottom:1rem}
+.card-cat{color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.card-date{color:var(--muted)}
+.card-title{font:700 1.25rem/1.3 Georgia,serif;color:var(--cream);margin-bottom:.75rem}
+.card-title a{color:var(--cream)}
+.card-title a:hover{color:var(--accent);text-decoration:none}
+.card-desc{font-size:.9rem;color:#aaa;line-height:1.5;margin-bottom:1.5rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-action{border-top:1px solid var(--border);padding-top:1rem}
+.read-link{font-size:.85rem;font-weight:600;color:var(--accent)}
+footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;font-size:.85rem;color:var(--muted)}
+footer.site .links{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem}
+footer.site .links a{color:var(--muted)}
+footer.site .links a:hover{color:var(--cream)}
+@media(max-width:640px){.hero h1{font-size:2rem}.grid{grid-template-columns:1fr}main{padding:2rem 1rem}}
 </style>
 </head>
 <body>
@@ -46,148 +59,441 @@ footer.site p{font-size:.9rem;color:var(--muted)}
 </header>
 
 <div class="hero">
-  <div class="hero-inner">
-    <h1>Articles & Case Studies</h1>
-    <p>Honest breakdowns on systems architecture, automation workflows, Indonesian tech compliance, and business process engineering.</p>
+  <h1>Field Notes, Architecture & Production Systems</h1>
+  <p>Engineering robust data systems, automation architectures, and high-performance applications.</p>
+  <div class="lang-bar">
+    <a class="active">EN</a> · <a href="../id/">ID</a> · <a href="../zh/">中文</a> · <a href="../ja/">日本語</a> · <a href="../ko/">한국어</a>
   </div>
 </div>
 
 <main>
-  <div class="articles-list">
-    <div class="article-card">
-      <div class="article-cat">SEO Engineering · Content Systems</div>
-      <h2><a href="automated-seo-content-pipeline-without-spam.html">How to Build a High-Authority SEO Content Engine Without Triggering Google Spam Filters</a></h2>
-      <p>Why 10 deeply researched technical articles outperform 500 shallow programmatic pages every single time.</p>
-      <div class="article-meta">
-        <span>2026-11-01</span>
-        <span>11 min read</span>
+  <div class="grid">
+    <article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-21 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">IoT · Automation</div>
-      <h2><a href="iot-energy-monitoring-hospitality-bali-jakarta.html">IoT Smart Energy & AC Automation for Resorts in Bali and Jakarta</a></h2>
-      <p>Cutting utility bills by 28% using occupancy sensors, Zigbee gateways, and automated temperature curve scheduling.</p>
-      <div class="article-meta">
-        <span>2026-10-25</span>
-        <span>10 min read</span>
+      <h2 class="card-title">
+        <a href="anti-scraping-bypass-ethical.html">Bypassing Anti-Scraping Measures: The Ethical Way</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on bypassing anti-scraping measures: the ethical way: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="anti-scraping-bypass-ethical.html" class="read-link">Read Architecture &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Fintech · Security</div>
-      <h2><a href="real-time-fraud-detection-fintech-indonesia.html">Designing Sub-50ms Payment Anomaly & Fraud Detection for Indonesian Fintech</a></h2>
-      <p>Detecting account takeovers, QRIS manipulation, and high-velocity fund draining using streaming Redis graphs and rule engines.</p>
-      <div class="article-meta">
-        <span>2026-10-19</span>
-        <span>12 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-20 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Enterprise Automation · LegalTech</div>
-      <h2><a href="automated-contract-document-generator-python.html">Automating B2B Legal Contract Generation & E-Signatures with Python</a></h2>
-      <p>Generating customized NDA and vendor service agreements from CRM deals, automatically routed to PrivyID and DocuSign endpoints.</p>
-      <div class="article-meta">
-        <span>2026-10-17</span>
-        <span>9 min read</span>
+      <h2 class="card-title">
+        <a href="selenium-playwright-indonesia-websites.html">Selenium vs Playwright for Indonesian Websites</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on selenium vs playwright for indonesian websites: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="selenium-playwright-indonesia-websites.html" class="read-link">Read Architecture &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Hospitality Automation · Case Study</div>
-      <h2><a href="how-i-cut-hotel-checkin-time-60-percent.html">How I Cut Hotel Check-in Time by 60% with Python Automation</a></h2>
-      <p>A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff or buying multi-million enterprise suites.</p>
-      <div class="article-meta">
-        <span>2026-10-14</span>
-        <span>8 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-19 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Database · Performance</div>
-      <h2><a href="postgresql-performance-tuning-high-concurrency-jakarta.html">PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency</a></h2>
-      <p>From table bloat to index bloat: how partition strategies and advisory locks kept our database under 15% CPU during high-traffic events.</p>
-      <div class="article-meta">
-        <span>2026-10-10</span>
-        <span>13 min read</span>
+      <h2 class="card-title">
+        <a href="ecommerce-price-monitoring-indonesia.html">E-commerce Price Monitoring in Indonesia: Best Practices</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on e-commerce price monitoring in indonesia: best practices: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="ecommerce-price-monitoring-indonesia.html" class="read-link">Read Architecture &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Law & Compliance</div>
-      <h2><a href="web-scraping-legal-indonesia-2026.html">Is Web Scraping Legal in Indonesia? A Developer's Honest Guide (2026)</a></h2>
-      <p>A practical, non-lawyer breakdown of when web scraping is legal in Indonesia: what the UU PDP and UU ITE say, which practices are clearly safe, and what gets developers into legal trouble.</p>
-      <div class="article-meta">
-        <span>2026-10-07</span>
-        <span>10 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-18 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">AI Agents · NLP</div>
-      <h2><a href="ai-agents-customer-support-rag-indonesian-slang.html">Building RAG AI Support Agents That Actually Understand Indonesian Slang (Bahasa Gaul)</a></h2>
-      <p>Off-the-shelf vector embeddings fail miserably on casual slang. Here is our custom preprocessing pipeline that solved it.</p>
-      <div class="article-meta">
-        <span>2026-10-05</span>
-        <span>11 min read</span>
+      <h2 class="card-title">
+        <a href="scraping-public-data-indonesia.html">Scraping Public Data in Indonesia: What You Can and Cannot Do</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on scraping public data in indonesia: what you can and cannot do: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="scraping-public-data-indonesia.html" class="read-link">Read Architecture &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Hospitality Automation · POS</div>
-      <h2><a href="pos-restaurant-system-automation-indonesia.html">Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking</a></h2>
-      <p>How we integrated offline POS thermal printers with cloud inventory databases, eliminating $2,400 monthly waste across 4 outlets.</p>
-      <div class="article-meta">
-        <span>2026-10-02</span>
-        <span>10 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-17 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">AI Agents · Customer Service Automation</div>
-      <h2><a href="why-whatsapp-bots-fail-indonesia.html">Why WhatsApp Bots Fail in Indonesian Businesses (And How to Fix It)</a></h2>
-      <p>Most WhatsApp bots deployed in Indonesian businesses fail or get quietly abandoned within 6 months. Here's why, from API policy bans to cultural friction, and what architecture actually works.</p>
-      <div class="article-meta">
-        <span>2026-09-30</span>
-        <span>9 min read</span>
+      <h2 class="card-title">
+        <a href="python-scraping-respect-robots-txt.html">Python Web Scraping: Respecting robots.txt and Rate Limits</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on python web scraping: respecting robots.txt and rate limits: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="python-scraping-respect-robots-txt.html" class="read-link">Read Architecture &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Cloud Architecture · Performance</div>
-      <h2><a href="supabase-edge-functions-vs-aws-lambda-dashboards.html">Why We Chose Supabase Edge Functions Over AWS Lambda for Real-Time Dashboards</a></h2>
-      <p>A zero-cold-start architecture running on Deno at edge nodes close to Jakarta users, cutting API latency from 450ms to 42ms.</p>
-      <div class="article-meta">
-        <span>2026-09-27</span>
-        <span>9 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-16 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Architecture</div>
-      <h2><a href="lp-se-government-procurement-scraper.html">Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines</a></h2>
-      <p>How we built a resilient pipeline parsing tender notices across 500+ regional LPSE portals without rate-limit lockouts.</p>
-      <div class="article-meta">
-        <span>2026-09-24</span>
-        <span>12 min read</span>
+      <h2 class="card-title">
+        <a href="web-scraping-legal-indonesia-2026.html">Is Web Scraping Legal in Indonesia? 2026 Compliance Guide</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on is web scraping legal in indonesia? 2026 compliance guide: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="web-scraping-legal-indonesia-2026.html" class="read-link">Read Architecture &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Reverse Engineering</div>
-      <h2><a href="tokopedia-shopee-price-monitoring-bot-resilience.html">Building Resilient Price Trackers for Indonesian Marketplaces in 2026</a></h2>
-      <p>Handling Cloudflare Turnstile, mobile API session rotation, and dynamic GraphQL token extraction without getting flagged or banned.</p>
-      <div class="article-meta">
-        <span>2026-09-21</span>
-        <span>11 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-15 · 10 min read</span>
       </div>
-    </div>
+      <h2 class="card-title">
+        <a href="ai-recruitment-screening-indonesia.html">AI-Powered Recruitment Screening for Indonesian Companies</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on ai-powered recruitment screening for indonesian companies: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="ai-recruitment-screening-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-14 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="voice-ai-indonesian-language.html">Voice AI in Bahasa Indonesia: Challenges and Solutions</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on voice ai in bahasa indonesia: challenges and solutions: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="voice-ai-indonesian-language.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · Case Study</span>
+        <span class="card-date">2026-10-14 · 8 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="how-i-cut-hotel-checkin-time-60-percent.html">How I Cut Hotel Check-in Time by 60% with Python Automation</a>
+      </h2>
+      <p class="card-desc">A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff or buying multi-million enterprise suites.</p>
+      <div class="card-action">
+        <a href="how-i-cut-hotel-checkin-time-60-percent.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-13 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="inventory-management-automation-indonesia.html">Automating Inventory Management for Indonesian Retailers</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on automating inventory management for indonesian retailers: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="inventory-management-automation-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-12 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="email-automation-jakarta-businesses.html">Email Automation Strategies for Jakarta Businesses</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on email automation strategies for jakarta businesses: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="email-automation-jakarta-businesses.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-11 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="cost-roi-ai-automation-indonesia.html">ROI Calculator: AI Automation Projects in Indonesia</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on roi calculator: ai automation projects in indonesia: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="cost-roi-ai-automation-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-10 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="document-processing-automation-indonesia.html">Automating Document Processing for Indonesian Enterprises</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on automating document processing for indonesian enterprises: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="document-processing-automation-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-09 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-agents-vs-rpa-indonesia.html">AI Agents vs Traditional RPA: What Works in Indonesia</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on ai agents vs traditional rpa: what works in indonesia: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="ai-agents-vs-rpa-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-08 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="python-automation-scripts-jakarta-startups.html">Python Automation Scripts Every Jakarta Startup Needs</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on python automation scripts every jakarta startup needs: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="python-automation-scripts-jakarta-startups.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-07 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="chatbot-whatsapp-business-indonesia.html">Building WhatsApp Chatbots for Indonesian Businesses</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on building whatsapp chatbots for indonesian businesses: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="chatbot-whatsapp-business-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-06 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-automation-indonesia-2026-trends.html">AI Automation in Indonesia: 2026 Market Trends</a>
+      </h2>
+      <p class="card-desc">Deep engineering breakdown on ai automation in indonesia: 2026 market trends: real-world architecture, metrics, and production implementations in Indonesia.</p>
+      <div class="card-action">
+        <a href="ai-automation-indonesia-2026-trends.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Cloud Architecture · Microservices</span>
+        <span class="card-date">2026-10-05 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="fastapi-microservices-docker-swarm-indonesia.html">Deploying Lightweight FastAPI Microservices with Docker Swarm on Local Cloud</a>
+      </h2>
+      <p class="card-desc">Why Kubernetes is overkill for 95% of Indonesian startups: managing 8 distributed microservices on a $40/month local VPS cluster.</p>
+      <div class="card-action">
+        <a href="fastapi-microservices-docker-swarm-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Enterprise Automation · DevOps</span>
+        <span class="card-date">2026-10-04 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="telegram-ops-alert-bot-serverless-python.html">Architecting High-Availability Telegram Incident Alert Bots with Serverless Python</a>
+      </h2>
+      <p class="card-desc">Replacing expensive PagerDuty subscriptions with asynchronous serverless incident dispatching and interactive escalation buttons.</p>
+      <div class="card-action">
+        <a href="telegram-ops-alert-bot-serverless-python.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · Retail Automation</span>
+        <span class="card-date">2026-10-03 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="whatsapp-order-management-pipeline-python.html">Building an Automated WhatsApp Order Ingestion Pipeline with Python & Webhooks</a>
+      </h2>
+      <p class="card-desc">How to reliably capture, validate, and write multi-branch customer orders from WhatsApp Business Cloud API directly into ERP databases.</p>
+      <div class="card-action">
+        <a href="whatsapp-order-management-pipeline-python.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">SEO Engineering · Content Systems</span>
+        <span class="card-date">2026-10-02 · 11 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="automated-seo-content-pipeline-without-spam.html">How to Build a High-Authority SEO Content Engine Without Triggering Google Spam Filters</a>
+      </h2>
+      <p class="card-desc">Why 10 deeply researched technical articles outperform 500 shallow programmatic pages every single time.</p>
+      <div class="card-action">
+        <a href="automated-seo-content-pipeline-without-spam.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">IoT · Automation</span>
+        <span class="card-date">2026-10-01 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="iot-energy-monitoring-hospitality-bali-jakarta.html">IoT Smart Energy & AC Automation for Resorts in Bali and Jakarta</a>
+      </h2>
+      <p class="card-desc">Cutting utility bills by 28% using occupancy sensors, Zigbee gateways, and automated temperature curve scheduling.</p>
+      <div class="card-action">
+        <a href="iot-energy-monitoring-hospitality-bali-jakarta.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Fintech · Security</span>
+        <span class="card-date">2026-09-30 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="real-time-fraud-detection-fintech-indonesia.html">Designing Sub-50ms Payment Anomaly & Fraud Detection for Indonesian Fintech</a>
+      </h2>
+      <p class="card-desc">Detecting account takeovers, QRIS manipulation, and high-velocity fund draining using streaming Redis graphs and rule engines.</p>
+      <div class="card-action">
+        <a href="real-time-fraud-detection-fintech-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · Customer Service Automation</span>
+        <span class="card-date">2026-09-30 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="why-whatsapp-bots-fail-indonesia.html">Why WhatsApp Bots Fail in Indonesian Businesses (And How to Fix It)</a>
+      </h2>
+      <p class="card-desc">Most WhatsApp bots deployed in Indonesian businesses fail or get quietly abandoned within 6 months. Here's why from API policy bans to cultural friction and what architecture actually works.</p>
+      <div class="card-action">
+        <a href="why-whatsapp-bots-fail-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Enterprise Automation · LegalTech</span>
+        <span class="card-date">2026-09-29 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="automated-contract-document-generator-python.html">Automating B2B Legal Contract Generation & E-Signatures with Python</a>
+      </h2>
+      <p class="card-desc">Generating customized NDA and vendor service agreements from CRM deals, automatically routed to PrivyID and DocuSign endpoints.</p>
+      <div class="card-action">
+        <a href="automated-contract-document-generator-python.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Database · Performance</span>
+        <span class="card-date">2026-09-28 · 13 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="postgresql-performance-tuning-high-concurrency-jakarta.html">PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency</a>
+      </h2>
+      <p class="card-desc">From table bloat to index bloat: how partition strategies and advisory locks kept our database under 15% CPU during high-traffic events.</p>
+      <div class="card-action">
+        <a href="postgresql-performance-tuning-high-concurrency-jakarta.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · POS</span>
+        <span class="card-date">2026-09-27 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="pos-restaurant-system-automation-indonesia.html">Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking</a>
+      </h2>
+      <p class="card-desc">How we integrated offline POS thermal printers with cloud inventory databases, eliminating $2,400 monthly waste across 4 outlets.</p>
+      <div class="card-action">
+        <a href="pos-restaurant-system-automation-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Cloud Architecture · Performance</span>
+        <span class="card-date">2026-09-26 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="supabase-edge-functions-vs-aws-lambda-dashboards.html">Why We Chose Supabase Edge Functions Over AWS Lambda for Real-Time Dashboards</a>
+      </h2>
+      <p class="card-desc">A zero-cold-start architecture running on Deno at edge nodes close to Jakarta users, cutting API latency from 450ms to 42ms.</p>
+      <div class="card-action">
+        <a href="supabase-edge-functions-vs-aws-lambda-dashboards.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · IoT</span>
+        <span class="card-date">2026-09-25 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="hotel-laundry-tracking-automation-rfid-indonesia.html">Eliminating Hotel Linen Shrinkage with RFID and Python Automation</a>
+      </h2>
+      <p class="card-desc">How an 80-room resort in Ubud reduced missing towels and sheets by 91% using UHF RFID laundry tags and automatic weight validation.</p>
+      <div class="card-action">
+        <a href="hotel-laundry-tracking-automation-rfid-indonesia.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Web Scraping · Architecture</span>
+        <span class="card-date">2026-09-24 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="lp-se-government-procurement-scraper.html">Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines</a>
+      </h2>
+      <p class="card-desc">How we built a resilient pipeline parsing tender notices across 500+ regional LPSE portals without rate-limit lockouts.</p>
+      <div class="card-action">
+        <a href="lp-se-government-procurement-scraper.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · NLP Architecture</span>
+        <span class="card-date">2026-09-23 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-agents-customer-support-rag-indonesian-slang.html">Building RAG AI Support Agents That Actually Understand Indonesian Slang</a>
+      </h2>
+      <p class="card-desc">Off-the-shelf vector embeddings fail miserably on casual slang. Here is our custom preprocessing pipeline that solved it.</p>
+      <div class="card-action">
+        <a href="ai-agents-customer-support-rag-indonesian-slang.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Web Scraping · Reverse Engineering</span>
+        <span class="card-date">2026-09-22 · 11 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="tokopedia-shopee-price-monitoring-bot-resilience.html">Building Resilient Price Trackers for Indonesian Marketplaces in 2026</a>
+      </h2>
+      <p class="card-desc">Handling Cloudflare Turnstile, mobile API session rotation, and dynamic GraphQL token extraction without getting flagged or banned.</p>
+      <div class="card-action">
+        <a href="tokopedia-shopee-price-monitoring-bot-resilience.html" class="read-link">Read Architecture &#8594;</a>
+      </div>
+    </article>
   </div>
 </main>
 
 <footer class="site">
-  <p>&copy; 2026 Albertus Freddi. <a href="https://albertusfreddi.github.io/">Back to Homepage</a></p>
+  <p>&copy; 2026 Albertus Freddi. All rights reserved.</p>
+  <div class="links">
+    <a href="https://albertusfreddi.github.io/">Home</a>
+    <a href="https://albertusfreddi.github.io/blog/en/">All Articles</a>
+    <a href="https://albertusfreddi.github.io/sitemap.xml">Sitemap</a>
+  </div>
 </footer>
 </body>
 </html>

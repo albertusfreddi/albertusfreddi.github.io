@@ -3,13 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>技术洞见与系统架构博客 | Albertus Freddi</title>
-<meta name="description" content="关于系统架构、自动化工作流、印尼科技法规合规性以及业务流程优化的深度探讨。">
+<title>Blog &amp; Engineering Case Studies | Albertus Freddi</title>
+<meta name="description" content="In-depth technical case studies on automation pipelines, reverse-engineered APIs, resilient scraping, and distributed systems.">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/zh/">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/">
 <style>
-:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#2a2a2a;--card:#1a1a1a;color-scheme:dark}
+:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#222;--card:#141414;color-scheme:dark}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;padding:0}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 header.site{background:var(--card);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
@@ -17,22 +22,30 @@ header.site .logo{font:700 1.1rem/1 sans-serif;color:var(--cream);letter-spacing
 header.site nav{display:flex;gap:1.5rem;font-size:.85rem}
 header.site nav a{color:var(--muted)}
 header.site nav a:hover{color:var(--cream);text-decoration:none}
-.hero{background:linear-gradient(160deg,#1a1410 0%,#0e0e0e 60%);padding:4rem 2rem 3rem;border-bottom:1px solid var(--border)}
-.hero-inner{max-width:760px;margin:0 auto}
-.hero h1{font:700 2.8rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1rem}
-.hero p{font-size:1.1rem;color:var(--muted);max-width:600px}
-main{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
-.articles-list{display:flex;flex-direction:column;gap:2rem}
-.article-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:2rem;transition:border-color .2s}
-.article-card:hover{border-color:var(--accent)}
-.article-cat{font:600 .75rem/1 sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
-.article-card h2{font:700 1.5rem/1.3 Georgia,serif;margin-bottom:.75rem}
-.article-card h2 a{color:var(--cream)}
-.article-card h2 a:hover{color:var(--accent);text-decoration:none}
-.article-card p{color:#ccc8be;font-size:.95rem;margin-bottom:1.25rem;line-height:1.6}
-.article-meta{display:flex;gap:1.5rem;font-size:.85rem;color:var(--muted)}
-footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
-footer.site p{font-size:.9rem;color:var(--muted)}
+.hero{background:linear-gradient(160deg,#161412 0%,#0e0e0e 65%);padding:4.5rem 2rem 3rem;border-bottom:1px solid var(--border);text-align:center}
+.hero h1{font:700 2.8rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1rem;text-wrap:balance}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:620px;margin:0 auto 1.5rem}
+.lang-bar{font-size:.85rem;color:var(--muted)}
+.lang-bar a{color:var(--accent);margin:0 .25rem}
+.lang-bar a.active{color:var(--cream);font-weight:700;pointer-events:none}
+main{max-width:960px;margin:0 auto;padding:4rem 2rem 6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.article-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s,transform .2s}
+.article-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;margin-bottom:1rem}
+.card-cat{color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.card-date{color:var(--muted)}
+.card-title{font:700 1.25rem/1.3 Georgia,serif;color:var(--cream);margin-bottom:.75rem}
+.card-title a{color:var(--cream)}
+.card-title a:hover{color:var(--accent);text-decoration:none}
+.card-desc{font-size:.9rem;color:#aaa;line-height:1.5;margin-bottom:1.5rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-action{border-top:1px solid var(--border);padding-top:1rem}
+.read-link{font-size:.85rem;font-weight:600;color:var(--accent)}
+footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;font-size:.85rem;color:var(--muted)}
+footer.site .links{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem}
+footer.site .links a{color:var(--muted)}
+footer.site .links a:hover{color:var(--cream)}
+@media(max-width:640px){.hero h1{font-size:2rem}.grid{grid-template-columns:1fr}main{padding:2rem 1rem}}
 </style>
 </head>
 <body>
@@ -46,148 +59,441 @@ footer.site p{font-size:.9rem;color:var(--muted)}
 </header>
 
 <div class="hero">
-  <div class="hero-inner">
-    <h1>文章与案例研究</h1>
-    <p>关于系统架构、自动化工作流、印尼科技法规合规性以及业务流程优化的深度探讨。</p>
+  <h1>实战手记、系统架构与企业级生产系统</h1>
+  <p>打造坚固的数据管道、业务自动化架构与高性能后端应用。</p>
+  <div class="lang-bar">
+    <a href="../en/">EN</a> · <a href="../id/">ID</a> · <a class="active">中文</a> · <a href="../ja/">日本語</a> · <a href="../ko/">한국어</a>
   </div>
 </div>
 
 <main>
-  <div class="articles-list">
-    <div class="article-card">
-      <div class="article-cat">SEO Engineering · Content Systems</div>
-      <h2><a href="automated-seo-content-pipeline-without-spam.html">如何构建高权重技术SEO内容引擎并完全规避谷歌垃圾内容过滤机制</a></h2>
-      <p>为什么10篇深度技术研究文章的表现始终优于500篇浅层自动生成的页面。</p>
-      <div class="article-meta">
-        <span>2026-11-01</span>
-        <span>11 min read</span>
+  <div class="grid">
+    <article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-21 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">IoT · Automation</div>
-      <h2><a href="iot-energy-monitoring-hospitality-bali-jakarta.html">面向巴厘岛与雅加达度假村的IoT智能空调与电力节能自动化</a></h2>
-      <p>结合人体感应传感器、Zigbee网关和动态温控曲线调度，将酒店电费支出削减28%。</p>
-      <div class="article-meta">
-        <span>2026-10-25</span>
-        <span>10 min read</span>
+      <h2 class="card-title">
+        <a href="anti-scraping-bypass-ethical.html">绕过反抓取措施：道德方法</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：绕过反抓取措施：道德方法的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="anti-scraping-bypass-ethical.html" class="read-link">阅读架构详情 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Fintech · Security</div>
-      <h2><a href="real-time-fraud-detection-fintech-indonesia.html">为印尼金融科技企业设计低于50毫秒的支付异常与欺诈检测系统</a></h2>
-      <p>利用Redis图数据库与规则引擎，实时拦截账户劫持、QRIS篡改及高频资金盗刷行为。</p>
-      <div class="article-meta">
-        <span>2026-10-19</span>
-        <span>12 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-20 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Enterprise Automation · LegalTech</div>
-      <h2><a href="automated-contract-document-generator-python.html">使用Python实现B2B合同自动化生成与电子印章签名流水线</a></h2>
-      <p>根据CRM交易数据自动生成定制化的保密协议与供应商合同，并自动推送到电子签名系统。</p>
-      <div class="article-meta">
-        <span>2026-10-17</span>
-        <span>9 min read</span>
+      <h2 class="card-title">
+        <a href="selenium-playwright-indonesia-websites.html">Selenium与Playwright：印尼网站比较</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：Selenium与Playwright：印尼网站比较的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="selenium-playwright-indonesia-websites.html" class="read-link">阅读架构详情 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Hospitality Automation · Case Study</div>
-      <h2><a href="how-i-cut-hotel-checkin-time-60-percent.html">我如何通过Python自动化将酒店入住办理时间缩短60%</a></h2>
-      <p>真实的实战案例：Python自动化系统如何在不更换前台员工或采购昂贵企业套件的情况下，将酒店入住办理等待时间从12分钟缩短至5分钟以内。</p>
-      <div class="article-meta">
-        <span>2026-10-14</span>
-        <span>8 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-19 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Database · Performance</div>
-      <h2><a href="postgresql-performance-tuning-high-concurrency-jakarta.html">应对千万级数据量与秒杀并发压力的PostgreSQL深度优化实践</a></h2>
-      <p>通过表分区策略和咨询锁（Advisory Locks），在流量高峰期将数据库CPU占用率稳定在15%以下。</p>
-      <div class="article-meta">
-        <span>2026-10-10</span>
-        <span>13 min read</span>
+      <h2 class="card-title">
+        <a href="ecommerce-price-monitoring-indonesia.html">印尼电商价格监控：最佳实践</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼电商价格监控：最佳实践的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="ecommerce-price-monitoring-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Law & Compliance</div>
-      <h2><a href="web-scraping-legal-indonesia-2026.html">在印尼进行网页抓取合法吗？开发者合规指南（2026）</a></h2>
-      <p>印尼网页抓取合法性的实用指南：解读印尼个人数据保护法（UU PDP）与电子信息交易法（UU ITE），明确安全边界及潜在风险。</p>
-      <div class="article-meta">
-        <span>2026-10-07</span>
-        <span>10 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-18 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">AI Agents · NLP</div>
-      <h2><a href="ai-agents-customer-support-rag-indonesian-slang.html">构建真正理解印尼日常俚语与缩写口语的RAG AI客户服务代理</a></h2>
-      <p>通用Embedding模型在遇到印尼口语缩写时经常失效。这是我们设计的自定义预处理转换通道。</p>
-      <div class="article-meta">
-        <span>2026-10-05</span>
-        <span>11 min read</span>
+      <h2 class="card-title">
+        <a href="scraping-public-data-indonesia.html">印尼公共数据抓取：可为与不可为</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼公共数据抓取：可为与不可为的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="scraping-public-data-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Hospitality Automation · POS</div>
-      <h2><a href="pos-restaurant-system-automation-indonesia.html">印尼多门店餐厅厨房订单与库存追踪自动化实践</a></h2>
-      <p>我们将离线POS热敏打印机与云端库存数据库打通，在4家门店每月减少2,400美元的食材损耗。</p>
-      <div class="article-meta">
-        <span>2026-10-02</span>
-        <span>10 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-17 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">AI Agents · Customer Service Automation</div>
-      <h2><a href="why-whatsapp-bots-fail-indonesia.html">为什么WhatsApp机器人在印尼企业中常以失败告终（以及应对方案）</a></h2>
-      <p>印尼企业部署的大多数WhatsApp机器人在上线6个月内陷入停滞。本文剖析从API封禁政策到文化沟通习惯等根本原因，并给出可行架构。</p>
-      <div class="article-meta">
-        <span>2026-09-30</span>
-        <span>9 min read</span>
+      <h2 class="card-title">
+        <a href="python-scraping-respect-robots-txt.html">Python网络抓取：遵守robots.txt和速率限制</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：Python网络抓取：遵守robots.txt和速率限制的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="python-scraping-respect-robots-txt.html" class="read-link">阅读架构详情 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Cloud Architecture · Performance</div>
-      <h2><a href="supabase-edge-functions-vs-aws-lambda-dashboards.html">为什么我们为实时仪表盘选择Supabase Edge Functions而非AWS Lambda</a></h2>
-      <p>基于Deno的边缘节点零冷启动架构，极大缩短雅加达用户的延迟，将API响应时间从450毫秒降低到42毫秒。</p>
-      <div class="article-meta">
-        <span>2026-09-27</span>
-        <span>9 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">web-scraping</span>
+        <span class="card-date">2026-10-16 · 10 min read</span>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Architecture</div>
-      <h2><a href="lp-se-government-procurement-scraper.html">抓取印尼政府采购数据（LPSE）：系统架构与数据管道</a></h2>
-      <p>我们如何构建高韧性数据管道，解析500多个区域LPSE门户的招标公告，同时避免被封禁。</p>
-      <div class="article-meta">
-        <span>2026-09-24</span>
-        <span>12 min read</span>
+      <h2 class="card-title">
+        <a href="web-scraping-legal-indonesia-2026.html">印尼网络抓取合法吗？2026年合规指南</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼网络抓取合法吗？2026年合规指南的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="web-scraping-legal-indonesia-2026.html" class="read-link">阅读架构详情 &#8594;</a>
       </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-cat">Web Scraping · Reverse Engineering</div>
-      <h2><a href="tokopedia-shopee-price-monitoring-bot-resilience.html">构建适应印尼电商平台的弹性价格监控系统（2026）</a></h2>
-      <p>如何处理Cloudflare Turnstile防护、移动端API会话轮换及动态GraphQL令牌提取。</p>
-      <div class="article-meta">
-        <span>2026-09-21</span>
-        <span>11 min read</span>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-15 · 10 min read</span>
       </div>
-    </div>
+      <h2 class="card-title">
+        <a href="ai-recruitment-screening-indonesia.html">印尼公司AI招聘筛选</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼公司AI招聘筛选的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="ai-recruitment-screening-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-14 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="voice-ai-indonesian-language.html">印尼语语音AI：挑战与解决方案</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼语语音AI：挑战与解决方案的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="voice-ai-indonesian-language.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · Case Study</span>
+        <span class="card-date">2026-10-14 · 8 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="how-i-cut-hotel-checkin-time-60-percent.html">我如何通过Python自动化将酒店入住办理时间缩短60%</a>
+      </h2>
+      <p class="card-desc">真实的实战案例：Python自动化系统如何在不更换前台员工或采购昂贵企业套件的情况下，将酒店入住办理等待时间从12分钟缩短至5分钟以内。</p>
+      <div class="card-action">
+        <a href="how-i-cut-hotel-checkin-time-60-percent.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-13 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="inventory-management-automation-indonesia.html">印尼零售商库存管理自动化</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼零售商库存管理自动化的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="inventory-management-automation-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-12 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="email-automation-jakarta-businesses.html">雅加达企业电子邮件自动化策略</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：雅加达企业电子邮件自动化策略的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="email-automation-jakarta-businesses.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-11 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="cost-roi-ai-automation-indonesia.html">投资回报计算器：印尼AI自动化项目</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：投资回报计算器：印尼AI自动化项目的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="cost-roi-ai-automation-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-10 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="document-processing-automation-indonesia.html">印尼企业文档处理自动化</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼企业文档处理自动化的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="document-processing-automation-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-09 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-agents-vs-rpa-indonesia.html">AI代理与传统RPA：印尼适用方案</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：AI代理与传统RPA：印尼适用方案的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="ai-agents-vs-rpa-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-08 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="python-automation-scripts-jakarta-startups.html">雅加达初创公司必备的Python自动化脚本</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：雅加达初创公司必备的Python自动化脚本的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="python-automation-scripts-jakarta-startups.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-07 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="chatbot-whatsapp-business-indonesia.html">为印尼企业构建WhatsApp聊天机器人</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：为印尼企业构建WhatsApp聊天机器人的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="chatbot-whatsapp-business-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">ai-automation</span>
+        <span class="card-date">2026-10-06 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-automation-indonesia-2026-trends.html">印尼人工智能自动化：2026年市场趋势</a>
+      </h2>
+      <p class="card-desc">印尼生产环境实战：印尼人工智能自动化：2026年市场趋势的系统架构、关键性能指标与落地代码详解。</p>
+      <div class="card-action">
+        <a href="ai-automation-indonesia-2026-trends.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Cloud Architecture · Microservices</span>
+        <span class="card-date">2026-10-05 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="fastapi-microservices-docker-swarm-indonesia.html">在印尼本地云主机上使用Docker Swarm部署轻量级FastAPI微服务</a>
+      </h2>
+      <p class="card-desc">为什么Kubernetes对大多数初创团队而言过于繁重：在月费40美元的本地VPS集群上优雅管理8个微服务。</p>
+      <div class="card-action">
+        <a href="fastapi-microservices-docker-swarm-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Enterprise Automation · DevOps</span>
+        <span class="card-date">2026-10-04 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="telegram-ops-alert-bot-serverless-python.html">基于Serverless Python构建高可用Telegram运维报警机器人</a>
+      </h2>
+      <p class="card-desc">用基于Serverless的异步故障报警与交互式升级按钮方案，替代昂贵的企业级PagerDuty订阅。</p>
+      <div class="card-action">
+        <a href="telegram-ops-alert-bot-serverless-python.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · Retail Automation</span>
+        <span class="card-date">2026-10-03 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="whatsapp-order-management-pipeline-python.html">使用Python与Webhook构建自动化WhatsApp订单接入数据管道</a>
+      </h2>
+      <p class="card-desc">如何通过WhatsApp Business API捕获、验证并实时将多分支机构客户订单写入ERP系统。</p>
+      <div class="card-action">
+        <a href="whatsapp-order-management-pipeline-python.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">SEO Engineering · Content Systems</span>
+        <span class="card-date">2026-10-02 · 11 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="automated-seo-content-pipeline-without-spam.html">如何构建高权重技术SEO内容引擎并完全规避谷歌垃圾内容过滤机制</a>
+      </h2>
+      <p class="card-desc">为什么10篇深度技术研究文章的表现始终优于500篇浅层自动生成的页面。</p>
+      <div class="card-action">
+        <a href="automated-seo-content-pipeline-without-spam.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">IoT · Automation</span>
+        <span class="card-date">2026-10-01 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="iot-energy-monitoring-hospitality-bali-jakarta.html">面向巴厘岛与雅加达度假村的IoT智能空调与电力节能自动化</a>
+      </h2>
+      <p class="card-desc">结合人体感应传感器、Zigbee网关和动态温控曲线调度，将酒店电费支出削减28%。</p>
+      <div class="card-action">
+        <a href="iot-energy-monitoring-hospitality-bali-jakarta.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Fintech · Security</span>
+        <span class="card-date">2026-09-30 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="real-time-fraud-detection-fintech-indonesia.html">为印尼金融科技企业设计低于50毫秒的支付异常与欺诈检测系统</a>
+      </h2>
+      <p class="card-desc">利用Redis图数据库与规则引擎，实时拦截账户劫持、QRIS篡改及高频资金盗刷行为。</p>
+      <div class="card-action">
+        <a href="real-time-fraud-detection-fintech-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · Customer Service Automation</span>
+        <span class="card-date">2026-09-30 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="why-whatsapp-bots-fail-indonesia.html">为什么WhatsApp机器人在印尼企业中常以失败告终（以及应对方案）</a>
+      </h2>
+      <p class="card-desc">印尼企业部署的大多数WhatsApp机器人在上线6个月内陷入停滞。本文剖析从API封禁政策到文化沟通习惯等根本原因，并给出可行架构。</p>
+      <div class="card-action">
+        <a href="why-whatsapp-bots-fail-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Enterprise Automation · LegalTech</span>
+        <span class="card-date">2026-09-29 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="automated-contract-document-generator-python.html">使用Python实现B2B合同自动化生成与电子印章签名流水线</a>
+      </h2>
+      <p class="card-desc">根据CRM交易数据自动生成定制化的保密协议与供应商合同，并自动推送到电子签名系统。</p>
+      <div class="card-action">
+        <a href="automated-contract-document-generator-python.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Database · Performance</span>
+        <span class="card-date">2026-09-28 · 13 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="postgresql-performance-tuning-high-concurrency-jakarta.html">应对千万级数据量与秒杀并发压力的PostgreSQL深度优化实践</a>
+      </h2>
+      <p class="card-desc">通过表分区策略和咨询锁（Advisory Locks），在流量高峰期将数据库CPU占用率稳定在15%以下。</p>
+      <div class="card-action">
+        <a href="postgresql-performance-tuning-high-concurrency-jakarta.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · POS</span>
+        <span class="card-date">2026-09-27 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="pos-restaurant-system-automation-indonesia.html">印尼多门店餐厅厨房订单与库存追踪自动化实践</a>
+      </h2>
+      <p class="card-desc">我们将离线POS热敏打印机与云端库存数据库打通，在4家门店每月减少2,400美元的食材损耗。</p>
+      <div class="card-action">
+        <a href="pos-restaurant-system-automation-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Cloud Architecture · Performance</span>
+        <span class="card-date">2026-09-26 · 9 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="supabase-edge-functions-vs-aws-lambda-dashboards.html">为什么我们为实时仪表盘选择Supabase Edge Functions而非AWS Lambda</a>
+      </h2>
+      <p class="card-desc">基于Deno的边缘节点零冷启动架构，极大缩短雅加达用户的延迟，将API响应时间从450毫秒降低到42毫秒。</p>
+      <div class="card-action">
+        <a href="supabase-edge-functions-vs-aws-lambda-dashboards.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Hospitality Automation · IoT</span>
+        <span class="card-date">2026-09-25 · 10 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="hotel-laundry-tracking-automation-rfid-indonesia.html">利用RFID与Python自动化消除酒店布草流失损耗</a>
+      </h2>
+      <p class="card-desc">乌布一家拥有80间客房的度假村如何通过UHF超高频洗涤标签与自动称重，将毛巾和被单丢失率降低91%。</p>
+      <div class="card-action">
+        <a href="hotel-laundry-tracking-automation-rfid-indonesia.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Web Scraping · Architecture</span>
+        <span class="card-date">2026-09-24 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="lp-se-government-procurement-scraper.html">抓取印尼政府采购数据（LPSE）：系统架构与数据管道</a>
+      </h2>
+      <p class="card-desc">我们如何构建高韧性数据管道，解析500多个区域LPSE门户的招标公告，同时避免被封禁。</p>
+      <div class="card-action">
+        <a href="lp-se-government-procurement-scraper.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">AI Agents · NLP Architecture</span>
+        <span class="card-date">2026-09-23 · 12 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="ai-agents-customer-support-rag-indonesian-slang.html">构建真正理解印尼日常俚语与缩写口语的RAG AI客户服务代理</a>
+      </h2>
+      <p class="card-desc">通用Embedding模型在遇到印尼口语缩写时经常失效。这是我们设计的自定义预处理转换通道。</p>
+      <div class="card-action">
+        <a href="ai-agents-customer-support-rag-indonesian-slang.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
+<article class="article-card">
+      <div class="card-meta">
+        <span class="card-cat">Web Scraping · Reverse Engineering</span>
+        <span class="card-date">2026-09-22 · 11 min read</span>
+      </div>
+      <h2 class="card-title">
+        <a href="tokopedia-shopee-price-monitoring-bot-resilience.html">构建适应印尼电商平台的弹性价格监控系统（2026）</a>
+      </h2>
+      <p class="card-desc">如何处理Cloudflare Turnstile防护、移动端API会话轮换及动态GraphQL令牌提取。</p>
+      <div class="card-action">
+        <a href="tokopedia-shopee-price-monitoring-bot-resilience.html" class="read-link">阅读架构详情 &#8594;</a>
+      </div>
+    </article>
   </div>
 </main>
 
 <footer class="site">
-  <p>&copy; 2026 Albertus Freddi. <a href="https://albertusfreddi.github.io/">Back to Homepage</a></p>
+  <p>&copy; 2026 Albertus Freddi. All rights reserved.</p>
+  <div class="links">
+    <a href="https://albertusfreddi.github.io/">首页</a>
+    <a href="https://albertusfreddi.github.io/blog/zh/">所有文章</a>
+    <a href="https://albertusfreddi.github.io/sitemap.xml">网站地图</a>
+  </div>
 </footer>
 </body>
 </html>

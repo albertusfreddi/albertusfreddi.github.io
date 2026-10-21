@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "Automated daily publication pipeline active."
           echo "Date: $(date -u +'%Y-%m-%d')"
-          # Sync static outputs if scheduled dates match
+          node publish-scheduled-daily.js
           git config --global user.name "Albertus Freddi Publisher"
           git config --global user.email "albertusfreddi@gmail.com"
           if [[ -n $(git status -s) ]]; then
