@@ -3,7 +3,7 @@
   <url>
     <loc>https://albertusfreddi.github.io/</loc>
     <lastmod>2026-10-21</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
@@ -35,5 +35,129 @@
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <!-- Blog Indexes -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Case Study: Hotel Check-in -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/how-i-cut-hotel-checkin-time-60-percent.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/how-i-cut-hotel-checkin-time-60-percent.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/how-i-cut-hotel-checkin-time-60-percent.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/how-i-cut-hotel-checkin-time-60-percent.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Guide: Web Scraping Legal -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/web-scraping-legal-indonesia-2026.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/web-scraping-legal-indonesia-2026.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/web-scraping-legal-indonesia-2026.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/web-scraping-legal-indonesia-2026.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/web-scraping-legal-indonesia-2026.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Analysis: WhatsApp Bots -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/why-whatsapp-bots-fail-indonesia.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/why-whatsapp-bots-fail-indonesia.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/why-whatsapp-bots-fail-indonesia.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/why-whatsapp-bots-fail-indonesia.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/why-whatsapp-bots-fail-indonesia.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
