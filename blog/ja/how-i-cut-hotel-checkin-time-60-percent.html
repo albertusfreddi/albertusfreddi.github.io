@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python自動化でホテルのチェックイン時間を60％短縮した実践例 — Albertus Freddi</title>
+<title>Python自動化でホテルのチェックイン時間を60％短縮した実践例 | Albertus Freddi</title>
 <meta name="description" content="A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff.">
 <meta name="keywords" content="hotel automation Indonesia, Python automation Jakarta, hospitality technology, check-in automation, hotel operations">
 <meta name="author" content="Albertus Freddi">
@@ -108,7 +108,7 @@ footer.site .links a:hover{color:var(--cream)}
   </div>
 
   <article>
-    <p>Last year I got a call from the operations manager of a 4-star hotel in South Jakarta. Peak season was approaching — the kind where lobby queues snake out to the parking lot — and their front desk team was drowning. The average check-in was taking <strong>12 minutes</strong>. For a 180-room property, that math doesn't work.</p>
+    <p>Last year I got a call from the operations manager of a 4-star hotel in South Jakarta. Peak season was approaching, the kind where lobby queues snake out to the parking lot, and their front desk team was drowning. The average check-in was taking <strong>12 minutes</strong>. For a 180-room property, that math doesn't work.</p>
 
     <p>They had tried a cloud PMS before. It helped with reservations but did nothing for the physical bottleneck: staff still had to manually verify bookings, cross-check OTA data, re-enter guest IDs, and print room keys one at a time. Three systems, zero integration.</p>
 
@@ -116,7 +116,7 @@ footer.site .links a:hover{color:var(--cream)}
       <p>"We're not looking for a full replacement. We just want the staff to stop doing stupid repetitive things before a guest arrives."</p>
     </div>
 
-    <p>That framing — <em>remove the stupid repetitive things</em> — is exactly the right way to scope an automation project. I want to walk through how we got there.</p>
+    <p>That framing, <em>remove the stupid repetitive things</em>, is exactly the right way to scope an automation project. I want to walk through how we got there.</p>
 
     <h2>The Real Problem Was Upstream</h2>
 
@@ -125,23 +125,23 @@ footer.site .links a:hover{color:var(--cream)}
     <p>When a guest books through Booking.com, Agoda, or Traveloka, that booking lands in a channel manager, which syncs (imperfectly) to the PMS, which the staff checks manually when the guest arrives. At this hotel, that chain had three known failure points:</p>
 
     <ul>
-      <li><strong>OTA rate discrepancy</strong> — Booking.com prices sometimes didn't match what the PMS showed, causing staff to call reservations mid-check-in</li>
-      <li><strong>Incomplete guest data</strong> — OTA bookings rarely included ID numbers, which Indonesian law requires for hotel registration</li>
-      <li><strong>Manual key encoding</strong> — the key card system was standalone; staff had to encode each card separately after room assignment</li>
+      <li><strong>OTA rate discrepancy</strong>, Booking.com prices sometimes didn't match what the PMS showed, causing staff to call reservations mid-check-in</li>
+      <li><strong>Incomplete guest data</strong>, OTA bookings rarely included ID numbers, which Indonesian law requires for hotel registration</li>
+      <li><strong>Manual key encoding</strong>, the key card system was standalone; staff had to encode each card separately after room assignment</li>
     </ul>
 
-    <p>None of these are technology problems in the exciting sense. They're data pipeline failures. The fix wasn't AI — it was plumbing.</p>
+    <p>None of these are technology problems in the exciting sense. They're data pipeline failures. The fix wasn't AI, it was plumbing.</p>
 
     <h2>What We Built</h2>
 
     <h3>1. Pre-arrival Data Aggregation</h3>
 
-    <p>We built a Python service that runs nightly and pulls tomorrow's arrivals from every booking channel via API (Booking.com, Agoda, direct website). It normalizes all fields into a single schema and flags missing data — specifically, any reservation where guest ID or phone number is blank.</p>
+    <p>We built a Python service that runs nightly and pulls tomorrow's arrivals from every booking channel via API (Booking.com, Agoda, direct website). It normalizes all fields into a single schema and flags missing data, specifically, any reservation where guest ID or phone number is blank.</p>
 
     <p>For flagged reservations, an automated WhatsApp message goes out the night before asking guests to complete their registration. By the time they walk in, 70% of incomplete records are already resolved.</p>
 
     <div class="code-block">
-      <div class="code-header">Python — nightly pre-arrival sync (simplified)</div>
+      <div class="code-header">Python, nightly pre-arrival sync (simplified)</div>
       <pre>
 def sync_arrivals(date: str) -> list[Reservation]:
     sources = [
@@ -164,11 +164,11 @@ def sync_arrivals(date: str) -> list[Reservation]:
 
     <p>Room assignment was previously done at check-in time, when staff had to balance room type, floor preference, and availability simultaneously under pressure. We moved this to a morning housekeeping sync: a script reads room status from the PMS (clean/dirty/inspected) and runs a simple assignment algorithm two hours before check-in time begins.</p>
 
-    <p>The algorithm isn't sophisticated — it's basically sorted priority queues — but it works for a property this size. The important thing is that by 1 PM, every arriving guest already has a pre-assigned room. Staff can override it, but rarely need to.</p>
+    <p>The algorithm isn't sophisticated, it's basically sorted priority queues, but it works for a property this size. The important thing is that by 1 PM, every arriving guest already has a pre-assigned room. Staff can override it, but rarely need to.</p>
 
     <h3>3. Key Card Encoding Queue</h3>
 
-    <p>The key card system had a serial port interface — old hardware, but it had documentation. We wrote a driver in Python that reads the pre-assigned room list and pre-encodes keys during the quiet period before check-in. Keys sit labeled in a tray. When a guest arrives and is verified, staff just hand over the labeled envelope.</p>
+    <p>The key card system had a serial port interface, old hardware, but it had documentation. We wrote a driver in Python that reads the pre-assigned room list and pre-encodes keys during the quiet period before check-in. Keys sit labeled in a tray. When a guest arrives and is verified, staff just hand over the labeled envelope.</p>
 
     <p>This step alone cut 3–4 minutes per check-in.</p>
 
@@ -189,25 +189,25 @@ def sync_arrivals(date: str) -> list[Reservation]:
       </div>
     </div>
 
-    <p>The front desk team was skeptical at first — people usually are when you automate something they've been doing manually for years. After the first peak weekend, the operations manager sent me a WhatsApp photo of an empty lobby queue at 3 PM on a Saturday. That was enough.</p>
+    <p>The front desk team was skeptical at first, people usually are when you automate something they've been doing manually for years. After the first peak weekend, the operations manager sent me a WhatsApp photo of an empty lobby queue at 3 PM on a Saturday. That was enough.</p>
 
     <h2>What Made This Work (and What Would Have Killed It)</h2>
 
     <h3>What worked</h3>
 
     <ul>
-      <li><strong>Narrow scope</strong> — We didn't try to replace the PMS or the channel manager. We filled the gaps between them.</li>
-      <li><strong>Data first</strong> — The pre-arrival WhatsApp message was the highest-impact thing we did, and it cost almost nothing to build.</li>
-      <li><strong>Staff buy-in</strong> — We demoed the system to front desk staff before go-live, incorporated their feedback, and made sure overrides were always possible.</li>
-      <li><strong>Gradual rollout</strong> — We ran the automation in "shadow mode" for two weeks (it ran but didn't actually send messages or encode keys) to catch edge cases.</li>
+      <li><strong>Narrow scope</strong>, We didn't try to replace the PMS or the channel manager. We filled the gaps between them.</li>
+      <li><strong>Data first</strong>, The pre-arrival WhatsApp message was the highest-impact thing we did, and it cost almost nothing to build.</li>
+      <li><strong>Staff buy-in</strong>, We demoed the system to front desk staff before go-live, incorporated their feedback, and made sure overrides were always possible.</li>
+      <li><strong>Gradual rollout</strong>, We ran the automation in "shadow mode" for two weeks (it ran but didn't actually send messages or encode keys) to catch edge cases.</li>
     </ul>
 
     <h3>What almost killed it</h3>
 
     <ul>
-      <li><strong>API rate limits</strong> — Booking.com's API has strict rate limits. Our first sync script hit them on day two. We rewrote it with exponential backoff and off-peak scheduling.</li>
-      <li><strong>Edge cases in OTA data</strong> — Some OTAs send check-in dates in UTC, others in local time. This caused a few guests to appear on the wrong day's list until we standardized timezone handling.</li>
-      <li><strong>Serial port reliability</strong> — The key card encoder occasionally dropped the connection. We added a health check and automatic reconnect; now it's been stable for two months.</li>
+      <li><strong>API rate limits</strong>, Booking.com's API has strict rate limits. Our first sync script hit them on day two. We rewrote it with exponential backoff and off-peak scheduling.</li>
+      <li><strong>Edge cases in OTA data</strong>, Some OTAs send check-in dates in UTC, others in local time. This caused a few guests to appear on the wrong day's list until we standardized timezone handling.</li>
+      <li><strong>Serial port reliability</strong>, The key card encoder occasionally dropped the connection. We added a health check and automatic reconnect; now it's been stable for two months.</li>
     </ul>
 
     <h2>The Bigger Lesson</h2>
@@ -216,20 +216,20 @@ def sync_arrivals(date: str) -> list[Reservation]:
 
     <p>You don't need enterprise software to fix this. You need someone who understands both the business process and how to write code that talks to multiple systems at once.</p>
 
-    <p>If your hotel, resort, or F&B operation has a process that involves staff doing the same thing repeatedly — copying from one screen to another, re-entering data, waiting for a system to sync — there's almost certainly a Python script that can take that off their plate.</p>
+    <p>If your hotel, resort, or F&B operation has a process that involves staff doing the same thing repeatedly, copying from one screen to another, re-entering data, waiting for a system to sync, there's almost certainly a Python script that can take that off their plate.</p>
 
     <div class="callout">
       <p>This project took about 6 weeks from first meeting to stable production. Total cost was a fraction of any off-the-shelf enterprise solution, and the property now owns the code outright.</p>
     </div>
 
-    <p>Questions? I'm available for new projects — <a href="https://albertusfreddi.github.io/#contact">reach out here</a> or find me on <a href="https://www.upwork.com/freelancers/~01e18adca5719ffd57" target="_blank" rel="noopener">Upwork</a>.</p>
+    <p>Questions? I'm available for new projects, <a href="https://albertusfreddi.github.io/#contact">reach out here</a> or find me on <a href="https://www.upwork.com/freelancers/~01e18adca5719ffd57" target="_blank" rel="noopener">Upwork</a>.</p>
   </article>
 </main>
 
 <footer class="site">
   <div class="cta">同様の課題をお持ちですか？</div>
   <p>I work with hotels, resorts, and F&B operations across Indonesia and Southeast Asia.</p>
-  <a class="btn" href="https://albertusfreddi.github.io/#contact">相談する</a>
+  <a class="btn" href="https://albertusfreddi.github.io/#contact">協業のご相談</a>
   <div class="links">
     <a href="https://albertusfreddi.github.io/">Home</a>
     <a href="https://albertusfreddi.github.io/blog/ja/">More articles</a>
