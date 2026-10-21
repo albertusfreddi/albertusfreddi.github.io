@@ -5,110 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Python自動化でホテルのチェックイン時間を60％短縮した実践例 | Albertus Freddi</title>
 <meta name="description" content="A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff.">
-<meta name="keywords" content="hotel automation Indonesia, Python automation Jakarta, hospitality technology, check-in automation, hotel operations">
 <meta name="author" content="Albertus Freddi">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">
 <meta property="og:title" content="Python自動化でホテルのチェックイン時間を60％短縮した実践例">
-<meta property="og:description" content="A real behind-the-scenes case study from Jakarta: Python automation reduced check-in queue time from 12 minutes to under 5.">
+<meta property="og:description" content="A real behind-the-scenes case study: how a Python automation system reduced hotel check-in queue time from 12 minutes to under 5, without replacing front desk staff.">
 <meta property="og:url" content="https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-10-14T09:00:00+07:00">
 <meta property="article:author" content="Albertus Freddi">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/how-i-cut-hotel-checkin-time-60-percent.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/how-i-cut-hotel-checkin-time-60-percent.html">
 <link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/how-i-cut-hotel-checkin-time-60-percent.html">
 <link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html">
 <link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/how-i-cut-hotel-checkin-time-60-percent.html">
 <style>
-:root{--bg:#0e0e0e;--fg:#e8e6e0;--cream:#f5f0e8;--accent:#c8a96e;--muted:#888;--border:#2a2a2a;--card:#1a1a1a;color-scheme:dark}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font:400 17px/1.75 'Georgia',serif;padding:0}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-header.site{background:var(--card);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
-header.site .logo{font:700 1.1rem/1 sans-serif;color:var(--cream);letter-spacing:.05em}
-header.site nav{display:flex;gap:1.5rem;font-size:.85rem;font-family:sans-serif}
-header.site nav a{color:var(--muted)}
-header.site nav a:hover{color:var(--cream);text-decoration:none}
-.hero{background:linear-gradient(160deg,#1a1410 0%,#0e0e0e 60%);padding:4rem 2rem 3rem;border-bottom:1px solid var(--border)}
-.hero-inner{max-width:720px;margin:0 auto}
-.category{font:600 .75rem/1 sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
-.hero h1{font:700 2.6rem/1.15 Georgia,serif;color:var(--cream);margin-bottom:1.25rem;text-wrap:balance}
-.hero .meta{font:400 .9rem/1 sans-serif;color:var(--muted);display:flex;gap:1.5rem;flex-wrap:wrap}
-.hero .meta span{display:flex;align-items:center;gap:.35rem}
-main{max-width:720px;margin:0 auto;padding:3rem 2rem 5rem}
-.lang-switch{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:3rem;padding:.75rem 1rem;background:var(--card);border-radius:6px;font:500 .8rem/1 sans-serif}
-.lang-switch span{color:var(--muted)}
-.lang-switch a{color:var(--accent)}
-.lang-switch a:hover{text-decoration:none;color:var(--cream)}
-.lang-switch .active{color:var(--cream);pointer-events:none}
-article h2{font:700 1.6rem/1.25 Georgia,serif;color:var(--cream);margin:2.5rem 0 1rem}
-article h3{font:600 1.15rem/1.3 sans-serif;color:var(--accent);margin:2rem 0 .75rem;letter-spacing:.02em}
-article p{margin-bottom:1.4rem;color:#ccc8be}
-article ul,article ol{margin:0 0 1.4rem 1.25rem;color:#ccc8be}
-article li{margin-bottom:.6rem}
-article strong{color:var(--cream);font-weight:600}
-article em{color:var(--accent);font-style:italic}
-article code{background:#1e1e1e;border:1px solid var(--border);padding:.15em .4em;border-radius:3px;font:400 .85em monospace;color:#c8b89a}
-.callout{background:var(--card);border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 6px 6px 0}
-.callout p{margin:0;color:var(--cream);font-style:italic}
-.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
-.metric{background:var(--card);border:1px solid var(--border);padding:1.25rem;border-radius:8px;text-align:center}
-.metric .num{font:700 2rem/1 sans-serif;color:var(--accent);display:block;margin-bottom:.35rem}
-.metric .label{font:400 .8rem/1.2 sans-serif;color:var(--muted)}
-.code-block{background:#111;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:2rem 0}
-.code-block .code-header{background:#1a1a1a;padding:.6rem 1rem;font:.75rem/1 monospace;color:var(--muted);border-bottom:1px solid var(--border)}
-.code-block pre{padding:1.25rem;overflow-x:auto;font:.85rem/1.6 monospace;color:#c8b89a}
-.timeline{margin:2rem 0}
-.timeline-item{display:flex;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--border)}
-.timeline-item:last-child{border-bottom:none}
-.timeline-dot{width:2.5rem;height:2.5rem;background:var(--card);border:2px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font:.75rem sans-serif;color:var(--accent);flex-shrink:0;margin-top:.1rem}
-.timeline-content h4{font:600 1rem/1.2 sans-serif;color:var(--cream);margin-bottom:.4rem}
-.timeline-content p{font-size:.9rem;color:var(--muted);margin:0}
-footer.site{background:var(--card);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;font-family:sans-serif}
-footer.site .cta{font:700 1.1rem/1 sans-serif;color:var(--cream);margin-bottom:.75rem}
-footer.site p{font-size:.9rem;color:var(--muted);margin-bottom:1.25rem}
-footer.site .btn{display:inline-block;background:var(--accent);color:#0e0e0e;padding:.7rem 1.75rem;border-radius:4px;font:600 .9rem/1 sans-serif;letter-spacing:.03em}
-footer.site .btn:hover{text-decoration:none;opacity:.9}
-footer.site .links{margin-top:2rem;font-size:.8rem;color:var(--muted);display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
-footer.site .links a{color:var(--muted)}
-footer.site .links a:hover{color:var(--cream)}
-@media(max-width:640px){.hero h1{font-size:1.9rem}.metrics-grid{grid-template-columns:1fr 1fr}.hero{padding:2.5rem 1rem 2rem}main{padding:2rem 1rem 4rem}}
+:root { --bg: #0a0a0a; --fg: #e8e8e8; --accent: #D1161A; --border: #2a2a2a; --code-bg: #141414; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+header { background: var(--bg); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 10; }
+nav { display: flex; justify-content: space-between; align-items: center; max-width: 960px; margin: 0 auto; }
+nav a { color: var(--fg); text-decoration: none; margin-left: 1.5rem; }
+nav a:hover { color: var(--accent); }
+.lang-switcher { display: flex; gap: 0.5rem; font-size: 0.9rem; }
+.lang-switcher a { padding: 0.25rem 0.5rem; border: 1px solid var(--border); border-radius: 4px; margin-left: 0; }
+.lang-switcher a.active { background: var(--accent); border-color: var(--accent); }
+main { max-width: 760px; margin: 2rem auto; padding: 0 1.5rem; }
+h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.meta { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+article h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+article p { margin: 1rem 0; }
+article a { color: var(--accent); }
+.callout { background: var(--code-bg); border-left: 3px solid var(--accent); padding: 1rem; margin: 1.5rem 0; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.metric { background: var(--code-bg); padding: 1rem; border: 1px solid var(--border); border-radius: 6px; }
+.metric .num { display: block; font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+.metric .label { font-size: 0.85rem; color: #888; }
+.code-block { margin: 1.5rem 0; }
+.code-header { background: var(--border); padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 600; border-radius: 6px 6px 0 0; }
+pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 0 0 6px 6px; padding: 1rem; overflow-x: auto; }
+code { font-family: "Consolas", "Monaco", monospace; font-size: 0.9rem; color: #d4d4d4; }
+.diagram-container { margin: 1.5rem 0; }
+footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; color: #888; font-size: 0.9rem; margin-top: 4rem; }
+@media (max-width: 640px) { h1 { font-size: 1.5rem; } }
 </style>
 </head>
 <body>
-<header class="site">
-  <a class="logo" href="https://albertusfreddi.github.io/">ALBERTUS FREDDI</a>
-  <nav>
-    <a href="https://albertusfreddi.github.io/#services">サービス</a>
-    <a href="https://albertusfreddi.github.io/blog/ja/">ブログ</a>
-    <a href="https://albertusfreddi.github.io/#contact">お問い合わせ</a>
-  </nav>
+<header>
+<nav>
+<a href="/blog/ja/">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/how-i-cut-hotel-checkin-time-60-percent.html" class="">English</a><a href="/blog/id/how-i-cut-hotel-checkin-time-60-percent.html" class="">Bahasa Indonesia</a><a href="/blog/zh/how-i-cut-hotel-checkin-time-60-percent.html" class="">中文</a><a href="/blog/ja/how-i-cut-hotel-checkin-time-60-percent.html" class="active">日本語</a><a href="/blog/ko/how-i-cut-hotel-checkin-time-60-percent.html" class="">한국어</a></div>
+</nav>
 </header>
-
-<div class="hero">
-  <div class="hero-inner">
-    <div class="category">Hospitality Automation · Case Study</div>
-    <h1>Python自動化でホテルのチェックイン時間を60％短縮した実践例</h1>
-    <div class="meta">
-      <span>Albertus Freddi</span>
-      <span>October 14, 2026</span>
-      <span>8 min read</span>
-    </div>
-  </div>
-</div>
-
 <main>
-  <div class="lang-switch">
-    <span>言語を選択:</span>
-    <a href="../en/how-i-cut-hotel-checkin-time-60-percent.html">EN</a>
-    <a href="../id/how-i-cut-hotel-checkin-time-60-percent.html">ID</a>
-    <a href="../zh/how-i-cut-hotel-checkin-time-60-percent.html">中文</a>
-    <a class="active">日本語</a>
-    <a href="../ko/how-i-cut-hotel-checkin-time-60-percent.html">한국어</a>
-  </div>
-
-  <article>
-    <p>Last year I got a call from the operations manager of a 4-star hotel in South Jakarta. Peak season was approaching, the kind where lobby queues snake out to the parking lot, and their front desk team was drowning. The average check-in was taking <strong>12 minutes</strong>. For a 180-room property, that math doesn't work.</p>
+<h1>Python自動化でホテルのチェックイン時間を60％短縮した実践例</h1>
+<div class="meta">9 分 • 2026-10-14</div>
+<article>
+<p>Last year I got a call from the operations manager of a 4-star hotel in South Jakarta. Peak season was approaching, the kind where lobby queues snake out to the parking lot, and their front desk team was drowning. The average check-in was taking <strong>12 minutes</strong>. For a 180-room property, that math doesn't work.</p>
 
     <p>They had tried a cloud PMS before. It helped with reservations but did nothing for the physical bottleneck: staff still had to manually verify bookings, cross-check OTA data, re-enter guest IDs, and print room keys one at a time. Three systems, zero integration.</p>
 
@@ -223,18 +175,10 @@ def sync_arrivals(date: str) -> list[Reservation]:
     </div>
 
     <p>Questions? I'm available for new projects, <a href="https://albertusfreddi.github.io/#contact">reach out here</a> or find me on <a href="https://www.upwork.com/freelancers/~01e18adca5719ffd57" target="_blank" rel="noopener">Upwork</a>.</p>
-  </article>
+</article>
 </main>
-
-<footer class="site">
-  <div class="cta">同様の課題をお持ちですか？</div>
-  <p>I work with hotels, resorts, and F&B operations across Indonesia and Southeast Asia.</p>
-  <a class="btn" href="https://albertusfreddi.github.io/#contact">協業のご相談</a>
-  <div class="links">
-    <a href="https://albertusfreddi.github.io/">Home</a>
-    <a href="https://albertusfreddi.github.io/blog/ja/">More articles</a>
-    <a href="https://albertusfreddi.github.io/blog/rss-en.xml">RSS</a>
-  </div>
+<footer>
+<p>&copy; 2026 Albertus Freddi • <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
 </footer>
 </body>
 </html>
