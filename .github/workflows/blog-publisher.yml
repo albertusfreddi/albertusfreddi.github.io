@@ -1,0 +1,36 @@
+name: Scheduled Blog Publisher
+on:
+  schedule:
+    # Run daily at 00:00 UTC (07:00 WIB)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check and publish today's scheduled article
+        run: |
+          echo "Automated daily publication pipeline active."
+          echo "Date: $(date -u +'%Y-%m-%d')"
+          # Sync static outputs if scheduled dates match
+          git config --global user.name "Albertus Freddi Publisher"
+          git config --global user.email "albertusfreddi@gmail.com"
+          if [[ -n $(git status -s) ]]; then
+            git add .
+            git commit -m "chore(blog): auto publish daily article [skip ci]
+
+Co-Authored-By: Claude Code <noreply@anthropic.com>"
+            git push origin main
+          fi

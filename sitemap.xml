@@ -36,7 +36,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <!-- Blog Indexes -->
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/</loc>
     <lastmod>2026-10-21</lastmod>
@@ -67,7 +66,126 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Case Study: Hotel Check-in -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/iot-energy-monitoring-hospitality-bali-jakarta.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/iot-energy-monitoring-hospitality-bali-jakarta.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/iot-energy-monitoring-hospitality-bali-jakarta.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/iot-energy-monitoring-hospitality-bali-jakarta.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/iot-energy-monitoring-hospitality-bali-jakarta.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/how-i-cut-hotel-checkin-time-60-percent.html</loc>
     <lastmod>2026-10-14</lastmod>
@@ -98,7 +216,36 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Guide: Web Scraping Legal -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/web-scraping-legal-indonesia-2026.html</loc>
     <lastmod>2026-10-07</lastmod>
@@ -129,7 +276,66 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Analysis: WhatsApp Bots -->
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/why-whatsapp-bots-fail-indonesia.html</loc>
     <lastmod>2026-09-30</lastmod>
@@ -157,6 +363,96 @@
   <url>
     <loc>https://albertusfreddi.github.io/blog/ko/why-whatsapp-bots-fail-indonesia.html</loc>
     <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
