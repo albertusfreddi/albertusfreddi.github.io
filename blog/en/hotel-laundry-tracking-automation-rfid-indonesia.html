@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Eliminating Hotel Linen Shrinkage with RFID and Python Automation | Albertus Freddi</title>
+<meta name="description" content="How an 80-room resort in Ubud reduced missing towels and sheets by 91% using UHF RFID laundry tags and automatic weight validation.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<meta property="og:title" content="Eliminating Hotel Linen Shrinkage with RFID and Python Automation">
+<meta property="og:description" content="How an 80-room resort in Ubud reduced missing towels and sheets by 91% using UHF RFID laundry tags and automatic weight validation.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-25T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Eliminating Hotel Linen Shrinkage with RFID and Python Automation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eliminating Hotel Linen Shrinkage with RFID and Python Automation">
+<meta name="twitter:description" content="How an 80-room resort in Ubud reduced missing towels and sheets by 91% using UHF RFID laundry tags and automatic weight validation.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Eliminating Hotel Linen Shrinkage with RFID and Python Automation","datePublished":"2026-09-25T09:00:00+07:00","dateModified":"2026-09-25T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/en/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html" class="active">English</a><a href="/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html" class="">Bahasa Indonesia</a><a href="/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html" class="">中文</a><a href="/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html" class="">日本語</a><a href="/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Eliminating Hotel Linen Shrinkage with RFID and Python Automation</h1>
+<div class="meta">
+<span>16 min read</span>
+<span>•</span>
+<span>2026-09-25</span>
+</div>
+<article>
+<div class="callout"><p><strong>Production context:</strong> This is the linen-tracking system we operate for an 80-room resort in Ubud. Before it went in, the resort lost roughly eleven percent of its four thousand linen pieces every year, split across pool towels, bath towels, bedsheets, and duvet covers. The pieces are UHF-tagged at the factory, read in bulk at the loading bay, weighed on a floor scale as a cross-check, and reconciled against the property-management system every night. The numbers that matter: a 91 percent drop in unaccounted linen, Rp 22 million a month saved in replacement stock, and a full fifty-item hamper inventoried in just over a second. This is the architecture that produced those numbers, and the Python that holds it together.</p></div>
+
+<h2>Linen Shrinkage Is an Accounting Problem, Not a Theft Problem</h2>
+
+<p>Every hotel manager knows linen vanishes. What almost everyone gets wrong is where it goes. The instinct is to blame guests who pack a spare towel, but in a tropical resort the real losses happen in transit and in the wash cycle: a hamper loaded onto the wrong van, a vendor count that is short but recorded as complete, a stained sheet silently retired, a duvet cover sent to a sister property and never returned.</p>
+
+<p>The core difficulty is that no single person owns the stock. Housekeeping counts clean inventory on their floor, the laundry counts dirty pieces at intake, and the vendor counts what they return, each with a different tally and a different clipboard. When the numbers disagree, the argument is unresolvable because there is no neutral record of each piece.</p>
+
+<p>RFID fixes this not because it is futuristic, but because it gives every piece a name that three independent parties can read without trusting each other. Once a piece can be identified, the question stops being "who is to blame" and becomes "where exactly did the count go wrong". That is an accounting problem you can solve with code.</p>
+
+<h2>UHF Versus the Other RFID Bands, and Why It Decides the Design</h2>
+
+<p>RFID is not one technology; it is a family split by frequency, and the choice shapes everything downstream. Low-frequency tags read through water and metal but only at centimetre range and one at a time. High-frequency and NFC tags are convenient for a phone tap but also read one at a time. Neither works for a laundry hamper fifty items deep.</p>
+
+<p>Ultra-high-frequency tags are the exception. UHF readers in the 860 to 960 MHz band resolve dozens of tags in a single read event because the protocol runs an anti-collision algorithm that lets tags take turns responding. That one property, the ability to inventory a bulk pile in about a second, is the entire reason UHF is the linen standard.</p>
+
+<div class="comparison-table"><table>
+<thead><tr><th>Band</th><th>Read range</th><th>Bulk read</th><th>Linen fit</th></tr></thead>
+<tbody>
+<tr><td>Low frequency</td><td>centimetres</td><td>one at a time</td><td>poor, linear reads only</td></tr>
+<tr><td>High frequency / NFC</td><td>a few centimetres</td><td>one at a time</td><td>poor, tap per item</td></tr>
+<tr><td>UHF</td><td>several metres</td><td>dozens per second</td><td>ideal for hampers</td></tr>
+</tbody>
+</table></div>
+
+<p>The cost of UHF is sensitivity: liquids and the human body absorb the signal, and a rack of damp towels reads worse than a dry one. That physical limit is why the system never relies on RFID alone. It pairs every bulk read with a weight measurement, so the two independent signals can disagree loudly when something is off. More on that below.</p>
+
+<h2>Tag Placement and the Wash-Cycle Number That Actually Matters</h2>
+
+<p>A tag stitched into the wrong place is a tag that dies early or reads poorly. We seat each UHF transponder inside a sealed silicone housing that survives heat and pressure, then fold it into the hem or the care-label seam so the antenna is not crushed by the iron and not shielded by a folded corner. The durability figure we care about is not the tag's brochure rating; it is the number of full industrial wash and iron cycles it survives in this specific laundry, which we validated at over two hundred cycles before rolling out to the full four thousand pieces.</p>
+
+<p>Two details prevent most of the early failures people report with linen RFID. First, a tag that detaches is worse than a missing tag, because the reader then inventories a ghost piece you have to hunt down. We use a double-stitch plus the silicone housing for exactly this reason. Second, tag programming has to happen at the same time as tagging, in one controlled batch, or the database and the physical garment drift apart on day one.</p>
+
+<div class="code-block">
+<div class="code-header">One EPC maps to one piece record, never a bare serial</div>
+<pre><code># Each tag is written once at the factory. The EPC encodes a
+# stable company prefix, a class code, and a per-piece serial.
+CLASSES = {
+    "01": {"name": "pool towel",      "nominal_weight_kg": 0.42},
+    "02": {"name": "bath towel",      "nominal_weight_kg": 0.55},
+    "03": {"name": "bedsheet",        "nominal_weight_kg": 0.70},
+    "04": {"name": "duvet cover",     "nominal_weight_kg": 1.10},
+}
+
+def decode_epc(epc_hex: str):
+    # Example SGTIN-style layout: prefix(6) + class(2) + serial(rest)
+    prefix = epc_hex[0:6]
+    class_code = epc_hex[6:8]
+    serial = epc_hex[8:]
+    cls = CLASSES.get(class_code, {"name": "unknown", "nominal_weight_kg": 0.0})
+    return {"prefix": prefix, "class_code": class_code,
+            "serial": serial, "name": cls["name"],
+            "nominal_weight_kg": cls["nominal_weight_kg"]}</code></pre>
+</div>
+
+<p>Notice the class code carries the nominal dry weight. That is the quiet bridge between the two independent signals: an RFID read says "these pieces are here", and the weights attached to each piece say "so the hamper should weigh about this much". Either signal can be checked against the other.</p>
+
+<h2>Reading a Whole Hamper in One Pass</h2>
+
+<p>The cargo bay has a walk-through portal with antennas on all four faces. A porter pushes the hamper through and the reader fires a few hundred millisecond read cycles, collecting every EPC it can hear. The subtlety is not reading the tags; it is deciding which reads to trust.</p>
+
+<div class="code-block">
+<div class="code-header">Bulk read with RSSI filtering and de-duplication</div>
+<pre><code>def inventory_hamper(reader, duration_ms=1200):
+    seen = {}  # epc -> (best_rssi, count)
+
+    for cycle in reader.read_cycles(duration_ms // 200):
+        for tag in cycle:
+            epc = tag.epc_hex
+            if epc in seen:
+                best, count = seen[epc]
+                seen[epc] = (max(best, tag.rssi), count + 1)
+            else:
+                seen[epc] = (tag.rssi, 1)
+
+    # A real tag is seen repeatedly and loudly. A stray read from a
+    # passing cart appears once and weakly, so we drop it.
+    trusted = {}
+    for epc, (rssi, count) in seen.items():
+        if count >= 2 and rssi >= RSSI_FLOOR:
+            trusted[epc] = rssi
+    return trusted</code></pre>
+</div>
+
+<p>Two filters do the heavy lifting. The first is the receive-signal-strength floor: a tag on the hamper is physically close and reads loudly, while a tag on a passing cart fifty metres away reads faintly. Dropping reads below the floor keeps the inventory to the hamper in front of the antenna. The second is repetition: a genuine tag in the field is read again and again across cycles, while a transient read appears once and vanishes. Requiring at least two distinct reads removes most of the noise without adding any latency.</p>
+
+<p>The remaining hard case is a folded, damp pile where a tag is shielded and simply not read. The passer still gets a total count, but there is no way to know a piece is missing without an independent signal. That is the whole job of the scale.</p>
+
+<h2>Weight Is the Independent Check That Catches What RFID Misses</h2>
+
+<p>The floor scale sits under the portal, wired over RS-232 at 9600 baud. As the hamper passes, the RFID reader reports a set of pieces and the scale reports a gross weight. The system then sums the nominal dry weight of every piece the reader saw and compares the two numbers. Dry linen is predictable within a narrow band; wet linen is heavier and, crucially, wet pieces are the ones that read poorly on UHF. So a disagreement between the two signals is exactly the situation that needs a human to look.</p>
+
+<div class="code-block">
+<div class="code-header">Cross-check RFID count against gross weight</div>
+<pre><code>import serial
+
+TOLERANCE_KG = 1.5
+
+def read_scale(port="/dev/ttyUSB0"):
+    ser = serial.Serial(port, baudrate=9600, timeout=1)
+    line = ser.readline().decode("utf-8", "ignore").strip()
+    ser.close()
+    # Scale prints "042.75KG"; strip the unit and parse.
+    return float(line.replace("KG", "").replace(" ", "") or 0)
+
+def validate_consignment(epcs):
+    expected = sum(decode_epc(e)["nominal_weight_kg"] for e in epcs)
+    gross = read_scale()
+    discrepancy = abs(gross - expected)
+    if discrepancy > TOLERANCE_KG:
+        raise_audit_flag(epc_count=len(epcs), expected_kg=expected,
+                         gross_kg=gross)
+    return {"scanned_count": len(epcs), "expected_kg": round(expected, 2),
+            "gross_kg": gross, "discrepancy_kg": round(discrepancy, 2)}</code></pre>
+</div>
+
+<p>The tolerance is a deliberate design choice, not a guessed constant. Dry nominal weights are accurate to a couple hundred grams per class, and a fifty-piece hamper accumulates about a kilogram of variance from humidity and folding alone. Setting the threshold below that produces false alarms all day; setting it far above hides real shortages. One and a half kilograms caught a vans-worth of genuinely missing pieces without nagging the porters over a damp towel.</p>
+
+<h2>A State Machine Keeps Every Piece Honest</h2>
+
+<p>A piece of linen is not "present or absent". It moves through a small set of states, and shrinkage lives in the gaps between them. We model the lifecycle explicitly, so the reconciliation job has something to compare against.</p>
+
+<div class="code-block">
+<div class="code-header">The linen lifecycle as an explicit state machine</div>
+<pre><code>STATES = ("in_room", "dirty", "at_laundry", "clean", "retired", "missing")
+
+ALLOWED = {
+    "in_room":     ("dirty", "retired"),
+    "dirty":       ("at_laundry",),
+    "at_laundry":  ("clean", "missing"),
+    "clean":       ("in_room",),
+    "missing":     ("clean", "retired"),
+    "retired":     (),
+}
+
+def transition(piece_id, to_state):
+    current = get_piece(piece_id)["state"]
+    if to_state not in ALLOWED[current]:
+        raise IllegalTransition(current, to_state)
+    apply_transition(piece_id, current, to_state)</code></pre>
+</div>
+
+<p>The forbidden transitions are the interesting part. A piece already at the laundry cannot become dirty again without passing through a return event, and a piece already in a room cannot teleport to clean. When the real world tries one of those moves, the system refuses and logs it. That refusal is how you catch double-counting and data-entry mistakes before they turn into a quarterly shrinkage surprise. The state machine does not stop losses; it makes every loss land in a cell of a ledger you can actually audit.</p>
+
+<h2>The Reconciliation Job That Turns Scans Into a Number</h2>
+
+<p>Each night, a job walks every expected piece, asks where it is, and produces one number: the count of live pieces with no scan in the last cycle, grouped by the stage where they disappeared. That grouped report is the thing the resort's controller looks at each morning, because it converts "about eleven percent vanished" into "sixteen duvet covers lost at the laundry stage last week".</p>
+
+<div class="code-block">
+<div class="code-header">Nightly reconciliation grouped by loss stage</div>
+<pre><code>SELECT state AS lost_at,
+       linen_class,
+       COUNT(*) AS pieces
+FROM linen_pieces
+WHERE last_seen_at < now() - INTERVAL '3 days'
+  AND state != 'retired'
+GROUP BY state, linen_class
+ORDER BY pieces DESC;</code></pre>
+</div>
+
+<p>The three-day window matters. A sheet legitimately sits in a washer overnight, so treating "not scanned today" as "lost" would flood the report with noise. Only a piece that has stayed off the grid for a full wash-and-return cycle, three days in this operation, counts as genuinely unaccounted. Choosing that window from the real operating rhythm, not from a generic default, is what keeps the report believable enough to be acted on.</p>
+
+<div class="code-block">
+<div class="code-header">The controller gets a rollup, not a stream of scans</div>
+<pre><code>def nightly_report():
+    rows = run_reconciliation_query()
+    total = sum(r["pieces"] for r in rows)
+    return {
+        "unaccounted_total": total,
+        "by_stage": rows,
+        "replacement_cost": total * avg_replacement_cost(),
+    }</code></pre>
+</div>
+
+<p>The replacement cost is the bridge from a technical count to the language the business actually cares about. A count of thirty-two missing pieces is an IT problem; Rp 9.4 million a month is a budget line the owner will prioritise. Attaching rupiah to the report is what kept the project funded past the first pilot.</p>
+
+<h2>Handover Slips and PMS Sync End the Blame Game</h2>
+
+<p>The place shrinkage actually gets decided is the handover between the resort and the third-party laundry. Both sides used to keep their own tally, and a disagreement at the door turned into a phone argument two days later when the vendor returned fewer pieces than they took.</p>
+
+<p>Now the portal prints, and forwards over WhatsApp, a consignment note with the exact count per class the moment the hamper passes. Both sides see the same number, generated from the same neutral reader, before the van leaves. The vendor countersigns digitally, and the state machine moves every piece from at-laundry to clean only when the return hamper is scanned on the way back in. The net effect is that the argument disappears, because there is a single timestamped record both parties already agreed to.</p>
+
+<div class="code-block">
+<div class="code-header">A consignment record is a contract, not a log line</div>
+<pre><code>def build_consignment(epcs, vendor_id, direction):
+    counts = {}
+    for epc in epcs:
+        cls = decode_epc(epc)["name"]
+        counts[cls] = counts.get(cls, 0) + 1
+    return {
+        "vendor_id": vendor_id,
+        "direction": direction,   # "out" or "in"
+        "counts": counts,
+        "total": len(epcs),
+        "created_at": now_iso(),
+    }</code></pre>
+</div>
+
+<p>The PMS sync closes the loop on the guest-facing side. When a room is checked out, its linen moves out of in-room into dirty, so the housekeeping board always knows how many clean sets are actually available on each floor. Without that link, the RFID count and the front desk lived in separate worlds, and the clean-stock state was always a guess. The sync makes the linen count a first-class record the PMS can show next to room status.</p>
+
+<h2>Failure Modes You Will Meet in a Real Laundry</h2>
+
+<p>The devices are the easy part. The failures are environmental and human, and the system has to survive both.</p>
+
+<div class="comparison-table"><table>
+<thead><tr><th>Failure</th><th>Symptom</th><th>Our response</th></tr></thead>
+<tbody>
+<tr><td>Damp linen shields tags</td><td>RFID count reads low</td><td>weight check flags the mismatch for a hand count</td></tr>
+<tr><td>Tag detaches in the wash</td><td>reader inventories a ghost EPC</td><td>double-stitch housing, plus a retired-state cleanup job</td></tr>
+<tr><td>Scale drifts or jams</td><td>gross weight flat or wildly off</td><td>secondary scale check and a maintenance flag on drift</td></tr>
+<tr><td>Stray reads from nearby carts</td><td>inventory includes foreign pieces</td><td>RSSI floor plus repetition filter drops weak singles</td></tr>
+<tr><td>Vendor disputes a count</td><td>return differs from consignment</td><td>timestamped digital note both parties signed</td></tr>
+</tbody>
+</table></div>
+
+<p>The theme is the same as the rest of the system: no single signal is trusted alone, every divergence produces a named reconciliation cell instead of a silent miss, and the human only gets called when two independent signals disagree. That is the difference between a gadget and a system that survives contact with a busy laundry dock.</p>
+
+<h2>What We Would Reuse and What We Would Drop</h2>
+
+<p>Building this again, we would keep three things without hesitation: the UHF bulk read paired with a scale as an independent check, the explicit state machine, and the rupiah-denominated nightly rollup. Those three carry the whole system. We would drop the hand-rolled serial parsing now that modern scales speak better protocols out of the box, and we would not build the portal reader integration ourselves again, because mature fixed-reader hardware ships with the bulk-inventory logic already solved. The durable lesson is simple: linen shrinkage looks like a theft problem but is really a counting problem, and counting becomes trustworthy only when three parties can read the same neutral record and a weight backs up every scan.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
