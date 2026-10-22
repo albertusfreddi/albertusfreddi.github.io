@@ -208,4 +208,32 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html"/>
   </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/whatsapp-order-management-pipeline-python.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/whatsapp-order-management-pipeline-python.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/whatsapp-order-management-pipeline-python.html"/>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/whatsapp-order-management-pipeline-python.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/whatsapp-order-management-pipeline-python.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/whatsapp-order-management-pipeline-python.html"/>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html</loc>
+    <lastmod>2026-03-08</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/anti-scraping-bypass-ethical.html"/>
+  </url>
+  <url>
+    <loc>https://albertusfreddi.github.io/blog/id/anti-scraping-bypass-ethical.html</loc>
+    <lastmod>2026-03-08</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/anti-scraping-bypass-ethical.html"/>
+  </url>
 </urlset>

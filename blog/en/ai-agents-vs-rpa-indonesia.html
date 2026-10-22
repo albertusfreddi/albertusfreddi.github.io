@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>AI Agents vs Traditional RPA: What Works in Indonesia | Albertus Freddi</title>
-<meta name="description" content="">
+<meta name="description" content="Production comparison of AI agents vs traditional RPA for Indonesian business automation: architecture, cost breakdown, implementation patterns, and when to use each approach.">
 <meta name="author" content="Albertus Freddi">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html">
 <meta property="og:title" content="AI Agents vs Traditional RPA: What Works in Indonesia">
-<meta property="og:description" content="">
+<meta property="og:description" content="Production comparison of AI agents vs traditional RPA for Indonesian business automation: architecture, cost breakdown, implementation patterns, and when to use each approach.">
 <meta property="og:url" content="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-10-09T09:00:00+07:00">
@@ -24,7 +24,7 @@
 <meta property="og:image:alt" content="AI Agents vs Traditional RPA: What Works in Indonesia">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI Agents vs Traditional RPA: What Works in Indonesia">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Production comparison of AI agents vs traditional RPA for Indonesian business automation: architecture, cost breakdown, implementation patterns, and when to use each approach.">
 <meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html">
@@ -774,13 +774,13 @@ if task == "data_entry" AND source == "mixed_formats":
 <p>AI agents need stable connection to LLM APIs (OpenAI, Anthropic). In provinces with unstable internet (Papua, Maluku, NTT), RPA running on local Windows VMs more reliable. We deployed hybrid: RPA for time-critical tasks, AI agents for batch processing during off-peak hours with retry logic.</p>
 
 <p><strong>2. Indonesian language handling</strong></p>
-<p>GPT-4 and Claude handle Indonesian well, including Jakarta slang ("gw", "lu", "gak"), text speak ("yg", "dgn", "utk"), and common typos. Traditional RPA requires exact string matching—any variation breaks the bot. For customer-facing automation (WhatsApp order processing, email support), AI agents mandatory.</p>
+<p>GPT-4 and Claude handle Indonesian well, including Jakarta slang ("gw", "lu", "gak"), text speak ("yg", "dgn", "utk"), and common typos. Traditional RPA requires exact string matching, any variation breaks the bot. For customer-facing automation (WhatsApp order processing, email support), AI agents mandatory.</p>
 
 <p><strong>3. Legacy system integration</strong></p>
-<p>Many Indonesian companies run 10+ year old ERP systems (SAP GUI, Oracle Forms, custom .NET desktop apps). No APIs available. RPA's UI automation the only option here—bots literally click through the desktop interface. AI agents cannot help unless you build API wrappers first.</p>
+<p>Many Indonesian companies run 10+ year old ERP systems (SAP GUI, Oracle Forms, custom .NET desktop apps). No APIs available. RPA's UI automation the only option here, bots literally click through the desktop interface. AI agents cannot help unless you build API wrappers first.</p>
 
 <p><strong>4. Regulatory compliance</strong></p>
-<p>Bank Indonesia, OJK, and tax authorities require audit trails for financial automation. RPA tools (UiPath, Automation Anywhere) provide built-in compliance logging (who ran what, when, with what data). AI agent implementations need custom audit logging—log every LLM call with input/output/timestamp. We store 2 years of logs in S3 for audit purposes.</p>
+<p>Bank Indonesia, OJK, and tax authorities require audit trails for financial automation. RPA tools (UiPath, Automation Anywhere) provide built-in compliance logging (who ran what, when, with what data). AI agent implementations need custom audit logging, log every LLM call with input/output/timestamp. We store 2 years of logs in S3 for audit purposes.</p>
 
 <p><strong>5. Skill availability</strong></p>
 <p>RPA developers more common in Jakarta/Surabaya (bootcamps, certifications). AI agent development requires Python + LLM API experience (scarcer, higher salary). For companies outside Java, RPA might be only viable option due to talent constraints.</p>

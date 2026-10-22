@@ -371,7 +371,7 @@ footer a:hover {
 
 function buildArticlePage(article, lang) {
   const title = article.title?.[lang] || '';
-  const desc = article.desc?.[lang] || '';
+  const desc = article.desc?.[lang] || article.description?.[lang] || '';
   const body = article.body?.[lang] || '';
   const readTime = article.readTime?.[lang] || '9 min read';
   const canonical = `https://albertusfreddi.github.io/blog/${lang}/${article.slug}.html`;
@@ -450,7 +450,7 @@ function buildIndexPage(articles, lang) {
 
   const listItems = articles.map(a => {
     const artTitle = a.title?.[lang] || '';
-    const artDesc = a.desc?.[lang] || '';
+    const artDesc = a.desc?.[lang] || a.description?.[lang] || '';
     const readTime = a.readTime?.[lang] || '9 min read';
     return `<article class="post-card">
 <h2><a href="/blog/${lang}/${a.slug}.html">${artTitle}</a></h2>
