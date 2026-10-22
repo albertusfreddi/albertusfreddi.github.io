@@ -5,14 +5,11 @@ const path = require('path');
 const blogDataDir = path.join(__dirname, '..', 'blog-data');
 const publicDir = path.join(__dirname, 'public');
 const blogDir = path.join(publicDir, 'blog');
-const langs = ['en', 'id', 'zh', 'ja', 'ko'];
+const langs = ['en', 'id'];
 
 const langNames = {
   en: 'English',
-  id: 'Bahasa Indonesia',
-  zh: '中文',
-  ja: '日本語',
-  ko: '한국어'
+  id: 'Bahasa Indonesia'
 };
 
 if (!fs.existsSync(blogDataDir)) {
@@ -447,16 +444,9 @@ ${body}
 }
 
 function buildIndexPage(articles, lang) {
-  const title = lang === 'en' ? 'Blog & Engineering Case Studies' :
-                lang === 'id' ? 'Blog & Studi Kasus Teknis' :
-                lang === 'zh' ? '博客与技术案例' :
-                lang === 'ja' ? 'ブログ・技術事例' : '블로그 & 기술 사례';
+  const title = lang === 'en' ? 'Blog & Engineering Case Studies' : 'Blog & Studi Kasus Teknis';
 
-  const desc = lang === 'en' ? 'In-depth technical case studies on automation pipelines, reverse-engineered APIs, resilient scraping, and distributed systems.' :
-               lang === 'id' ? 'Studi kasus teknis mendalam tentang pipeline otomasi, API reverse-engineered, scraping resilient, dan sistem terdistribusi.' :
-               lang === 'zh' ? '深入的自动化管道、逆向工程API、弹性爬虫和分布式系统技术案例。' :
-               lang === 'ja' ? '自動化パイプライン、リバースエンジニアリングAPI、レジリエントスクレイピング、分散システムの技術事例。' :
-               '자동화 파이프라인, 리버스 엔지니어링 API, 탄력적 스크래핑, 분산 시스템 기술 사례.';
+  const desc = lang === 'en' ? 'In-depth technical case studies on automation pipelines, reverse-engineered APIs, resilient scraping, and distributed systems.' : 'Studi kasus teknis mendalam tentang pipeline otomasi, API reverse-engineered, scraping resilient, dan sistem terdistribusi.';
 
   const listItems = articles.map(a => {
     const artTitle = a.title?.[lang] || '';
@@ -537,4 +527,4 @@ ${articles.flatMap(a => langs.map(lang =>
 </urlset>`;
 fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap, 'utf-8');
 
-console.log(`\n✓ Build complete: ${articles.length} articles, 5 languages, sitemap with hreflang`);
+console.log(`\n✓ Build complete: ${articles.length} articles, 2 languages, sitemap with hreflang`);

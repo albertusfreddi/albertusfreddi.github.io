@@ -5,45 +5,12 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/</loc>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/</loc>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/</loc>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/</loc>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html</loc>
@@ -51,9 +18,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html</loc>
@@ -61,39 +25,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
@@ -101,9 +32,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
@@ -111,39 +39,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html</loc>
@@ -151,9 +46,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html</loc>
@@ -161,39 +53,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
@@ -201,9 +60,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
@@ -211,39 +67,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html</loc>
-    <lastmod>2026-10-22</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html</loc>
@@ -251,9 +74,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-vs-rpa-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html</loc>
@@ -261,39 +81,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-vs-rpa-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html</loc>
-    <lastmod>2026-10-09</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-vs-rpa-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html</loc>
-    <lastmod>2026-10-09</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-vs-rpa-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/ai-agents-vs-rpa-indonesia.html</loc>
-    <lastmod>2026-10-09</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-vs-rpa-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-vs-rpa-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/ai-automation-indonesia-2026-trends.html</loc>
@@ -301,9 +88,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-automation-indonesia-2026-trends.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-automation-indonesia-2026-trends.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/ai-automation-indonesia-2026-trends.html</loc>
@@ -311,39 +95,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-automation-indonesia-2026-trends.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-automation-indonesia-2026-trends.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html</loc>
-    <lastmod>2026-10-09</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-automation-indonesia-2026-trends.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html</loc>
-    <lastmod>2026-10-09</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-automation-indonesia-2026-trends.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/ai-automation-indonesia-2026-trends.html</loc>
-    <lastmod>2026-10-09</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-automation-indonesia-2026-trends.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-automation-indonesia-2026-trends.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html</loc>
@@ -351,9 +102,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html</loc>
@@ -361,39 +109,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html</loc>
@@ -401,9 +116,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html</loc>
@@ -411,39 +123,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html</loc>
@@ -451,9 +130,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html</loc>
@@ -461,39 +137,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html</loc>
-    <lastmod>2026-10-02</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html</loc>
-    <lastmod>2026-10-02</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html</loc>
-    <lastmod>2026-10-02</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-seo-content-pipeline-without-spam.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html</loc>
@@ -501,9 +144,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html</loc>
@@ -511,39 +151,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html</loc>
-    <lastmod>2026-09-29</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html</loc>
-    <lastmod>2026-09-29</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html</loc>
-    <lastmod>2026-09-29</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html</loc>
@@ -551,9 +158,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html</loc>
@@ -561,39 +165,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html</loc>
-    <lastmod>2026-09-27</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
@@ -601,9 +172,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
@@ -611,39 +179,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
-    <lastmod>2026-09-26</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
-    <lastmod>2026-09-26</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html</loc>
-    <lastmod>2026-09-26</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/supabase-edge-functions-vs-aws-lambda-dashboards.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html</loc>
@@ -651,9 +186,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html</loc>
@@ -661,39 +193,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html</loc>
-    <lastmod>2026-09-25</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html</loc>
-    <lastmod>2026-09-25</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html</loc>
-    <lastmod>2026-09-25</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/hotel-laundry-tracking-automation-rfid-indonesia.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html</loc>
@@ -701,9 +200,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html"/>
   </url>
   <url>
     <loc>https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html</loc>
@@ -711,38 +207,5 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html</loc>
-    <lastmod>2026-09-24</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html</loc>
-    <lastmod>2026-09-24</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html"/>
-  </url>
-  <url>
-    <loc>https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html</loc>
-    <lastmod>2026-09-24</lastmod>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html"/>
   </url>
 </urlset>

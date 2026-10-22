@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"AI Agents & Workflow Orchestration","serviceType":"AI Agents & Workflow Orchestration","description":"I build AI agents that read your data, decide and act on a schedule or a webhook, then hand you the code. Jakarta based, every enquiry answered within 24 hours.","url":"https://albertusfreddi.github.io/services/ai-agents/","areaServed":"Worldwide","availableLanguage":["English","Indonesian","Japanese","Chinese","Korean"],"provider":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/","email":"mailto:albertus.freddi@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"}}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"AI Agents & Workflow Orchestration","serviceType":"AI Agents & Workflow Orchestration","description":"I build AI agents that read your data, decide and act on a schedule or a webhook, then hand you the code. Jakarta based, every enquiry answered within 24 hours.","url":"https://albertusfreddi.github.io/services/ai-agents/","areaServed":"Worldwide","availableLanguage":["English","Indonesian"],"provider":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/","email":"mailto:albertus.freddi@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Jakarta","addressCountry":"ID"}}}</script>
 <style>
   :root { --ink:#050505; --panel:#0B0B0B; --card:#121212; --line:rgba(255,255,255,.07);
            --red:#D1161A; --red-h:#FF3336; --mute:rgba(255,255,255,.58); }
@@ -89,7 +89,7 @@
       <label class="sr-only" for="langPick">Language</label>
       <select id="langPick" aria-label="Language" class="lang-pick">
         <option value="en">EN</option><option value="id">ID</option>
-        <option value="ja">日本語</option><option value="zh">中文</option><option value="ko">한국어</option>
+        
       </select>
       <a class="btn" href="https://albertusfreddi.github.io/#contact">Start a project</a>
     </div>
@@ -139,7 +139,7 @@
 <script src="https://albertusfreddi.github.io/i18n-services.js" defer></script>
 <script>
 (function () {
-  var LANGS = { en:'en', id:'id', ja:'ja', zh:'zh-Hans', ko:'ko' };
+  var LANGS = { en:'en', id:'id' };
   var pick = document.getElementById('langPick');
   if (!pick) return;
   var nodes = null, attrs = null;
@@ -178,8 +178,7 @@
   try { saved = localStorage.getItem('af-lang') || ''; } catch (e) {}
   if (!saved) {
     var nv = (navigator.language || 'en').toLowerCase();
-    saved = nv.indexOf('id') === 0 ? 'id' : nv.indexOf('ja') === 0 ? 'ja'
-          : nv.indexOf('zh') === 0 ? 'zh' : nv.indexOf('ko') === 0 ? 'ko' : 'en';
+    saved = nv.indexOf('id') === 0 ? 'id' : 'en';
   }
   if (!LANGS[saved]) saved = 'en';
   pick.value = saved;

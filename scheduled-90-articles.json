@@ -4,17 +4,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Scraping Social Media in Indonesia: Legal Boundaries",
-      "id": "Scraping Media Sosial Indonesia: Batas Legal",
-      "zh": "印尼社交媒体抓取：法律界限",
-      "ja": "インドネシアソーシャルメディアスクレイピング：法的境界",
-      "ko": "인도네시아 소셜 미디어 스크래핑: 법적 경계"
+      "id": "Scraping Media Sosial Indonesia: Batas Legal"
     },
     "desc": {
       "en": "Deep engineering breakdown on scraping social media in indonesia: legal boundaries: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping media sosial indonesia: batas legal: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼社交媒体抓取：法律界限的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアソーシャルメディアスクレイピング：法的境界の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 소셜 미디어 스크래핑: 법적 경계의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping media sosial indonesia: batas legal: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -63,17 +57,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "API vs Web Scraping: When to Use Each in Indonesia",
-      "id": "API vs Web Scraping: Kapan Menggunakan Masing-Masing di Indonesia",
-      "zh": "API与网络抓取：印尼使用场景",
-      "ja": "API vs Webスクレイピング：インドネシアでの使い分け",
-      "ko": "API vs 웹 스크래핑: 인도네시아 사용 시기"
+      "id": "API vs Web Scraping: Kapan Menggunakan Masing-Masing di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on api vs web scraping: when to use each in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang api vs web scraping: kapan menggunakan masing-masing di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：API与网络抓取：印尼使用场景的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるAPI vs Webスクレイピング：インドネシアでの使い分けの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 API vs 웹 스크래핑: 인도네시아 사용 시기의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang api vs web scraping: kapan menggunakan masing-masing di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -122,17 +110,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Proxy Rotation for Web Scraping in Indonesia",
-      "id": "Rotasi Proxy untuk Web Scraping di Indonesia",
-      "zh": "印尼网络抓取代理轮换",
-      "ja": "インドネシアWebスクレイピング向けプロキシローテーション",
-      "ko": "인도네시아 웹 스크래핑용 프록시 로테이션"
+      "id": "Rotasi Proxy untuk Web Scraping di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on proxy rotation for web scraping in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang rotasi proxy untuk web scraping di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼网络抓取代理轮换的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアWebスクレイピング向けプロキシローテーションの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 웹 스크래핑용 프록시 로테이션의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang rotasi proxy untuk web scraping di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -181,17 +163,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Real Estate Data Scraping in Indonesia: Market Insights",
-      "id": "Scraping Data Real Estate Indonesia: Insight Pasar",
-      "zh": "印尼房地产数据抓取：市场洞察",
-      "ja": "インドネシア不動産データスクレイピング：市場インサイト",
-      "ko": "인도네시아 부동산 데이터 스크래핑: 시장 인사이트"
+      "id": "Scraping Data Real Estate Indonesia: Insight Pasar"
     },
     "desc": {
       "en": "Deep engineering breakdown on real estate data scraping in indonesia: market insights: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping data real estate indonesia: insight pasar: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼房地产数据抓取：市场洞察的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア不動産データスクレイピング：市場インサイトの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 부동산 데이터 스크래핑: 시장 인사이트의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping data real estate indonesia: insight pasar: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -240,17 +216,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Hotel Booking Automation: ROI Case Study from Jakarta",
-      "id": "Otomasi Booking Hotel: Studi Kasus ROI dari Jakarta",
-      "zh": "酒店预订自动化：雅加达投资回报案例研究",
-      "ja": "ホテル予約自動化：ジャカルタのROIケーススタディ",
-      "ko": "호텔 예약 자동화: 자카르타 ROI 사례 연구"
+      "id": "Otomasi Booking Hotel: Studi Kasus ROI dari Jakarta"
     },
     "desc": {
       "en": "Deep engineering breakdown on hotel booking automation: roi case study from jakarta: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi booking hotel: studi kasus roi dari jakarta: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店预订自动化：雅加达投资回报案例研究的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテル予約自動化：ジャカルタのROIケーススタディの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 예약 자동화: 자카르타 ROI 사례 연구의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi booking hotel: studi kasus roi dari jakarta: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -299,17 +269,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Restaurant POS Automation in Indonesia: Cost Savings",
-      "id": "Otomasi POS Restoran Indonesia: Penghematan Biaya",
-      "zh": "印尼餐厅POS自动化：成本节约",
-      "ja": "インドネシアレストランPOS自動化：コスト削減",
-      "ko": "인도네시아 레스토랑 POS 자동화: 비용 절감"
+      "id": "Otomasi POS Restoran Indonesia: Penghematan Biaya"
     },
     "desc": {
       "en": "Deep engineering breakdown on restaurant pos automation in indonesia: cost savings: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi pos restoran indonesia: penghematan biaya: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼餐厅POS自动化：成本节约的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアレストランPOS自動化：コスト削減の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 레스토랑 POS 자동화: 비용 절감의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi pos restoran indonesia: penghematan biaya: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -358,17 +322,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Automating Hotel Housekeeping Management",
-      "id": "Otomasi Manajemen Housekeeping Hotel",
-      "zh": "酒店客房管理自动化",
-      "ja": "ホテルハウスキーピング管理自動化",
-      "ko": "호텔 하우스키핑 관리 자동화"
+      "id": "Otomasi Manajemen Housekeeping Hotel"
     },
     "desc": {
       "en": "Deep engineering breakdown on automating hotel housekeeping management: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi manajemen housekeeping hotel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店客房管理自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテルハウスキーピング管理自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 하우스키핑 관리 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi manajemen housekeeping hotel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -417,17 +375,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Dynamic Pricing Automation for Indonesian Hotels",
-      "id": "Otomasi Dynamic Pricing untuk Hotel Indonesia",
-      "zh": "印尼酒店动态定价自动化",
-      "ja": "インドネシアホテル向け動的価格設定自動化",
-      "ko": "인도네시아 호텔 동적 가격 책정 자동화"
+      "id": "Otomasi Dynamic Pricing untuk Hotel Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on dynamic pricing automation for indonesian hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi dynamic pricing untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼酒店动态定价自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアホテル向け動的価格設定自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 호텔 동적 가격 책정 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi dynamic pricing untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -476,17 +428,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Guest Communication Automation: Pre to Post-Stay",
-      "id": "Otomasi Komunikasi Tamu: Pra hingga Pasca Menginap",
-      "zh": "客人沟通自动化：入住前到退房后",
-      "ja": "ゲストコミュニケーション自動化：チェックイン前から後まで",
-      "ko": "게스트 커뮤니케이션 자동화: 체크인 전부터 후까지"
+      "id": "Otomasi Komunikasi Tamu: Pra hingga Pasca Menginap"
     },
     "desc": {
       "en": "Deep engineering breakdown on guest communication automation: pre to post-stay: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi komunikasi tamu: pra hingga pasca menginap: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：客人沟通自动化：入住前到退房后的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるゲストコミュニケーション自動化：チェックイン前から後までの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 게스트 커뮤니케이션 자동화: 체크인 전부터 후까지의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi komunikasi tamu: pra hingga pasca menginap: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -535,17 +481,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Hotel Inventory Management Automation: Linen, Supplies & More",
-      "id": "Otomasi Manajemen Inventaris Hotel: Linen, Supplies & Lainnya",
-      "zh": "酒店库存管理自动化：床单、用品等",
-      "ja": "ホテル在庫管理自動化：リネン、備品など",
-      "ko": "호텔 재고 관리 자동화: 린넨, 용품 등"
+      "id": "Otomasi Manajemen Inventaris Hotel: Linen, Supplies & Lainnya"
     },
     "desc": {
       "en": "Deep engineering breakdown on hotel inventory management automation: linen, supplies & more: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi manajemen inventaris hotel: linen, supplies & lainnya: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店库存管理自动化：床单、用品等的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテル在庫管理自動化：リネン、備品などの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 재고 관리 자동화: 린넨, 용품 등의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi manajemen inventaris hotel: linen, supplies & lainnya: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -594,17 +534,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Self-Service Check-in Kiosks: Implementation Guide for Indonesian Hotels",
-      "id": "Kiosk Check-in Self-Service: Panduan Implementasi untuk Hotel Indonesia",
-      "zh": "自助入住机：印尼酒店实施指南",
-      "ja": "セルフチェックインキオスク：インドネシアホテル実装ガイド",
-      "ko": "셀프 체크인 키오스크: 인도네시아 호텔 구현 가이드"
+      "id": "Kiosk Check-in Self-Service: Panduan Implementasi untuk Hotel Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on self-service check-in kiosks: implementation guide for indonesian hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang kiosk check-in self-service: panduan implementasi untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：自助入住机：印尼酒店实施指南的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるセルフチェックインキオスク：インドネシアホテル実装ガイドの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 셀프 체크인 키오스크: 인도네시아 호텔 구현 가이드의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang kiosk check-in self-service: panduan implementasi untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -653,17 +587,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Energy Management Automation for Hotels: Reducing Costs",
-      "id": "Otomasi Manajemen Energi Hotel: Mengurangi Biaya",
-      "zh": "酒店能源管理自动化：降低成本",
-      "ja": "ホテルエネルギー管理自動化：コスト削減",
-      "ko": "호텔 에너지 관리 자동화: 비용 절감"
+      "id": "Otomasi Manajemen Energi Hotel: Mengurangi Biaya"
     },
     "desc": {
       "en": "Deep engineering breakdown on energy management automation for hotels: reducing costs: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi manajemen energi hotel: mengurangi biaya: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店能源管理自动化：降低成本的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテルエネルギー管理自動化：コスト削減の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 에너지 관리 자동화: 비용 절감의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi manajemen energi hotel: mengurangi biaya: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -712,17 +640,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Automating Hotel Reputation Management: Reviews & Responses",
-      "id": "Otomasi Manajemen Reputasi Hotel: Review & Respon",
-      "zh": "酒店声誉管理自动化：评论与回复",
-      "ja": "ホテル評判管理自動化：レビューと返信",
-      "ko": "호텔 평판 관리 자동화: 리뷰 및 응답"
+      "id": "Otomasi Manajemen Reputasi Hotel: Review & Respon"
     },
     "desc": {
       "en": "Deep engineering breakdown on automating hotel reputation management: reviews & responses: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi manajemen reputasi hotel: review & respon: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店声誉管理自动化：评论与回复的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテル評判管理自動化：レビューと返信の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 평판 관리 자동화: 리뷰 및 응답의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi manajemen reputasi hotel: review & respon: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -771,17 +693,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Hotel Maintenance Tracking Automation: Preventive & Reactive",
-      "id": "Otomasi Tracking Maintenance Hotel: Preventif & Reaktif",
-      "zh": "酒店维护追踪自动化：预防与反应",
-      "ja": "ホテルメンテナンストラッキング自動化：予防と対応",
-      "ko": "호텔 유지보수 추적 자동화: 예방 및 대응"
+      "id": "Otomasi Tracking Maintenance Hotel: Preventif & Reaktif"
     },
     "desc": {
       "en": "Deep engineering breakdown on hotel maintenance tracking automation: preventive & reactive: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi tracking maintenance hotel: preventif & reaktif: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店维护追踪自动化：预防与反应的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテルメンテナンストラッキング自動化：予防と対応の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 유지보수 추적 자동화: 예방 및 대응의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi tracking maintenance hotel: preventif & reaktif: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -830,17 +746,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "AI-Powered Sales Automation for Indonesian SMEs",
-      "id": "Otomasi Penjualan Berbasis AI untuk UKM Indonesia",
-      "zh": "印尼中小企业AI销售自动化",
-      "ja": "インドネシア中小企業向けAI営業自動化",
-      "ko": "인도네시아 중소기업 AI 영업 자동화"
+      "id": "Otomasi Penjualan Berbasis AI untuk UKM Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on ai-powered sales automation for indonesian smes: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi penjualan berbasis ai untuk ukm indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼中小企业AI销售自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア中小企業向けAI営業自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 중소기업 AI 영업 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi penjualan berbasis ai untuk ukm indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -889,17 +799,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "Automated Invoice Processing for Indonesian Businesses",
-      "id": "Otomasi Pemrosesan Invoice untuk Bisnis Indonesia",
-      "zh": "印尼企业自动化发票处理",
-      "ja": "インドネシア企業向け請求書処理自動化",
-      "ko": "인도네시아 기업 자동화 송장 처리"
+      "id": "Otomasi Pemrosesan Invoice untuk Bisnis Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on automated invoice processing for indonesian businesses: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi pemrosesan invoice untuk bisnis indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼企业自动化发票处理的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア企業向け請求書処理自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 기업 자동화 송장 처리의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi pemrosesan invoice untuk bisnis indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -948,17 +852,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "AI Customer Support Ticketing Systems in Indonesia",
-      "id": "Sistem Ticketing Customer Support AI di Indonesia",
-      "zh": "印尼AI客户支持工单系统",
-      "ja": "インドネシアAIカスタマーサポートチケットシステム",
-      "ko": "인도네시아 AI 고객 지원 티켓팅 시스템"
+      "id": "Sistem Ticketing Customer Support AI di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on ai customer support ticketing systems in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang sistem ticketing customer support ai di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼AI客户支持工单系统的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアAIカスタマーサポートチケットシステムの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 AI 고객 지원 티켓팅 시스템의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang sistem ticketing customer support ai di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1007,17 +905,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "Automated Social Media Posting for Indonesian Brands",
-      "id": "Posting Media Sosial Otomatis untuk Brand Indonesia",
-      "zh": "印尼品牌自动化社交媒体发布",
-      "ja": "インドネシアブランド向け自動SNS投稿",
-      "ko": "인도네시아 브랜드 자동화 소셜 미디어 게시"
+      "id": "Posting Media Sosial Otomatis untuk Brand Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on automated social media posting for indonesian brands: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang posting media sosial otomatis untuk brand indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼品牌自动化社交媒体发布的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアブランド向け自動SNS投稿の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 브랜드 자동화 소셜 미디어 게시의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang posting media sosial otomatis untuk brand indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1066,17 +958,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "AI-Powered Contract Analysis for Indonesian Legal Teams",
-      "id": "Analisis Kontrak Berbasis AI untuk Tim Legal Indonesia",
-      "zh": "印尼法律团队AI合同分析",
-      "ja": "インドネシア法務チーム向けAI契約分析",
-      "ko": "인도네시아 법무 팀 AI 계약 분석"
+      "id": "Analisis Kontrak Berbasis AI untuk Tim Legal Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on ai-powered contract analysis for indonesian legal teams: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang analisis kontrak berbasis ai untuk tim legal indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼法律团队AI合同分析的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア法務チーム向けAI契約分析の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 법무 팀 AI 계약 분석의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang analisis kontrak berbasis ai untuk tim legal indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1125,17 +1011,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "Workflow Automation with Zapier for Indonesian Teams",
-      "id": "Otomasi Workflow dengan Zapier untuk Tim Indonesia",
-      "zh": "使用Zapier为印尼团队自动化工作流程",
-      "ja": "インドネシアチーム向けZapierワークフロー自動化",
-      "ko": "인도네시아 팀을 위한 Zapier 워크플로우 자동화"
+      "id": "Otomasi Workflow dengan Zapier untuk Tim Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on workflow automation with zapier for indonesian teams: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi workflow dengan zapier untuk tim indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：使用Zapier为印尼团队自动化工作流程的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアチーム向けZapierワークフロー自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 팀을 위한 Zapier 워크플로우 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi workflow dengan zapier untuk tim indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1184,17 +1064,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "AI Translation and Localization for Indonesian Markets",
-      "id": "Translasi dan Lokalisasi AI untuk Pasar Indonesia",
-      "zh": "印尼市场AI翻译和本地化",
-      "ja": "インドネシア市場向けAI翻訳とローカライゼーション",
-      "ko": "인도네시아 시장 AI 번역 및 현지화"
+      "id": "Translasi dan Lokalisasi AI untuk Pasar Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on ai translation and localization for indonesian markets: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang translasi dan lokalisasi ai untuk pasar indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼市场AI翻译和本地化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア市場向けAI翻訳とローカライゼーションの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 시장 AI 번역 및 현지화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang translasi dan lokalisasi ai untuk pasar indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1243,17 +1117,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "Lead Generation Automation for B2B Companies in Indonesia",
-      "id": "Otomasi Lead Generation untuk Perusahaan B2B Indonesia",
-      "zh": "印尼B2B公司潜在客户生成自动化",
-      "ja": "インドネシアB2B企業向けリード生成自動化",
-      "ko": "인도네시아 B2B 기업 리드 생성 자동화"
+      "id": "Otomasi Lead Generation untuk Perusahaan B2B Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on lead generation automation for b2b companies in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi lead generation untuk perusahaan b2b indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼B2B公司潜在客户生成自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアB2B企業向けリード生成自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 B2B 기업 리드 생성 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi lead generation untuk perusahaan b2b indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1302,17 +1170,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "AI Fraud Detection for Indonesian E-commerce",
-      "id": "Deteksi Fraud AI untuk E-commerce Indonesia",
-      "zh": "印尼电商AI欺诈检测",
-      "ja": "インドネシアEコマース向けAI不正検出",
-      "ko": "인도네시아 전자상거래 AI 사기 탐지"
+      "id": "Deteksi Fraud AI untuk E-commerce Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on ai fraud detection for indonesian e-commerce: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang deteksi fraud ai untuk e-commerce indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼电商AI欺诈检测的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアEコマース向けAI不正検出の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 전자상거래 AI 사기 탐지의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang deteksi fraud ai untuk e-commerce indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1361,17 +1223,11 @@
     "cat": "ai-automation",
     "title": {
       "en": "Appointment Scheduling Automation for Indonesian Clinics",
-      "id": "Otomasi Penjadwalan Janji Temu untuk Klinik Indonesia",
-      "zh": "印尼诊所预约调度自动化",
-      "ja": "インドネシアクリニック向け予約スケジューリング自動化",
-      "ko": "인도네시아 클리닉 예약 일정 자동화"
+      "id": "Otomasi Penjadwalan Janji Temu untuk Klinik Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on appointment scheduling automation for indonesian clinics: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi penjadwalan janji temu untuk klinik indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼诊所预约调度自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアクリニック向け予約スケジューリング自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 클리닉 예약 일정 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi penjadwalan janji temu untuk klinik indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1420,17 +1276,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Job Board Scraping in Indonesia: Aggregating Opportunities",
-      "id": "Scraping Job Board Indonesia: Mengagregasi Peluang Kerja",
-      "zh": "印尼招聘网站抓取：汇总机会",
-      "ja": "インドネシア求人サイトスクレイピング：求人集約",
-      "ko": "인도네시아 구인 사이트 스크래핑: 기회 집계"
+      "id": "Scraping Job Board Indonesia: Mengagregasi Peluang Kerja"
     },
     "desc": {
       "en": "Deep engineering breakdown on job board scraping in indonesia: aggregating opportunities: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping job board indonesia: mengagregasi peluang kerja: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼招聘网站抓取：汇总机会的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア求人サイトスクレイピング：求人集約の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 구인 사이트 스크래핑: 기회 집계의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping job board indonesia: mengagregasi peluang kerja: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1479,17 +1329,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "News Aggregation through Web Scraping in Indonesia",
-      "id": "Agregasi Berita melalui Web Scraping di Indonesia",
-      "zh": "印尼新闻聚合网络抓取",
-      "ja": "インドネシアニュース集約Webスクレイピング",
-      "ko": "인도네시아 뉴스 집계 웹 스크래핑"
+      "id": "Agregasi Berita melalui Web Scraping di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on news aggregation through web scraping in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang agregasi berita melalui web scraping di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼新闻聚合网络抓取的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアニュース集約Webスクレイピングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 뉴스 집계 웹 스크래핑의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang agregasi berita melalui web scraping di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1538,17 +1382,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Flight Price Scraping: Building Travel Comparison Tools",
-      "id": "Scraping Harga Penerbangan: Membuat Tool Perbandingan Travel",
-      "zh": "航班价格抓取：构建旅行比较工具",
-      "ja": "フライト価格スクレイピング：旅行比較ツール構築",
-      "ko": "항공편 가격 스크래핑: 여행 비교 도구 구축"
+      "id": "Scraping Harga Penerbangan: Membuat Tool Perbandingan Travel"
     },
     "desc": {
       "en": "Deep engineering breakdown on flight price scraping: building travel comparison tools: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping harga penerbangan: membuat tool perbandingan travel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：航班价格抓取：构建旅行比较工具的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるフライト価格スクレイピング：旅行比較ツール構築の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 항공편 가격 스크래핑: 여행 비교 도구 구축의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping harga penerbangan: membuat tool perbandingan travel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1597,17 +1435,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Scraping Marketplace Seller Data in Indonesia",
-      "id": "Scraping Data Seller Marketplace di Indonesia",
-      "zh": "印尼市场卖家数据抓取",
-      "ja": "インドネシアマーケットプレイス販売者データスクレイピング",
-      "ko": "인도네시아 마켓플레이스 판매자 데이터 스크래핑"
+      "id": "Scraping Data Seller Marketplace di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on scraping marketplace seller data in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping data seller marketplace di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼市场卖家数据抓取的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアマーケットプレイス販売者データスクレイピングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 마켓플레이스 판매자 데이터 스크래핑의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping data seller marketplace di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1656,17 +1488,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Review Scraping and Sentiment Analysis in Indonesia",
-      "id": "Scraping Review dan Analisis Sentimen di Indonesia",
-      "zh": "印尼评论抓取和情感分析",
-      "ja": "インドネシアレビュースクレイピングと感情分析",
-      "ko": "인도네시아 리뷰 스크래핑 및 감정 분석"
+      "id": "Scraping Review dan Analisis Sentimen di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on review scraping and sentiment analysis in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping review dan analisis sentimen di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼评论抓取和情感分析的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアレビュースクレイピングと感情分析の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 리뷰 스크래핑 및 감정 분석의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping review dan analisis sentimen di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1715,17 +1541,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Scraping Public Government Data in Indonesia",
-      "id": "Scraping Data Pemerintah Publik di Indonesia",
-      "zh": "印尼公共政府数据抓取",
-      "ja": "インドネシア公共政府データスクレイピング",
-      "ko": "인도네시아 공공 정부 데이터 스크래핑"
+      "id": "Scraping Data Pemerintah Publik di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on scraping public government data in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping data pemerintah publik di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼公共政府数据抓取的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア公共政府データスクレイピングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 공공 정부 데이터 스크래핑의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping data pemerintah publik di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1774,17 +1594,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Event Listing Scraping for Jakarta Calendars",
-      "id": "Scraping Listing Event untuk Kalender Jakarta",
-      "zh": "雅加达活动列表抓取",
-      "ja": "ジャカルタイベントリストスクレイピング",
-      "ko": "자카르타 이벤트 목록 스크래핑"
+      "id": "Scraping Listing Event untuk Kalender Jakarta"
     },
     "desc": {
       "en": "Deep engineering breakdown on event listing scraping for jakarta calendars: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping listing event untuk kalender jakarta: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：雅加达活动列表抓取的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるジャカルタイベントリストスクレイピングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 자카르타 이벤트 목록 스크래핑의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping listing event untuk kalender jakarta: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1833,17 +1647,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Web Scraping for Academic Research in Indonesia",
-      "id": "Web Scraping untuk Riset Akademis di Indonesia",
-      "zh": "印尼学术研究网络抓取",
-      "ja": "インドネシア学術研究向けWebスクレイピング",
-      "ko": "인도네시아 학술 연구 웹 스크래핑"
+      "id": "Web Scraping untuk Riset Akademis di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on web scraping for academic research in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang web scraping untuk riset akademis di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼学术研究网络抓取的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシア学術研究向けWebスクレイピングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 학술 연구 웹 스크래핑의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang web scraping untuk riset akademis di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1892,17 +1700,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Financial Data Scraping: Stock Prices and Market Data",
-      "id": "Scraping Data Finansial: Harga Saham dan Data Pasar",
-      "zh": "金融数据抓取：股票价格和市场数据",
-      "ja": "金融データスクレイピング：株価と市場データ",
-      "ko": "금융 데이터 스크래핑: 주가 및 시장 데이터"
+      "id": "Scraping Data Finansial: Harga Saham dan Data Pasar"
     },
     "desc": {
       "en": "Deep engineering breakdown on financial data scraping: stock prices and market data: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping data finansial: harga saham dan data pasar: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：金融数据抓取：股票价格和市场数据的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場における金融データスクレイピング：株価と市場データの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 금융 데이터 스크래핑: 주가 및 시장 데이터의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping data finansial: harga saham dan data pasar: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -1951,17 +1753,11 @@
     "cat": "web-scraping",
     "title": {
       "en": "Scraping Public Instagram Data for Indonesian Influencer Analysis",
-      "id": "Scraping Data Publik Instagram untuk Analisis Influencer Indonesia",
-      "zh": "抓取Instagram公共数据用于印尼网红分析",
-      "ja": "インドネシアインフルエンサー分析向けInstagram公開データスクレイピング",
-      "ko": "인도네시아 인플루언서 분석용 Instagram 공개 데이터 스크래핑"
+      "id": "Scraping Data Publik Instagram untuk Analisis Influencer Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on scraping public instagram data for indonesian influencer analysis: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang scraping data publik instagram untuk analisis influencer indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：抓取Instagram公共数据用于印尼网红分析的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアインフルエンサー分析向けInstagram公開データスクレイピングの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 인플루언서 분석용 Instagram 공개 데이터 스크래핑의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang scraping data publik instagram untuk analisis influencer indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2010,17 +1806,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Channel Manager Automation for Indonesian Hotels",
-      "id": "Otomasi Channel Manager untuk Hotel Indonesia",
-      "zh": "印尼酒店渠道管理自动化",
-      "ja": "インドネシアホテル向けチャネルマネージャー自動化",
-      "ko": "인도네시아 호텔 채널 관리자 자동화"
+      "id": "Otomasi Channel Manager untuk Hotel Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on channel manager automation for indonesian hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi channel manager untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼酒店渠道管理自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアホテル向けチャネルマネージャー自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 호텔 채널 관리자 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi channel manager untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2069,17 +1859,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Restaurant Reservation Automation in Indonesia",
-      "id": "Otomasi Reservasi Restoran di Indonesia",
-      "zh": "印尼餐厅预订自动化",
-      "ja": "インドネシアレストラン予約自動化",
-      "ko": "인도네시아 레스토랑 예약 자동화"
+      "id": "Otomasi Reservasi Restoran di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on restaurant reservation automation in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi reservasi restoran di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼餐厅预订自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアレストラン予約自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 레스토랑 예약 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi reservasi restoran di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2128,17 +1912,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Revenue Management Systems for Indonesian Hotels",
-      "id": "Sistem Revenue Management untuk Hotel Indonesia",
-      "zh": "印尼酒店收益管理系统",
-      "ja": "インドネシアホテル向け収益管理システム",
-      "ko": "인도네시아 호텔 수익 관리 시스템"
+      "id": "Sistem Revenue Management untuk Hotel Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on revenue management systems for indonesian hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang sistem revenue management untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼酒店收益管理系统的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアホテル向け収益管理システムの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 호텔 수익 관리 시스템의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang sistem revenue management untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2187,17 +1965,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Hotel Staff Scheduling Automation: Optimizing Labor Costs",
-      "id": "Otomasi Penjadwalan Staff Hotel: Mengoptimalkan Biaya Tenaga Kerja",
-      "zh": "酒店员工排班自动化：优化人力成本",
-      "ja": "ホテルスタッフスケジューリング自動化：人件費最適化",
-      "ko": "호텔 직원 일정 자동화: 인건비 최적화"
+      "id": "Otomasi Penjadwalan Staff Hotel: Mengoptimalkan Biaya Tenaga Kerja"
     },
     "desc": {
       "en": "Deep engineering breakdown on hotel staff scheduling automation: optimizing labor costs: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi penjadwalan staff hotel: mengoptimalkan biaya tenaga kerja: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店员工排班自动化：优化人力成本的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテルスタッフスケジューリング自動化：人件費最適化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 직원 일정 자동화: 인건비 최적화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi penjadwalan staff hotel: mengoptimalkan biaya tenaga kerja: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2246,17 +2018,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Automating Hotel Loyalty Programs in Indonesia",
-      "id": "Otomasi Program Loyalitas Hotel di Indonesia",
-      "zh": "印尼酒店忠诚度计划自动化",
-      "ja": "インドネシアホテルロイヤルティプログラム自動化",
-      "ko": "인도네시아 호텔 로열티 프로그램 자동화"
+      "id": "Otomasi Program Loyalitas Hotel di Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on automating hotel loyalty programs in indonesia: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi program loyalitas hotel di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼酒店忠诚度计划自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアホテルロイヤルティプログラム自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 호텔 로열티 프로그램 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi program loyalitas hotel di indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2305,17 +2071,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Hotel Procurement Automation: Supplier Management",
-      "id": "Otomasi Procurement Hotel: Manajemen Supplier",
-      "zh": "酒店采购自动化：供应商管理",
-      "ja": "ホテル調達自動化：サプライヤー管理",
-      "ko": "호텔 조달 자동화: 공급업체 관리"
+      "id": "Otomasi Procurement Hotel: Manajemen Supplier"
     },
     "desc": {
       "en": "Deep engineering breakdown on hotel procurement automation: supplier management: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi procurement hotel: manajemen supplier: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店采购自动化：供应商管理的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテル調達自動化：サプライヤー管理の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 조달 자동화: 공급업체 관리의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi procurement hotel: manajemen supplier: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2364,17 +2124,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Automated Upselling Strategies for Hotels",
-      "id": "Strategi Upselling Otomatis untuk Hotel",
-      "zh": "酒店自动化追加销售策略",
-      "ja": "ホテル向け自動アップセル戦略",
-      "ko": "호텔 자동화 업셀링 전략"
+      "id": "Strategi Upselling Otomatis untuk Hotel"
     },
     "desc": {
       "en": "Deep engineering breakdown on automated upselling strategies for hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang strategi upselling otomatis untuk hotel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店自动化追加销售策略的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテル向け自動アップセル戦略の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 자동화 업셀링 전략의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang strategi upselling otomatis untuk hotel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2423,17 +2177,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Spa and Wellness Booking Automation in Indonesian Resorts",
-      "id": "Otomasi Booking Spa dan Wellness di Resort Indonesia",
-      "zh": "印尼度假村水疗和健康预订自动化",
-      "ja": "インドネシアリゾート向けスパ＆ウェルネス予約自動化",
-      "ko": "인도네시아 리조트 스파 및 웰니스 예약 자동화"
+      "id": "Otomasi Booking Spa dan Wellness di Resort Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on spa and wellness booking automation in indonesian resorts: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi booking spa dan wellness di resort indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼度假村水疗和健康预订自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアリゾート向けスパ＆ウェルネス予約自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 리조트 스파 및 웰니스 예약 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi booking spa dan wellness di resort indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2482,17 +2230,11 @@
     "cat": "hospitality",
     "title": {
       "en": "AI Concierge Chatbots for Indonesian Hotels",
-      "id": "Chatbot Concierge AI untuk Hotel Indonesia",
-      "zh": "印尼酒店AI礼宾聊天机器人",
-      "ja": "インドネシアホテル向けAIコンシェルジュチャットボット",
-      "ko": "인도네시아 호텔 AI 컨시어지 챗봇"
+      "id": "Chatbot Concierge AI untuk Hotel Indonesia"
     },
     "desc": {
       "en": "Deep engineering breakdown on ai concierge chatbots for indonesian hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang chatbot concierge ai untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：印尼酒店AI礼宾聊天机器人的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるインドネシアホテル向けAIコンシェルジュチャットボットの実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 인도네시아 호텔 AI 컨시어지 챗봇의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang chatbot concierge ai untuk hotel indonesia: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2541,17 +2283,11 @@
     "cat": "hospitality",
     "title": {
       "en": "Laundry Tracking Automation for Hotels",
-      "id": "Otomasi Tracking Laundry untuk Hotel",
-      "zh": "酒店洗衣追踪自动化",
-      "ja": "ホテル向けランドリートラッキング自動化",
-      "ko": "호텔 세탁 추적 자동화"
+      "id": "Otomasi Tracking Laundry untuk Hotel"
     },
     "desc": {
       "en": "Deep engineering breakdown on laundry tracking automation for hotels: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang otomasi tracking laundry untuk hotel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：酒店洗衣追踪自动化的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるホテル向けランドリートラッキング自動化の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 호텔 세탁 추적 자동화의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang otomasi tracking laundry untuk hotel: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2600,17 +2336,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 1",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 1",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 1",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 1",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 1"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 1"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 1: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 1: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 1的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 1の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 1의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 1: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2659,17 +2389,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 2",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 2",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 2",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 2",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 2"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 2"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 2: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 2: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 2的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 2の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 2의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 2: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2718,17 +2442,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 3",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 3",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 3",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 3",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 3"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 3"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 3: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 3: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 3的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 3の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 3의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 3: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2777,17 +2495,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 4",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 4",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 4",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 4",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 4"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 4"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 4: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 4: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 4的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 4の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 4의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 4: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2836,17 +2548,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 5",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 5",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 5",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 5",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 5"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 5"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 5: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 5: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 5的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 5の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 5의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 5: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2895,17 +2601,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 6",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 6",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 6",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 6",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 6"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 6"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 6: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 6: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 6的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 6の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 6의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 6: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -2954,17 +2654,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 7",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 7",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 7",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 7",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 7"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 7"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 7: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 7: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 7的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 7の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 7의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 7: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3013,17 +2707,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 8",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 8",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 8",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 8",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 8"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 8"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 8: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 8: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 8的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 8の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 8의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 8: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3072,17 +2760,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 9",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 9",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 9",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 9",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 9"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 9"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 9: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 9: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 9的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 9の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 9의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 9: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3131,17 +2813,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 10",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 10",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 10",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 10",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 10"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 10"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 10: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 10: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 10的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 10の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 10의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 10: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3190,17 +2866,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 11",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 11",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 11",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 11",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 11"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 11"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 11: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 11: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 11的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 11の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 11의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 11: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3249,17 +2919,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 12",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 12",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 12",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 12",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 12"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 12"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 12: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 12: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 12的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 12の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 12의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 12: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3308,17 +2972,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 13",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 13",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 13",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 13",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 13"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 13"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 13: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 13: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 13的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 13の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 13의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 13: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3367,17 +3025,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 14",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 14",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 14",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 14",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 14"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 14"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 14: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 14: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 14的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 14の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 14의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 14: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3426,17 +3078,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 15",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 15",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 15",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 15",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 15"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 15"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 15: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 15: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 15的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 15の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 15의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 15: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3485,17 +3131,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 16",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 16",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 16",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 16",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 16"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 16"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 16: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 16: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 16的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 16の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 16의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 16: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3544,17 +3184,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 17",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 17",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 17",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 17",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 17"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 17"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 17: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 17: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 17的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 17の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 17의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 17: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3603,17 +3237,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 18",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 18",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 18",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 18",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 18"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 18"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 18: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 18: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 18的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 18の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 18의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 18: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3662,17 +3290,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 19",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 19",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 19",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 19",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 19"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 19"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 19: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 19: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 19的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 19の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 19의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 19: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3721,17 +3343,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 20",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 20",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 20",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 20",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 20"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 20"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 20: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 20: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 20的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 20の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 20의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 20: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3780,17 +3396,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 21",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 21",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 21",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 21",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 21"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 21"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 21: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 21: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 21的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 21の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 21의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 21: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3839,17 +3449,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 22",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 22",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 22",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 22",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 22"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 22"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 22: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 22: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 22的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 22の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 22의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 22: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3898,17 +3502,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 23",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 23",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 23",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 23",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 23"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 23"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 23: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 23: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 23的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 23の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 23의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 23: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -3957,17 +3555,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 24",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 24",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 24",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 24",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 24"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 24"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 24: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 24: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 24的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 24の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 24의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 24: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4016,17 +3608,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 25",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 25",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 25",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 25",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 25"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 25"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 25: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 25: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 25的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 25の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 25의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 25: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4075,17 +3661,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 26",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 26",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 26",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 26",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 26"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 26"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 26: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 26: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 26的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 26の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 26의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 26: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4134,17 +3714,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 27",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 27",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 27",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 27",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 27"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 27"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 27: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 27: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 27的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 27の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 27의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 27: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4193,17 +3767,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 28",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 28",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 28",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 28",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 28"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 28"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 28: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 28: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 28的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 28の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 28의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 28: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4252,17 +3820,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 29",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 29",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 29",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 29",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 29"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 29"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 29: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 29: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 29的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 29の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 29의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 29: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4311,17 +3873,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 30",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 30",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 30",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 30",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 30"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 30"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 30: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 30: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 30的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 30の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 30의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 30: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4370,17 +3926,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 31",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 31",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 31",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 31",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 31"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 31"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 31: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 31: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 31的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 31の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 31의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 31: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4429,17 +3979,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 32",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 32",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 32",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 32",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 32"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 32"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 32: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 32: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 32的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 32の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 32의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 32: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4488,17 +4032,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 33",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 33",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 33",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 33",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 33"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 33"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 33: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 33: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 33的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 33の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 33의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 33: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4547,17 +4085,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 34",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 34",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 34",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 34",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 34"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 34"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 34: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 34: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 34的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 34の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 34의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 34: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4606,17 +4138,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 35",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 35",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 35",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 35",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 35"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 35"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 35: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 35: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 35的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 35の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 35의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 35: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4665,17 +4191,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 36",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 36",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 36",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 36",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 36"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 36"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 36: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 36: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 36的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 36の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 36의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 36: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4724,17 +4244,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 37",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 37",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 37",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 37",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 37"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 37"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 37: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 37: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 37的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 37の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 37의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 37: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4783,17 +4297,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 38",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 38",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 38",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 38",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 38"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 38"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 38: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 38: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 38的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 38の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 38의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 38: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4842,17 +4350,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 39",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 39",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 39",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 39",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 39"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 39"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 39: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 39: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 39的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 39の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 39의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 39: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4901,17 +4403,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 40",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 40",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 40",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 40",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 40"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 40"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 40: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 40: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 40的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 40の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 40의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 40: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -4960,17 +4456,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 41",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 41",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 41",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 41",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 41"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 41"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 41: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 41: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 41的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 41の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 41의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 41: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -5019,17 +4509,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 42",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 42",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 42",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 42",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 42"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 42"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 42: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 42: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 42的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 42の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 42의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 42: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -5078,17 +4562,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 43",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 43",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 43",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 43",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 43"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 43"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 43: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 43: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 43的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 43の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 43의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 43: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -5137,17 +4615,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 44",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 44",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 44",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 44",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 44"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 44"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 44: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 44: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 44的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 44の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 44의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 44: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -5196,17 +4668,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 45",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 45",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 45",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 45",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 45"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 45"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 45: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 45: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 45的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 45の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 45의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 45: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
@@ -5255,17 +4721,11 @@
     "cat": "Enterprise Automation · Systems",
     "title": {
       "en": "Enterprise Automation Architecture: High-Throughput Pipeline 46",
-      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 46",
-      "zh": "企业级自动化系统架构：高吞吐数据管道 46",
-      "ja": "エンタープライズ自動化アーキテクチャ：高スループットパイプライン 46",
-      "ko": "엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 46"
+      "id": "Arsitektur Otomasi Enterprise: Pipeline Throughput Tinggi 46"
     },
     "desc": {
       "en": "Deep engineering breakdown on enterprise automation architecture: high-throughput pipeline 46: real-world architecture, metrics, and production implementations in Indonesia.",
-      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 46: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia.",
-      "zh": "印尼生产环境实战：企业级自动化系统架构：高吞吐数据管道 46的系统架构、关键性能指标与落地代码详解。",
-      "ja": "インドネシア市場におけるエンタープライズ自動化アーキテクチャ：高スループットパイプライン 46の実装アーキテクチャ、実運用メトリクス、コード詳細解説。",
-      "ko": "인도네시아 실무 환경에서 검증된 엔터프라이즈 자동화 아키텍처: 고처리량 데이터 파이프라인 46의 아키텍처 설계, 성능 지표 및 구현 코드 분석."
+      "id": "Analisis teknis mendalam tentang arsitektur otomasi enterprise: pipeline throughput tinggi 46: arsitektur nyata, metrik produksi, dan implementasi lapangan di Indonesia."
     },
     "readTime": "10 min read",
     "metrics": [
