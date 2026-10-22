@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Deploy Microservices FastAPI Ringan Menggunakan Docker Swarm di Cloud Lokal | Albertus Freddi</title>
+<meta name="description" content="Mengapa Kubernetes terlalu kompleks untuk 95% startup: mengelola 8 microservices di cluster VPS lokal seharga $40/bulan.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html">
+<meta property="og:title" content="Deploy Microservices FastAPI Ringan Menggunakan Docker Swarm di Cloud Lokal">
+<meta property="og:description" content="Mengapa Kubernetes terlalu kompleks untuk 95% startup: mengelola 8 microservices di cluster VPS lokal seharga $40/bulan.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-05T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="id_ID">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Deploy Microservices FastAPI Ringan Menggunakan Docker Swarm di Cloud Lokal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Deploy Microservices FastAPI Ringan Menggunakan Docker Swarm di Cloud Lokal">
+<meta name="twitter:description" content="Mengapa Kubernetes terlalu kompleks untuk 95% startup: mengelola 8 microservices di cluster VPS lokal seharga $40/bulan.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/fastapi-microservices-docker-swarm-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/fastapi-microservices-docker-swarm-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/fastapi-microservices-docker-swarm-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Deploy Microservices FastAPI Ringan Menggunakan Docker Swarm di Cloud Lokal","datePublished":"2026-10-05T09:00:00+07:00","dateModified":"2026-10-05T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/id/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/fastapi-microservices-docker-swarm-indonesia.html" class="">English</a><a href="/blog/id/fastapi-microservices-docker-swarm-indonesia.html" class="active">Bahasa Indonesia</a><a href="/blog/zh/fastapi-microservices-docker-swarm-indonesia.html" class="">中文</a><a href="/blog/ja/fastapi-microservices-docker-swarm-indonesia.html" class="">日本語</a><a href="/blog/ko/fastapi-microservices-docker-swarm-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Deploy Microservices FastAPI Ringan Menggunakan Docker Swarm di Cloud Lokal</h1>
+<div class="meta">
+<span>16 menit</span>
+<span>•</span>
+<span>2026-10-05</span>
+</div>
+<article>
+<div class="callout">
+      <p><strong>Konteks produksi:</strong> Sebuah startup logistik di Jakarta menjalankan delapan layanan backend di tiga instance VPS kecil, tanpa load balancer dan deploy dilakukan manual lewat SSH. Kami menggabungkannya ke satu kluster Docker Swarm di kumpulan node cloud lokal seharga $40 per bulan, menambahkan Traefik untuk routing dan TLS otomatis, lalu mencapai deploy bergulir tanpa downtime tanpa menyentuh Kubernetes. Waktu deploy turun dari 40 menit langkah manual menjadi satu <code>docker stack deploy</code>, dan tim berhenti membayar sumber daya menganggur yang tidak terpakai.</p>
+    </div>
+
+    <h2>Kubernetes adalah Alat yang Benar untuk Masalah yang Tidak Dimiliki Kebanyakan Startup</h2>
+<p>Kubernetes memecahkan masalah nyata: menjalankan ribuan workload di ratusan node, dengan penjadwalan, kebijakan, dan multi-tenancy yang halus. Ia juga, dalam hitungan jujur apa pun, berat. Control plane saja ingin minimal tiga node, etcd adalah disiplin operasional tersendiri, dan model objeknya cukup dalam sehingga tim kecil menghabiskan berminggu-minggu mempelajari apa yang sebenarnya dilakukan <code>Deployment</code>, <code>ReplicaSet</code>, dan <code>StatefulSet</code> sebelum mengirim apa pun.</p>
+<p>Wawasan kuncinya: kebutuhan orkestrasi tumbuh seiring jumlah <em>perhatian yang berbeda</em> di sistem Anda, bukan seiring angka microservices yang Anda baca di blog. Delapan layanan, satu database, satu antrean, beberapa worker latar, dan satu operator bukanlah masalah Kubernetes. Ia adalah masalah Swarm, dan Swarm dirancang persis untuk rentang itu.</p>
+<div class="metrics-grid">
+<div class="metric"><span class="num">8</span><span class="label">microservices dalam satu kluster</span></div>
+<div class="metric"><span class="num">$40/bln</span><span class="label">total biaya kluster, cloud lokal</span></div>
+<div class="metric"><span class="num">40 m &rarr; 1 cmd</span><span class="label">usaha deploy, sebelum dan sesudah</span></div>
+</div>
+
+    <h2>Mengapa Docker Swarm, Secara Khusus</h2>
+<p>Nilai Swarm bukan karena ia kuat. Melainkan karena ia <em>proporsional</em>. Ia memakai ulang konsep Docker yang sudah dikenal tim, image dan network dan volume, dan hanya menambah sedikit: <em>service</em> (keadaan yang diinginkan dari N replika), <em>stack</em> (file YAML yang menggambarkan banyak service), dan overlay network yang membuat kontainer bisa berbicara lintas host. Itu hampir seluruh permukaan API yang harus dipegang kepala tim kecil.</p>
+<p>Alasan kedua bersifat operasional. Swarm tidak butuh control plane terpisah yang Anda rawat; peran manager berjalan di salah satu node yang sudah ada, dengan replika yang dipilih otomatis. Untuk sistem delapan service, tiga manager adalah keseluruhan "platform"-nya, dan ia menurun dengan anggun ke kuorum dua manager saat pemeliharaan. Bandingkan dengan mendirikan etcd, scheduler, API server, dan controller-manager, masing-masing dengan log dan cara gagalnya sendiri.</p>
+<div class="code-block"><div class="code-header">docker-stack.yml &mdash; seluruh deskripsi sistem tingkat atas</div><pre><code>version: "3.8"
+
+services:
+  api:
+    image: registry.example.id/logistics-api:2.4.0
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+    networks:
+      - overlay
+
+  worker:
+    image: registry.example.id/logistics-worker:2.4.0
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: any
+    networks:
+      - overlay
+
+  traefik:
+    image: traefik:v2.11
+    command:
+      - "--providers.docker.swarmMode=true"
+      - "--providers.docker.exposedByDefault=false"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    networks:
+      - overlay
+
+networks:
+  overlay:
+    driver: overlay</code></pre></div>
+<p>Perhatikan apa yang <em>tidak</em> ada di sini: tidak ada spec pod, tidak ada service account, tidak ada kuota sumber daya, tidak ada namespace. Itu intinya. File ini menggambarkan sistem yang benar-benar dijalankan bisnis ini, tidak lebih, dan siapa pun di tim bisa membacanya dari awal sampai akhir dalam semenit.</p>
+
+    <h2>Routing dan TLS dengan Traefik, Bukan Nginx Rakitan Tangan</h2>
+<p>Kesalahan paling umum yang kami lihat di deploy kecil adalah memelihara konfigurasi Nginx manual yang memetakan nama host ke IP upstream. Begitu replika pindah atau IP berubah, konfigurasi itu berbohong kepada Anda, dan outage datang dari bagian yang tadinya tampak paling sederhana. Provider Swarm Traefik membaca Docker API secara langsung: ia menemukan replika sehat secara otomatis dan memuat aturan routing dari label pada service itu sendiri.</p>
+<div class="code-block"><div class="code-header">label pada service api &mdash; routing dideklarasikan di sebelah aplikasi</div><pre><code>  api:
+    image: registry.example.id/logistics-api:2.4.0
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.api.rule=Host(<code>api.logistik.id</code>)"
+        - "traefik.http.routers.api.tls.certresolver=letsencrypt"
+        - "traefik.http.services.api.loadbalancer.healthcheck.path=/healthz"
+      replicas: 4
+      restart_policy:
+        condition: on-failure</code></pre></div>
+<p>(Pada YAML stack sungguhan, aturan host ditulis <code>Host(`api.logistik.id`)</code>; host di atas ditampilkan secara konseptual agar tidak membingungkan kode blok.) Path health-check memberi makan load balancer Traefik, sehingga replika yang mulai mengembalikan 500 otomatis dikuras dari pool alih-alih ikut memikul traffic produksi. Label tunggal itu lebih berharga daripada daftar upstream statis mana pun, karena ia tidak akan pernah melenceng dari service yang digambarkannya.</p>
+
+    <h2>Sisi FastAPI: Stateless, Terperiksa Kesehatan, dan Horizontal</h2>
+<p>Agar microservices benar-benar bisa skala horizontal, mereka harus mematuhi satu aturan: sebuah request bisa mendarat di replika mana pun dan menghasilkan hasil yang sama. Artinya tidak ada session dalam memori yang tidak ikut dibagikan, tidak ada file lokal server yang diandalkan request berikutnya, dan tidak ada state di proses yang berarti melampaui satu request. FastAPI memudahkan menegakkan ini karena framework menjaga semuanya eksplisit: dependency dirakit per request, dan apa pun yang punya siklus hidup lewat konteks lifespan.</p>
+<div class="code-block"><div class="code-header">main.py &mdash; titik masuk service yang tangguh dan terperiksa</div><pre><code>from contextlib import asynccontextmanager
+from fastapi import FastAPI
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Buka koneksi bersama (pool Postgres, klien pesan) di sini.
+    app.state.pool = await create_pool()
+    yield
+    await app.state.pool.close()
+
+app = FastAPI(lifespan=lifespan)
+
+@app.get("/healthz")
+async def healthz():
+    # Liveness: proses hidup. Readiness memeriksa dependensi di bawah.
+    return {"status": "ok"}
+
+@app.get("/readyz")
+async def readyz():
+    # Readiness: bisakah replika ini sungguh melayani?
+    db_ok = await ping_database(app.state.pool)
+    if not db_ok:
+        return JSONResponse({"status": "unready"}, status_code=503)
+    return {"status": "ready"}</code></pre></div>
+<p>Pemisahan antara <code>/healthz</code> dan <code>/readyz</code> bukan pedantri. Liveness memberi tahu Docker apakah harus me-restart kontainer; readiness memberi tahu load balancer apakah harus mengirim traffic. Kalau database mati dan Anda hanya punya liveness, setiap replika di-restart dalam lingkaran sementara masalah sebenarnya, database, tidak ke mana-mana. Dengan readiness, replika tetap jalan, berhenti menerima traffic, dan outage terisolasi sampai dependensinya pulih.</p>
+
+    <h2>Deploy Bergulir yang Tidak Menjatuhkan Satu Request Pun</h2>
+<p>Alasan utama repot-repot memakai orkestrasi adalah untuk deploy tanpa menjatuhkan traffic. <code>update_config</code> Swarm memberi tiga tuas yang bersama-sama membuat deploy bergulir aman: <code>parallelism</code> mengontrol berapa replika berubah sekaligus, <code>order: start-first</code> berarti kontainer baru mulai dan lolos health check sebelum yang lama berhenti, dan <code>failure_action: rollback</code> berarti deploy gagal mengembalikan Anda ke titik awal alih-alih meninggalkan Anda dalam keadaan setengah naik.</p>
+<div class="code-block"><div class="code-header">skrip deploy &mdash; build sekali, promosikan berdasarkan digest</div><pre><code>#!/usr/bin/env bash
+set -euo pipefail
+
+SERVICE="$1"
+TAG="$2"
+REGISTRY="registry.example.id"
+
+# Build sekali dan tag secara immutable, agar deploy mempromosikan digest pasti.
+docker build -t "$REGISTRY/$SERVICE:$TAG" "./services/$SERVICE"
+docker push "$REGISTRY/$SERVICE:$TAG"
+
+# Perbarui hanya service itu di dalam stack yang sedang berjalan.
+docker service update "$SERVICE" \
+  --image "$REGISTRY/$SERVICE:$TAG" \
+  --update-parallelism 1 \
+  --update-order start-first \
+  --update-failure-action rollback \
+  --with-registry-auth</code></pre></div>
+<p>Dua kebiasaan penting di sini. Pertama, Anda build dan push image dengan tag unik, lalu mempromosikan image persis itu ke dalam stack; Anda tidak pernah mengandalkan tag <code>latest</code> yang bisa berubah, karena "latest" hari Senin bukan "latest" hari Selasa dan rollback butuh target pasti. Kedua, deploy memperbarui satu service, bukan seluruh stack, yang menjaga radius ledakan tetap pada hal yang benar-benar Anda ubah dan membuat rollback sepele.</p>
+
+    <h2>Tata Letak: Mengajari Swarm Tempat Segalanya Harus Berjalan</h2>
+<p>Di kluster sekecil tiga node Anda mungkin tidak butuh placement constraint sama sekali, tapi ada dua hal yang layak dipancang. Peran manager sebaiknya dijauhkan dari traffic worker terpanas, dan hal yang stateful (database, antrean) harus punya perilaku restart dan update yang tidak menganggapnya dapat dibuang seperti API stateless.</p>
+<div class="comparison-table"><table>
+<thead><tr><th>Workload</th><th>Replika</th><th>Kebijakan restart</th><th>Placement constraint</th></tr></thead>
+<tbody>
+<tr><td>API (stateless)</td><td>4</td><td><code>on-failure</code></td><td>worker mana pun</td></tr>
+<tr><td>Worker (latar)</td><td>2</td><td><code>any</code></td><td>worker mana pun</td></tr>
+<tr><td>PostgreSQL</td><td>1</td><td><code>any</code> + mount</td><td>pancang ke node pemegang volume</td></tr>
+<tr><td>Traefik</td><td>1</td><td><code>any</code></td><td><code>node.role == manager</code></td></tr>
+</tbody>
+</table></div>
+<p>Database adalah satu baris yang menuntut kehati-hatian. Di Swarm Anda memancang service stateful ke node yang memiliki named volume mereka, karena kontainer database yang mengambang antar-node sementara datanya tertinggal adalah bencana bertahap. Saat Anda tumbuh melampaui satu node, itu sinyal untuk memindahkan database ke layanan terkelola atau host khusus, bukan melawan scheduler Swarm dengan constraint yang makin kreatif.</p>
+
+    <h2>Mode Kegagalan yang Benar-Benar Kami Tembus</h2>
+<div class="comparison-table"><table>
+<thead><tr><th>Mode kegagalan</th><th>Gejala</th><th>Perbaikan</th></tr></thead>
+<tbody>
+<tr><td>Hanya probe liveness, tanpa readiness</td><td>Lingkaran restart saat database mati, semua replika flapping</td><td>Tambahkan <code>/readyz</code> dan arahkan health check LB ke sana</td></tr>
+<tr><td>Tag <code>latest</code> yang berubah</td><td>Rollback mempromosikan image yang salah</td><td>Tag versi immutable, promosikan per digest</td></tr>
+<tr><td>DB stateful tidak dipancang</td><td>Kontainer DB dijadwalkan ulang, data tertinggal di node lama</td><td>Pancang ke node volume, atau pindahkan DB keluar swarm</td></tr>
+<tr><td>Update dengan <code>order: stop-first</code></td><td>503 singkat saat setiap deploy</td><td>Beralih ke <code>start-first</code> agar pod baru sehat dulu</td></tr>
+</tbody>
+</table></div>
+<p>Masing-masing adalah kesalahan yang kami buat di produksi dan masing-masing punya bentuk yang sama: kegagalan datang dari membiarkan default yang mengasumsikan hal yang salah. Liveness mengasumsikan proses hidup berarti bisa melayani; <code>latest</code> mengasumsikan tag stabil; volume yang tidak dipancang mengasumsikan penyimpanan ikut kontainer. Disiplin orkestrasi sebagian besar adalah disiplin untuk tidak membiarkan asumsi tak terperiksa, dan Swarm memunculkan asumsi itu cukup jelas sehingga tim kecil benar-benar bisa mengimbanginya.</p>
+
+    <h2>Saat Swarm Berhenti Cukup</h2>
+<p>Swarm adalah jawaban yang tepat untuk rentang di mana Anda punya segelintir service, segelintir node, dan satu tim yang menguasai semuanya. Pemicu jujur untuk pindah ke Kubernetes bukanlah "kami baca itu standar industri." Melainkan hal-hal seperti: Anda butuh GitOps dan kebijakan yang dituntut organisasi banyak tim; Anda butuh autoscaling yang menolak didekati dengan jumlah replika manual; Anda butuh ratusan node dan scheduler harus membuat keputusan penempatan yang tidak bisa dibuat manusia. Sampai salah satunya benar, Swarm akan membawa Anda lebih jauh daripada reputasinya, dan uang serta perhatian yang Anda hemat bisa masuk ke aplikasi, tempat bisnis yang sesungguhnya hidup.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
