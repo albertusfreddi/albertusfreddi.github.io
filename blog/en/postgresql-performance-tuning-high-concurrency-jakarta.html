@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency | Albertus Freddi</title>
+<meta name="description" content="From table bloat to index bloat: how partition strategies and advisory locks kept our database under 15% CPU during high-traffic events.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<meta property="og:title" content="PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency">
+<meta property="og:description" content="From table bloat to index bloat: how partition strategies and advisory locks kept our database under 15% CPU during high-traffic events.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-22T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency">
+<meta name="twitter:description" content="From table bloat to index bloat: how partition strategies and advisory locks kept our database under 15% CPU during high-traffic events.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/en/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html" class="active">English</a><a href="/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">Bahasa Indonesia</a><a href="/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">中文</a><a href="/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">日本語</a><a href="/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>PostgreSQL Optimization for 10M+ Row Tables Under Flash-Sale Concurrency</h1>
+<div class="meta">
+<span>16 min read</span>
+<span>•</span>
+<span>2026-10-22</span>
+</div>
+<article>
+<div class="callout"><p><strong>Production context:</strong> This is the database layer for an Indonesian e-commerce marketplace that runs a flash sale every Friday at 18:00 WIB. The order table and the payment ledger each pass ten million rows, and checkout traffic spikes from a few hundred requests a second to several thousand in the first ninety seconds. The hard targets we hold to on sale night: checkout p95 under 120ms, database CPU under 15 percent, and zero deadlocks from inventory contention.</p></div>
+
+<h2>The Real Bottleneck Is a Hot Row, Not a Slow Query</h2>
+
+<p>Most people assume a flash sale kills the database because "the queries are too slow." That is rarely the first problem. The first problem is contention: a few hundred checkout requests all want the same inventory row at the same instant. Under PostgreSQL's MVCC, a <code>SELECT ... FOR UPDATE</code> takes a row lock, and every other transaction that touches the same row parks behind it in a queue that no index can save you from.</p>
+
+<p>Here is the failure cascade we saw on the first sale, in order:</p>
+
+<ul>
+<li><strong>Lock queue forms</strong>: one request holds the row lock, forty others wait on it. Each waiting backend holds its own snapshot and its own memory.</li>
+<li><strong>Timeouts cascade</strong>: the default <code>lock_timeout</code> is zero, meaning "wait forever." Requests hang until the app-level HTTP timeout fires and the caller retries.</li>
+<li><strong>Connection exhaustion</strong>: because every hung request holds an open backend, <code>max_connections</code> gets eaten. New checkouts get "connection refused" or "sorry, too many clients already."</li>
+<li><strong>Deadlocks begin</strong>: two transactions each hold one row and want the other. PostgreSQL detects and aborts one, but the retried transaction re-enters the same queue.</li>
+</ul>
+
+<p>The fix is not a bigger machine. The fix is to stop holding locks across round-trips and to stop treating a 10M-row append-only ledger like a small lookup table. The rest of this article is the playbook we actually applied, with the exact SQL.</p>
+
+<h2>Measure Before You Change Anything</h2>
+
+<p>Before touching a single setting, prove which connection is blocking which. Two queries do this. The first lists every backend currently waiting on a lock and how long it has been stuck:</p>
+
+<div class="code-block">
+<div class="code-header">Who is waiting on a lock</div>
+<pre><code>SELECT pid,
+       usename,
+       state,
+       wait_event_type,
+       wait_event,
+       now() - state_change AS waiting_for
+FROM pg_stat_activity
+WHERE wait_event_type = 'Lock'
+ORDER BY waiting_for DESC;</code></pre>
+</div>
+
+<p>The second pairs each blocked process with the process that holds the lock, using the built-in <code>pg_blocking_pids</code> function. This is the one that tells you the exact culprit query:</p>
+
+<div class="code-block">
+<div class="code-header">Who is blocking whom</div>
+<pre><code>SELECT a.pid,
+       a.query AS blocked_query,
+       pg_blocking_pids(a.pid) AS blocked_by,
+       b.query AS blocking_query
+FROM pg_stat_activity a
+LEFT JOIN pg_stat_activity b
+  ON b.pid = (pg_blocking_pids(a.pid))[1]
+WHERE cardinality(pg_blocking_pids(a.pid)) > 0;</code></pre>
+</div>
+
+<p>On sale night we saw the same picture every time: dozens of <code>SELECT ... FOR UPDATE</code> on <code>inventory</code>, all blocked by one transaction that was itself waiting on an HTTP response. The lock was held not because the work was slow, but because the application held it open across a network hop.</p>
+
+<h2>Rule 1: Replace SELECT FOR UPDATE With a Conditional UPDATE</h2>
+
+<p>The most damaging pattern in a flash sale is this one, and it appears in almost every tutorial:</p>
+
+<div class="code-block">
+<div class="code-header">Anti-pattern: lock held across a round-trip</div>
+<pre><code>BEGIN;
+SELECT stock FROM inventory WHERE product_id = 123 FOR UPDATE;  -- lock taken
+-- ... app computes, calls another service, waits on HTTP ...
+UPDATE inventory SET stock = stock - 1 WHERE product_id = 123;  -- lock finally freed
+COMMIT;</code></pre>
+</div>
+
+<p>Between the <code>SELECT</code> and the <code>UPDATE</code>, the row lock is held while the application does I/O it does not need to hold the lock for. That window is where the queue forms. The database can do the whole thing atomically in one statement, and the row lock is held only for microseconds:</p>
+
+<div class="code-block">
+<div class="code-header">Fix: one atomic statement, lock released immediately</div>
+<pre><code>UPDATE inventory
+SET stock = stock - 1,
+    reserved = reserved + 1,
+    updated_at = now()
+WHERE product_id = 123
+  AND stock >= 1
+RETURNING stock;</code></pre>
+</div>
+
+<p>If the <code>UPDATE</code> returns zero rows, the seller is out of stock and you decline the order. No <code>SELECT</code>, no open transaction, no application-level lock hold. PostgreSQL guarantees the read-check-write is atomic, so two requests cannot both decrement the same unit of stock. This one change removed roughly ninety percent of the contention on <code>inventory</code> on the very next sale.</p>
+
+<p>Two details make this safe. First, add <code>lock_timeout</code> as a session or role default so no request waits forever; a short timeout that fails fast is far better for a flash sale than a request that hangs:</p>
+
+<div class="code-block">
+<div class="code-header">Fail fast instead of hanging</div>
+<pre><code>ALTER ROLE checkout_app SET lock_timeout = '500ms';
+ALTER ROLE checkout_app SET statement_timeout = '5s';</code></pre>
+</div>
+
+<p>Second, if you genuinely need to read then write only for a subset of rows you are claiming and processing, use <code>SKIP LOCKED</code> rather than blocking.</p>
+
+<h2>Rule 2: Use SKIP LOCKED for Queues and the Outbox</h2>
+
+<p>The opposite pattern, where you <em>do</em> need to claim rows and process them, is a job queue or a transactional outbox. N workers all pick the next pending row. If they all do <code>FOR UPDATE</code> on the same row, they line up behind each other. <code>SKIP LOCKED</code> tells PostgreSQL: skip any row someone else has already locked and give me the next free one.</p>
+
+<div class="code-block">
+<div class="code-header">Claim one pending outbox row without blocking</div>
+<pre><code>WITH next_job AS (
+  SELECT id
+  FROM outbox
+  WHERE status = 'pending'
+  ORDER BY created_at
+  FOR UPDATE SKIP LOCKED
+  LIMIT 1
+)
+UPDATE outbox o
+SET status = 'processing',
+    started_at = now()
+FROM next_job
+WHERE o.id = next_job.id
+RETURNING o.id, o.payload;</code></pre>
+</div>
+
+<p>Each worker gets a different row and never waits on another worker. This turns a queue from a serialization point into a fan-out. The same tactic works for ledger reconciliation and for any "process this batch" job where workers must not double-claim.</p>
+
+<h2>Rule 3: Partition Ledgers Before They Hit 10M Rows</h2>
+
+<p>Contention is a write problem. Bloat is a different problem: the payment ledger and order audit tables grow by millions of rows a month, and a single table with a single B-tree index eventually stops fitting in memory. Queries still "work," but VACUUM takes longer, indexes spill to disk, and every constraint check touches more pages.</p>
+
+<p>Declarative range partitioning splits the table by a time column. The application keeps writing to one logical table; PostgreSQL routes each row to the right partition.</p>
+
+<div class="code-block">
+<div class="code-header">Partition a ledger by month</div>
+<pre><code>CREATE TABLE payment_ledger (
+  id bigint GENERATED ALWAYS AS IDENTITY,
+  order_id bigint NOT NULL,
+  amount numeric(15,2) NOT NULL,
+  status text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+) PARTITION BY RANGE (created_at);
+
+CREATE TABLE payment_ledger_2026_10
+  PARTITION OF payment_ledger
+  FOR VALUES FROM ('2026-10-01') TO ('2026-11-01');
+
+CREATE TABLE payment_ledger_2026_11
+  PARTITION OF payment_ledger
+  FOR VALUES FROM ('2026-11-01') TO ('2026-12-01');</code></pre>
+</div>
+
+<p>Why it helps: a query filtered by <code>created_at</code> scans only the matching partitions (partition pruning), per-partition VACUUM runs faster and can keep up with writes, and you can drop or archive an old month with <code>DROP TABLE payment_ledger_2025_06</code> instead of a long <code>DELETE</code>. Create partitions ahead of time with a monthly cron or a tool like <code>pg_partman</code>, and always keep a <code>DEFAULT</code> partition or a pipeline that catches the day the cron missed.</p>
+
+<p>A caution: partitioning does not fix the hot-row problem from Rule 1. It is for append-only time-series style tables, not for a small <code>inventory</code> table that every request hammers.</p>
+
+<h2>Rule 4: Swap B-tree for BRIN on Append-Only Columns</h2>
+
+<p>On the same ledger tables, a B-tree index on <code>created_at</code> does two wasteful things: it stores a pointer for every single row, and it stores those pointers sorted across the entire table. For an append-only log where rows are physically written in time order, that is enormous and redundant. A BRIN (Block Range Index) stores one min/max pair per block range instead, which makes the index several hundred times smaller.</p>
+
+<div class="code-block">
+<div class="code-header">A BRIN index on a time-ordered column</div>
+<pre><code>CREATE INDEX payment_ledger_created_at_brin
+  ON payment_ledger
+  USING brin (created_at)
+  WITH (pages_per_range = 32);</code></pre>
+</div>
+
+<p>BRIN is fast for range scans over physically correlated data and cheap to maintain under heavy inserts. It is the right tool exactly when rows arrive roughly in order and you query by ranges of that column. Lower <code>pages_per_range</code> gives more precision at a slightly larger index; 32 is a good starting point for a monthly-partitioned ledger. The index footprint on our ledger dropped by 88 percent after the swap, and the small index stays resident in cache instead of thrashing disk.</p>
+
+<h2>Rule 5: Tune Autovacuum and Memory So the Table Stops Growing</h2>
+
+<p>PostgreSQL never overwrites a row in place under MVCC; an <code>UPDATE</code> writes a new version and leaves the old one as a dead tuple. Autovacuum is the background worker that removes those dead tuples. On a write-heavy e-commerce workload the default settings are too conservative, so dead tuples accumulate faster than they are cleaned, the table and its indexes bloat, and every query has to skip dead data.</p>
+
+<p>These are the changes we applied, with the reasoning for each:</p>
+
+<div class="code-block">
+<div class="code-header">Autovacuum and memory tuning (postgresql.conf style)</div>
+<pre><code>autovacuum_vacuum_cost_delay = '2ms'   -- do more work per pass
+autovacuum_vacuum_cost_limit = 2000      -- raise the work budget
+autovacuum_naptime = '10s'               -- check more often
+autovacuum_vacuum_scale_factor = 0.05    -- vacuum at 5% change, not 20%
+autovacuum_analyze_scale_factor = 0.05
+
+shared_buffers = '4GB'       -- about 25% of RAM; more than 8GB rarely helps
+effective_cache_size = '12GB' -- a planner hint, not an allocation; ~75% of RAM
+maintenance_work_mem = '1GB'  -- lets VACUUM and CREATE INDEX work in memory
+work_mem = '8MB'              -- raise only if many sorts spill to disk
+default_statistics_target = 200  -- better plans for skewed columns</code></pre>
+</div>
+
+<p>The two that matter most here are <code>autovacuum_vacuum_scale_factor</code> and the cost limit. A 20 percent default means a 10M-row table only gets vacuumed after 2M rows change, by which point bloat is already visible. Dropping it to 5 percent keeps the dead-tuple count low. <code>shared_buffers</code> holds hot data in memory, but the value <code>effective_cache_size</code> is what the planner uses to decide whether an index scan beats a sequential scan, so set it to the realistic size of your working set, not the size of the buffer pool.</p>
+
+<p>Two cautions. Do not raise <code>autovacuum_vacuum_cost_delay</code> to zero on a busy primary: autovacuum will compete with your live traffic for I/O. And do not blindly copy these numbers onto a tiny instance; they are proportions, not absolutes.</p>
+
+<h2>Rule 6: Stop Opening One Connection Per Request</h2>
+
+<p>Every PostgreSQL backend is a separate OS process with its own memory, so a spike that opens two thousand connections spends more time forking processes than running queries. The fix is a connection pooler in transaction mode in front of the database, with a small pool of real backends sized to roughly four times your vCPU count.</p>
+
+<p>PgBouncer is the standard choice. The key setting is <code>pool_mode = transaction</code>: the pooler hands a backend to a client for the length of one transaction, then returns it. A burst of two thousand short checkout transactions then fans out against a pool of, say, forty backends, and queueing happens in the cheap pooler rather than in the database's process table.</p>
+
+<div class="code-block">
+<div class="code-header">PgBouncer essentials (pgbouncer.ini)</div>
+<pre><code>[databases]
+shop = host=127.0.0.1 port=5432 dbname=shop
+
+[pgbouncer]
+pool_mode = transaction
+default_pool_size = 40
+max_client_conn = 4000
+server_reset_query = DISCARD ALL</code></pre>
+</div>
+
+<p>This works because none of the earlier fixes rely on a transaction spanning multiple statements. Once <code>DISCARD ALL</code> resets state between clients, a pooled backend is safe to reuse. Pair this with <code>max_connections</code> left at a sane number on PostgreSQL itself, and the "too many clients already" error stops appearing.</p>
+
+<h2>What We Measure in Production</h2>
+
+<p>After all six changes, these are the numbers that matter on a sale night, and the one query we watch to keep them there:</p>
+
+<div class="metrics-grid">
+<div class="metric"><span class="num">2.8s &rarr; 120ms</span><span class="label">checkout p95 during the sale spike</span></div>
+<div class="metric"><span class="num">15%</span><span class="label">peak database CPU on sale night</span></div>
+<div class="metric"><span class="num">88%</span><span class="label">smaller ledger index footprint with BRIN</span></div>
+<div class="metric"><span class="num">0/hr</span><span class="label">deadlocks from inventory contention</span></div>
+</div>
+
+<div class="comparison-table">
+<table>
+<thead><tr><th>Problem</th><th>Fix</th><th>Cost to adopt</th><th>When to reach for it</th></tr></thead>
+<tbody>
+<tr><td>Hot-row lock queue</td><td>Atomic conditional UPDATE + lock_timeout</td><td>Rewrite one query</td><td>Any contended inventory or counter row</td></tr>
+<tr><td>Queue double-claim contention</td><td>FOR UPDATE SKIP LOCKED</td><td>Restructure the claim query</td><td>Outbox, job queue, reconciliation</td></tr>
+<tr><td>Table and index bloat</td><td>Monthly range partitioning</td><td>Schema migration</td><td>Append-only ledgers over 10M rows</td></tr>
+<tr><td>Oversized time index</td><td>BRIN on ordered columns</td><td>One new index</td><td>Time-ordered append-only logs</td></tr>
+<tr><td>Dead-tuple buildup</td><td>Autovacuum scale factor + cost limit</td><td>Config change</td><td>Every write-heavy workload</td></tr>
+<tr><td>Connection exhaustion</td><td>PgBouncer transaction mode</td><td>Deploy the pooler</td><td>Any spiky traffic profile</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The fastest way to keep this from regressing is <code>pg_stat_statements</code>: enable the extension, then watch the top queries by time on sale night. If one query climbs the list, pull its plan with <code>EXPLAIN (ANALYZE, BUFFERS)</code> before you touch anything else.</p>
+
+<div class="code-block">
+<div class="code-header">Find the slowest statements in production</div>
+<pre><code>CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+
+SELECT query, calls, mean_exec_time, rows
+FROM pg_stat_statements
+ORDER BY total_exec_time DESC
+LIMIT 10;</code></pre>
+</div>
+
+<p>Everything above is reversible, observable, and tuned to a real workload rather than copied from a benchmark. Apply them in order: measure, remove the lock hold, claim rows without blocking, partition the ledgers, shrink the time index, and only then adjust autovacuum and memory. The database that survives a flash sale is not the one with the most aggressive settings, it is the one that never held a lock longer than it had to.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>

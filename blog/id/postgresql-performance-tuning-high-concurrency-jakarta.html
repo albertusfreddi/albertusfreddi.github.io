@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Optimasi PostgreSQL untuk Tabel 10 Juta Baris pada Beban Konkurensi Flash-Sale | Albertus Freddi</title>
+<meta name="description" content="Dari table bloat hingga index bloat: strategi partisi dan advisory lock menjaga utilisasi CPU database di bawah 15% saat traffic memuncak.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<meta property="og:title" content="Optimasi PostgreSQL untuk Tabel 10 Juta Baris pada Beban Konkurensi Flash-Sale">
+<meta property="og:description" content="Dari table bloat hingga index bloat: strategi partisi dan advisory lock menjaga utilisasi CPU database di bawah 15% saat traffic memuncak.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-22T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="id_ID">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Optimasi PostgreSQL untuk Tabel 10 Juta Baris pada Beban Konkurensi Flash-Sale">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Optimasi PostgreSQL untuk Tabel 10 Juta Baris pada Beban Konkurensi Flash-Sale">
+<meta name="twitter:description" content="Dari table bloat hingga index bloat: strategi partisi dan advisory lock menjaga utilisasi CPU database di bawah 15% saat traffic memuncak.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimasi PostgreSQL untuk Tabel 10 Juta Baris pada Beban Konkurensi Flash-Sale","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/id/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">English</a><a href="/blog/id/postgresql-performance-tuning-high-concurrency-jakarta.html" class="active">Bahasa Indonesia</a><a href="/blog/zh/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">中文</a><a href="/blog/ja/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">日本語</a><a href="/blog/ko/postgresql-performance-tuning-high-concurrency-jakarta.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Optimasi PostgreSQL untuk Tabel 10 Juta Baris pada Beban Konkurensi Flash-Sale</h1>
+<div class="meta">
+<span>16 menit</span>
+<span>•</span>
+<span>2026-10-22</span>
+</div>
+<article>
+<div class="callout"><p><strong>Konteks produksi:</strong> Ini lapisan database untuk sebuah marketplace e-commerce Indonesia yang menjalankan flash sale setiap Jumat pukul 18:00 WIB. Tabel order dan ledger pembayaran masing-masing sudah lewat sepuluh juta baris, dan traffic checkout melonjak dari beberapa ratus permintaan per detik menjadi beberapa ribu pada sembilan puluh detik pertama. Target keras yang kami pegang pada malam sale: p95 checkout di bawah 120ms, CPU database di bawah 15 persen, dan nol deadlock dari perebutan stok.</p></div>
+
+<h2>Bottleneck Sebenarnya Adalah Baris Panas, Bukan Query Lambat</h2>
+
+<p>Kebanyakan orang mengira flash sale membunuh database karena "querynya terlalu lambat." Itu jarang jadi masalah pertama. Masalah pertama adalah perebutan (contention): beberapa ratus permintaan checkout menginginkan baris stok yang sama pada detik yang sama. Di bawah MVCC PostgreSQL, <code>SELECT ... FOR UPDATE</code> mengambil kunci baris, dan setiap transaksi lain yang menyentuh baris yang sama antre di belakangnya. Tidak ada indeks yang bisa menyelamatkan Anda dari antrean itu.</p>
+
+<p>Inilah rantai kegagalan yang kami lihat pada sale pertama, berurutan:</p>
+
+<ul>
+<li><strong>Antrean kunci terbentuk</strong>: satu permintaan memegang kunci baris, empat puluh lainnya menunggu. Setiap backend yang menunggu menyimpan snapshot dan memorinya sendiri.</li>
+<li><strong>Timeout berantai</strong>: <code>lock_timeout</code> bawaan adalah nol, artinya "tunggu selamanya." Permintaan menggantung sampai timeout HTTP aplikasi menyala dan pemanggil mencoba lagi.</li>
+<li><strong>Koneksi habis</strong>: karena setiap permintaan yang menggantung memegang satu backend, <code>max_connections</code> termakan. Checkout baru mendapat "connection refused" atau "sorry, too many clients already."</li>
+<li><strong>Deadlock dimulai</strong>: dua transaksi masing-masing memegang satu baris dan menginginkan baris yang lain. PostgreSQL mendeteksi dan membatalkan satu, tetapi transaksi yang dicoba ulang masuk lagi ke antrean yang sama.</li>
+</ul>
+
+<p>Perbaikannya bukan mesin yang lebih besar. Perbaikannya adalah berhenti memegang kunci melintasi round-trip, dan berhenti memperlakukan ledger append-only 10 juta baris seperti tabel kecil pencarian. Sisa artikel ini adalah playbook yang benar-benar kami terapkan, lengkap dengan SQL-nya.</p>
+
+<h2>Ukur Dulu Sebelum Mengubah Apa Pun</h2>
+
+<p>Sebelum menyentuh satu pengaturan pun, buktikan koneksi mana yang memblokir koneksi yang lain. Dua query melakukannya. Yang pertama menampilkan setiap backend yang sedang menunggu kunci dan sudah berapa lama macet:</p>
+
+<div class="code-block">
+<div class="code-header">Siapa yang menunggu kunci</div>
+<pre><code>SELECT pid,
+       usename,
+       state,
+       wait_event_type,
+       wait_event,
+       now() - state_change AS waiting_for
+FROM pg_stat_activity
+WHERE wait_event_type = 'Lock'
+ORDER BY waiting_for DESC;</code></pre>
+</div>
+
+<p>Yang kedua memasangkan setiap proses yang diblokir dengan proses yang memegang kunci, memakai fungsi bawaan <code>pg_blocking_pids</code>. Ini yang memberi tahu query biang keladinya secara persis:</p>
+
+<div class="code-block">
+<div class="code-header">Siapa memblokir siapa</div>
+<pre><code>SELECT a.pid,
+       a.query AS blocked_query,
+       pg_blocking_pids(a.pid) AS blocked_by,
+       b.query AS blocking_query
+FROM pg_stat_activity a
+LEFT JOIN pg_stat_activity b
+  ON b.pid = (pg_blocking_pids(a.pid))[1]
+WHERE cardinality(pg_blocking_pids(a.pid)) > 0;</code></pre>
+</div>
+
+<p>Pada malam sale kami selalu melihat gambar yang sama: puluhan <code>SELECT ... FOR UPDATE</code> pada <code>inventory</code>, semuanya diblokir satu transaksi yang justru sedang menunggu respons HTTP. Kuncinya dipegang bukan karena kerjanya lambat, melainkan karena aplikasi membiarkannya terbuka melintasi satu lompatan jaringan.</p>
+
+<h2>Aturan 1: Ganti SELECT FOR UPDATE dengan UPDATE Bersyarat</h2>
+
+<p>Pola paling merusak dalam flash sale adalah yang berikut ini, dan muncul di hampir semua tutorial:</p>
+
+<div class="code-block">
+<div class="code-header">Anti-pola: kunci dipegang melintasi round-trip</div>
+<pre><code>BEGIN;
+SELECT stock FROM inventory WHERE product_id = 123 FOR UPDATE;  -- kunci diambil
+-- ... aplikasi menghitung, memanggil layanan lain, menunggu HTTP ...
+UPDATE inventory SET stock = stock - 1 WHERE product_id = 123;  -- kunci baru lepas
+COMMIT;</code></pre>
+</div>
+
+<p>Antara <code>SELECT</code> dan <code>UPDATE</code>, kunci baris dipegang sementara aplikasi melakukan I/O yang sebenarnya tidak butuh kunci itu. Jendela itulah tempat antrean terbentuk. Database bisa melakukan semuanya secara atomik dalam satu pernyataan, dan kunci baris hanya dipegang selama mikrodetik:</p>
+
+<div class="code-block">
+<div class="code-header">Perbaikan: satu pernyataan atomik, kunci langsung lepas</div>
+<pre><code>UPDATE inventory
+SET stock = stock - 1,
+    reserved = reserved + 1,
+    updated_at = now()
+WHERE product_id = 123
+  AND stock >= 1
+RETURNING stock;</code></pre>
+</div>
+
+<p>Jika <code>UPDATE</code> mengembalikan nol baris, stok penjual habis dan Anda menolak order itu. Tanpa <code>SELECT</code>, tanpa transaksi terbuka, tanpa kunci dipegang di level aplikasi. PostgreSQL menjamin read-check-write berjalan atomik, jadi dua permintaan tidak bisa sama-sama mengurangi satu unit stok yang sama. Satu perubahan ini saja menghapus sekitar sembilan puluh persen perebutan pada <code>inventory</code> pada sale berikutnya.</p>
+
+<p>Dua detail membuatnya aman. Pertama, tambahkan <code>lock_timeout</code> sebagai bawaan sesi atau role supaya tidak ada permintaan yang menunggu selamanya; timeout singkat yang gagal cepat jauh lebih baik untuk flash sale daripada permintaan yang menggantung:</p>
+
+<div class="code-block">
+<div class="code-header">Gagal cepat daripada menggantung</div>
+<pre><code>ALTER ROLE checkout_app SET lock_timeout = '500ms';
+ALTER ROLE checkout_app SET statement_timeout = '5s';</code></pre>
+</div>
+
+<p>Kedua, jika Anda benar-benar perlu baca lalu tulis untuk sebagian baris yang Anda klaim dan proses, pakai <code>SKIP LOCKED</code> alih-alih memblokir.</p>
+
+<h2>Aturan 2: Pakai SKIP LOCKED untuk Antrean dan Outbox</h2>
+
+<p>Pola kebalikannya, ketika Anda <em>memang</em> perlu mengklaim baris lalu memprosesnya, adalah job queue atau transactional outbox. N worker sama-sama memilih baris pending berikutnya. Jika semuanya <code>FOR UPDATE</code> pada baris yang sama, mereka antre di belakang satu sama lain. <code>SKIP LOCKED</code> memberi tahu PostgreSQL: lewati baris apa pun yang sudah dikunci orang lain dan beri saya baris kosong berikutnya.</p>
+
+<div class="code-block">
+<div class="code-header">Klaim satu baris outbox pending tanpa memblokir</div>
+<pre><code>WITH next_job AS (
+  SELECT id
+  FROM outbox
+  WHERE status = 'pending'
+  ORDER BY created_at
+  FOR UPDATE SKIP LOCKED
+  LIMIT 1
+)
+UPDATE outbox o
+SET status = 'processing',
+    started_at = now()
+FROM next_job
+WHERE o.id = next_job.id
+RETURNING o.id, o.payload;</code></pre>
+</div>
+
+<p>Setiap worker mendapat baris yang berbeda dan tidak pernah menunggu worker lain. Ini mengubah antrean dari titik serialisasi menjadi fan-out. Taktik yang sama berlaku untuk rekonsiliasi ledger dan setiap pekerjaan "proses batch ini" di mana worker tidak boleh mengklaim ganda.</p>
+
+<h2>Aturan 3: Partisi Ledger Sebelum Menembus 10 Juta Baris</h2>
+
+<p>Perebutan adalah masalah tulis. Bloat adalah masalah berbeda: ledger pembayaran dan tabel audit order tumbuh jutaan baris per bulan, dan satu tabel dengan satu indeks B-tree akhirnya tidak muat lagi di memori. Query tetap "jalan," tetapi VACUUM makin lama, indeks tumpah ke disk, dan setiap pengecekan constraint menyentuh lebih banyak halaman.</p>
+
+<p>Partisi range deklaratif membelah tabel berdasarkan kolom waktu. Aplikasi tetap menulis ke satu tabel logis; PostgreSQL mengarahkan setiap baris ke partisi yang tepat.</p>
+
+<div class="code-block">
+<div class="code-header">Partisi ledger per bulan</div>
+<pre><code>CREATE TABLE payment_ledger (
+  id bigint GENERATED ALWAYS AS IDENTITY,
+  order_id bigint NOT NULL,
+  amount numeric(15,2) NOT NULL,
+  status text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+) PARTITION BY RANGE (created_at);
+
+CREATE TABLE payment_ledger_2026_10
+  PARTITION OF payment_ledger
+  FOR VALUES FROM ('2026-10-01') TO ('2026-11-01');
+
+CREATE TABLE payment_ledger_2026_11
+  PARTITION OF payment_ledger
+  FOR VALUES FROM ('2026-11-01') TO ('2026-12-01');</code></pre>
+</div>
+
+<p>Kenapa ini membantu: query yang difilter <code>created_at</code> hanya memindai partisi yang cocok (partition pruning), VACUUM per partisi berjalan lebih cepat dan bisa mengejar penulisan, dan Anda bisa drop atau arsipkan bulan lama dengan <code>DROP TABLE payment_ledger_2025_06</code> alih-alih <code>DELETE</code> yang panjang. Buat partisi jauh hari dengan cron bulanan atau alat seperti <code>pg_partman</code>, dan selalu sediakan partisi <code>DEFAULT</code> atau pipeline yang menangkap hari ketika cron terlewat.</p>
+
+<p>Sebuah catatan: partisi tidak memperbaiki masalah hot row dari Aturan 1. Partisi untuk tabel append-only bergaya time-series, bukan untuk tabel <code>inventory</code> kecil yang digedor setiap permintaan.</p>
+
+<h2>Aturan 4: Tukar B-tree dengan BRIN pada Kolom Append-Only</h2>
+
+<p>Pada tabel ledger yang sama, indeks B-tree pada <code>created_at</code> melakukan dua hal yang sia-sia: menyimpan satu pointer untuk setiap baris, dan menyimpan pointer-pointer itu terurut di seluruh tabel. Untuk log append-only yang barisnya ditulis fisik dalam urutan waktu, itu besar dan mubazir. BRIN (Block Range Index) menyimpan satu pasangan min/max per rentang blok, jadi ukuran indeksnya ratusan kali lebih kecil.</p>
+
+<div class="code-block">
+<div class="code-header">Indeks BRIN pada kolom berurutan waktu</div>
+<pre><code>CREATE INDEX payment_ledger_created_at_brin
+  ON payment_ledger
+  USING brin (created_at)
+  WITH (pages_per_range = 32);</code></pre>
+</div>
+
+<p>BRIN cepat untuk range scan atas data yang berkorelasi secara fisik dan murah dirawat di bawah insert berat. Ini alat yang tepat ketika baris tiba kira-kira berurutan dan Anda men-query berdasarkan rentang kolom itu. <code>pages_per_range</code> yang lebih rendah memberi presisi lebih dengan ukuran sedikit lebih besar; 32 adalah titik awal yang baik untuk ledger terpartisi bulanan. Jejak indeks pada ledger kami turun 88 persen setelah pergantian ini, dan indeks kecil itu tetap tinggal di cache alih-alih menggedor disk.</p>
+
+<h2>Aturan 5: Setel Autovacuum dan Memori agar Tabel Berhenti Membesar</h2>
+
+<p>PostgreSQL tidak pernah menimpa baris di tempatnya di bawah MVCC; sebuah <code>UPDATE</code> menulis versi baru dan meninggalkan versi lama sebagai dead tuple. Autovacuum adalah pekerja latar yang menghapus dead tuple itu. Pada beban e-commerce yang berat tulis, pengaturan bawaan terlalu konservatif, jadi dead tuple menumpuk lebih cepat daripada dibersihkan, tabel dan indeksnya menggembung, dan setiap query harus melompati data mati.</p>
+
+<p>Ini perubahan yang kami terapkan, beserta alasannya:</p>
+
+<div class="code-block">
+<div class="code-header">Penyetelan autovacuum dan memori (gaya postgresql.conf)</div>
+<pre><code>autovacuum_vacuum_cost_delay = '2ms'   -- kerjakan lebih banyak per lintasan
+autovacuum_vacuum_cost_limit = 2000      -- naikkan anggaran kerja
+autovacuum_naptime = '10s'               -- periksa lebih sering
+autovacuum_vacuum_scale_factor = 0.05    -- vacuum saat perubahan 5%, bukan 20%
+autovacuum_analyze_scale_factor = 0.05
+
+shared_buffers = '4GB'       -- sekitar 25% RAM; lebih dari 8GB jarang membantu
+effective_cache_size = '12GB' -- petunjuk planner, bukan alokasi; ~75% RAM
+maintenance_work_mem = '1GB'  -- biarkan VACUUM dan CREATE INDEX bekerja di memori
+work_mem = '8MB'              -- naikkan hanya jika banyak sort tumpah ke disk
+default_statistics_target = 200  -- rencana lebih baik untuk kolom skewed</code></pre>
+</div>
+
+<p>Dua yang paling penting di sini adalah <code>autovacuum_vacuum_scale_factor</code> dan cost limit. Bawaan 20 persen berarti tabel 10 juta baris baru di-vacuum setelah 2 juta baris berubah, dan pada titik itu bloat sudah terlihat. Menurunkannya ke 5 persen menjaga jumlah dead tuple tetap rendah. <code>shared_buffers</code> menahan data panas di memori, tetapi nilai <code>effective_cache_size</code>-lah yang dipakai planner untuk memutuskan apakah index scan mengalahkan sequential scan, jadi setel ke ukuran realistis working set Anda, bukan ukuran buffer pool.</p>
+
+<p>Dua peringatan. Jangan menaikkan <code>autovacuum_vacuum_cost_delay</code> ke nol pada primary yang sibuk: autovacuum akan berebut I/O dengan traffic hidup Anda. Dan jangan menyalin angka-angka ini mentah-mentah ke instance kecil; ini proporsi, bukan nilai mutlak.</p>
+
+<h2>Aturan 6: Berhenti Membuka Satu Koneksi per Permintaan</h2>
+
+<p>Setiap backend PostgreSQL adalah proses OS terpisah dengan memorinya sendiri, jadi lonjakan yang membuka dua ribu koneksi menghabiskan waktu lebih banyak untuk fork proses daripada menjalankan query. Perbaikannya adalah connection pooler mode transaksi di depan database, dengan kumpulan backend nyata kecil berukuran kira-kira empat kali jumlah vCPU Anda.</p>
+
+<p>PgBouncer adalah pilihan standar. Pengaturan kuncinya adalah <code>pool_mode = transaction</code>: pooler menyerahkan satu backend ke klien selama satu transaksi, lalu mengembalikannya. Ledakan dua ribu transaksi checkout singkat lalu disebar ke kumpulan, katakanlah, empat puluh backend, dan antrean terjadi di pooler yang murah alih-alih di tabel proses database.</p>
+
+<div class="code-block">
+<div class="code-header">Esensi PgBouncer (pgbouncer.ini)</div>
+<pre><code>[databases]
+shop = host=127.0.0.1 port=5432 dbname=shop
+
+[pgbouncer]
+pool_mode = transaction
+default_pool_size = 40
+max_client_conn = 4000
+server_reset_query = DISCARD ALL</code></pre>
+</div>
+
+<p>Ini berhasil karena tidak ada perbaikan sebelumnya yang bergantung pada transaksi yang membentang beberapa pernyataan. Begitu <code>DISCARD ALL</code> mereset state di antara klien, backend yang dipool aman dipakai ulang. Padukan ini dengan <code>max_connections</code> yang dibiarkan pada angka wajar di PostgreSQL-nya, dan galat "too many clients already" berhenti muncul.</p>
+
+<h2>Yang Kami Ukur di Produksi</h2>
+
+<p>Setelah keenam perubahan itu, inilah angka yang penting pada malam sale, dan satu query yang kami pantau agar angkanya tetap terjaga:</p>
+
+<div class="metrics-grid">
+<div class="metric"><span class="num">2.8s &rarr; 120ms</span><span class="label">p95 checkout saat lonjakan sale</span></div>
+<div class="metric"><span class="num">15%</span><span class="label">CPU database puncak pada malam sale</span></div>
+<div class="metric"><span class="num">88%</span><span class="label">jejak indeks ledger lebih kecil dengan BRIN</span></div>
+<div class="metric"><span class="num">0/jam</span><span class="label">deadlock dari perebutan stok</span></div>
+</div>
+
+<div class="comparison-table">
+<table>
+<thead><tr><th>Masalah</th><th>Perbaikan</th><th>Biaya adopsi</th><th>Kapan dipakai</th></tr></thead>
+<tbody>
+<tr><td>Antrean kunci hot row</td><td>UPDATE kondisional atomik + lock_timeout</td><td>Tulis ulang satu query</td><td>Baris inventory atau counter yang diperebutkan</td></tr>
+<tr><td>Perebutan klaim ganda antrean</td><td>FOR UPDATE SKIP LOCKED</td><td>Susun ulang query klaim</td><td>Outbox, job queue, rekonsiliasi</td></tr>
+<tr><td>Table dan index bloat</td><td>Partisi range bulanan</td><td>Migrasi skema</td><td>Ledger append-only di atas 10 juta baris</td></tr>
+<tr><td>Indeks waktu kebesaran</td><td>BRIN pada kolom berurutan</td><td>Satu indeks baru</td><td>Log append-only berurutan waktu</td></tr>
+<tr><td>Penumpukan dead tuple</td><td>Scale factor autovacuum + cost limit</td><td>Perubahan konfigurasi</td><td>Setiap beban yang berat tulis</td></tr>
+<tr><td>Koneksi habis</td><td>PgBouncer mode transaksi</td><td>Deploy pooler</td><td>Profil traffic yang melonjak</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Cara tercepat mencegah ini mundur adalah <code>pg_stat_statements</code>: aktifkan ekstensinya, lalu pantau query teratas berdasarkan waktu pada malam sale. Jika satu query naik ke daftar teratas, tarik rencananya dengan <code>EXPLAIN (ANALYZE, BUFFERS)</code> sebelum menyentuh apa pun lagi.</p>
+
+<div class="code-block">
+<div class="code-header">Temukan pernyataan paling lambat di produksi</div>
+<pre><code>CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+
+SELECT query, calls, mean_exec_time, rows
+FROM pg_stat_statements
+ORDER BY total_exec_time DESC
+LIMIT 10;</code></pre>
+</div>
+
+<p>Semua hal di atas bisa dibalik, bisa diamati, dan disetel untuk beban nyata alih-alih disalin dari benchmark. Terapkan berurutan: ukur, hilangkan pegangan kunci, klaim baris tanpa memblokir, partisi ledger, kecilkan indeks waktu, lalu baru setel autovacuum dan memori. Database yang selamat dari flash sale bukanlah yang pengaturannya paling agresif, melainkan yang tidak pernah memegang kunci lebih lama dari yang seharusnya.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
