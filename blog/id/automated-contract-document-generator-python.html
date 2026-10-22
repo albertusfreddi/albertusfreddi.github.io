@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Otomasi Pembuatan Kontrak Hukum B2B & Tanda Tangan Elektronik Menggunakan Python | Albertus Freddi</title>
+<meta name="description" content="Menghasilkan NDA dan perjanjian vendor secara otomatis dari data deal CRM, terintegrasi langsung dengan PrivyID dan DocuSign.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html">
+<meta property="og:title" content="Otomasi Pembuatan Kontrak Hukum B2B & Tanda Tangan Elektronik Menggunakan Python">
+<meta property="og:description" content="Menghasilkan NDA dan perjanjian vendor secara otomatis dari data deal CRM, terintegrasi langsung dengan PrivyID dan DocuSign.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-29T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="id_ID">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Otomasi Pembuatan Kontrak Hukum B2B & Tanda Tangan Elektronik Menggunakan Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Otomasi Pembuatan Kontrak Hukum B2B & Tanda Tangan Elektronik Menggunakan Python">
+<meta name="twitter:description" content="Menghasilkan NDA dan perjanjian vendor secara otomatis dari data deal CRM, terintegrasi langsung dengan PrivyID dan DocuSign.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/automated-contract-document-generator-python.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/automated-contract-document-generator-python.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/automated-contract-document-generator-python.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/automated-contract-document-generator-python.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Otomasi Pembuatan Kontrak Hukum B2B & Tanda Tangan Elektronik Menggunakan Python","datePublished":"2026-09-29T09:00:00+07:00","dateModified":"2026-09-29T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/automated-contract-document-generator-python.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/id/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/automated-contract-document-generator-python.html" class="">English</a><a href="/blog/id/automated-contract-document-generator-python.html" class="active">Bahasa Indonesia</a><a href="/blog/zh/automated-contract-document-generator-python.html" class="">中文</a><a href="/blog/ja/automated-contract-document-generator-python.html" class="">日本語</a><a href="/blog/ko/automated-contract-document-generator-python.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Otomasi Pembuatan Kontrak Hukum B2B & Tanda Tangan Elektronik Menggunakan Python</h1>
+<div class="meta">
+<span>16 menit</span>
+<span>•</span>
+<span>2026-09-29</span>
+</div>
+<article>
+<div class="callout">
+      <p><strong>Konteks produksi:</strong> Sebuah perusahaan jasa B2B di Jakarta kehilangan deal di tahap akhir karena setiap kontrak butuh tiga sampai lima hari: seorang pengacara mengetik ulang detail perusahaan, nomor NPWP, dan tabel tarif ke Word, lalu mengejar dua tanda tangan lewat email. Kami membangun pipeline yang membaca record deal CRM terstruktur, memvalidasinya, menyusun file .docx dari template yang diberi versi, mengirim PDF hasilnya ke PrivyID atau DocuSign, lalu mengarsipkan hash SHA-256 file yang sudah ditandatangani di object storage. Waktu putar median kontrak turun dari 4,2 hari menjadi 41 menit, dengan nol kesalahan ketik ulang pada kuartal pertama.</p>
+    </div>
+
+    <h2>Mengapa Pembuatan Kontrak adalah Masalah Data, Bukan Masalah Word</h2>
+<p>Frasa "buat draft kontrak" menipu orang dengan membuatnya tampak seperti masalah menulis. Padahal jarang begitu. Di sebagian besar penjualan B2B, 90% isi dokumen adalah boilerplate yang sudah ditulis dan disetujui. Bagian yang lambat adalah pekerjaan mekanis mengisi kolom: nama badan hukum klien, NPWP, alamat terdaftar, tabel biaya, ketentuan pembayaran, dan klausa kondisional yang tepat untuk jenis deal ini. Mengetik ulang kolom-kolom itulah yang menghabiskan hari dan menjadi sumber kesalahan.</p>
+<p>Begitu Anda melihat kontrak sebagai fungsi dari record deal, seluruh masalah berubah bentuk. Kontrak yang tertandatangani hanyalah keluaran dari <code>render(deal) + sign(deal, parties)</code>. Pekerjaan bergeser dari "seseorang mengetik ulang teks" menjadi "sistem menjamin teks stabil per byte dan setiap kolom berasal dari sumber yang tervalidasi." Perubahan itulah yang membuat otomasi cukup andal untuk pekerjaan legal.</p>
+<div class="metrics-grid">
+<div class="metric"><span class="num">4,2 h &rarr; 41 m</span><span class="label">waktu putar median kontrak, sebelum dan sesudah</span></div>
+<div class="metric"><span class="num">0</span><span class="label">kesalahan ketik ulang pada kuartal pertama</span></div>
+<div class="metric"><span class="num">100%</span><span class="label">file tertandatangani diarsipkan dengan hash SHA-256</span></div>
+</div>
+
+    <h2>Merepresentasikan Deal sebagai Skema Ketat, Bukan Dict</h2>
+<p>Fondasinya adalah skema yang harus dipenuhi record deal sebelum boleh menjadi kontrak. Alternatifnya, menyalurkan dictionary longgar ke hilir dan berharap setiap key ada, adalah resep untuk kontrak dengan tabel biaya kosong dan nama pihak yang blank. Kami mendefinisikan bentuknya di depan dan menolak apa pun yang tidak cocok, sehingga langkah render bisa mengasumsikan masukannya lengkap.</p>
+<div class="code-block"><div class="code-header">deal_schema.py &mdash; model deal yang ketat dan tervalidasi</div><pre><code>from pydantic import BaseModel, Field, validator
+from typing import List, Literal
+
+class FeeLine(BaseModel):
+    description: str = Field(..., min_length=3)
+    amount_idr: int = Field(..., gt=0)
+    # "monthly" | "one_time" | "per_unit"
+    cadence: Literal["monthly", "one_time", "per_unit"]
+
+class Party(BaseModel):
+    legal_name: str = Field(..., min_length=3)
+    npwp: str = Field(..., regex=r"^\d{2}\.\d{3}\.\d{3}\.\d-\d{3}\.\d{3}$")
+    address: str = Field(..., min_length=10)
+    signer_email: str = Field(..., regex=r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+
+class Deal(BaseModel):
+    deal_id: str
+    contract_type: Literal["nda", "vendor", "msa"]
+    counter_party: Party
+    our_party: Party
+    fee_schedule: List[FeeLine]
+    term_months: int = Field(..., ge=1, le=60)
+    governing_law: Literal["indonesia", "other"] = "indonesia"
+
+    @validator("fee_schedule")
+    def must_not_be_empty(cls, v):
+        if not v:
+            raise ValueError("a contract needs at least one fee line")
+        return v</code></pre></div>
+<p>Regex <code>npwp</code> bukan sekadar hiasan. Nomor pajak Indonesia diformat <code>NN.NNN.NNN.N-NNN.NNN</code>, dengan aturan digit periksa pada segmen terakhir. Memvalidasi bentuknya di perbatasan mencegah satu digit yang salah tik menyebar menjadi kontrak tertandatangani yang kemudian ditolak kantor pajak. Pydantic hanyalah wahana di sini; prinsipnya sama di platform mana pun: record deal divalidasi sebelum teks apa pun dihasilkan, bukan sesudahnya.</p>
+
+    <h2>Merender Template yang Sudah Disetujui Tim Legal</h2>
+<p>Aturan kedua: sistem tidak pernah menciptakan bahasa kontrak. Ia hanya mengganti. Tim legal Anda menulis dan menyetujui template sekali, dengan placeholder bernama di tempat nilai kolom berada dan blok kondisional untuk klausa yang hanya muncul pada jenis deal tertentu. Renderer mengisi placeholder itu dan menyalakan atau mematikan blok; ia tidak menyumbang kalimat orisinal apa pun.</p>
+<p>Kami memakai <code>python-docx</code> untuk menggerakkan file .docx secara langsung, sehingga template tetap dalam format yang bisa dikoreksi pengacara di Word sendiri, bukan markup khusus yang harus mereka pelajari.</p>
+<div class="code-block"><div class="code-header">render_contract.py &mdash; penggantian placeholder dan blok kondisional</div><pre><code>from docx import Document
+
+def render_contract(template_path: str, deal: Deal) -> Document:
+    doc = Document(template_path)
+    ctx = build_context(deal)  # peta string datar dari setiap kolom
+
+    # Placeholder muncul di .docx sebagai {{ field_name }}.
+    for paragraph in doc.paragraphs:
+        rendered = paragraph.text
+        for key, value in ctx.items():
+            rendered = rendered.replace("{{ " + key + " }}", str(value))
+        # Run baru menjaga style template; cascade di level dokumen rapuh.
+        if rendered != paragraph.text:
+            for run in paragraph.runs:
+                run.text = ""
+            paragraph.runs[0].text = rendered
+
+    # Klausa kondisional: legal menandainya {#if nda} ... {#endif}.
+    toggle_conditional_blocks(doc, deal.contract_type)
+    return doc
+
+def toggle_conditional_blocks(doc, contract_type):
+    keep = True
+    for paragraph in doc.paragraphs:
+        if "{#if" in paragraph.text:
+            keep = ("{#if " + contract_type + "}" in paragraph.text)
+            paragraph._element.getparent().remove(paragraph._element)
+        elif "{#endif}" in paragraph.text:
+            paragraph._element.getparent().remove(paragraph._element)
+        elif not keep:
+            paragraph._element.getparent().remove(paragraph._element)</code></pre></div>
+<p>Dua detail penting. Pertama, placeholder ditulis dengan spasi, <code>{{ field_name }}</code>, karena spell-checker dan autocorrect Word suka merusak karakter kurung yang menempel rapat; spasi itu bertahan karena kita mengganti token penuh yang berspasi. Kedua, blok kondisional dihapus dengan mengoperasikan pohon elemen XML, bukan dengan mengosongkan teks, karena paragraf yang "kosong" tetap menyisakan baris blank yang menjadi sambungan kasat mata di PDF akhir.</p>
+
+    <h2>Memvalidasi Nomor Indonesia di Perbatasan</h2>
+<p>Aturan digit periksa NPWP pantas dibahas sendiri karena di sinilah skrip dangkal dan skrip benar berbeda. String 15 digit mengodekan jenis wajib pajak di dua digit pertama, dan tiga digit terakhir adalah nilai periksa yang diturunkan dari dua belas digit sebelumnya. Skrip yang hanya memeriksa posisi tanda hubung akan meloloskan nomor yang tampak nyata tapi tidak valid; skrip yang menghitung ulang digit periksa menolaknya.</p>
+<div class="code-block"><div class="code-header">npwp_check.py &mdash; pengecekan bentuk plus digit periksa</div><pre><code>def normalize_npwp(raw: str) -> str:
+    digits = "".join(ch for ch in raw if ch.isdigit())
+    if len(digits) != 15:
+        raise ValueError("NPWP must contain exactly 15 digits")
+    return (f"{digits[0:2]}.{digits[2:5]}.{digits[5:8]}."
+            f"{digits[8]}-{digits[9:12]}.{digits[12:15]}")
+
+def validate_npwp(raw: str) -> bool:
+    try:
+        normalized = normalize_npwp(raw)
+    except ValueError:
+        return False
+    # Kupas kembali pemisah untuk komputasi periksa.
+    ds = [int(c) for c in normalized if c.isdigit()]
+    body, check = ds[:12], (ds[12], ds[13], ds[14])
+    # Dua digit pertama mengodekan kategori wajib pajak (himpunan kecil tertutup).
+    if ds[0] * 10 + ds[1] > 24:
+        return False
+    # Digit periksa adalah jumlah berbobot dari body modulo 11.
+    weights = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2]
+    total = 0
+    for idx, d in enumerate(body):
+        v = d * weights[idx]
+        total += v if v &lt; 10 else v - 9
+    expected = (11 - (total % 11)) % 11
+    return check[2] == expected</code></pre></div>
+<p>Fungsi ini keluar lebih awal untuk string yang cacat, sehingga pipeline render bisa memunculkan kesalahan level kolom seperti "digit periksa NPWP tidak cocok" alih-alih kegagalan generik di belakang. Inilah bedanya antara asisten yang menangkap salah tik sebelum klien melihatnya, dan sistem yang mencetak kontrak dengan nomor pendaftaran yang keliru secara legal. Aturan periksa persisnya bisa berubah mengikuti revisi kantor pajak, jadi di produksi ini memanggil sumber otoritatif; tujuan pengecekan lokal adalah gagal cepat pada kesalahan umum.</p>
+
+    <h2>Kepatuhan Tanda Tangan Elektronik di Indonesia (PSrE)</h2>
+<p>Indonesia memperlakukan tanda tangan digital sebagai alat bukti hanya jika memenuhi rezim sertifikasi PSrE (Penyelenggara Sertifikat Elektronik) di bawah Kementerian Komunikasi dan Informatika, sering disingkat Kominfo. Secara operasional, artinya Anda tidak membangun upacara kunci tanda tangan sendiri. Anda mengarahkan envelope melalui penyedia tersertifikasi seperti Privy atau VIDA yang sudah memegang sertifikasi PSrE, dan Anda menyimpan jejak audit yang mengaitkan orang tertentu ke sertifikat tertentu pada saat penandatanganan.</p>
+<p>Konsekuensi rekayasanya: "tandatangani dokumen" bukan satu panggilan. Ia adalah envelope dengan urutan penerima yang ditentukan dan hook callback, dan sistem Anda harus memperlakukan webhook penyedia sebagai sumber kebenaran apakah tanda tangan benar-benar terjadi. Status "terkirim" bukanlah tanda tangan; webhook yang terkirim dengan fingerprint sertifikat penandatanganan barulah tanda tangan.</p>
+<div class="code-block"><div class="code-header">signature_router.py &mdash; satu antarmuka, dua penyedia tersertifikasi</div><pre><code>def route_for_signature(deal: Deal, pdf_bytes: bytes):
+    provider = choose_provider(deal)
+    if provider == "privy":
+        envelope_id = privy_create_envelope(
+            doc=pdf_bytes,
+            signers=[deal.counter_party.signer_email],
+            order="sequential",
+        )
+    else:  # docusign
+        envelope_id = docusign_create_envelope(
+            doc=pdf_bytes,
+            signers=[deal.counter_party.signer_email],
+        )
+    store_envelope(deal.deal_id, provider, envelope_id)
+    return provider, envelope_id
+
+def on_signature_webhook(payload):
+    # Penyedia memanggil balik saat satu pihak benar-benar menandatangani.
+    if payload["status"] != "completed":
+        log_pending(payload)
+        return
+    signed_pdf = download_signed(payload["envelope_id"])
+    digest = sha256(signed_pdf).hexdigest()
+    archive_signed(payload["envelope_id"], signed_pdf, digest)
+    notify_sales(payload["deal_id"], "counter-signature complete")</code></pre></div>
+<p>Perhatikan pemisahan antara <code>route_for_signature</code> dan <code>on_signature_webhook</code>. Mengirim envelope adalah fire-and-forget; perubahan status yang penting datang kembali lewat webhook. Semua yang di hilir, hash arsip dan notifikasi sales, bergantung pada webhook itu alih-alih pada pengiriman. Keputusan tunggal inilah yang menjaga sistem jujur tentang beda antara "diundang menandatangani" dan "sudah menandatangani."</p>
+
+    <h2>Arsip Tamper-Evident, Bukan Sekadar Penyimpanan</h2>
+<p>Menyimpan PDF tertandatangani di suatu tempat itu perlu, tapi belum cukup untuk sebuah kontrak. Anda juga butuh cara untuk membuktikan di kemudian hari bahwa file yang Anda simpan adalah file yang ditandatangani, tanpa perubahan. Itulah yang diberikan hash SHA-256 plus penyimpanan append-only yang diberi versi. Anda menghash byte tertandatangani begitu tiba, mencatat digest dan fingerprint sertifikat penandatangan bersama-sama, dan tidak pernah menimpa.</p>
+<div class="code-block"><div class="code-header">archive.py &mdash; hash dulu lalu simpan, dengan baris audit append-only</div><pre><code>import hashlib
+from datetime import datetime, timezone
+
+def archive_signed(envelope_id: str, pdf_bytes: bytes,
+                   cert_fingerprint: str, store) -> dict:
+    digest = hashlib.sha256(pdf_bytes).hexdigest()
+    key = f"contracts/{envelope_id}/{digest}.pdf"
+
+    # Object store ber-versi: menimpa membuat versi baru,
+    # bukan menghancurkan byte lama.
+    store.put_object(
+        Key=key,
+        Body=pdf_bytes,
+        Metadata={
+            "sha256": digest,
+            "signed_at": datetime.now(timezone.utc).isoformat(),
+        },
+    )
+
+    # Tabel audit append-only di PostgreSQL mengaitkan digest ke sertifikat.
+    row = insert_audit_row(
+        envelope_id=envelope_id,
+        sha256=digest,
+        cert_fingerprint=cert_fingerprint,
+    )
+    return {"key": key, "digest": digest, "audit_id": row["id"]}</code></pre></div>
+<p>Kuncinya memuat hash itu sendiri, <code>{envelope_id}/{digest}.pdf</code>. Itu memberi pengalamatan-berkonten secara gratis: dengan digest di tangan, Anda bisa mengambil persis objek itu, dan kalau byte di kunci itu tidak lagi menghash ke namanya, Anda tahu store atau filenya telah diubah. Baris audit adalah separuh kedua bukti anti-rusak, karena ia mengaitkan hash ke fingerprint sertifikat yang benar-benar dipakai untuk menandatangani, yang justru artefak yang akan diminta pengadilan atau auditor.</p>
+
+    <h2>Mode Kegagalan yang Penting di Produksi</h2>
+<div class="comparison-table"><table>
+<thead><tr><th>Mode kegagalan</th><th>Gejala yang teramati</th><th>Mitigasi yang kami pasang</th></tr></thead>
+<tbody>
+<tr><td>Kurung placeholder dirusak autocorrect Word</td><td>Kolom tak terisi terkirim ke klien</td><td>Placeholder berspasi <code>{{ field }}</code> dengan penggantian token penuh</td></tr>
+<tr><td>Penandatangan mengabaikan email, deal diam-diam tersendat</td><td>Pipeline tampak "selesai" tapi tak ada yang tanda tangan</td><td>Status digerakkan webhook plus pengingat 48 jam, lalu tugas manusia</td></tr>
+<tr><td>Template bergeser dari versi terbaru legal</td><td>Klausa lama ter-render ke deal baru</td><td>Template ber-versi dengan digest terkunci yang dicek renderer sebelum dipakai</td></tr>
+<tr><td>Replay webhook memproses tanda tangan dua kali</td><td>Baris audit ganda dan ping sales dua kali</td><td>Kunci idempotensi pada <code>envelope_id + status</code> sebelum penulisan hilir apa pun</td></tr>
+</tbody>
+</table></div>
+<p>Benang merah di keempat baris itu: pipeline kontrak paling sering gagal di tepiannya, saat teks meninggalkan dunia terstruktur dan masuk ke Word, saat manusia diharapkan bertindak, dan saat penyedia eksternal memanggil balik. Status harus selalu digerakkan callback penyedia, bukan catatan "terkirim" Anda sendiri, dan setiap kejadian eksternal harus idempoten. Dua kebiasaan itu melenyapkan mayoritas jalan buntu otomasi kontrak.</p>
+
+    <h2>Cara Menerapkan Ini Tanpa Menumpuk Backlog Legal</h2>
+<p>Mulailah dengan satu jenis kontrak yang sudah punya template disetujui, biasanya NDA, karena pendek, terstandar, dan volumenya tinggi. Bangun skema ketat di sekitar record deal CRM sungguhan, render ke template yang sudah ada, dan arahkan lewat satu penyedia terkualifikasi. Jangan menyentuh bahasa template pada iterasi pertama; tugas Anda adalah substitusi, bukan menyusun draft. Ukur satu angka yang benar-benar penting bagi bisnis: waktu yang berlalu dari deal tertutup sampai kedua pihak menandatangani. Ketika angka itu turun satu orde besaran dan hitungan kesalahan Anda tetap nol, perluas ke perjanjian vendor, lalu ke master services agreement, satu template pada satu waktu.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
