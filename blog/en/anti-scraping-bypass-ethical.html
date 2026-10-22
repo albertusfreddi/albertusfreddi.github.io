@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/anti-scraping-bypass-ethical.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Bypassing Anti-Bot Systems Ethically: Reverse Engineering, Rate Limits, and Cloudflare Turnstile in 2026","datePublished":"2026-03-08T09:00:00+07:00","dateModified":"2026-03-08T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Bypassing Anti-Bot Systems Ethically: Reverse Engineering, Rate Limits, and Cloudflare Turnstile in 2026","description":"How to extract mission-critical business data past Cloudflare Turnstile, Akamai, and mobile API fingerprinting ethically without triggering bans, DDoS alarms, or legal landmines.","datePublished":"2026-03-08T09:00:00+07:00","dateModified":"2026-03-08T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/anti-scraping-bypass-ethical.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is bypassing anti-scraping protections legal in Indonesia?","acceptedAnswer":{"@type":"Answer","text":"Extracting public commercial catalog data (pricing, product names, inventory levels) is legal as long as you do not access protected personal data (PII) under UU PDP, do not bypass authenticated account paywalls, and do not degrade target server infrastructure under UU ITE."}},{"@type":"Question","name":"Why does standard Python requests get 403 Forbidden on Cloudflare?","acceptedAnswer":{"@type":"Answer","text":"Cloudflare inspects the TLS Client Hello packet. Python requests uses default OpenSSL ciphers and extension orders that generate a known bot JA4/JA3 fingerprint. Using curl_cffi matches the exact TLS handshake of modern desktop and mobile browsers."}},{"@type":"Question","name":"How do you avoid crashing smaller target servers?","acceptedAnswer":{"@type":"Answer","text":"We implement centralized Redis sliding window rate limiting (max 2-5 requests per second per host), cache snapshots locally for 12 hours, and configure automatic circuit breakers that halt requests if target response latency spikes."}}]}]}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/anti-scraping-bypass-ethical.html" class="active">English</a><a href="/blog/id/anti-scraping-bypass-ethical.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/anti-scraping-bypass-ethical.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/anti-scraping-bypass-ethical.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -678,6 +732,25 @@ else:
 </ol>
 
 <p><strong>Building resilient data pipelines for competitive intelligence or logistics tracking? Let's discuss architecture: albertus.freddi@gmail.com</strong></p>
+
+<section class="faq-section" style="margin-top:3rem;padding-top:2rem;border-top:1px solid #2a2a2a">
+  <h2>Frequently Asked Questions</h2>
+  
+<div class="faq-card" style="margin-bottom:1.5rem;padding:1.25rem;background:#141414;border:1px solid #2a2a2a;border-radius:8px">
+  <h3 style="font-size:1.15rem;color:#f5f0e8;margin-top:0;margin-bottom:0.5rem">Is bypassing anti-scraping protections legal in Indonesia?</h3>
+  <p style="color:#bbb;line-height:1.6;margin-bottom:0">Extracting public commercial catalog data (pricing, product names, inventory levels) is legal as long as you do not access protected personal data (PII) under UU PDP, do not bypass authenticated account paywalls, and do not degrade target server infrastructure under UU ITE.</p>
+</div>
+
+<div class="faq-card" style="margin-bottom:1.5rem;padding:1.25rem;background:#141414;border:1px solid #2a2a2a;border-radius:8px">
+  <h3 style="font-size:1.15rem;color:#f5f0e8;margin-top:0;margin-bottom:0.5rem">Why does standard Python requests get 403 Forbidden on Cloudflare?</h3>
+  <p style="color:#bbb;line-height:1.6;margin-bottom:0">Cloudflare inspects the TLS Client Hello packet. Python requests uses default OpenSSL ciphers and extension orders that generate a known bot JA4/JA3 fingerprint. Using curl_cffi matches the exact TLS handshake of modern desktop and mobile browsers.</p>
+</div>
+
+<div class="faq-card" style="margin-bottom:1.5rem;padding:1.25rem;background:#141414;border:1px solid #2a2a2a;border-radius:8px">
+  <h3 style="font-size:1.15rem;color:#f5f0e8;margin-top:0;margin-bottom:0.5rem">How do you avoid crashing smaller target servers?</h3>
+  <p style="color:#bbb;line-height:1.6;margin-bottom:0">We implement centralized Redis sliding window rate limiting (max 2-5 requests per second per host), cache snapshots locally for 12 hours, and configure automatic circuit breakers that halt requests if target response latency spikes.</p>
+</div>
+</section>
 </article>
 </main>
 <footer>

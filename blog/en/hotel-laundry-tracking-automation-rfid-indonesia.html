@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Eliminating Hotel Linen Shrinkage with RFID and Python Automation","datePublished":"2026-09-25T09:00:00+07:00","dateModified":"2026-09-25T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Eliminating Hotel Linen Shrinkage with RFID and Python Automation","description":"How an 80-room resort in Ubud reduced missing towels and sheets by 91% using UHF RFID laundry tags and automatic weight validation.","datePublished":"2026-09-25T09:00:00+07:00","dateModified":"2026-09-25T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html" class="active">English</a><a href="/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/hotel-laundry-tracking-automation-rfid-indonesia.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/hotel-laundry-tracking-automation-rfid-indonesia.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -672,6 +726,7 @@ ORDER BY pieces DESC;</code></pre>
 <h2>What We Would Reuse and What We Would Drop</h2>
 
 <p>Building this again, we would keep three things without hesitation: the UHF bulk read paired with a scale as an independent check, the explicit state machine, and the rupiah-denominated nightly rollup. Those three carry the whole system. We would drop the hand-rolled serial parsing now that modern scales speak better protocols out of the box, and we would not build the portal reader integration ourselves again, because mature fixed-reader hardware ships with the bulk-inventory logic already solved. The durable lesson is simple: linen shrinkage looks like a theft problem but is really a counting problem, and counting becomes trustworthy only when three parties can read the same neutral record and a weight backs up every scan.</p>
+
 </article>
 </main>
 <footer>

@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines","datePublished":"2026-09-24T09:00:00+07:00","dateModified":"2026-09-24T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines","description":"How we built a resilient pipeline parsing tender notices across 500+ regional LPSE portals without rate-limit lockouts.","datePublished":"2026-09-24T09:00:00+07:00","dateModified":"2026-09-24T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/lp-se-government-procurement-scraper.html" class="active">English</a><a href="/blog/id/lp-se-government-procurement-scraper.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/lp-se-government-procurement-scraper.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/lp-se-government-procurement-scraper.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -730,6 +784,7 @@ CREATE INDEX tenders_wilayah_idx
 <h2>What We Would Reuse and What We Would Not</h2>
 
 <p>If we built this again tomorrow, we would keep the strict fetch/normalize split, the per-portal token bucket, and the content fingerprint. Those three decisions carry the system. We would not hand-roll the orchestration again now that mature worker queues handle retries and scheduling out of the box, and we would not store BoQ text embedded in the main table, because attaching the parsed line items as a separate structure keeps the hot matching path fast. The durable lessons are boring and transferable: treat every remote system as broken until proven otherwise, make rate limits part of the core loop rather than an afterthought, and store only what a real question will filter on.</p>
+
 </article>
 </main>
 <footer>

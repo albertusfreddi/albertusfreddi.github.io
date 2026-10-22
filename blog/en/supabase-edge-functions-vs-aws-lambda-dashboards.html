@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why We Chose Supabase Edge Functions Over AWS Lambda for Real-Time Dashboards","datePublished":"2026-09-26T09:00:00+07:00","dateModified":"2026-09-26T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why We Chose Supabase Edge Functions Over AWS Lambda for Real-Time Dashboards","description":"A zero-cold-start architecture running on Deno at edge nodes close to Jakarta users, cutting API latency from 450ms to 42ms.","datePublished":"2026-09-26T09:00:00+07:00","dateModified":"2026-09-26T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html" class="active">English</a><a href="/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/supabase-edge-functions-vs-aws-lambda-dashboards.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/supabase-edge-functions-vs-aws-lambda-dashboards.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -608,6 +662,7 @@ async def sample(url, n=200, token=None):
 <h2>What We Would Reuse and What We Would Not</h2>
 
 <p>We would reuse three decisions without changing them: the thin-handler pattern that pushes access policy into the database via row-level security, the transaction-mode pooler, and the <code>s-maxage</code> edge cache that collapses repeat reads. Those three are what actually carry the latency number. We would not have re-created the dashboard's write path on edge functions, because writes need idempotency logic and occasionally longer transactions that the model was not optimised for, and we would not have migrated all at once; keeping one read screen cut over at a time gave us a small blast radius and an hour-by-hour comparison instead of a big-bang swap. The durable lesson is short: serverless latency is usually two taxes in a trench coat, and you only get to remove the runtime tax once you have measured the database one.</p>
+
 </article>
 </main>
 <footer>

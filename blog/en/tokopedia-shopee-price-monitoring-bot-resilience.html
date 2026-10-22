@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Building Resilient Price Trackers for Indonesian Marketplaces in 2026","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Building Resilient Price Trackers for Indonesian Marketplaces in 2026","description":"Handling Cloudflare Turnstile, mobile API session rotation, and dynamic GraphQL token extraction without getting flagged or banned.","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html" class="active">English</a><a href="/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -815,6 +869,7 @@ def cycle_is_healthy(scraper) -&gt; bool:
 </ol>
 
 <p>Steps one through four are what separate a demo from a service. They are also the steps nobody writes about, because they are not clever. They are just the difference between a cron job that runs and a system that tells you the truth.</p>
+
 </article>
 </main>
 <footer>

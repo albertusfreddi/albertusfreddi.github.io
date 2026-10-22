@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking","datePublished":"2026-09-27T09:00:00+07:00","dateModified":"2026-09-27T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking","description":"How we integrated offline POS thermal printers with cloud inventory databases, eliminating $2,400 monthly waste across 4 outlets.","datePublished":"2026-09-27T09:00:00+07:00","dateModified":"2026-09-27T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/pos-restaurant-system-automation-indonesia.html" class="active">English</a><a href="/blog/id/pos-restaurant-system-automation-indonesia.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/pos-restaurant-system-automation-indonesia.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/pos-restaurant-system-automation-indonesia.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -660,6 +714,7 @@ def reorder_point(history, lead_days, service_level=0.95, outlier_floor=2):
 
     <h2>How to Put This Pattern to Work in Your Outlet</h2>
 <p>Start with one outlet and one high-value ingredient category, not four outlets and the entire menu at once. Meat and dairy are the best first target because their price makes every percentage point of loss matter and their stockout days are expensive. Put a branch spool on one printer, run it for two weeks to collect a baseline, then switch on per-ticket BOM depletion. Do not switch on automatic ordering until you can explain the gap between "system stock" and "physical stock" from the nightly stocktake. Once that gap closes routinely under 2%, the dynamic thresholds and PO drafts become a safe next step.</p>
+
 </article>
 </main>
 <footer>

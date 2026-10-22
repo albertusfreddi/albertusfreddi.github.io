@@ -103,6 +103,13 @@ nav .brand {
   font-weight: 600;
 }
 
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
+}
+
 main {
   max-width: 840px;
   margin: 3rem auto 6rem;
@@ -256,6 +263,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -285,8 +320,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -431,7 +485,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/" class="active">English</a><a href="/blog/id/" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -441,6 +495,11 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 </div>
 <h1>Blog & Engineering Case Studies</h1>
 <p class="intro">In-depth technical case studies on automation pipelines, reverse-engineered APIs, resilient scraping, and distributed systems.</p>
+<article class="post-card">
+<h2><a href="/blog/en/document-processing-automation-indonesia.html">Automating Document Processing for Indonesian Enterprises: Architecture, OCR Benchmarks, and UU PDP Compliance</a></h2>
+<p>A comprehensive engineering blueprint for automating unstructured document extraction across Indonesian supply chains: OpenCV receipt restoration, hybrid local OCR with quantized vision models, PII masking under UU PDP No. 27/2022, and ERP reconciliation.</p>
+<div class="meta"><span>16 min read</span><span>•</span><span>2026-10-24</span></div>
+</article>
 <article class="post-card">
 <h2><a href="/blog/en/ai-agents-customer-support-rag-indonesian-slang.html">Building Production RAG AI Agents That Handle Indonesian Slang at Scale</a></h2>
 <p>Real implementation of RAG customer support agents for Indonesian e-commerce: slang normalization, hybrid retrieval, guardrails, and production architecture that handles 50K+ queries/day.</p>

@@ -103,6 +103,13 @@ nav .brand {
   font-weight: 600;
 }
 
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
+}
+
 main {
   max-width: 840px;
   margin: 3rem auto 6rem;
@@ -256,6 +263,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -285,8 +320,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -431,7 +485,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/id/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/" class="">English</a><a href="/blog/id/" class="active">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/" class=""><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/" class="active"><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -441,6 +495,11 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 </div>
 <h1>Blog & Studi Kasus Teknis</h1>
 <p class="intro">Studi kasus teknis mendalam tentang pipeline otomasi, API reverse-engineered, scraping resilient, dan sistem terdistribusi.</p>
+<article class="post-card">
+<h2><a href="/blog/id/document-processing-automation-indonesia.html">Otomasi Pemrosesan Dokumen Enterprise Indonesia: Arsitektur OCR, Benchmark, dan Kepatuhan UU PDP</a></h2>
+<p>Panduan arsitektur rekayasa lengkap otomasi ekstraksi dokumen logistik dan distribusi Indonesia: restorasi citra OpenCV, OCR hibrida lokal dengan vision model terkuantisasi, sanitasi PII sesuai UU PDP No. 27/2022, dan rekonsiliasi ERP.</p>
+<div class="meta"><span>16 menit baca</span><span>•</span><span>2026-10-24</span></div>
+</article>
 <article class="post-card">
 <h2><a href="/blog/id/ai-agents-customer-support-rag-indonesian-slang.html">Membangun Agen AI RAG Produksi yang Menangani Bahasa Gaul Indonesia dalam Skala Besar</a></h2>
 <p>Implementasi nyata agen AI support untuk e-commerce Indonesia: normalisasi bahasa gaul, retrieval hybrid, guardrail, dan arsitektur produksi yang menangani 50K+ query/hari.</p>

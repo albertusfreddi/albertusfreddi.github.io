@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/fastapi-microservices-docker-swarm-indonesia.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Deploying Lightweight FastAPI Microservices with Docker Swarm on Local Cloud","datePublished":"2026-10-05T09:00:00+07:00","dateModified":"2026-10-05T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Deploying Lightweight FastAPI Microservices with Docker Swarm on Local Cloud","description":"Why Kubernetes is overkill for 95% of Indonesian startups: managing 8 distributed microservices on a $40/month local VPS cluster.","datePublished":"2026-10-05T09:00:00+07:00","dateModified":"2026-10-05T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/fastapi-microservices-docker-swarm-indonesia.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/en/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/fastapi-microservices-docker-swarm-indonesia.html" class="active">English</a><a href="/blog/id/fastapi-microservices-docker-swarm-indonesia.html" class="">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/fastapi-microservices-docker-swarm-indonesia.html" class="active"><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/fastapi-microservices-docker-swarm-indonesia.html" class=""><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -607,6 +661,7 @@ docker service update "$SERVICE" \
 
     <h2>When Swarm Stops Being Enough</h2>
 <p>Swarm is the right answer for the band where you have a handful of services, a handful of nodes, and one team owning it all. The honest triggers for moving to Kubernetes are not "we read that it is the industry standard." They are things like: you need GitOps and policy that a multi-team organisation requires; you need autoscaling that refuses to be approximated with manual replica counts; you need hundreds of nodes and the scheduler has to make placement decisions a human simply cannot. Until one of those is true, Swarm will carry you further than its reputation suggests, and the money and attention you save can go into the application, which is where the actual business lives.</p>
+
 </article>
 </main>
 <footer>

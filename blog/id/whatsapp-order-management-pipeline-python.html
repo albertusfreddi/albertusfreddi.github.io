@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/whatsapp-order-management-pipeline-python.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/whatsapp-order-management-pipeline-python.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/whatsapp-order-management-pipeline-python.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Membangun Pipeline Ingest Pesanan WhatsApp yang Tahan Banting dengan Python dan Webhook","datePublished":"2026-03-09T09:00:00+07:00","dateModified":"2026-03-09T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/whatsapp-order-management-pipeline-python.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Membangun Pipeline Ingest Pesanan WhatsApp yang Tahan Banting dengan Python dan Webhook","description":"Arsitektur produksi memproses 12.000 pesanan grosir harian dari WhatsApp Cloud API: ingest webhook asinkron, idempotency key, ekstraksi entitas LLM, dan sinkronisasi ERP.","datePublished":"2026-03-09T09:00:00+07:00","dateModified":"2026-03-09T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi","url":"https://albertusfreddi.github.io/"},"publisher":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/whatsapp-order-management-pipeline-python.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mengapa Meta mengirim ulang webhook WhatsApp secara berulang?","acceptedAnswer":{"@type":"Answer","text":"Meta mewajibkan endpoint webhook Anda mengembalikan HTTP 200 OK dalam waktu maksimal 15 detik. Jika server Anda terlambat merespon karena proses query database atau inferensi model yang lama, Meta menganggap transmisi gagal dan mengirim ulang pesan tersebut secara bertahap sehingga memicu duplikasi pesanan."}},{"@type":"Question","name":"Bagaimana pipeline memproses rekaman pesan suara (voice note) pelanggan?","acceptedAnswer":{"@type":"Answer","text":"Worker mengunduh berkas audio dari WhatsApp Cloud API, mengirimkan stream data ke layanan speech-to-text yang disetel untuk bahasa Indonesia santai, lalu meneruskan teks hasil transkripsi ke fungsi ekstraksi entitas terstruktur Pydantic."}},{"@type":"Question","name":"Bagaimana cara mencegah duplikasi transaksi jika pelanggan menekan tombol kirim berkali-kali?","acceptedAnswer":{"@type":"Answer","text":"Setiap pesan membawa kode unik wamid (WhatsApp Message ID). Pipeline mengeksekusi operasi atomik Redis SETNX dengan masa kedaluwarsa 48 jam sebelum memproses logika apa pun, sehingga pesan duplikat langsung diabaikan secara aman."}}]}]}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -107,6 +107,13 @@ nav .brand {
   border-color: var(--accent);
   color: var(--ink);
   font-weight: 600;
+}
+
+.lang-mobile { display: none; }
+.lang-switcher a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lang-desktop { display: none; }
+  .lang-mobile { display: inline; font-weight: 600; }
 }
 
 main {
@@ -262,6 +269,34 @@ code {
   color: #d4d4d4;
 }
 
+table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  background: var(--code-bg);
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  background: rgba(26, 26, 26, 0.4);
+}
+
 .diagram-container {
   margin: 2.5rem 0;
   overflow-x: auto;
@@ -291,8 +326,27 @@ footer a:hover {
 }
 
 @media (max-width: 640px) {
+  header {
+    padding: 0.875rem 1rem;
+  }
+
+  nav .brand {
+    font-size: 0.9375rem;
+  }
+
+  .lang-switcher {
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-switcher a {
+    padding: 0.25rem 0.5rem;
+  }
+
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    overflow-wrap: break-word;
   }
 
   article h2 {
@@ -437,7 +491,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 <header>
 <nav>
 <a href="/blog/id/" class="brand">Albertus Freddi</a>
-<div class="lang-switcher"><a href="/blog/en/whatsapp-order-management-pipeline-python.html" class="">English</a><a href="/blog/id/whatsapp-order-management-pipeline-python.html" class="active">Bahasa Indonesia</a></div>
+<div class="lang-switcher"><a href="/blog/en/whatsapp-order-management-pipeline-python.html" class=""><span class="lang-desktop">English</span><span class="lang-mobile">EN</span></a><a href="/blog/id/whatsapp-order-management-pipeline-python.html" class="active"><span class="lang-desktop">Bahasa Indonesia</span><span class="lang-mobile">ID</span></a></div>
 </nav>
 </header>
 <main>
@@ -680,6 +734,25 @@ def cocokan_sku_gudang(db_session, raw_product_name: str) -> Optional[str]:
 </ol>
 
 <p><strong>Ingin mengotomatiskan pipeline penerimaan pesanan WhatsApp dan sinkronisasi ERP di perusahaan Anda? Mari berdiskusi teknis: albertus.freddi@gmail.com</strong></p>
+
+<section class="faq-section" style="margin-top:3rem;padding-top:2rem;border-top:1px solid #2a2a2a">
+  <h2>Pertanyaan yang Sering Diajukan</h2>
+  
+<div class="faq-card" style="margin-bottom:1.5rem;padding:1.25rem;background:#141414;border:1px solid #2a2a2a;border-radius:8px">
+  <h3 style="font-size:1.15rem;color:#f5f0e8;margin-top:0;margin-bottom:0.5rem">Mengapa Meta mengirim ulang webhook WhatsApp secara berulang?</h3>
+  <p style="color:#bbb;line-height:1.6;margin-bottom:0">Meta mewajibkan endpoint webhook Anda mengembalikan HTTP 200 OK dalam waktu maksimal 15 detik. Jika server Anda terlambat merespon karena proses query database atau inferensi model yang lama, Meta menganggap transmisi gagal dan mengirim ulang pesan tersebut secara bertahap sehingga memicu duplikasi pesanan.</p>
+</div>
+
+<div class="faq-card" style="margin-bottom:1.5rem;padding:1.25rem;background:#141414;border:1px solid #2a2a2a;border-radius:8px">
+  <h3 style="font-size:1.15rem;color:#f5f0e8;margin-top:0;margin-bottom:0.5rem">Bagaimana pipeline memproses rekaman pesan suara (voice note) pelanggan?</h3>
+  <p style="color:#bbb;line-height:1.6;margin-bottom:0">Worker mengunduh berkas audio dari WhatsApp Cloud API, mengirimkan stream data ke layanan speech-to-text yang disetel untuk bahasa Indonesia santai, lalu meneruskan teks hasil transkripsi ke fungsi ekstraksi entitas terstruktur Pydantic.</p>
+</div>
+
+<div class="faq-card" style="margin-bottom:1.5rem;padding:1.25rem;background:#141414;border:1px solid #2a2a2a;border-radius:8px">
+  <h3 style="font-size:1.15rem;color:#f5f0e8;margin-top:0;margin-bottom:0.5rem">Bagaimana cara mencegah duplikasi transaksi jika pelanggan menekan tombol kirim berkali-kali?</h3>
+  <p style="color:#bbb;line-height:1.6;margin-bottom:0">Setiap pesan membawa kode unik wamid (WhatsApp Message ID). Pipeline mengeksekusi operasi atomik Redis SETNX dengan masa kedaluwarsa 48 jam sebelum memproses logika apa pun, sehingga pesan duplikat langsung diabaikan secara aman.</p>
+</div>
+</section>
 </article>
 </main>
 <footer>
