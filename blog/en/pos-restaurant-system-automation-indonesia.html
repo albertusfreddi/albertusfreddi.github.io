@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking | Albertus Freddi</title>
+<meta name="description" content="How we integrated offline POS thermal printers with cloud inventory databases, eliminating $2,400 monthly waste across 4 outlets.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
+<meta property="og:title" content="Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking">
+<meta property="og:description" content="How we integrated offline POS thermal printers with cloud inventory databases, eliminating $2,400 monthly waste across 4 outlets.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-27T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking">
+<meta name="twitter:description" content="How we integrated offline POS thermal printers with cloud inventory databases, eliminating $2,400 monthly waste across 4 outlets.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking","datePublished":"2026-09-27T09:00:00+07:00","dateModified":"2026-09-27T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/en/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/pos-restaurant-system-automation-indonesia.html" class="active">English</a><a href="/blog/id/pos-restaurant-system-automation-indonesia.html" class="">Bahasa Indonesia</a><a href="/blog/zh/pos-restaurant-system-automation-indonesia.html" class="">中文</a><a href="/blog/ja/pos-restaurant-system-automation-indonesia.html" class="">日本語</a><a href="/blog/ko/pos-restaurant-system-automation-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Automating Multi-Outlet Restaurant Kitchen Orders and Inventory Tracking</h1>
+<div class="meta">
+<span>16 min read</span>
+<span>•</span>
+<span>2026-09-27</span>
+</div>
+<article>
+<div class="callout">
+      <p><strong>Production context:</strong> Four casual-dining kitchens in South Jakarta each run a diskless POS PC that prints kitchen tickets to an Epson TM-T82 thermal printer over a LAN segment. We did not replace a single piece of that hardware. Instead we dropped a Raspberry Pi 4 print spooler on each LAN segment, read the ESC/POS byte stream already in flight, and pushed gram-accurate bill-of-materials (BOM) depletion into one central PostgreSQL inventory. Result: raw-ingredient waste fell from an average of 14% to 3.2% within six weeks, worth roughly Rp 36 million per month across the four outlets.</p>
+    </div>
+
+    <h2>Why the Kitchen Is an Accounting Problem, Not a Hardware Problem</h2>
+<p>Most restaurant-automation projects fail because the first move is to rip out systems that already work. A mid-size casual outlet in Jakarta already owns a stack of paid-for technology: an aging POS PC, a thermal printer that still prints, and kitchen staff trained to read tickets. The real problem is not that tickets get printed, it is that nothing connects "one sirloin portion sold" to "how many grams of sirloin remain in the freezer." Loss does not happen at the cash drawer; it happens in the gap between the number written on the night clipboard and the number actually consumed in the wok.</p>
+<p>Let us measure it. If an outlet sells 400 sirloin portions in a week and the standard recipe is 250 g raw per portion, ideal consumption is 100 kg. If the closing stock count shows 114 kg used, then 14 kg (14%) went missing: lost to trimming, over-portioning, miscounting, or theft. Without per-transaction instrumentation, management cannot tell those four causes apart. They only see one blunt number.</p>
+<div class="metrics-grid">
+<div class="metric"><span class="num">14% &rarr; 3,2%</span><span class="label">ingredient waste, before and after</span></div>
+<div class="metric"><span class="num">Rp 36 jt</span><span class="label">monthly savings across 4 outlets</span></div>
+<div class="metric"><span class="num">&lt; 300 ms</span><span class="label">ticket &rarr; BOM depletion, end to end</span></div>
+</div>
+
+    <h2>Tapping the ESC/POS Byte Stream Without Replacing the Printer</h2>
+<p>Epson thermal printers speak ESC/POS, a byte-level command language that dates back to the 1980s. Rather than upgrade the hardware, we tapped the print path at the operating-system layer. On each POS PC we installed a thin virtual spool driver (CUPS-based on Linux, or a port redirector on Windows). The spool forwards the same bytes on to the physical printer while also copying the stream to a decode process on the nearest Raspberry Pi. The printer keeps working exactly as before; we simply cut a branch tap on an existing pipe.</p>
+<p>This is what separates the approach from the usual API integration. Most modern POS systems expose webhooks, but small outlets in Indonesia often run old desktop POS software with no API at all, and the vendor will not sign a support contract for third-party integration. Tapping the print path makes us vendor-agnostic: as long as the device emits ESC/POS, we can read the order.</p>
+<div class="code-block"><div class="code-header">decode_ticket.cjs &mdash; turning a raw ESC/POS stream into a structured ticket</div><pre><code>// ESC/POS prepends commands with GS or ESC, followed by parameter bytes.
+// The lines we care about are the table number, the item (sku), and qty.
+const ESC = 0x1b, GS = 0x1d;
+
+function splitCommands(buf) {
+  const cmds = [];
+  let i = 0;
+  while (i &lt; buf.length) {
+    const b = buf[i];
+    if (b === ESC || b === GS) {
+      const type = buf[i + 1];
+      // short sequences we recognise: GS ! (set charset), ESC @ (init)
+      let len = 2;
+      if (type === 0x21) len = 3; // GS ! n
+      cmds.push(buf.slice(i, i + len));
+      i += len;
+    } else {
+      // plain text: accumulate until the next control byte
+      let j = i;
+      while (j &lt; buf.length &amp;&amp; buf[j] &gt;= 0x20) j++;
+      cmds.push(buf.slice(i, j));
+      i = j;
+    }
+  }
+  return cmds;
+}
+
+function decodeTicket(buf) {
+  const text = splitCommands(buf)
+    .filter(c =&gt; c.length &amp;&amp; c[0] &gt;= 0x20)      // text segments only
+    .map(c =&gt; c.toString('latin1'))
+    .join('\n');
+  // A typical ticket: "TBL 12" ... "2x SIRLOIN 250" ... "1x AMERICANO"
+  const items = [];
+  for (const line of text.split('\n')) {
+    const m = line.match(/^(\d+)x\s+(.+?)\s+(\d+)\s*g$/i);
+    if (m) items.push({ qty: +m[1], name: m[2].trim(), grams: +m[3] });
+  }
+  const tbl = (text.match(/TBL\s+(\d+)/i) || [])[1] || 'UNKNOWN';
+  return { table: tbl, items };
+}</code></pre></div>
+<p>The key function above is <code>splitCommands</code>. ESC/POS inserts two- or three-byte control bytes (for example <code>ESC @</code> for reset, <code>GS !</code> to change the character size) between the text lines. If we naively split on newlines alone, those control bytes leak into item names and corrupt matching. By separating commands from text first, we get a clean ticket body. Only then does the <code>qty name grams</code> regular expression extract the items.</p>
+
+    <h2>Why Gram-Accurate, Not Just "One Portion"</h2>
+<p>Inventory tracking that is useful to a restaurant has to go down to the gram, not the "portion." The reason: the same ingredient shows up in many recipes at different weights. Chicken breast at 180 g goes into the signature fried rice, but at 120 g into the chicken soup. If we only record "1 chicken" per order, we never learn how many grams actually left the shelf, and the remaining stock becomes a fictional number.</p>
+<p>That is why we store every recipe as a BOM structure with nested components. One menu item breaks apart into several raw ingredients, each with a gram measure and a yield factor that absorbs cooking loss. Here is the core PostgreSQL schema:</p>
+<div class="code-block"><div class="code-header">PostgreSQL schema: menu, recipes, and stock movements</div><pre><code>CREATE TABLE menu_item (
+  id           BIGSERIAL PRIMARY KEY,
+  outlet_id    INTEGER NOT NULL,
+  sku          TEXT NOT NULL,
+  display_name TEXT NOT NULL,
+  active       BOOLEAN NOT NULL DEFAULT true,
+  UNIQUE (outlet_id, sku)
+);
+
+CREATE TABLE bom_line (
+  id            BIGSERIAL PRIMARY KEY,
+  menu_item_id  BIGINT NOT NULL REFERENCES menu_item(id),
+  ingredient_id BIGINT NOT NULL REFERENCES ingredient(id),
+  qty_grams     NUMERIC(10,2) NOT NULL,  -- gross grams before cooking
+  yield_factor  NUMERIC(5,4) NOT NULL DEFAULT 1.0000
+);
+
+CREATE TABLE stock_movement (
+  id            BIGSERIAL PRIMARY KEY,
+  ingredient_id BIGINT NOT NULL,
+  outlet_id     INTEGER NOT NULL,
+  delta_grams   NUMERIC(10,2) NOT NULL,   -- negative means consumed
+  reason        TEXT NOT NULL,            -- 'sale' | 'waste' | 'receipt' | 'adjustment'
+  ticket_no     TEXT,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_stock_movement_ingredient
+  ON stock_movement (ingredient_id, created_at DESC);</code></pre></div>
+<p>Notice <code>yield_factor</code> and <code>reason</code>. Those two columns are what separate this system from simple stockkeeping. <code>yield_factor</code> handles the reality that 250 g of raw meat does not become 250 g of cooked meat. <code>reason</code> forces every gram that disappears to carry a label: sale, explicitly-logged waste, receipt, or manual adjustment. After a month, you have the data to compute "unexplained loss" as a residue, not a guess.</p>
+
+    <h2>Depleting the BOM Atomically from Each Ticket</h2>
+<p>Once a ticket is decoded, the system has to turn it into a string of atomic stock movements. Two risks sit here: (1) the same ticket gets processed twice because the spool re-sends on a print timeout, and (2) two tickets process at once and collide. Both are handled with explicit idempotency and a single-unit-of-work transaction.</p>
+<div class="code-block"><div class="code-header">apply_ticket.py &mdash; idempotent BOM depletion in one transaction</div><pre><code>import hashlib
+from psycopg2 import IntegrityError
+
+def ticket_hash(outlet_id, ticket_no, items):
+    blob = "|".join(f"{i['sku']}:{i['qty']}" for i in items)
+    return hashlib.sha256(f"{outlet_id}:{ticket_no}:{blob}".encode()).hexdigest()
+
+def apply_ticket(conn, outlet_id, ticket_no, items):
+    digest = ticket_hash(outlet_id, ticket_no, items)
+    with conn, conn.cursor() as cur:
+        # Idempotency: if this digest is already recorded, it is a spool re-send.
+        cur.execute(
+            "SELECT 1 FROM ticket_digest WHERE digest = %s",
+            (digest,),
+        )
+        if cur.fetchone():
+            return {"status": "duplicate", "digest": digest}
+
+        cur.execute(
+            "INSERT INTO ticket_digest (digest, outlet_id, ticket_no) "
+            "VALUES (%s, %s, %s)",
+            (digest, outlet_id, ticket_no),
+        )
+
+        for it in items:
+            # One item depletes many ingredients via BOM + yield_factor.
+            cur.execute(
+                """
+                SELECT i.id, (b.qty_grams / b.yield_factor) AS net_grams
+                FROM bom_line b
+                JOIN menu_item m ON m.id = b.menu_item_id
+                JOIN ingredient i ON i.id = b.ingredient_id
+                WHERE m.outlet_id = %s AND m.sku = %s
+                """,
+                (outlet_id, it["sku"]),
+            )
+            for ingredient_id, net_grams in cur.fetchall():
+                cur.execute(
+                    """
+                    INSERT INTO stock_movement
+                      (ingredient_id, outlet_id, delta_grams, reason, ticket_no)
+                    VALUES (%s, %s, %s, 'sale', %s)
+                    """,
+                    (ingredient_id, outlet_id, -net_grams * it["qty"], ticket_no),
+                )
+    return {"status": "applied", "digest": digest}</code></pre></div>
+<p>The <code>with conn</code> block opens one transaction using <code>conn</code> as a context manager, so if any exception is raised, the entire group of stock movements rolls back and there is no half-finished depletion. The <code>ticket_digest</code> check up front is the idempotency key: the same ticket number with the same items produces the same hash, so a spool re-send that cannot tell "reprint" from "new order" will never double-deplete.</p>
+
+    <h2>Safety Thresholds That Account for Weekend Volume</h2>
+<p>The naive reorder point reads "order when stock drops below 10 kg." That is too static. An outlet near an office district can spike 2.4x on Fridays, while a mall outlet spikes on weekends. If the threshold is the same every day, you run out exactly when it is busy, or pile up idle stock when it is quiet.</p>
+<p>We recompute thresholds every night with a reorder-point formula that accounts for lead-time demand. The trick is folding historical daily consumption into a day-of-week pattern, then adding a buffer for volatility.</p>
+<div class="code-block"><div class="code-header">reorder_point.py &mdash; a dynamic threshold that rolls with daily seasonality</div><pre><code>import numpy as np
+
+def reorder_point(history, lead_days, service_level=0.95, outlier_floor=2):
+    """
+    history : array of grams consumed per day (chronological).
+    Formula: ROP = demand_lead_time + z * sigma_lead_time
+      demand_lead_time = mean_daily * lead_days
+      sigma_lead_time  = std_daily * sqrt(lead_days)
+    """
+    if len(history) &lt; 14:
+        return None  # need at least two weeks of data before trusting a number
+
+    mean_daily = np.mean(history)
+    std_daily = np.std(history)
+    z = 1.645  # 95% quantile of the standard normal, for service_level 0.95
+
+    demand_lt = mean_daily * lead_days
+    # Widen the buffer slightly for extreme days.
+    sigma_lt = std_daily * np.sqrt(lead_days) * max(1.0, z / 1.645)
+
+    rop = demand_lt + z * sigma_lt
+    return max(rop, mean_daily * outlier_floor)</code></pre></div>
+<p>The important detail is the <code>outlier_floor</code> parameter. A bare mean and standard deviation can over-weight one national holiday when supply stopped, and under-weight the routine Friday spike. The two-times-average floor keeps the system from ordering below two days of normal use even when the historical numbers look calm. It is a cheap guardrail that prevents the embarrassing stockout.</p>
+
+    <h2>Sending Draft Purchase Orders to Supplier WhatsApp</h2>
+<p>The final step is shrinking the distance from "stock is low" to "goods arrived." In Indonesia, most meat, dairy, and produce suppliers answer WhatsApp faster than email or a B2B portal. So the initial purchase order does not go to a heavyweight ERP; it becomes a structured text message sent to the supplier WhatsApp group, with a one-tap confirm button.</p>
+<p>The design point: the system never orders on its own. It only composes an already-calculated draft and asks the kitchen manager for a single approval tap. That keeps a human holding the purchasing decision while removing the error-prone arithmetic.</p>
+<div class="code-block"><div class="code-header">propose_order.py &mdash; a structured PO draft, not blind auto-reorder</div><pre><code>def propose_purchase_order(shortages):
+    """shortages: list of {ingredient, on_hand_kg, rop_kg, suggested_kg}"""
+    lines = []
+    total_est = 0
+    for s in shortages:
+        # Suggested qty = 1.3x the shortfall, rounded up to a pack size
+        need = s["suggested_kg"] - s["on_hand_kg"]
+        ordered = round_up_pack(need, s.get("pack_kg", 1))
+        total_est += ordered * s.get("unit_price", 0)
+        lines.append(f"- {s['ingredient']}: stock {s['on_hand_kg']}kg "
+                     f"&lt; threshold {s['rop_kg']}kg &rarr; order {ordered}kg")
+
+    body = "Automated PO draft (needs 1 confirm tap):\n"
+    body += "\n".join(lines)
+    body += f"\nEstimated: Rp {total_est:,.0f}"
+
+    # no automatic ordering here; notify the kitchen manager only.
+    send_whatsapp(to="kitchen-outlet-03", text=body)
+    return {"draft_created": True, "line_count": len(lines)}</code></pre></div>
+<p>Notice <code>round_up_pack</code>. A supplier does not sell 3.7 kg of meat; they sell by the pack. Rounding up to a pack size avoids one of the most common reorder-system failures: sending an impossible quantity, then looping it into time-wasting back-and-forth messages. The draft that goes out is already in units the supplier can actually ship.</p>
+
+    <h2>Failure Modes We Learned the Hard Way</h2>
+<div class="comparison-table"><table>
+<thead><tr><th>Failure mode</th><th>Observed symptom</th><th>Mitigation we installed</th></tr></thead>
+<tbody>
+<tr><td>Spool re-sends a ticket on print timeout</td><td>Stock depletes twice for the same order</td><td><code>ticket_digest</code> idempotency key before writing movements</td></tr>
+<tr><td>Printer offline, spool queue backs up</td><td>Delayed depletion spike confuses the night count</td><td>Local queue buffer on the Pi + chronological sync, not burst sync</td></tr>
+<tr><td>Recipe changes without a BOM update</td><td>Variance narrows then balloons in the opposite direction</td><td>Automatic weekly variance check; recipes off by &gt; 5% flagged for review</td></tr>
+<tr><td>WhatsApp PO send fails silently</td><td>Manager thinks it went out, stock runs out</td><td>Read receipt required + SMS fallback, then alarm if no ack in 15 min</td></tr>
+</tbody>
+</table></div>
+<p>The general lesson behind those four rows: in a system that bridges physical hardware and a cloud database, the most fragile part is always at the boundary. Paper tickets have no retry; printers have no idempotency; WhatsApp has no delivery guarantee. Every hop from one medium to another needs an explicit defense layer, not an assumption that "the message got there."</p>
+
+    <h2>How to Put This Pattern to Work in Your Outlet</h2>
+<p>Start with one outlet and one high-value ingredient category, not four outlets and the entire menu at once. Meat and dairy are the best first target because their price makes every percentage point of loss matter and their stockout days are expensive. Put a branch spool on one printer, run it for two weeks to collect a baseline, then switch on per-ticket BOM depletion. Do not switch on automatic ordering until you can explain the gap between "system stock" and "physical stock" from the nightly stocktake. Once that gap closes routinely under 2%, the dynamic thresholds and PO drafts become a safe next step.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>

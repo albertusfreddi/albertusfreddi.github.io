@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Otomasi Pesanan Dapur & Pelacakan Inventaris Restoran Multi-Outlet | Albertus Freddi</title>
+<meta name="description" content="Integrasi printer thermal kasir lokal dengan database cloud inventaris, menghemat pemborosan bahan baku senilai Rp 36 juta per bulan.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html">
+<meta property="og:title" content="Otomasi Pesanan Dapur & Pelacakan Inventaris Restoran Multi-Outlet">
+<meta property="og:description" content="Integrasi printer thermal kasir lokal dengan database cloud inventaris, menghemat pemborosan bahan baku senilai Rp 36 juta per bulan.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-27T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="id_ID">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Otomasi Pesanan Dapur & Pelacakan Inventaris Restoran Multi-Outlet">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Otomasi Pesanan Dapur & Pelacakan Inventaris Restoran Multi-Outlet">
+<meta name="twitter:description" content="Integrasi printer thermal kasir lokal dengan database cloud inventaris, menghemat pemborosan bahan baku senilai Rp 36 juta per bulan.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/pos-restaurant-system-automation-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/pos-restaurant-system-automation-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Otomasi Pesanan Dapur & Pelacakan Inventaris Restoran Multi-Outlet","datePublished":"2026-09-27T09:00:00+07:00","dateModified":"2026-09-27T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/pos-restaurant-system-automation-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/id/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/pos-restaurant-system-automation-indonesia.html" class="">English</a><a href="/blog/id/pos-restaurant-system-automation-indonesia.html" class="active">Bahasa Indonesia</a><a href="/blog/zh/pos-restaurant-system-automation-indonesia.html" class="">中文</a><a href="/blog/ja/pos-restaurant-system-automation-indonesia.html" class="">日本語</a><a href="/blog/ko/pos-restaurant-system-automation-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Otomasi Pesanan Dapur & Pelacakan Inventaris Restoran Multi-Outlet</h1>
+<div class="meta">
+<span>16 menit</span>
+<span>•</span>
+<span>2026-09-27</span>
+</div>
+<article>
+<div class="callout">
+      <p><strong>Konteks produksi:</strong> Empat dapur katering kasual di Jakarta Selatan masing-masing menjalankan PC POS diskless yang mencetak tiket dapur ke printer termal Epson TM-T82 melalui segmen LAN. Kami tidak mengganti satu pun perangkat keras itu. Sebagai gantinya, kami memasang spooler cetak Raspberry Pi 4 pada setiap segmen LAN, membaca aliran byte ESC/POS yang sudah berjalan, dan mendorong deplesi bill of materials (BOM) gram-akurat ke satu inventaris PostgreSQL terpusat. Hasilnya: pemborosan bahan baku turun dari rata-rata 14% menjadi 3,2% dalam enam minggu, setara sekitar Rp 36 juta per bulan di empat gerai.</p>
+    </div>
+
+    <h2>Mengapa Dapur adalah Masalah Akuntansi, Bukan Masalah Perangkat Keras</h2>
+<p>Sebagian besar proyek otomasi restoran gagal karena langkah pertama yang diambil adalah membongkar sistem yang sebenarnya masih jalan. Gerai kasual menengah di Jakarta biasanya sudah punya tumpukan teknologi yang terbayar: PC POS yang menua, printer termal yang masih andal, dan staf dapur yang terlatih membaca tiket. Masalah sesungguhnya bukan tiketnya tercetak, melainkan tidak ada satu pun yang menghubungkan "satu porsi sirloin terjual" dengan "berapa gram sirloin tersisa di freezer." Kerugian tidak terjadi di laci kasir; ia terjadi di selisih antara angka yang ditulis di clipboard malam hari dan angka yang benar-benar terpakai di wajan.</p>
+<p>Mari kita ukur. Kalau sebuah gerai menjual 400 porsi sirloin dalam sepekan dan resep standarnya 250 g mentah per porsi, konsumsi idealnya 100 kg. Kalau hitungan stok tutup hari menunjukkan pemakaian 114 kg, berarti 14 kg (14%) hilang entah ke mana: terbuang saat trimming, porsi berlebih, salah hitung, atau pencurian. Tanpa instrumentasi per transaksi, manajemen tidak bisa membedakan keempat penyebab itu. Mereka hanya melihat satu angka tumpul.</p>
+<div class="metrics-grid">
+<div class="metric"><span class="num">14% &rarr; 3,2%</span><span class="label">pemborosan bahan baku, sebelum dan sesudah</span></div>
+<div class="metric"><span class="num">Rp 36 jt</span><span class="label">penghematan bulanan di 4 gerai</span></div>
+<div class="metric"><span class="num">&lt; 300 ms</span><span class="label">tiket &rarr; deplesi BOM, ujung ke ujung</span></div>
+</div>
+
+    <h2>Menyadap Aliran Byte ESC/POS Tanpa Mengganti Printer</h2>
+<p>Printer termal Epson berbicara menggunakan ESC/POS, bahasa perintah level byte yang sudah dipakai sejak tahun 1980-an. Alih-alih meng-upgrade perangkat keras, kami menyadap jalur cetak pada lapisan sistem operasi. Pada setiap PC POS kami memasang driver spool virtual tipis (berbasis CUPS di Linux, atau port redirector di Windows). Spool meneruskan byte yang sama ke printer fisik sekaligus menyalin aliran itu ke proses decode di Raspberry Pi terdekat. Printer tetap bekerja persis seperti sebelumnya; kami hanya membuat keran cabang pada pipa yang sudah ada.</p>
+<p>Inilah yang membedakan pendekatan ini dari integrasi API pada umumnya. Mayoritas POS modern memang mengekspos webhook, tapi gerai kecil di Indonesia sering memakai software POS desktop lawas yang sama sekali tidak punya API, dan vendornya tidak mau menandatangani kontrak dukungan untuk integrasi pihak ketiga. Menyadap jalur cetak membuat kami agnostik terhadap vendor: selama perangkat mengirim ESC/POS, kami bisa membaca pesanannya.</p>
+<div class="code-block"><div class="code-header">decode_ticket.cjs &mdash; mengubah aliran ESC/POS mentah menjadi tiket terstruktur</div><pre><code>// ESC/POS mengawali perintah dengan GS atau ESC, diikuti byte parameter.
+// Baris yang kita pedulikan adalah nomor meja, item (sku), dan qty.
+const ESC = 0x1b, GS = 0x1d;
+
+function splitCommands(buf) {
+  const cmds = [];
+  let i = 0;
+  while (i &lt; buf.length) {
+    const b = buf[i];
+    if (b === ESC || b === GS) {
+      const type = buf[i + 1];
+      // urutan pendek yang dikenali: GS ! (set charset), ESC @ (init)
+      let len = 2;
+      if (type === 0x21) len = 3; // GS ! n
+      cmds.push(buf.slice(i, i + len));
+      i += len;
+    } else {
+      // teks biasa: akumulasi sampai byte kontrol berikutnya
+      let j = i;
+      while (j &lt; buf.length &amp;&amp; buf[j] &gt;= 0x20) j++;
+      cmds.push(buf.slice(i, j));
+      i = j;
+    }
+  }
+  return cmds;
+}
+
+function decodeTicket(buf) {
+  const text = splitCommands(buf)
+    .filter(c =&gt; c.length &amp;&amp; c[0] &gt;= 0x20)      // hanya segmen teks
+    .map(c =&gt; c.toString('latin1'))
+    .join('\n');
+  // Tiket tipikal: "TBL 12" ... "2x SIRLOIN 250" ... "1x AMERICANO"
+  const items = [];
+  for (const line of text.split('\n')) {
+    const m = line.match(/^(\d+)x\s+(.+?)\s+(\d+)\s*g$/i);
+    if (m) items.push({ qty: +m[1], name: m[2].trim(), grams: +m[3] });
+  }
+  const tbl = (text.match(/TBL\s+(\d+)/i) || [])[1] || 'UNKNOWN';
+  return { table: tbl, items };
+}</code></pre></div>
+<p>Fungsi kunci di atas adalah <code>splitCommands</code>. ESC/POS menyisipkan byte kontrol dua atau tiga byte (misalnya <code>ESC @</code> untuk reset, <code>GS !</code> untuk mengubah ukuran huruf) di antara baris teks. Kalau kita naif membagi berdasarkan baris baru saja, byte kontrol itu bocor ke nama item dan merusak pencocokan. Dengan memisahkan perintah dari teks lebih dulu, kita mendapat badan tiket yang bersih. Baru setelah itu ekspresi reguler <code>qty name grams</code> mengekstrak itemnya.</p>
+
+    <h2>Mengapa Gram-Akurat, Bukan Sekadar "Satu Porsi"</h2>
+<p>Pelacakan inventaris yang berguna untuk restoran harus turun ke level gram, bukan ke level "porsi." Alasannya: bahan yang sama muncul di banyak resep dengan berat berbeda. Dada ayam 180 g masuk ke nasi goreng spesial, tapi 120 g masuk ke sop ayam. Kalau kita hanya mencatat "1 ayam" per pesanan, kita tidak pernah tahu berapa gram yang benar-benar keluar dari rak, dan sisa stok menjadi angka fiktif.</p>
+<p>Karena itu kami menyimpan setiap resep sebagai struktur BOM dengan komponen bertingkat. Satu item menu pecah menjadi beberapa bahan mentah, masing-masing dengan takaran gram dan faktor hasil (yield) yang menyerap susut pemasakan. Berikut skema dasar PostgreSQL:</p>
+<div class="code-block"><div class="code-header">Skema PostgreSQL: menu, resep, dan pergerakan stok</div><pre><code>CREATE TABLE menu_item (
+  id           BIGSERIAL PRIMARY KEY,
+  outlet_id    INTEGER NOT NULL,
+  sku          TEXT NOT NULL,
+  display_name TEXT NOT NULL,
+  active       BOOLEAN NOT NULL DEFAULT true,
+  UNIQUE (outlet_id, sku)
+);
+
+CREATE TABLE bom_line (
+  id            BIGSERIAL PRIMARY KEY,
+  menu_item_id  BIGINT NOT NULL REFERENCES menu_item(id),
+  ingredient_id BIGINT NOT NULL REFERENCES ingredient(id),
+  qty_grams     NUMERIC(10,2) NOT NULL,  -- gram kotor sebelum dimasak
+  yield_factor  NUMERIC(5,4) NOT NULL DEFAULT 1.0000
+);
+
+CREATE TABLE stock_movement (
+  id            BIGSERIAL PRIMARY KEY,
+  ingredient_id BIGINT NOT NULL,
+  outlet_id     INTEGER NOT NULL,
+  delta_grams   NUMERIC(10,2) NOT NULL,   -- negatif berarti terpakai
+  reason        TEXT NOT NULL,            -- 'sale' | 'waste' | 'receipt' | 'adjustment'
+  ticket_no     TEXT,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX idx_stock_movement_ingredient
+  ON stock_movement (ingredient_id, created_at DESC);</code></pre></div>
+<p>Perhatikan <code>yield_factor</code> dan <code>reason</code>. Dua kolom inilah yang membedakan sistem ini dari pencatatan stok sederhana. <code>yield_factor</code> menangani kenyataan bahwa 250 g daging mentah tidak menjadi 250 g daging matang. <code>reason</code> memaksa setiap gram yang hilang membawa label: penjualan, pembuangan yang dicatat eksplisit, penerimaan, atau penyesuaian manual. Setelah sebulan, kita punya data untuk menghitung "susut tak terjelaskan" sebagai residu, bukan tebakan.</p>
+
+    <h2>Mendeplesi BOM secara Atomik dari Setiap Tiket</h2>
+<p>Begitu tiket ter-decode, sistem harus mengubahnya menjadi deretan pergerakan stok atomik. Dua risiko duduk di sini: (1) tiket yang sama diproses dua kali karena spool mengirim ulang saat timeout cetak, dan (2) dua tiket diproses bersamaan lalu bertabrakan. Keduanya ditangani dengan idempotensi eksplisit dan transaksi satu unit kerja.</p>
+<div class="code-block"><div class="code-header">apply_ticket.py &mdash; deplesi BOM idempoten dalam satu transaksi</div><pre><code>import hashlib
+from psycopg2 import IntegrityError
+
+def ticket_hash(outlet_id, ticket_no, items):
+    blob = "|".join(f"{i['sku']}:{i['qty']}" for i in items)
+    return hashlib.sha256(f"{outlet_id}:{ticket_no}:{blob}".encode()).hexdigest()
+
+def apply_ticket(conn, outlet_id, ticket_no, items):
+    digest = ticket_hash(outlet_id, ticket_no, items)
+    with conn, conn.cursor() as cur:
+        # Idempotensi: kalau digest sudah tercatat, ini kiriman ulang spool.
+        cur.execute(
+            "SELECT 1 FROM ticket_digest WHERE digest = %s",
+            (digest,),
+        )
+        if cur.fetchone():
+            return {"status": "duplicate", "digest": digest}
+
+        cur.execute(
+            "INSERT INTO ticket_digest (digest, outlet_id, ticket_no) "
+            "VALUES (%s, %s, %s)",
+            (digest, outlet_id, ticket_no),
+        )
+
+        for it in items:
+            # Satu item mendeplesi banyak bahan via BOM + yield_factor.
+            cur.execute(
+                """
+                SELECT i.id, (b.qty_grams / b.yield_factor) AS net_grams
+                FROM bom_line b
+                JOIN menu_item m ON m.id = b.menu_item_id
+                JOIN ingredient i ON i.id = b.ingredient_id
+                WHERE m.outlet_id = %s AND m.sku = %s
+                """,
+                (outlet_id, it["sku"]),
+            )
+            for ingredient_id, net_grams in cur.fetchall():
+                cur.execute(
+                    """
+                    INSERT INTO stock_movement
+                      (ingredient_id, outlet_id, delta_grams, reason, ticket_no)
+                    VALUES (%s, %s, %s, 'sale', %s)
+                    """,
+                    (ingredient_id, outlet_id, -net_grams * it["qty"], ticket_no),
+                )
+    return {"status": "applied", "digest": digest}</code></pre></div>
+<p>Blok <code>with conn</code> membuka satu transaksi memakai <code>conn</code> sebagai context manager, jadi kalau ada pengecualian apa pun, seluruh kelompok pergerakan stok digulung balik dan tidak ada deplesi setengah jadi. Pemeriksaan <code>ticket_digest</code> di depan adalah kunci idempotensinya: nomor tiket yang sama dengan item yang sama menghasilkan hash yang sama, sehingga kiriman ulang spool yang tidak bisa membedakan "cetak ulang" dari "pesanan baru" tidak akan pernah mendeplesi dua kali.</p>
+
+    <h2>Ambang Aman yang Memperhitungkan Volume Akhir Pekan</h2>
+<p>Titik pemesanan ulang yang naif berbunyi "pesan kalau stok turun di bawah 10 kg." Itu terlalu statis. Gerai dekat kawasan perkantoran bisa melonjak 2,4x pada hari Jumat, sementara gerai mal melonjak di akhir pekan. Kalau ambangnya sama setiap hari, kita kehabisan tepat saat ramai, atau menumpuk stok menganggur saat sepi.</p>
+<p>Kami menghitung ulang ambang setiap malam dengan rumus titik pemesanan ulang yang memperhitungkan permintaan lead time. Kuncinya melipat konsumsi harian historis ke pola hari-dalam-minggu, lalu menambah penyangga untuk volatilitas.</p>
+<div class="code-block"><div class="code-header">reorder_point.py &mdash; ambang dinamis yang mengikuti musim harian</div><pre><code>import numpy as np
+
+def reorder_point(history, lead_days, service_level=0.95, outlier_floor=2):
+    """
+    history : array gram terpakai per hari (kronologis).
+    Rumus: ROP = demand_lead_time + z * sigma_lead_time
+      demand_lead_time = mean_daily * lead_days
+      sigma_lead_time  = std_daily * sqrt(lead_days)
+    """
+    if len(history) &lt; 14:
+        return None  # butuh minimal dua pekan data sebelum mempercayai angka
+
+    mean_daily = np.mean(history)
+    std_daily = np.std(history)
+    z = 1.645  # kuantil 95% normal standar, untuk service_level 0.95
+
+    demand_lt = mean_daily * lead_days
+    # Perbesar penyangga sedikit untuk hari ekstrem.
+    sigma_lt = std_daily * np.sqrt(lead_days) * max(1.0, z / 1.645)
+
+    rop = demand_lt + z * sigma_lt
+    return max(rop, mean_daily * outlier_floor)</code></pre></div>
+<p>Detail pentingnya ada di parameter <code>outlier_floor</code>. Sekadar mean dan deviasi standar bisa memberi bobot terlalu besar pada satu hari libur nasional saat suplai terhenti, dan terlalu kecil pada lonjakan rutin hari Jumat. Lantai dua-kali-rata-rata menjaga sistem tidak memesan di bawah dua hari pemakaian normal bahkan ketika angka historis terlihat tenang. Ini pengaman murah yang menghindari kehabisan stok yang memalukan.</p>
+
+    <h2>Mengirim Draft Purchase Order ke WhatsApp Pemasok</h2>
+<p>Langkah terakhir adalah mempersempit jarak dari "stok menipis" ke "barang datang." Di Indonesia, sebagian besar pemasok daging, susu, dan sayur merespons WhatsApp lebih cepat daripada email atau portal B2B. Jadi purchase order (PO) awal tidak masuk ke ERP yang berat; ia menjadi pesan teks tersusun yang dikirim ke grup WhatsApp pemasok, dengan tombol konfirmasi satu ketuk.</p>
+<p>Poin desainnya: sistem tidak pernah memesan sendiri. Sistem hanya menyusun draft yang sudah dihitung dan meminta manajer dapur satu ketuk persetujuan. Itu menjaga manusia tetap memegang keputusan belanja sekaligus menghilangkan hitung-hitungan yang rawan salah.</p>
+<div class="code-block"><div class="code-header">propose_order.py &mdash; draft PO terstruktur, bukan auto-reorder buta</div><pre><code>def propose_purchase_order(shortages):
+    """shortages: daftar {ingredient, on_hand_kg, rop_kg, suggested_kg}"""
+    lines = []
+    total_est = 0
+    for s in shortages:
+        # Kuantitas usulan = 1.3x selisih, dibulatkan ke atas ke satuan kemasan
+        need = s["suggested_kg"] - s["on_hand_kg"]
+        ordered = round_up_pack(need, s.get("pack_kg", 1))
+        total_est += ordered * s.get("unit_price", 0)
+        lines.append(f"- {s['ingredient']}: stok {s['on_hand_kg']}kg "
+                     f"&lt; ambang {s['rop_kg']}kg &rarr; pesan {ordered}kg")
+
+    body = "Draft PO otomatis (butuh 1 ketuk konfirmasi):\n"
+    body += "\n".join(lines)
+    body += f"\nEstimasi: Rp {total_est:,.0f}"
+
+    # tidak ada pemesanan otomatis di sini; hanya notifikasi manajer dapur.
+    send_whatsapp(to="dapur-gerai-03", text=body)
+    return {"draft_created": True, "line_count": len(lines)}</code></pre></div>
+<p>Perhatikan <code>round_up_pack</code>. Pemasok tidak menjual 3,7 kg daging; mereka menjual per kemasan. Membulatkan ke atas ke satuan kemasan menghindari salah satu kegagalan paling umum pada sistem reorder: mengirim kuantitas yang mustahil dipenuhi, lalu mengulangnya menjadi pesan bolak-balik yang memakan waktu. Draft yang terkirim sudah dalam satuan yang benar-benar bisa dikirim pemasok.</p>
+
+    <h2>Mode Kegagalan yang Kami Pelajari dengan Cara Sulit</h2>
+<div class="comparison-table"><table>
+<thead><tr><th>Mode kegagalan</th><th>Gejala yang teramati</th><th>Mitigasi yang kami pasang</th></tr></thead>
+<tbody>
+<tr><td>Spool mengirim ulang tiket saat timeout cetak</td><td>Stok terdeplesi dua kali untuk pesanan yang sama</td><td>Kunci idempotensi <code>ticket_digest</code> sebelum menulis pergerakan</td></tr>
+<tr><td>Printer offline, antrean spool menumpuk</td><td>Lonjakan deplesi tertunda membingungkan hitungan malam</td><td>Buffer antrean lokal di Pi + sink kronologis, bukan sink burst</td></tr>
+<tr><td>Resep berubah tanpa update BOM</td><td>Varians menyempit lalu membengkak ke arah sebaliknya</td><td>Cek varians mingguan otomatis; resep yang meleset &gt; 5% ditandai untuk ditinjau</td></tr>
+<tr><td>Kirim PO WhatsApp gagal senyap</td><td>Manajer mengira sudah terkirim, stok habis</td><td>Konfirmasi baca wajib + fallback SMS, lalu alarm kalau tidak ada ack dalam 15 menit</td></tr>
+</tbody>
+</table></div>
+<p>Pelajaran umum di balik keempat baris itu: dalam sistem yang menjembatani perangkat keras fisik dan basis data cloud, bagian paling rapuh selalu ada di perbatasan. Tiket kertas tidak punya retry; printer tidak punya idempotensi; WhatsApp tidak punya jaminan pengiriman. Setiap lompatan dari satu medium ke medium lain butuh lapisan pertahanan eksplisit, bukan asumsi bahwa "pesannya sampai."</p>
+
+    <h2>Cara Menerapkan Pola Ini di Gerai Anda</h2>
+<p>Mulailah dari satu gerai dan satu kategori bahan bernilai tinggi, bukan empat gerai dan seluruh menu sekaligus. Daging dan susu adalah target pertama terbaik karena harganya membuat setiap persen kerugian berarti dan hari kehabisannya mahal. Pasang spool cabang pada satu printer, jalankan selama dua pekan untuk mengumpulkan garis dasar, lalu aktifkan deplesi BOM per tiket. Jangan aktifkan pemesanan otomatis sampai Anda bisa menjelaskan selisih antara "stok sistem" dan "stok fisik" dari stok opname malam. Begitu selisih itu menutup rutin di bawah 2%, ambang dinamis dan draft PO menjadi langkah berikutnya yang aman.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
