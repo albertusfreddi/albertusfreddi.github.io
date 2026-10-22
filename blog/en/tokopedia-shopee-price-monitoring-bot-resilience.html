@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Building Resilient Price Trackers for Indonesian Marketplaces in 2026 | Albertus Freddi</title>
+<meta name="description" content="Handling Cloudflare Turnstile, mobile API session rotation, and dynamic GraphQL token extraction without getting flagged or banned.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<meta property="og:title" content="Building Resilient Price Trackers for Indonesian Marketplaces in 2026">
+<meta property="og:description" content="Handling Cloudflare Turnstile, mobile API session rotation, and dynamic GraphQL token extraction without getting flagged or banned.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-22T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Building Resilient Price Trackers for Indonesian Marketplaces in 2026">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building Resilient Price Trackers for Indonesian Marketplaces in 2026">
+<meta name="twitter:description" content="Handling Cloudflare Turnstile, mobile API session rotation, and dynamic GraphQL token extraction without getting flagged or banned.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Building Resilient Price Trackers for Indonesian Marketplaces in 2026","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/en/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/tokopedia-shopee-price-monitoring-bot-resilience.html" class="active">English</a><a href="/blog/id/tokopedia-shopee-price-monitoring-bot-resilience.html" class="">Bahasa Indonesia</a><a href="/blog/zh/tokopedia-shopee-price-monitoring-bot-resilience.html" class="">中文</a><a href="/blog/ja/tokopedia-shopee-price-monitoring-bot-resilience.html" class="">日本語</a><a href="/blog/ko/tokopedia-shopee-price-monitoring-bot-resilience.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Building Resilient Price Trackers for Indonesian Marketplaces in 2026</h1>
+<div class="meta">
+<span>16 min read</span>
+<span>•</span>
+<span>2026-10-22</span>
+</div>
+<article>
+<div class="callout"><p><strong>Production context:</strong> This is the price-monitoring service we operate for around sixty Indonesian consumer brands. On a normal day it tracks roughly forty thousand SKUs across Tokopedia, Shopee, Blibli, and Lazada, and it raises a MAP-violation alert when a reseller lists below the agreed floor price by more than five percent. The constraint that shapes every decision below is not "can you read the price." It is "can this still be running in eight months, unattended, without burning a single account."</p></div>
+
+<h2>Why Every Price Tracker Dies the Same Way</h2>
+
+<p>The first version of almost every tracker looks like this: a loop over SKUs, one HTTP client, one cookie jar, a short sleep between calls. It works for two days. Then one morning the cron job reports success, the database fills with new rows, and the dashboard goes flat. Nobody notices for a week because "the job ran."</p>
+
+<p>What actually happened is that the platform's bot-detection layer classified the session and started returning a challenge page or a structurally valid but empty JSON payload. The scraper, written to check <code>response.status_code == 200</code>, wrote thousands of rows containing <code>None</code> for price. The job succeeded. The data was worthless.</p>
+
+<p>The failure has three distinct layers, and each needs its own defense:</p>
+
+<ul>
+<li><strong>Transport:</strong> the request never reaches product data. TLS fingerprint mismatch, missing headers, a challenge page, or a hard 403.</li>
+<li><strong>Payload:</strong> HTTP 200, but the JSON schema changed, the item was delisted, or the session returned a degraded response with an empty <code>data</code> array.</li>
+<li><strong>Semantics:</strong> the price came back, but it is the wrong price: a flash-sale price, a voucher-adjusted price, or a price for the wrong variant because the SKU mapping drifted.</li>
+</ul>
+
+<p>Most trackers only defend the first layer. That is why they look healthy while they are wrong.</p>
+
+<h2>Model the Crawler as Three Budgets, Not a Loop</h2>
+
+<p>The mental model that fixed our reliability was to stop thinking of the crawler as a list of URLs and start thinking of it as a system that spends three separate budgets on every request:</p>
+
+<div class="comparison-table">
+<table>
+<thead><tr><th>Budget</th><th>What it limits</th><th>What happens when it runs dry</th></tr></thead>
+<tbody>
+<tr><td>Request budget</td><td>Total requests per minute across the whole fleet</td><td>Requests queue instead of firing; no burst ever reaches the platform</td></tr>
+<tr><td>Retry budget</td><td>Attempts allowed per SKU per cycle</td><td>The SKU is marked stale rather than hammered; it retries next cycle</td></tr>
+<tr><td>Session budget</td><td>Requests a single session may make before retirement</td><td>The session is drained and rotated out before the platform flags it</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The key property is that all three are enforced in one place, ahead of the network call. If you enforce rate limits by sleeping inside the scrape function, you cannot reason about total load, and a retry storm silently multiplies your traffic.</p>
+
+<div class="code-block">
+<div class="code-header">Token bucket with a shared Redis counter</div>
+<pre><code>import time
+import redis
+
+class FleetBudget:
+    """A shared token bucket so every worker spends from one quota."""
+
+    def __init__(self, r: redis.Redis, key: str, rate_per_min: int):
+        self.r = r
+        self.key = key
+        self.rate = rate_per_min
+        self.capacity = rate_per_min  # one minute of tokens
+
+    def acquire(self, tokens: int = 1) -&gt; float:
+        """Block until tokens are available. Returns seconds waited."""
+        start = time.monotonic()
+        while True:
+            now = time.time()
+            # Lua keeps refill + spend atomic across all workers.
+            script = """
+            local key = KEYS[1]
+            local rate = tonumber(ARGV[1])
+            local cap = tonumber(ARGV[2])
+            local want = tonumber(ARGV[3])
+            local now = tonumber(ARGV[4])
+            local state = redis.call('HMGET', key, 'tokens', 'ts')
+            local tokens = tonumber(state[1]) or cap
+            local ts = tonumber(state[2]) or now
+            local elapsed = math.max(0, now - ts)
+            tokens = math.min(cap, tokens + elapsed * (rate / 60.0))
+            if tokens &gt;= want then
+                tokens = tokens - want
+                redis.call('HMSET', key, 'tokens', tokens, 'ts', now)
+                redis.call('EXPIRE', key, 120)
+                return 1
+            end
+            redis.call('HMSET', key, 'tokens', tokens, 'ts', now)
+            return 0
+            """
+            if self.r.eval(script, 1, self.key, self.rate, self.capacity, tokens, now):
+                return time.monotonic() - start
+            time.sleep(0.05)</code></pre>
+</div>
+
+<p>Two details matter here. First, the refill and the spend happen inside one Lua script, so two workers can never read the same token balance and both spend it. Second, the bucket drains at the fleet rate, not the per-worker rate, which means adding workers does not increase the load you send to the marketplace. That is the whole point: scaling out your crawler should add throughput on your side, not traffic on theirs.</p>
+
+<h2>What Actually Blocks You, Layer by Layer</h2>
+
+<p>In our logs, blocks cluster into four causes. Knowing which one you hit determines the fix, and guessing wrong costs days.</p>
+
+<h2>1. TLS and HTTP/2 Fingerprinting</h2>
+
+<p>Before the platform reads a single header, it can inspect the shape of your TLS handshake: cipher suite order, supported groups, ALPN list, HTTP/2 settings, header ordering. A request from <code>python-requests</code> with default OpenSSL settings has a fingerprint that matches no real browser, and a serious anti-bot layer scores it before your User-Agent string is even parsed.</p>
+
+<p>Changing the User-Agent does nothing. You need a client whose handshake matches a browser. In Python that means a client offering browser-grade TLS impersonation, or driving a real browser. We use the former for about 90 percent of traffic because it is roughly an order of magnitude cheaper per request than a headless browser.</p>
+
+<div class="code-block">
+<div class="code-header">Session factory with a browser-shaped fingerprint</div>
+<pre><code>from curl_cffi import requests as cffi_requests
+
+BROWSER_PROFILES = ["chrome124", "chrome120", "safari17_0"]
+
+def new_session(profile: str):
+    # impersonate ties TLS cipher order, ALPN, and header order together.
+    s = cffi_requests.Session(impersonate=profile)
+    s.headers.update({
+        "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Accept": "application/json, text/plain, */*",
+        "Origin": "https://www.tokopedia.com",
+        "Referer": "https://www.tokopedia.com/",
+    })
+    return s</code></pre>
+</div>
+
+<p>Note the locale header. A browser in Jakarta sends <code>id-ID</code> first. A crawler sending <code>en-US</code> from an Indonesian IP is a small inconsistency, and small inconsistencies are exactly what scoring models aggregate.</p>
+
+<h2>2. Challenge Interstitials</h2>
+
+<p>Turnstile and its equivalents do not always return HTTP 403. Often they return 200 with an HTML document containing a challenge script and no product data. Your parser then throws a <code>KeyError</code>, or worse, writes nulls.</p>
+
+<p>Detect the challenge as a first-class state, before parsing:</p>
+
+<div class="code-block">
+<div class="code-header">Classify the response before you trust it</div>
+<pre><code>import re
+
+CHALLENGE_MARKERS = (
+    "cf-chl", "challenges.cloudflare.com", "turnstile",
+    "captcha-delivery", "px-captcha", "are you a robot",
+)
+
+def classify(resp) -&gt; str:
+    """Returns: ok | challenge | blocked | empty | error"""
+    body = resp.text or ""
+    ctype = resp.headers.get("content-type", "")
+    if resp.status_code in (401, 403, 429):
+        return "blocked"
+    if any(m in body.lower() for m in CHALLENGE_MARKERS):
+        return "challenge"
+    if "application/json" not in ctype:
+        return "challenge" if "html" in ctype else "empty"
+    try:
+        payload = resp.json()
+    except ValueError:
+        return "empty"
+    if not payload.get("data"):
+        return "empty"
+    return "ok"</code></pre>
+</div>
+
+<p>When <code>classify</code> returns <code>challenge</code>, the correct action is to retire that session immediately and take a fresh one from the pool. Retrying on the same session deepens the score against it. This single rule cut our challenge rate from a slow climb to a flat line.</p>
+
+<h2>3. The Dynamic Token Problem</h2>
+
+<p>Marketplace web clients do not call a clean REST endpoint. They call a GraphQL endpoint whose requests carry a token embedded in the page bundle and rotated on deploys. Copying the token from a blog post gets you a 400 within a week.</p>
+
+<p>The stable approach is to derive the token from the page you are already loading, rather than hardcoding it:</p>
+
+<div class="code-block">
+<div class="code-header">Extract a rotating GraphQL token from the loaded document</div>
+<pre><code>import json
+import re
+
+TOKEN_PATTERNS = (
+    r'"graphql_token"\s*:\s*"([^"]+)"',
+    r'"token"\s*:\s*"([A-Za-z0-9_\-]{20,})"',
+    r'name="csrf-token"\s+content="([^"]+)"',
+)
+
+def scrape_token(html: str) -&gt; str | None:
+    for pattern in TOKEN_PATTERNS:
+        m = re.search(pattern, html)
+        if m:
+            return m.group(1)
+    # Many bundles ship the token inside a JSON blob in a script tag.
+    for blob in re.findall(r'&lt;script[^&gt;]*type="application/json"[^&gt;]*&gt;(.*?)&lt;/script&gt;', html):
+        try:
+            data = json.loads(blob)
+        except ValueError:
+            continue
+        token = data.get("props", {}).get("pageProps", {}).get("token")
+        if token:
+            return token
+    return None</code></pre>
+</div>
+
+<p>Two rules make this durable. Store the token with the session, not globally, because tokens are usually bound to a session cookie. And treat a 400 with a token-shaped error as "refresh token, retry once," not as a permanent failure. A retry that first refreshes the token succeeds; a blind retry does not.</p>
+
+<h2>4. Rate Limits That Do Not Announce Themselves</h2>
+
+<p>Marketplaces rarely return a clean <code>429</code> with a <code>Retry-After</code> header. More often they degrade: slower responses, then partial payloads with some fields null, then empty arrays, then a challenge. By the time you see 429, you have been flagged for minutes.</p>
+
+<p>So monitor the degradation signal, not just the status code. Track, per session, a rolling success rate over the last twenty requests. When it drops below 85 percent, retire the session voluntarily, before it is banned. A session you retire is one you can reuse tomorrow. A banned session is gone and may take your IP reputation with it.</p>
+
+<div class="code-block">
+<div class="code-header">Session health scoring and voluntary retirement</div>
+<pre><code>from collections import deque
+
+class SessionState:
+    def __init__(self, session, profile: str):
+        self.session = session
+        self.profile = profile
+        self.recent = deque(maxlen=20)   # True = ok, False = failed
+        self.uses = 0
+        self.retired = False
+
+    def record(self, ok: bool):
+        self.recent.append(ok)
+        self.uses += 1
+
+    @property
+    def health(self) -&gt; float:
+        if not self.recent:
+            return 1.0
+        return sum(self.recent) / len(self.recent)
+
+    def should_retire(self) -&gt; bool:
+        # Retire on sustained failure, or after a fixed number of uses,
+        # whichever comes first. The cap prevents a slow-burn flag.
+        return self.health &lt; 0.85 or self.uses &gt;= 900</code></pre>
+</div>
+
+<p>The constant 900 is not magic. We tuned it by observing how many requests a healthy session could make before its success rate drifted, then set the retirement point comfortably below that. If you copy one idea from this article, copy this one: retire sessions on a schedule, not on failure.</p>
+
+<h2>Keeping the SKU Mapping Honest</h2>
+
+<p>Every marketplace gives you its own product identifier and its own variant tree. A brand's internal SKU "SHIRT-OLV-M" has to map to a Tokopedia <code>product_id</code> plus a variant combination, a Shopee <code>item_id</code> plus <code>model_id</code>, and so on. That mapping decays: sellers relist, variants get added, listings get merged.</p>
+
+<p>We keep the mapping in Postgres with an explicit confidence column and a last-verified timestamp. A row that has not verified in seven days gets re-resolved by search before it is trusted again. The resolution step compares the listing title and image hash against the canonical product, not just the ID, because IDs get recycled by resellers.</p>
+
+<div class="code-block">
+<div class="code-header">Mapping table that admits it can be wrong</div>
+<pre><code>CREATE TABLE sku_listing_map (
+    id             bigserial PRIMARY KEY,
+    internal_sku   text NOT NULL,
+    marketplace    text NOT NULL,
+    listing_id     text NOT NULL,
+    variant_key    text,
+    confidence     numeric(3,2) NOT NULL DEFAULT 0.50,
+    last_verified  timestamptz,
+    is_active      boolean NOT NULL DEFAULT true,
+    UNIQUE (marketplace, listing_id, variant_key)
+);
+
+CREATE INDEX ON sku_listing_map (internal_sku)
+    WHERE is_active;
+
+-- A scrape only alerts on prices from mappings we still trust.
+SELECT m.internal_sku, p.price, p.captured_at
+FROM sku_listing_map m
+JOIN price_snapshot p ON p.mapping_id = m.id
+WHERE m.is_active
+  AND m.confidence &gt;= 0.80
+  AND m.last_verified &gt; now() - interval '7 days'
+  AND p.captured_at &gt; now() - interval '15 minutes';</code></pre>
+</div>
+
+<h2>Pruning the Price You Recorded</h2>
+
+<p>This is the least glamorous part and the one that most often makes a tracker useless. The number on the page is not the price. It might be:</p>
+
+<ul>
+<li><strong>A strikethrough price</strong> next to a discounted one, and you parsed the wrong node.</li>
+<li><strong>A flash-sale price</strong> valid for two hours, real but not the list price your MAP policy cares about.</li>
+<li><strong>A price before voucher</strong>, while the checkout price is lower.</li>
+<li><strong>A price after a platform subsidy</strong>, which the brand does not control.</li>
+</ul>
+
+<p>Record all of them as separate fields rather than collapsing to one number: <code>list_price</code>, <code>sale_price</code>, <code>voucher_amount</code>, <code>flash_sale</code> boolean, <code>captured_at</code>. Then the MAP rule becomes an explicit query instead of a heuristic buried in Python.</p>
+
+<div class="code-block">
+<div class="code-header">MAP violation as a query, not a judgment call</div>
+<pre><code>WITH latest AS (
+    SELECT DISTINCT ON (internal_sku, marketplace)
+           internal_sku, marketplace,
+           COALESCE(sale_price, list_price) AS effective_price,
+           flash_sale, captured_at
+    FROM price_snapshot
+    WHERE captured_at &gt; now() - interval '6 hours'
+    ORDER BY internal_sku, marketplace, captured_at DESC
+)
+SELECT l.internal_sku,
+       l.marketplace,
+       l.effective_price,
+       f.floor_price,
+       round((f.floor_price - l.effective_price) / f.floor_price * 100, 2) AS pct_below
+FROM latest l
+JOIN map_floor_price f USING (internal_sku)
+WHERE l.effective_price &lt; f.floor_price * 0.95
+  AND NOT l.flash_sale          -- brand-approved promotions are excluded
+ORDER BY pct_below DESC;</code></pre>
+</div>
+
+<p>Excluding flash sales explicitly is what stops the alert channel from becoming noise. In our first month, 60 percent of "violations" were platform-run campaigns the brand had already approved. Nobody trusts an alert stream that cries wolf that often.</p>
+
+<h2>Proving the Data Is Alive</h2>
+
+<p>A tracker that silently returns nothing looks identical to a tracker that works, from the outside. The fix is a canary: a small set of SKUs you know exist, are in stock, and have a stable price. Scrape those first on every cycle. If a canary fails, the cycle is marked degraded and the alerting path fires immediately, before the main run wastes its budget.</p>
+
+<div class="code-block">
+<div class="code-header">Canary gate that runs before the main sweep</div>
+<pre><code>CANARY_SKUS = [
+    ("tokopedia", "SHIRT-OLV-M"),
+    ("shopee",    "SHIRT-OLV-M"),
+    ("tokopedia", "MUG-CER-350"),
+]
+
+def cycle_is_healthy(scraper) -&gt; bool:
+    for marketplace, sku in CANARY_SKUS:
+        result = scraper.fetch_price(marketplace, sku)
+        if result.status != "ok" or result.price is None:
+            alert("canary failed", marketplace=marketplace, sku=sku,
+                  status=result.status)
+            return False
+    return True</code></pre>
+</div>
+
+<p>We also assert on volume. If yesterday's run wrote 38,000 rows and today's wrote 4,000, that is a failure even though every individual request returned 200. A simple guard in the orchestrator catches it:</p>
+
+<div class="code-block">
+<div class="code-header">Volume regression guard</div>
+<pre><code>def assert_volume_ok(today_rows: int, median_7d: float) -&gt; None:
+    if median_7d == 0:
+        return
+    ratio = today_rows / median_7d
+    if ratio &lt; 0.80:
+        raise RuntimeError(
+            "row volume collapsed: %d today vs %.0f median (%.0f%%)"
+            % (today_rows, median_7d, ratio * 100)
+        )</code></pre>
+</div>
+
+<h2>What It Cost Us to Get This Right</h2>
+
+<p>Numbers from the current production run, over a rolling thirty-day window:</p>
+
+<div class="metrics-grid">
+<div class="metric"><span class="num">40,200</span><span class="label">SKUs tracked per day</span></div>
+<div class="metric"><span class="num">97.4%</span><span class="label">cycles with complete data</span></div>
+<div class="metric"><span class="num">2</span><span class="label">sessions retired per hour by design</span></div>
+<div class="metric"><span class="num">0</span><span class="label">accounts banned in the last 90 days</span></div>
+</div>
+
+<p>The first version of this system, before the session budget and the canary gate, had a worst week of 41 percent incomplete cycles and two banned accounts. The rewrite did not make scraping faster. It made failure visible and cheap, which is the only thing that keeps an unattended crawler alive.</p>
+
+<h2>The Parts You Should Not Automate</h2>
+
+<p>Two boundaries are worth stating plainly, because a tracker that ignores them is a liability rather than an asset.</p>
+
+<p><strong>Respect the published rules.</strong> Check <code>robots.txt</code> and the marketplace's terms before you build. Where a platform offers an official API or an affiliate data feed, use it: it is more stable, it is contractually permitted, and the price is the same. Much of what people build scrapers for on Tokopedia and Shopee is available through official partner programs, and a brand with sixty SKUs usually qualifies.</p>
+
+<p><strong>Do not build around an explicit denial.</strong> If a platform deploys a challenge and you defeat it with a CAPTCHA-solving service, you have moved from "reading public data politely" to "circumventing an access control," and in Indonesia that changes the risk profile for the client, not just for you. Our rule is that a challenge means back off and reduce rate, not solve and continue. In practice, a properly budgeted crawler almost never triggers one.</p>
+
+<h2>The Order to Build This In</h2>
+
+<p>If you are starting from a loop that works for two days, do these in order and stop when your reliability is good enough:</p>
+
+<ol>
+<li>Add the three budgets, with the request budget shared in Redis across every worker.</li>
+<li>Add <code>classify()</code> so a challenge page is never parsed as data.</li>
+<li>Add per-session health scoring and voluntary retirement.</li>
+<li>Add the canary gate and the volume guard, so silence becomes an alert.</li>
+<li>Split price into its components and encode the MAP rule as SQL.</li>
+<li>Only then optimize throughput, by adding workers behind the same shared budget.</li>
+</ol>
+
+<p>Steps one through four are what separate a demo from a service. They are also the steps nobody writes about, because they are not clever. They are just the difference between a cron job that runs and a system that tells you the truth.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>

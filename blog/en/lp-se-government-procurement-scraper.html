@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines | Albertus Freddi</title>
+<meta name="description" content="How we built a resilient pipeline parsing tender notices across 500+ regional LPSE portals without rate-limit lockouts.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html">
+<meta property="og:title" content="Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines">
+<meta property="og:description" content="How we built a resilient pipeline parsing tender notices across 500+ regional LPSE portals without rate-limit lockouts.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-09-24T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines">
+<meta name="twitter:description" content="How we built a resilient pipeline parsing tender notices across 500+ regional LPSE portals without rate-limit lockouts.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/lp-se-government-procurement-scraper.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/lp-se-government-procurement-scraper.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/lp-se-government-procurement-scraper.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/lp-se-government-procurement-scraper.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines","datePublished":"2026-09-24T09:00:00+07:00","dateModified":"2026-09-24T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/lp-se-government-procurement-scraper.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/en/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/lp-se-government-procurement-scraper.html" class="active">English</a><a href="/blog/id/lp-se-government-procurement-scraper.html" class="">Bahasa Indonesia</a><a href="/blog/zh/lp-se-government-procurement-scraper.html" class="">中文</a><a href="/blog/ja/lp-se-government-procurement-scraper.html" class="">日本語</a><a href="/blog/ko/lp-se-government-procurement-scraper.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Scraping Indonesian Government Procurement (LPSE): Architecture & Data Pipelines</h1>
+<div class="meta">
+<span>16 min read</span>
+<span>•</span>
+<span>2026-09-24</span>
+</div>
+<article>
+<div class="callout"><p><strong>Production context:</strong> This is the tender-monitoring pipeline we operate for procurement vendors across Indonesia. It watches more than five hundred regional LPSE portals plus the central ones, extracts new tender notices and their Bill-of-Quantities attachments, and turns them into searchable, filterable records within minutes of publication. The constraints that shape the whole design: the portals run on a mix of SPSE 4.x builds with no shared API contract, many sit behind slow provincial infrastructure, and any one of them will silently start dropping or throttling our requests the moment we step over a polite crawl rate. The playbook below is the architecture we actually landed on.</p></div>
+
+<h2>Why LPSE Scraping Has No Single-Source Solution</h2>
+
+<p>The first mistake people make is treating <code>lpse.go.id</code> or the LKPP framework as one website. It is not. LPSE, the Layanan Pengadaan Secara Elektronik, is a national standard running on thousands of independently operated installations. Each province, each regency, and many ministries host their own portal, and each portal is an island with its own SPSE version, its own SSL configuration, its own schema quirks, and often its own uptime problems.</p>
+
+<p>In practice we saw four distinct server generations in the wild at the same time: current SPSE 4.5 builds exposing the modern DataTables JSON endpoints, older 4.x builds with slightly different parameter names, a few installations where the SSL certificate had expired and the browser had to be told to proceed, and a handful that only rendered correctly with the text-based fallback endpoint. A crawler that assumed any one of these shapes would silently come back empty for every other.</p>
+
+<p>This is why the very first architectural decision is to treat every portal as an untrusted, potentially broken, foreign system. No shared state, no shared assumptions, and a normalizer that accepts any shape and produces one. The rest of the design falls out of that.</p>
+
+<h2>Read the DataTables Endpoint Before You Write Any Crawler</h2>
+
+<p>Almost every modern SPSE portal renders its tender list through the server-side DataTables convention. The list API is a POST endpoint, usually <code>/eproc4/dt/lelang</code>, that returns a payload shaped like this:</p>
+
+<div class="code-block">
+<div class="code-header">Canonical DataTables response shape</div>
+<pre><code>{
+  "draw": 1,
+  "recordsTotal": 1432,
+  "recordsFiltered": 1432,
+  "data": [
+    {
+      "nama_paket": "Pengadaan Jaringan LAN",
+      "kode_tender": "12345678",
+      "pagu": "1.250.000.000",
+      "satuan_kerja": "Dinas Komunikasi dan Informatika",
+      "tanggal_pembuatan": "2026-09-20 09:41:00"
+    }
+  ]
+}</code></pre>
+</div>
+
+<p>Two details matter more than anything else. First, pagination is driven by <code>start</code> and <code>length</code> form fields, and you should always read <code>recordsFiltered</code> back rather than trusting an upfront count, because the server filters rows before it pages them. Second, the column ordering and the numeric formatting are localized: amounts arrive as strings with thousands separators and an Indonesian locale, so <code>"1.250.000.000"</code> must be parsed as a number and not fed straight into a decimal column. Resume safely by remembering the highest tender ID or timestamp you have already seen, and page forward from there only. That single habit is what lets a crashed crawler resume without re-reading 40,000 rows it already stored.</p>
+
+<h2>The Rate Limiter Is the Product</h2>
+
+<p>For a scraping pipeline, the polite-rate controller is not a feature bolted on at the end. It is the part that determines whether the system runs for a year or gets banned in a week. Government portals are heavily watched and often sit behind a WAF, so a burst of fifty requests from one IP in three seconds is both rude and self-defeating: it triggers a block that starves every other portal behind the same proxy.</p>
+
+<p>We model one token bucket per portal domain. The bucket refills at a low, constant rate and lets a small burst through, then forces the worker to sleep when empty. The exact numbers live in a per-portal capacity table, because a fast ministry portal tolerates a higher rate than a regency server on a slow uplink.</p>
+
+<div class="code-block">
+<div class="code-header">Per-portal token bucket rate limiter</div>
+<pre><code>import asyncio
+import time
+
+class TokenBucket:
+    def __init__(self, rate: float, burst: int):
+        self.rate = rate            # tokens per second
+        self.burst = float(burst)
+        self.tokens = float(burst)
+        self.updated = time.monotonic()
+
+    async def acquire(self):
+        while True:
+            now = time.monotonic()
+            self.tokens = min(self.burst,
+                              self.tokens + (now - self.updated) * self.rate)
+            self.updated = now
+            if self.tokens >= 1:
+                self.tokens -= 1
+                return
+            await asyncio.sleep((1 - self.tokens) / self.rate)
+
+# one bucket per portal, held in a dict keyed by domain
+buckets = {}
+
+async def polite_get(domain: str) -> None:
+    bucket = buckets.setdefault(domain, TokenBucket(rate=0.08, burst=2))
+    await bucket.acquire()
+    # now issue the request</code></pre>
+</div>
+
+<p>Layering matters just as much as the rate. We wrap every request in exponential backoff with jitter, so that when a portal is genuinely slow, retries spread out instead of hammering the same second. A circuit breaker then tracks consecutive failures per domain and takes a portal out of rotation for a cool-down window when it has failed enough times in a row. The result is a crawl that degrades gracefully: one dead portal costs a little delay, never a cascade.</p>
+
+<div class="code-block">
+<div class="code-header">Retry with backoff and jitter around the DataTables call</div>
+<pre><code>import asyncio
+import random
+import httpx
+
+async def fetch_page(client, domain, start, length):
+    url = "https://" + domain + "/eproc4/dt/lelang"
+    data = {"draw": 1, "start": start, "length": length}
+    for attempt in range(4):
+        try:
+            resp = await client.post(url, data=data, timeout=20)
+            resp.raise_for_status()
+            payload = resp.json()
+            return payload["data"], payload["recordsFiltered"]
+        except (httpx.RequestError, httpx.HTTPStatusError):
+            if attempt == 3:
+                raise
+            backoff = 2 ** attempt
+            await asyncio.sleep(backoff + random.uniform(0, 0.5))</code></pre>
+</div>
+
+<h2>Session and TLS: The Two Things That Break First</h2>
+
+<p>Two failure classes account for most of the "why does my scraper return empty" confusion. The first is session state. Many SPSE installations require a cookie earned on a landing page before the DataTables endpoint will answer, and some set a CSRF-style token you must read from the rendered page and echo back as a form field. A session you never warm up looks identical to a portal that is down.</p>
+
+<div class="code-block">
+<div class="code-header">Warm a session and reuse the cookie jar across pages</div>
+<pre><code>async def build_session(domain):
+    limits = httpx.Limits(max_connections=2, max_keepalive_connections=1)
+    timeout = httpx.Timeout(30.0, connect=15.0)
+    client = httpx.AsyncClient(limits=limits, timeout=timeout,
+                               follow_redirects=True)
+    landing = await client.get("https://" + domain + "/eproc4")
+    landing.raise_for_status()
+    return client</code></pre>
+</div>
+
+<p>The second is TLS. A visible share of older portals run expired or self-signed certificates, and an out-of-the-box client refuses to connect. We do not disable verification globally; we maintain a small, explicit allow-list of domains whose certificate we have verified by hand and accepted, and for those domains only we point the transport at a purpose-built SSL context. Everything else keeps full verification. This keeps the door open for a broken-but-legitimate regency portal without silently trusting the entire internet.</p>
+
+<h2>Normalize Everything to One Record Shape</h2>
+
+<p>Because every portal is different, the worker that fetches a page should never be the one that decides what a tender is. Fetching returns raw rows; a separate normalizer maps raw rows into one schema. This separation is what lets us add a new portal, or fix one portal that changed its fields overnight, without touching the storage or alerting layers.</p>
+
+<div class="code-block">
+<div class="code-header">Normalizer maps any raw row into the canonical record</div>
+<pre><code>import re
+
+def parse_idr(value):
+    if value is None:
+        return None
+    digits = re.sub(r"[^d]", "", str(value))
+    return int(digits) if digits else None
+
+def normalize(source, raw):
+    return {
+        "source": source,
+        "external_id": str(raw.get("kode_tender") or raw.get("id_tender") or "").strip(),
+        "nama_paket": (raw.get("nama_paket") or "").strip(),
+        "pagu": parse_idr(raw.get("pagu") or raw.get("nilai_pagu")),
+        "hps": parse_idr(raw.get("nilai_hps") or raw.get("hps")),
+        "instansi": (raw.get("satuan_kerja") or raw.get("instansi") or "").strip(),
+        "published_at": raw.get("tanggal_pembuatan"),
+    }</code></pre>
+</div>
+
+<p>The key insight here is defensive access: use <code>or</code> chaining to accept several possible field names, never assume a field exists, and coerce everything to a primitive you can store and query. A row that lacks a field should produce a null, not a crash that takes down an entire worker.</p>
+
+<h2>Deduplication and Change Detection</h2>
+
+<p>A tender notice is not a stable object. The same package can reappear when a portal re-indexes, get a revised HPS value, or be retracted. If all you store is "saw this ID", every refresh looks like a new tender and the vendor drowns in duplicates. The fix is a fingerprint computed over the fields that actually matter, stored next to the row.</p>
+
+<div class="code-block">
+<div class="code-header">Content fingerprint separates true change from a re-fetch</div>
+<pre><code>import hashlib
+import json
+
+FIELDS = ("nama_paket", "pagu", "hps", "instansi", "published_at")
+
+def fingerprint(record):
+    canon = json.dumps({k: record.get(k) for k in FIELDS}, sort_keys=True)
+    return hashlib.sha1(canon.encode("utf-8")).hexdigest()</code></pre>
+</div>
+
+<p>On ingest the flow is: if the <code>(source, external_id)</code> pair is unknown, insert. If it is known but the fingerprint differs, update the row and mark it revised, so downstream alerts can flag a value change explicitly. If the fingerprint is identical, do nothing. This turns a noisy stream into a monotonic one and is the reason the system can run a full sweep every day without generating a mountain of false alerts.</p>
+
+<h2>PDF and BoQ: PyMuPDF First, OCR Only as a Fallback</h2>
+
+<p>The tender list gives you a package name and a ceiling amount. The Bill of Quantities, the document that lists every line item and quantity a bidder must price, lives in the attached PDFs. Some of those PDFs are born-digital and contain a text layer; many are scans with no text at all. Treating both the same way wastes either accuracy or money.</p>
+
+<p>The rule is: extract the text layer first. Only when the result is suspiciously small do we fall back to OCR. This keeps the expensive, slow OCR pass reserved for the minority of documents that genuinely need it.</p>
+
+<div class="code-block">
+<div class="code-header">Text first, OCR only when the layer is empty or tiny</div>
+<pre><code>import fitz  # PyMuPDF
+
+def extract_text(path):
+    doc = fitz.open(path)
+    text = "
+".join(page.get_text() for page in doc)
+    doc.close()
+    if len(text.strip()) &gt; 200:
+        return text
+    return ocr_fallback(path)
+
+def ocr_fallback(path):
+    import pytesseract
+    from PIL import Image
+    doc = fitz.open(path)
+    chunks = []
+    for page in doc:
+        pix = page.get_pixmap(dpi=200)
+        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+        chunks.append(pytesseract.image_to_string(img, lang="ind"))
+    doc.close()
+    return "
+".join(chunks)</code></pre>
+</div>
+
+<p>Note the Tesseract language pack set to <code>ind</code>, because Indonesian BoQ documents mix Indonesian and English terms and a default English model misreads common words. The BoQ text then feeds the same normalization pipeline as the list rows, getting parsed into line items with quantities, units, and prices where the document structure allows it.</p>
+
+<h2>The Storage Schema Must Answer the Buyers' Questions</h2>
+
+<p>The database is not an archive; it is a matching engine. A procurement vendor asks questions like "which open tenders in my KBLI classification and my province were published this week". The schema has to make those questions indexable instead of forcing a table scan.</p>
+
+<div class="code-block">
+<div class="code-header">Core tender table with the fields buyers filter on</div>
+<pre><code>CREATE TABLE tenders (
+    id            BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    source        TEXT NOT NULL,
+    external_id   TEXT NOT NULL,
+    nama_paket    TEXT NOT NULL,
+    pagu          NUMERIC(16,2),
+    hps           NUMERIC(16,2),
+    instansi      TEXT,
+    klasifikasi   TEXT,
+    wilayah       TEXT,
+    published_at  TIMESTAMPTZ,
+    first_seen    TIMESTAMPTZ NOT NULL DEFAULT now(),
+    last_hash     TEXT NOT NULL,
+    revised       BOOLEAN NOT NULL DEFAULT false,
+    UNIQUE (source, external_id)
+);
+
+CREATE INDEX tenders_klasifikasi_idx
+    ON tenders (klasifikasi, published_at DESC);
+CREATE INDEX tenders_wilayah_idx
+    ON tenders (wilayah, published_at DESC);</code></pre>
+</div>
+
+<p>Two design notes: the numeric columns use <code>NUMERIC(16,2)</code> rather than a float because tender figures are money and must never accumulate floating-point error, and the natural key is the pair <code>(source, external_id)</code> rather than the external id alone, because id counters are per-portal and collide across portals. The uniqueness constraint is what makes the same dedup logic safe under concurrency.</p>
+
+<h2>Matching Tenders to Buyers and Pushing Alerts</h2>
+
+<p>Extraction is only half the job. The value is delivered as an alert: the moment a tender matching a vendor's classification appears, a structured message goes out with the package name, the ceiling, the deadline, and a link straight to the original portal. Matching runs against the classification and region fields, and the alert engine keeps a per-subscriber dedup key so it never pings the same person twice about the same unchanged tender.</p>
+
+<div class="code-block">
+<div class="code-header">Match new tenders against subscriber filters</div>
+<pre><code>def match_tender(tender, subscriptions):
+    hits = []
+    for sub in subscriptions:
+        if tender["klasifikasi"] and sub["klasifikasi"] == tender["klasifikasi"]:
+            if not sub["wilayah"] or sub["wilayah"] == tender["wilayah"]:
+                hits.append(sub)
+    return hits</code></pre>
+</div>
+
+<p>The 48-hour advantage the vendors care about does not come from crawling faster than everyone else. It comes from the alert being structured and filterable immediately, so a sales team moves from "we found out late and guessed" to "we opened the correct BoQ the same morning". Speed without structure just moves the same confusion up the timeline.</p>
+
+<h2>Observe the Pipeline, Not Just the Scrapers</h2>
+
+<p>A pipeline that runs unattended across 500 portals needs a monitoring story that answers three questions without digging through logs: which portals are failing, how stale is the data, and did anything get stuck. We emit one metric per portal for last successful fetch, and one global gauge for the lag between a tender's publication time and our first sight of it.</p>
+
+<div class="code-block">
+<div class="code-header">Emit per-portal freshness and global lag</div>
+<pre><code>def record_result(domain, published_at, now):
+    metrics.gauge("lpse.last_seen_epoch", now.timestamp(), {"portal": domain})
+    if published_at:
+        lag = (now - published_at).total_seconds()
+        metrics.histogram("lpse.publish_lag_seconds", lag, {"portal": domain})</code></pre>
+</div>
+
+<p>An alert fires when any portal has not been successfully fetched within its own cadence window, or when the global lag metric climbs, meaning we are falling behind real-time. This is what lets a one-person ops load handle 500 portals: you do not watch each portal, you watch the exceptions the metrics surface for you.</p>
+
+<h2>The Failure Modes You Will Meet</h2>
+
+<p>Here is the honest list of ways this system fails, and what we do about each.</p>
+
+<div class="comparison-table"><table>
+<thead><tr><th>Failure</th><th>Symptom</th><th>Our response</th></tr></thead>
+<tbody>
+<tr><td>WAF or IP ban</td><td>sudden 403s or empty pages from one portal</td><td>circuit breaker removes the portal, alert on consecutive failures</td></tr>
+<tr><td>Expired TLS cert</td><td>handshake error on an old portal</td><td>explicit per-domain SSL allow-list</td></tr>
+<tr><td>Schema drift</td><td>normalizer returns empty fields</td><td>defensive <code>or</code> access plus a schema-drift alert on empty external_id</td></tr>
+<tr><td>Captcha page</td><td>HTML redirect with a challenge</td><td>treat as a soft failure, back off, flag for manual review</td></tr>
+<tr><td>Slow DB</td><td>write latency climbs, queue backs up</td><td>shard by source, batch inserts, keep an insert-only hot path</td></tr>
+</tbody>
+</table></div>
+
+<p>The philosophy throughout is the same: isolate the failure to one portal, keep it from cascading, and surface it as a named metric instead of a silent empty result. A scraper that reports "this portal is down" is maintainable; a scraper that quietly returns nothing is a time bomb.</p>
+
+<h2>What We Would Reuse and What We Would Not</h2>
+
+<p>If we built this again tomorrow, we would keep the strict fetch/normalize split, the per-portal token bucket, and the content fingerprint. Those three decisions carry the system. We would not hand-roll the orchestration again now that mature worker queues handle retries and scheduling out of the box, and we would not store BoQ text embedded in the main table, because attaching the parsed line items as a separate structure keeps the hot matching path fast. The durable lessons are boring and transferable: treat every remote system as broken until proven otherwise, make rate limits part of the core loop rather than an afterthought, and store only what a real question will filter on.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
