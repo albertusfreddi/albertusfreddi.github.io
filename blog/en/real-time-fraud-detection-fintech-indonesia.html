@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing Sub-50ms Payment Fraud Detection for Indonesian Fintech | Albertus Freddi</title>
+<meta name="description" content="A production fraud stack for Indonesian payment rails: QRIS tampering, account takeover, and mule-account detection under a 50ms latency budget, with Redis velocity engines, feature stores, and BI-aligned audit trails.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html">
+<meta property="og:title" content="Designing Sub-50ms Payment Fraud Detection for Indonesian Fintech">
+<meta property="og:description" content="A production fraud stack for Indonesian payment rails: QRIS tampering, account takeover, and mule-account detection under a 50ms latency budget, with Redis velocity engines, feature stores, and BI-aligned audit trails.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-22T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Designing Sub-50ms Payment Fraud Detection for Indonesian Fintech","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"en","mainEntityOfPage":"https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a href="/blog/en/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/real-time-fraud-detection-fintech-indonesia.html" class="active">English</a><a href="/blog/id/real-time-fraud-detection-fintech-indonesia.html" class="">Bahasa Indonesia</a><a href="/blog/zh/real-time-fraud-detection-fintech-indonesia.html" class="">中文</a><a href="/blog/ja/real-time-fraud-detection-fintech-indonesia.html" class="">日本語</a><a href="/blog/ko/real-time-fraud-detection-fintech-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<h1>Designing Sub-50ms Payment Fraud Detection for Indonesian Fintech</h1>
+<div class="meta">
+<span>16 min read</span>
+<span>•</span>
+<span>2026-10-22</span>
+</div>
+<article>
+<div class="callout"><p><strong>Production context:</strong> This is the fraud stack we run for an Indonesian e-wallet and a P2P lending platform, together processing roughly 3.2 million payment events per day. It scores every event inline in under 50ms, blocks about 0.9% of flagged volume, and keeps the false-positive friction rate at 0.31%. No registrar can run a payment rail in Indonesia without BI (Bank Indonesia) and OJK alignment, so every decision here is auditable.</p></div>
+
+<h2>Why Indonesian Fraud Looks Different</h2>
+
+<p>Fraud models built for US card rails fail here for a concrete reason: Indonesia is a QRIS and virtual-account market, not a card-present market. The dominant instruments are QRIS (the national QR standard), bank and e-wallet virtual accounts (VA), and wallet-to-wallet transfers. Card fraud rules built around CVV, BIN, and 3-D Secure simply have no matching signal.</p>
+
+<p>The actual threat classes we defend against, in order of observed volume:</p>
+
+<ul>
+<li><strong>QRIS dynamic-QR tampering</strong>: an attacker takes a merchant's static QR, replaces the beneficiary, and re-presents it to buyers. The buyer scans a valid-looking QRIS that settles into the attacker's wallet.</li>
+<li><strong>Account takeover (ATO)</strong>: credential stuffing and SIM-swap attacks then funnel money out through instant wallet transfers before the victim notices.</li>
+<li><strong>Mule-account networks</strong>: hundreds of KYC-passed accounts opened with stolen or rented identities, used only to receive and immediately drain fraudulent transfers.</li>
+<li><strong>High-velocity card testing and micro-transaction probing</strong>: attackers probe merchant checkouts with tiny amounts to map which wallets and VAs accept which rails.</li>
+</ul>
+
+<p>The unifying property of all four is <strong>velocity</strong>. A single event looks innocent. The pattern of many events across a short window, a device, or an IP is what exposes the fraud. That single observation drives the entire architecture below.</p>
+
+<h2>The Latency Budget Is the Real Architecture</h2>
+
+<p>Every payment event must return an allow, block, or step-up decision inline. BI's QRIS settlement rules and the checkout experience both push toward a hard target: <strong>50ms end to end for the inline decision</strong>, and 200ms for the richer post-hoc path. A deep neural model scoring hundreds of features will not fit that window, so the stack is layered by cost and latency.</p>
+
+<div class="comparison-table">
+<table>
+<thead><tr><th>Layer</th><th>Latency</th><th>What it does</th><th>Where it runs</th></tr></thead>
+<tbody>
+<tr><td>Deterministic rules</td><td>1-3ms</td><td>Hard blocks: blacklist, velocity ceilings, amount anomalies</td><td>In-process, memory</td></tr>
+<tr><td>Feature lookup + gradient model</td><td>6-15ms</td><td>Risk score from precomputed features</td><td>Redis + in-memory model</td></tr>
+<tr><td>Graph / link analysis</td><td>20-45ms</td><td>Mule detection, shared-device clusters</td><td>RedisGraph or precomputed edges</td></tr>
+<tr><td>Post-hoc enrichment</td><td>200ms+</td><td>Full device fingerprint, watchlist, sanction screening</td><td>Async queue</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The trick that keeps the inline path fast is <strong>feature precomputation</strong>. A background stream job recomputes every account, device, and IP feature every few seconds. The inline scorer never computes features from raw logs. It does a handful of <code>HGETALL</code> and <code>ZRANGE</code> calls on Redis, feeds the vector to a small gradient-boosted model, and thresholds the score. That is the entire 50ms path.</p>
+
+<h2>Redis Velocity Engines</h2>
+
+<p>Velocity signals are the workhorse of the system. Three counters matter most, and all of them are sliding windows implemented as Redis sorted sets scored by event timestamp. A sorted set gives you range queries by time for free, which is exactly what a sliding window needs.</p>
+
+<div class="code-block">
+<div class="code-header">Sliding-Window Velocity Counter (Redis Sorted Sets)</div>
+<pre><code>import redis
+import time
+
+r = redis.Redis(host="127.0.0.1", port=6379, decode_responses=True)
+
+WINDOWS = {
+    "1m": 60,
+    "10m": 600,
+    "1h": 3600,
+}
+
+def record_event(key: str, now: float | None = None) -> None:
+    now = now or time.time()
+    member = f"{now:.6f}:{r.incr(f'{key}:seq')}"
+    pipe = r.pipeline()
+    for label, secs in WINDOWS.items():
+        zset = f"velocity:{key}:{label}"
+        pipe.zadd(zset, {member: now})
+        # trim everything older than the window
+        pipe.zremrangebyscore(zset, 0, now - secs)
+    pipe.execute()
+
+def velocity(key: str, seconds: int) -> int:
+    now = time.time()
+    return r.zcount(f"velocity:{key}:latest", now - seconds, now)
+</code></pre>
+</div>
+
+<p><strong>The three counters that carry the most signal:</strong></p>
+
+<ul>
+<li><strong>Account velocity</strong>: number of transfer attempts by a single account in 10 minutes. Legit users rarely exceed single digits. ATO attacks routinely hit 30 plus.</li>
+<li><strong>Device velocity</strong>: number of distinct accounts touched by one device fingerprint in an hour. Legitimate shared devices (households, warungs) touch 2 to 3 accounts. Mule rings push 40 to 100.</li>
+<li><strong>IP velocity</strong>: distinct accounts and merchants hit from one IP across 10 minutes. This catches credential-stuffing waves against a single rail.</li>
+</ul>
+
+<p>Each counter is cheap, but combining them with a rule like <em>device touches 10+ accounts while IP spans 4+ provinces</em> is what turns raw counts into near-certain fraud. The rule catalog is deliberately small, around 70 hand-tuned rules, because every rule must be explainable in an audit.</p>
+
+<h2>Feature Store Before Model</h2>
+
+<p>An inline model is only as good as the features cached in front of it. We use an offline feature store (a Postgres table with a scheduled Spark job) that emits compact feature records to Redis as hashes. One hash per account, one per device, one per IP.</p>
+
+<div class="code-block">
+<div class="code-header">Feature Hash Layout (what the inline scorer reads)</div>
+<pre><code># Redis hash: features:acct:{account_id}
+# Redis hash: features:dev:{fingerprint}
+# Redis hash: features:ip:{ip}
+
+ACCT_FEATURES = [
+    "acct_age_seconds",       # KYC-to-now age
+    "txn_count_7d",
+    "txn_amount_max_7d",
+    "device_count_7d",        # distinct devices
+    "province_count_7d",      # distinct provinces
+    "avg_balance_floor",      # rolling min of balance
+    "beneficiary_distinct_7d",
+    "failed_auth_1h",
+    "sim_changed_7d",         # from telco MSISDN feed
+]
+</code></pre>
+</div>
+
+<p>Two of these features deserve emphasis because they are Indonesia-specific:</p>
+
+<ul>
+<li><strong><code>sim_changed_7d</code></strong> comes from a telco MSISDN-churn feed. SIM swap is the leading indicator of a pending ATO, and it is a signal most Western fraud stacks never see.</li>
+<li><strong><code>beneficiary_distinct_7d</code></strong> is the counter of how many different accounts a user has paid in a week. A KYC-passed account that suddenly pays 60 distinct strangers is a mule, not a consumer.</li>
+</ul>
+
+<p>The model itself is a small LightGBM ensemble (about 40 trees, max depth 5) trained on 18 months of labeled events. Small on purpose: it must load from memory in microseconds and its decisions must be reconstructible for the regulator. A 1,000-feature neural net would eke out fractions of a point of recall and cost you the ability to explain any single decision.</p>
+
+<h2>QRIS-Specific Defenses</h2>
+
+<p>Dynamic-QR tampering is the fraud type most specific to this market. The defense has three parts, and only one of them is a model:</p>
+
+<ol>
+<li><strong>Merchant QR fingerprinting</strong>: every presented QRIS payload is hashed against the merchant's registered payment profile. A mismatch between the QR's embedded beneficiary and the merchant's KYC record fails instantly, before any model runs.</li>
+<li><strong>Beneficiary graph consistency</strong>: a QR that routes to a wallet with a 2-week account age, an empty merchant profile, and no registered outlet is blocked outright. Most tampered QRs route to exactly that kind of account.</li>
+<li><strong>Scan-settle time delta</strong>: legitimate QRIS payments settle within a few seconds of the scan. A QR presented, then settled 40 minutes later from a different device, is a strong signal of a re-presented code.</li>
+</ol>
+
+<p>What makes this work is that the checks are deterministic and cheap. They do not need a score. They run as rules in the first 3ms layer, so a tampered QR is dead before the model even wakes up.</p>
+
+<h2>Mule Networks as a Graph Problem</h2>
+
+<p>Mule accounts are the hardest class because each account individually passes KYC and shows normal-looking volume. The fraud only appears when you look at the links between accounts: shared devices, shared IPs, shared beneficiary chains, and funds that move account to account with no commercial purpose.</p>
+
+<p>We model this as a graph and precompute two labels per account:</p>
+
+<ul>
+<li><strong>Community membership</strong>: accounts are clustered by shared device and IP into connected components. A component of 80 accounts feeding a single sink is a mule ring regardless of what any one account looks like.</li>
+<li><strong>Layered-hop distance</strong>: an account within 1 or 2 hops of a known fraud sink gets a risk boost. When a fraud sink is confirmed, we fan the label out to its neighbors in the graph.</li>
+</ul>
+
+<div class="code-block">
+<div class="code-header">Graph Label Propagation to Neighbors</div>
+<pre><code>def propagate_risk(seed_accounts, hops=2, risk_delta=0.4):
+    """Fan out risk from confirmed fraud sinks to their graph neighbors."""
+    frontier = list(seed_accounts)
+    seen = set(seed_accounts)
+    for hop in range(1, hops + 1):
+        next_frontier = []
+        for acct in frontier:
+            neighbors = graph_neighbors(acct, edge_types=["device", "ip", "transfer"])
+            for nb in neighbors:
+                if nb in seen:
+                    continue
+                seen.add(nb)
+                # decay the risk with each hop
+                add_risk(nb, risk_delta / (hop ** 2))
+                next_frontier.append(nb)
+        frontier = next_frontier
+</code></pre>
+</div>
+
+<p>The graph does not run inline for every event. It runs as a daily batch plus a streaming delta on a RedisGraph instance. The inline path just reads each account's precomputed <code>community_risk</code> feature alongside the others.</p>
+
+<h2>Step-Up Beats Hard Reject</h2>
+
+<p>Hard-rejecting an ambiguous event adds friction to good users and teaches fraudsters where the tripwires are. The system returns one of three verdicts, and the middle one does the real work:</p>
+
+<ul>
+<li><strong>ALLOW</strong>: score below threshold, no action.</li>
+<li><strong>STEP_UP</strong>: score in the uncertain band. The user is pushed to OTP, biometric, or a WhatsApp confirmation. If they pass, the transaction proceeds and their account trust is nudged up.</li>
+<li><strong>BLOCK</strong>: score above the hard block threshold, or a deterministic rule fired.</li>
+</ul>
+
+<p>The uncertain band is tuned so that about 1.2% of events land in STEP_UP, and roughly 72% of those clear the challenge. That keeps the genuine-friction rate at the 0.31% cited up top, which is the number that actually matters for retention. Fraud teams that over-index on recall and block aggressively churn their own good users off the platform.</p>
+
+<h2>Compliance and the Audit Trail</h2>
+
+<p>In Indonesia this is not optional polish. BI requires PSPs to hold fraud-management controls, and OJK's anti-money-laundering rules require that every suspicious-transaction report be backed by a reconstructible decision. The system writes a decision record for every event:</p>
+
+<ul>
+<li>The feature vector that was scored, with timestamps of when each feature was computed</li>
+<li>The exact rules that fired, with their thresholds and values</li>
+<li>The model version, seed value, and the raw score before thresholding</li>
+<li>The final verdict and the step-up challenge, if any</li>
+</ul>
+
+<p>This record is written to an append-only store and retained for five years. When BI asks why a particular transfer was blocked, the answer is a single row, not a conversation. The model versioning discipline is the part most teams skip and the part regulators actually check.</p>
+
+<h2>What We Got Wrong First</h2>
+
+<p>Two honest failures from the first version, because they are the mistakes you will make too:</p>
+
+<ol>
+<li><strong>We scored on stale features.</strong> The first build read raw event logs inline, which added 400ms and spilled the 50ms budget on peak days. The fix, feature precomputation, is now the system's backbone.</li>
+<li><strong>We tuned the model on fraud latency, not friction.</strong> Early blocks hit a 4% false-positive rate mainly because recall was the hero metric. Customer support tickets told the real story. We re-tuned on genuine-user friction and fraud losses recovered within a quarter.</li>
+</ol>
+
+<p>The pattern worth internalizing: the hard part of payment fraud is not the model. It is the latency budget, the velocity features, and the discipline to run the whole thing as explainable, auditable rules plus one small model.</p>
+
+<h2>Key Takeaways</h2>
+
+<ol>
+<li><strong>Indonesian fraud is velocity fraud, not card fraud</strong>. QRIS, VA, and wallet transfers mean your signals are account, device, and IP velocity, plus SIM-swap churn.</li>
+<li><strong>Feature precomputation is the architecture</strong>. The 50ms inline path only works when features are cached, never computed on demand.</li>
+<li><strong>Deterministic checks kill QRIS tampering</strong>. Fingerprint the merchant QR and validate the beneficiary graph before any model runs.</li>
+<li><strong>Mules are a graph problem</strong>. Model account communities and hop distance to known sinks; they hide in the links, not the rows.</li>
+<li><strong>Step-up beats hard reject</strong>. A 0.31% friction rate beats a 4% one for retention, and the regulator still gets its audit trail.</li>
+</ol>
+
+<p><strong>Fraud-stack design for Indonesian payment rails: albertus@example.com</strong></p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+</body>
+</html>

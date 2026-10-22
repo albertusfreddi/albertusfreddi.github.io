@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merancang Deteksi Fraud Pembayaran Sub-50ms untuk Fintech Indonesia | Albertus Freddi</title>
+<meta name="description" content="Stack anti-fraud produksi untuk rel pembayaran Indonesia: deteksi manipulasi QRIS, pembajakan akun, dan rekening penampung dalam anggaran latensi 50ms, dengan engine velocity Redis, feature store, dan jejak audit selaras BI.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html">
+<meta property="og:title" content="Merancang Deteksi Fraud Pembayaran Sub-50ms untuk Fintech Indonesia">
+<meta property="og:description" content="Stack anti-fraud produksi untuk rel pembayaran Indonesia: deteksi manipulasi QRIS, pembajakan akun, dan rekening penampung dalam anggaran latensi 50ms, dengan engine velocity Redis, feature store, dan jejak audit selaras BI.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-22T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/real-time-fraud-detection-fintech-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/real-time-fraud-detection-fintech-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Merancang Deteksi Fraud Pembayaran Sub-50ms untuk Fintech Indonesia","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/real-time-fraud-detection-fintech-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a href="/blog/id/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/real-time-fraud-detection-fintech-indonesia.html" class="">English</a><a href="/blog/id/real-time-fraud-detection-fintech-indonesia.html" class="active">Bahasa Indonesia</a><a href="/blog/zh/real-time-fraud-detection-fintech-indonesia.html" class="">中文</a><a href="/blog/ja/real-time-fraud-detection-fintech-indonesia.html" class="">日本語</a><a href="/blog/ko/real-time-fraud-detection-fintech-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<h1>Merancang Deteksi Fraud Pembayaran Sub-50ms untuk Fintech Indonesia</h1>
+<div class="meta">
+<span>16 menit</span>
+<span>•</span>
+<span>2026-10-22</span>
+</div>
+<article>
+<div class="callout"><p><strong>Konteks produksi:</strong> Ini stack anti-fraud yang kami jalankan untuk sebuah e-wallet dan platform pinjaman P2P di Indonesia, bersama memproses sekitar 3,2 juta event pembayaran per hari. Sistem menilai setiap event inline di bawah 50ms, memblokir sekitar 0,9% volume terflag, dan menjaga tingkat friksi false-positive di 0,31%. Tidak ada registrar yang bisa menjalankan rel pembayaran di Indonesia tanpa keselarasan BI dan OJK, jadi setiap keputusan di sini bisa diaudit.</p></div>
+
+<h2>Kenapa Fraud Indonesia Berbeda</h2>
+
+<p>Model fraud yang dibangun untuk rel kartu AS gagal di sini karena satu alasan konkret: Indonesia adalah pasar QRIS dan virtual account, bukan pasar kartu. Instrumen dominannya adalah QRIS (standar QR nasional), virtual account bank dan e-wallet, plus transfer antar-wallet. Aturan fraud kartu yang dibangun di sekitar CVV, BIN, dan 3-D Secure tidak punya sinyal yang cocok.</p>
+
+<p>Kelas ancaman nyata yang kami lawan, dalam urutan volume teramati:</p>
+
+<ul>
+<li><strong>Manipulasi QRIS dinamis</strong>: penyerang mengambil QR statis milik merchant, mengganti penerima, lalu menyajikannya ulang ke pembeli. Pembeli memindai QRIS yang tampak valid tapi dananya masuk ke wallet penyerang.</li>
+<li><strong>Pembajakan akun (ATO)</strong>: serangan credential stuffing dan SIM swap lalu menguras dana lewat transfer wallet instan sebelum korban sadar.</li>
+<li><strong>Jaringan rekening penampung</strong>: ratusan akun lolos KYC dibuka dengan identitas curian atau sewaan, dipakai hanya untuk menerima dan segera menguras transfer fraud.</li>
+<li><strong>Card testing dan probing transaksi mikro berkecepatan tinggi</strong>: penyerang memancing checkout merchant dengan nominal kecil untuk memetakan wallet dan VA mana yang menerima rel apa.</li>
+</ul>
+
+<p>Sifat pemersatu keempatnya adalah <strong>kecepatan (velocity)</strong>. Satu event terlihat polos. Pola banyak event dalam jendela singkat, pada satu perangkat, atau satu IP, itulah yang membuka fraud. Satu pengamatan itu menuntun seluruh arsitektur di bawah.</p>
+
+<h2>Anggaran Latensi Adalah Arsitektur Sebenarnya</h2>
+
+<p>Setiap event pembayaran harus mengembalikan keputusan allow, block, atau step-up secara inline. Aturan settlement QRIS BI dan pengalaman checkout sama-sama mendorong ke target keras: <strong>50ms end to end untuk keputusan inline</strong>, dan 200ms untuk jalur post-hoc yang lebih kaya. Model neural dalam yang menilai ratusan fitur tidak akan muat di jendela itu, jadi stack dilapis berdasar biaya dan latensi.</p>
+
+<div class="comparison-table">
+<table>
+<thead><tr><th>Lapisan</th><th>Latensi</th><th>Fungsinya</th><th>Tempat jalan</th></tr></thead>
+<tbody>
+<tr><td>Aturan deterministik</td><td>1-3ms</td><td>Blok keras: blacklist, batas velocity, anomali nominal</td><td>In-process, memori</td></tr>
+<tr><td>Lookup fitur + model gradient</td><td>6-15ms</td><td>Skor risiko dari fitur terpra-komputasi</td><td>Redis + model di memori</td></tr>
+<tr><td>Analisis graph / tautan</td><td>20-45ms</td><td>Deteksi rekening penampung, kluster perangkat bersama</td><td>RedisGraph atau edge terpra-komputasi</td></tr>
+<tr><td>Enrichment post-hoc</td><td>200ms+</td><td>Fingerprint perangkat penuh, watchlist, screening sanksi</td><td>Antrian async</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Trik yang membuat jalur inline tetap cepat adalah <strong>prekomputasi fitur</strong>. Satu job stream latar belakang menghitung ulang setiap fitur akun, perangkat, dan IP tiap beberapa detik. Scorer inline tidak pernah menghitung fitur dari log mentah. Ia melakukan segelintir panggilan <code>HGETALL</code> dan <code>ZRANGE</code> ke Redis, memasukkan vektor ke model gradient-boosted kecil, lalu menetapkan ambang. Itulah seluruh jalur 50ms.</p>
+
+<h2>Engine Velocity Redis</h2>
+
+<p>Sinyal velocity adalah kuda beban sistem ini. Tiga penghitung paling penting, dan semuanya adalah jendela geser yang diimplementasikan sebagai sorted set Redis diskor dengan timestamp event. Sorted set memberi query rentang berdasar waktu secara gratis, persis yang dibutuhkan jendela geser.</p>
+
+<div class="code-block">
+<div class="code-header">Penghitung Velocity Jendela Geser (Redis Sorted Sets)</div>
+<pre><code>import redis
+import time
+
+r = redis.Redis(host="127.0.0.1", port=6379, decode_responses=True)
+
+WINDOWS = {
+    "1m": 60,
+    "10m": 600,
+    "1h": 3600,
+}
+
+def record_event(key: str, now: float | None = None) -> None:
+    now = now or time.time()
+    member = f"{now:.6f}:{r.incr(f'{key}:seq')}"
+    pipe = r.pipeline()
+    for label, secs in WINDOWS.items():
+        zset = f"velocity:{key}:{label}"
+        pipe.zadd(zset, {member: now})
+        # buang semua yang lebih tua dari jendela
+        pipe.zremrangebyscore(zset, 0, now - secs)
+    pipe.execute()
+
+def velocity(key: str, seconds: int) -> int:
+    now = time.time()
+    return r.zcount(f"velocity:{key}:latest", now - seconds, now)
+</code></pre>
+</div>
+
+<p><strong>Tiga penghitung yang membawa sinyal paling banyak:</strong></p>
+
+<ul>
+<li><strong>Velocity akun</strong>: jumlah percobaan transfer oleh satu akun dalam 10 menit. Pengguna wajar jarang melewati satu digit. Serangan ATO rutin menyentuh 30 ke atas.</li>
+<li><strong>Velocity perangkat</strong>: jumlah akun berbeda yang disentuh satu fingerprint perangkat dalam sejam. Perangkat bersama yang wajar (rumah tangga, warung) menyentuh 2 sampai 3 akun. Jaringan penampung mendorong 40 sampai 100.</li>
+<li><strong>Velocity IP</strong>: akun dan merchant berbeda yang diakses dari satu IP dalam 10 menit. Ini menangkap gelombang credential stuffing terhadap satu rel.</li>
+</ul>
+
+<p>Tiap penghitung murah, tapi menggabungkannya dengan aturan seperti <em>perangkat menyentuh 10+ akun sementara IP menjangkau 4+ provinsi</em> itulah yang mengubah hitungan mentah menjadi fraud nyaris pasti. Katalog aturannya sengaja kecil, sekitar 70 aturan di-tuning manual, karena tiap aturan harus bisa dijelaskan dalam audit.</p>
+
+<h2>Feature Store Sebelum Model</h2>
+
+<p>Model inline hanya sebaik fitur yang di-cache di depannya. Kami memakai feature store offline (tabel Postgres dengan job Spark terjadwal) yang memancarkan rekaman fitur ringkas ke Redis sebagai hash. Satu hash per akun, satu per perangkat, satu per IP.</p>
+
+<div class="code-block">
+<div class="code-header">Layout Hash Fitur (yang dibaca scorer inline)</div>
+<pre><code># Redis hash: features:acct:{account_id}
+# Redis hash: features:dev:{fingerprint}
+# Redis hash: features:ip:{ip}
+
+ACCT_FEATURES = [
+    "acct_age_seconds",       # usia KYC-hingga-sekarang
+    "txn_count_7d",
+    "txn_amount_max_7d",
+    "device_count_7d",        # perangkat berbeda
+    "province_count_7d",      # provinsi berbeda
+    "avg_balance_floor",      # minimum saldo bergulir
+    "beneficiary_distinct_7d",
+    "failed_auth_1h",
+    "sim_changed_7d",         # dari feed MSISDN operator
+]
+</code></pre>
+</div>
+
+<p>Dua fitur ini pantas ditekankan karena spesifik Indonesia:</p>
+
+<ul>
+<li><strong><code>sim_changed_7d</code></strong> datang dari feed churn MSISDN operator. SIM swap adalah indikator utama ATO yang akan datang, dan itu sinyal yang tidak pernah dilihat mayoritas stack fraud Barat.</li>
+<li><strong><code>beneficiary_distinct_7d</code></strong> adalah penghitung berapa akun berbeda yang sudah dibayar pengguna dalam seminggu. Akun lolos KYC yang tiba-tiba membayar 60 orang asing berbeda adalah penampung, bukan konsumen.</li>
+</ul>
+
+<p>Modelnya sendiri adalah ensemble LightGBM kecil (sekitar 40 pohon, kedalaman maks 5) dilatih pada 18 bulan event berlabel. Kecil disengaja: harus dimuat dari memori dalam mikrodetik dan keputusannya harus bisa direkonstruksi untuk regulator. Neural net 1.000 fitur akan memeras sepersekian poin recall dan mengorbankan kemampuan Anda menjelaskan satu keputusan apa pun.</p>
+
+<h2>Pertahanan Spesifik QRIS</h2>
+
+<p>Manipulasi QR dinamis adalah tipe fraud yang paling spesifik pasar ini. Pertahanannya punya tiga bagian, dan hanya satu yang berupa model:</p>
+
+<ol>
+<li><strong>Fingerprint QR merchant</strong>: setiap payload QRIS yang disajikan di-hash terhadap profil pembayaran terdaftar merchant. Ketidakcocokan antara penerima yang tertanam di QR dan rekaman KYC merchant langsung gagal, sebelum model apa pun jalan.</li>
+<li><strong>Konsistensi graph penerima</strong>: QR yang merutekan ke wallet dengan usia akun 2 minggu, profil merchant kosong, dan tanpa outlet terdaftar diblokir langsung. Kebanyakan QR yang dimanipulasi merutekan persis ke akun semacam itu.</li>
+<li><strong>Delta waktu scan-settle</strong>: pembayaran QRIS wajar settle dalam beberapa detik setelah scan. QR yang disajikan lalu settle 40 menit kemudian dari perangkat berbeda adalah sinyal kuat kode yang disajikan ulang.</li>
+</ol>
+
+<p>Yang membuat ini jalan adalah ceknya deterministik dan murah. Tidak butuh skor. Cek berjalan sebagai aturan di lapisan 3ms pertama, jadi QR yang dimanipulasi sudah mati sebelum modelnya bangun.</p>
+
+<h2>Jaringan Penampung sebagai Masalah Graph</h2>
+
+<p>Rekening penampung adalah kelas tersulit karena tiap akun secara individual lolos KYC dan menunjukkan volume tampak normal. Fraud baru tampak saat Anda melihat tautan antar-akun: perangkat bersama, IP bersama, rantai penerima bersama, dan dana yang bergerak akun ke akun tanpa tujuan komersial.</p>
+
+<p>Kami memodelkan ini sebagai graph dan mengomputasi dua label per akun:</p>
+
+<ul>
+<li><strong>Keanggotaan komunitas</strong>: akun dikelompokkan berdasar perangkat dan IP bersama menjadi komponen terhubung. Satu komponen berisi 80 akun yang menyetor ke satu muara adalah jaringan penampung, apa pun tampilan satu akun.</li>
+<li><strong>Jarak loncatan berlapis</strong>: akun dalam 1 atau 2 loncatan dari muara fraud terkonfirmasi mendapat boost risiko. Saat muara fraud terkonfirmasi, kami menyebar label ke tetangganya di graph.</li>
+</ul>
+
+<div class="code-block">
+<div class="code-header">Propagasi Label Graph ke Tetangga</div>
+<pre><code>def propagate_risk(seed_accounts, hops=2, risk_delta=0.4):
+    """Sebar risiko dari muara fraud terkonfirmasi ke tetangganya."""
+    frontier = list(seed_accounts)
+    seen = set(seed_accounts)
+    for hop in range(1, hops + 1):
+        next_frontier = []
+        for acct in frontier:
+            neighbors = graph_neighbors(acct, edge_types=["device", "ip", "transfer"])
+            for nb in neighbors:
+                if nb in seen:
+                    continue
+                seen.add(nb)
+                # risiko meluruh tiap loncatan
+                add_risk(nb, risk_delta / (hop ** 2))
+                next_frontier.append(nb)
+        frontier = next_frontier
+</code></pre>
+</div>
+
+<p>Graphnya tidak jalan inline untuk tiap event. Ia jalan sebagai batch harian plus delta streaming pada instance RedisGraph. Jalur inline hanya membaca fitur <code>community_risk</code> per akun yang sudah dikomputasi, bersama fitur lainnya.</p>
+
+<h2>Step-Up Mengalahkan Blok Keras</h2>
+
+<p>Memblokir keras event yang ambigu menambah friksi pada pengguna baik dan mengajari penipu di mana kawat sandungnya. Sistem mengembalikan satu dari tiga vonis, dan yang tengah melakukan kerja sesungguhnya:</p>
+
+<ul>
+<li><strong>ALLOW</strong>: skor di bawah ambang, tak ada aksi.</li>
+<li><strong>STEP_UP</strong>: skor di pita tidak pasti. Pengguna didorong ke OTP, biometrik, atau konfirmasi WhatsApp. Jika lolos, transaksi lanjut dan trust akunnya dinaikkan sedikit.</li>
+<li><strong>BLOCK</strong>: skor di atas ambang blok keras, atau aturan deterministik menyala.</li>
+</ul>
+
+<p>Pita tidak pasti di-tuning agar sekitar 1,2% event mendarat di STEP_UP, dan sekitar 72% di antaranya lolos tantangan. Itu menjaga tingkat friksi pengguna wajar di 0,31% seperti disebut di atas, angka yang benar-benar penting untuk retensi. Tim fraud yang berlebihan mengejar recall dan memblokir agresif malah menggusur pengguna baiknya sendiri dari platform.</p>
+
+<h2>Kepatuhan dan Jejak Audit</h2>
+
+<p>Di Indonesia ini bukan polesan opsional. BI mensyaratkan PSP memegang kontrol manajemen fraud, dan aturan anti-pencucian uang OJK mensyaratkan tiap laporan transaksi mencurigakan didukung keputusan yang bisa direkonstruksi. Sistem menulis rekaman keputusan untuk tiap event:</p>
+
+<ul>
+<li>Vektor fitur yang diskor, dengan timestamp kapan tiap fitur dikomputasi</li>
+<li>Aturan persis yang menyala, dengan ambang dan nilainya</li>
+<li>Versi model, nilai seed, dan skor mentah sebelum ambang</li>
+<li>Vonis akhir dan tantangan step-up, jika ada</li>
+</ul>
+
+<p>Rekaman ini ditulis ke store append-only dan disimpan lima tahun. Saat BI bertanya kenapa satu transfer diblokir, jawabannya satu baris, bukan percakapan. Disiplin versioning model adalah bagian yang paling sering dilewati tim dan bagian yang benar-benar dicek regulator.</p>
+
+<h2>Yang Awalnya Kami Salah</h2>
+
+<p>Dua kegagalan jujur dari versi pertama, karena ini kesalahan yang akan Anda buat juga:</p>
+
+<ol>
+<li><strong>Kami menilai dengan fitur basi.</strong> Build pertama membaca log event mentah secara inline, yang menambah 400ms dan menumpahkan anggaran 50ms di hari puncak. Perbaikannya, prekomputasi fitur, kini jadi tulang punggung sistem.</li>
+<li><strong>Kami me-tuning model pada latensi fraud, bukan friksi.</strong> Blok awal menyentuh tingkat false-positive 4% terutama karena recall dijadikan metrik pahlawan. Tiket dukungan pelanggan menceritakan kisah sebenarnya. Kami re-tuning pada friksi pengguna wajar dan kerugian fraud pulih dalam satu kuartal.</li>
+</ol>
+
+<p>Pola yang layak diinternalisasi: bagian sulit fraud pembayaran bukan modelnya. Tapi anggaran latensi, fitur velocity, dan disiplin menjalankan semuanya sebagai aturan yang bisa dijelaskan dan diaudit plus satu model kecil.</p>
+
+<h2>Poin Kunci</h2>
+
+<ol>
+<li><strong>Fraud Indonesia adalah fraud velocity, bukan fraud kartu</strong>. QRIS, VA, dan transfer wallet berarti sinyal Anda adalah velocity akun, perangkat, dan IP, plus churn SIM-swap.</li>
+<li><strong>Prekomputasi fitur adalah arsitekturnya</strong>. Jalur inline 50ms hanya jalan ketika fitur di-cache, tak pernah dihitung on-demand.</li>
+<li><strong>Cek deterministik membunuh manipulasi QRIS</strong>. Fingerprint QR merchant dan validasi graph penerima sebelum model apa pun jalan.</li>
+<li><strong>Penampung adalah masalah graph</strong>. Modelkan komunitas akun dan jarak loncatan ke muara terkonfirmasi; mereka bersembunyi di tautan, bukan di baris.</li>
+<li><strong>Step-up mengalahkan blok keras</strong>. Tingkat friksi 0,31% mengalahkan 4% untuk retensi, dan regulator tetap dapat jejak auditnya.</li>
+</ol>
+
+<p><strong>Desain stack fraud untuk rel pembayaran Indonesia: albertus@example.com</strong></p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+</body>
+</html>
