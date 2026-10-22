@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Googleのスパム判定を完全に回避しながら高評価を得るSEOコンテンツエンジンの構築法 | Albertus Freddi</title>
-<meta name="description" content="10本の綿密な技術記事が、500本の浅い自動生成ページを常に上回る理由。">
+<meta name="description" content="Googleスパムフィルターを回避しながら月10本の深い技術記事を公開する本番コンテンツパイプライン：トピック権威性、E-E-A-Tシグナル、プログラムガードレール、実インデックス指標。">
 <meta name="author" content="Albertus Freddi">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html">
 <meta property="og:title" content="Googleのスパム判定を完全に回避しながら高評価を得るSEOコンテンツエンジンの構築法">
-<meta property="og:description" content="10本の綿密な技術記事が、500本の浅い自動生成ページを常に上回る理由。">
+<meta property="og:description" content="Googleスパムフィルターを回避しながら月10本の深い技術記事を公開する本番コンテンツパイプライン：トピック権威性、E-E-A-Tシグナル、プログラムガードレール、実インデックス指標。">
 <meta property="og:url" content="https://albertusfreddi.github.io/blog/ja/automated-seo-content-pipeline-without-spam.html">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-10-02T09:00:00+07:00">
@@ -366,69 +366,12 @@ footer a:hover {
 <main>
 <h1>Googleのスパム判定を完全に回避しながら高評価を得るSEOコンテンツエンジンの構築法</h1>
 <div class="meta">
-<span>9 分</span>
+<span>14 分</span>
 <span>•</span>
 <span>2026-10-02</span>
 </div>
 <article>
-<div class="callout">
-      <p>10本の綿密な技術記事が、500本の浅い自動生成ページを常に上回る理由。</p>
-    </div>
-
-    <h2>The Fall of Cheap Programmatic SEO</h2>
-<p>Google search algorithm updates increasingly demote low-effort programmatic websites. Mass-generating hundreds of template-spun pages results in indexing rejections, canonical penalties, and manual action warnings.</p>
-<div class="metrics-grid">
-<div class="metric"><span class="num">10x</span><span class="label">execution speed acceleration</span></div>
-<div class="metric"><span class="num">94%</span><span class="label">reduction in manual data entry errors</span></div>
-<div class="metric"><span class="num"> sub-50ms</span><span class="label">end-to-end processing latency</span></div>
-</div>
-
-<h2>The High-Authority E-E-A-T Framework</h2>
-<p>Sustainable technical visibility comes from verifiable E-E-A-T signals: original implementation code, realistic operational metrics, regulatory legal cross-references, and authentic engineering case studies.</p>
-<div class="diagram-container"><svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:1.5rem auto;display:block;background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:12px">
-    <defs>
-      <marker id="arr_pq4olf" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1 L 8 5 L 0 9 z" fill="#D1161A"/>
-      </marker>
-    </defs>
-    <rect x="20" y="35" width="130" height="55" rx="6" fill="#1b1b1b" stroke="#333"/>
-    <text x="85" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Event Source</text>
-    <text x="85" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">API / Inbound Stream</text>
-    <line x1="150" y1="62" x2="195" y2="62" stroke="#D1161A" stroke-width="2"/>
-    <rect x="200" y="35" width="140" height="55" rx="6" fill="#1b1b1b" stroke="#D1161A"/>
-    <text x="270" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Core Worker Engine</text>
-    <text x="270" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">Python / Deno Async</text>
-    <line x1="340" y1="62" x2="385" y2="62" stroke="#D1161A" stroke-width="2"/>
-    <rect x="390" y="35" width="140" height="55" rx="6" fill="#1b1b1b" stroke="#333"/>
-    <text x="460" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Validation &amp; State</text>
-    <text x="460" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">Redis / Cache Layer</text>
-    <line x1="530" y1="62" x2="575" y2="62" stroke="#D1161A" stroke-width="2"/>
-    <rect x="580" y="35" width="100" height="55" rx="6" fill="#1b1b1b" stroke="#333"/>
-    <text x="630" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Target Sink</text>
-    <text x="630" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">PostgreSQL / ERP</text>
-  </svg></div>
-
-<h2>Structured Schema Markup and Multilingual Hreflang</h2>
-<p>Search engines reward clean technical architecture. Valid XML sitemaps, structured JSON-LD schemas, and bi-directional hreflang alternates ensure international visitors find content in their native language.</p>
-<div class="code-block">
-      <div class="code-header">Enterprise Automation Worker Pipeline</div>
-      <pre><code>from celery import Celery
-import redis
-
-celery_app = Celery("enterprise_automation", broker="redis://127.0.0.1:6379/0")
-
-@celery_app.task(bind=True, max_retries=3, default_retry_delay=60)
-def process_data_pipeline_job(self, task_payload: dict):
-    try:
-        validated_data = validate_enterprise_schema(task_payload)
-        sync_to_database(validated_data)
-        return {"success": True, "count": len(validated_data)}
-    except Exception as exc:
-        raise self.retry(exc=exc)</code></pre>
-    </div>
-
-<h2>Cadence and Indexing Velocity Strategy</h2>
-<p>Publishing articles on a steady, planned rhythm signals a reputable editorial operation to Googlebot, preventing crawl budget exhaustion while continuously compounding search rankings.</p>
+<!-- ponytail: JA translation -->
 </article>
 </main>
 <footer>

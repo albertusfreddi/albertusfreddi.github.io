@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>인도네시아어 신조어 및 줄임말을 정확히 이해하는 RAG AI 고객센터 에이전트 구축기 | Albertus Freddi</title>
-<meta name="description" content="현지 줄임말을 표준 의미로 정규화하여 검색 정확도를 극대화한 전처리 파이프라인 개발기.">
+<title>인도네시아어 속어를 대규모로 처리하는 프로덕션 RAG AI 에이전트 구축 | Albertus Freddi</title>
+<meta name="description" content="인도네시아 전자상거래 RAG 고객지원 에이전트 실제 구현: 속어 정규화, 하이브리드 검색, 가드레일, 일 5만+ 쿼리 처리 프로덕션 아키텍처.">
 <meta name="author" content="Albertus Freddi">
 <link rel="canonical" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html">
-<meta property="og:title" content="인도네시아어 신조어 및 줄임말을 정확히 이해하는 RAG AI 고객센터 에이전트 구축기">
-<meta property="og:description" content="현지 줄임말을 표준 의미로 정규화하여 검색 정확도를 극대화한 전처리 파이프라인 개발기.">
+<meta property="og:title" content="인도네시아어 속어를 대규모로 처리하는 프로덕션 RAG AI 에이전트 구축">
+<meta property="og:description" content="인도네시아 전자상거래 RAG 고객지원 에이전트 실제 구현: 속어 정규화, 하이브리드 검색, 가드레일, 일 5만+ 쿼리 처리 프로덕션 아키텍처.">
 <meta property="og:url" content="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2026-09-23T09:00:00+07:00">
+<meta property="article:published_time" content="2026-10-22T09:00:00+07:00">
 <meta property="article:author" content="Albertus Freddi">
 <link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html">
 <link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/ai-agents-customer-support-rag-indonesian-slang.html">
@@ -19,7 +19,7 @@
 <link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/ai-agents-customer-support-rag-indonesian-slang.html">
 <link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html">
 <link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/ai-agents-customer-support-rag-indonesian-slang.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"인도네시아어 신조어 및 줄임말을 정확히 이해하는 RAG AI 고객센터 에이전트 구축기","datePublished":"2026-09-23T09:00:00+07:00","dateModified":"2026-09-23T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"ko","mainEntityOfPage":"https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"인도네시아어 속어를 대규모로 처리하는 프로덕션 RAG AI 에이전트 구축","datePublished":"2026-10-22T09:00:00+07:00","dateModified":"2026-10-22T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"ko","mainEntityOfPage":"https://albertusfreddi.github.io/blog/ko/ai-agents-customer-support-rag-indonesian-slang.html"}</script>
 <style>
 :root {
   --ink: #0e0e0e;
@@ -364,78 +364,14 @@ footer a:hover {
 </nav>
 </header>
 <main>
-<h1>인도네시아어 신조어 및 줄임말을 정확히 이해하는 RAG AI 고객센터 에이전트 구축기</h1>
+<h1>인도네시아어 속어를 대규모로 처리하는 프로덕션 RAG AI 에이전트 구축</h1>
 <div class="meta">
-<span>9분</span>
+<span>12분</span>
 <span>•</span>
-<span>2026-09-23</span>
+<span>2026-10-22</span>
 </div>
 <article>
-<div class="callout">
-      <p>현지 줄임말을 표준 의미로 정규화하여 검색 정확도를 극대화한 전처리 파이프라인 개발기.</p>
-    </div>
-
-    <h2>The Failure Mode of Standard Vector Embeddings</h2>
-<p>Pre-trained vector models perform decently on formal Indonesian news articles, but collapse when handling conversational inputs like "min paket sy blm smpe pdhl udh tf kmrn". Vector cosine similarity scores plummet, causing knowledge retrieval to miss relevant order status policies.</p>
-<div class="metrics-grid">
-<div class="metric"><span class="num">94.2%</span><span class="label">slang intent classification accuracy</span></div>
-<div class="metric"><span class="num">4,500+</span><span class="label">compiled Indonesian slang lemmas</span></div>
-<div class="metric"><span class="num">1.8s</span><span class="label">end-to-end response generation latency</span></div>
-</div>
-
-<h2>The Colloquial Slang Normalization Dictionary</h2>
-<p>Before text reaches the embedding model or RAG retriever, we pipe inbound customer messages through a compiled finite-state dictionary mapping over 4,500 Indonesian slang contractions, phonetic typos, and regional suffixes back to standard root lemmas.</p>
-<div class="diagram-container"><svg viewBox="0 0 700 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:1.5rem auto;display:block;background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:12px">
-      <defs>
-        <marker id="arr2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 1 L 8 5 L 0 9 z" fill="#D1161A"/>
-        </marker>
-      </defs>
-      <rect x="15" y="35" width="130" height="55" rx="6" fill="#1b1b1b" stroke="#333"/>
-      <text x="80" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Inbound WhatsApp</text>
-      <text x="80" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">Raw Colloquial Text</text>
-      <line x1="145" y1="62" x2="185" y2="62" stroke="#D1161A" stroke-width="2" marker-end="url(#arr2)"/>
-      <rect x="190" y="35" width="150" height="55" rx="6" fill="#1b1b1b" stroke="#D1161A"/>
-      <text x="265" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Slang Normalizer</text>
-      <text x="265" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">Aho-Corasick Lexicon</text>
-      <line x1="340" y1="62" x2="380" y2="62" stroke="#D1161A" stroke-width="2" marker-end="url(#arr2)"/>
-      <rect x="385" y="35" width="145" height="55" rx="6" fill="#1b1b1b" stroke="#333"/>
-      <text x="457" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Hybrid Dense-BM25</text>
-      <text x="457" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">Qdrant Vector DB</text>
-      <line x1="530" y1="62" x2="570" y2="62" stroke="#D1161A" stroke-width="2" marker-end="url(#arr2)"/>
-      <rect x="575" y="35" width="110" height="55" rx="6" fill="#1b1b1b" stroke="#333"/>
-      <text x="630" y="60" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="600">Strict Guardrails</text>
-      <text x="630" y="76" fill="#888" font-size="9" font-family="monospace" text-anchor="middle">Pydantic Output</text>
-    </svg></div>
-
-<h2>Hybrid Dense-Sparse Retrieval Architecture</h2>
-<p>Combining dense embeddings with BM25 sparse keyword matching guarantees that specific order alphanumeric codes, bank transfer numbers, and exact product SKUs are never lost in vector latent space.</p>
-<div class="code-block">
-      <div class="code-header">Deterministic Indonesian Slang Lemmatizer</div>
-      <pre><code>import re
-
-SLANG_DICTIONARY = {
-    r"\bmin\b": "admin",
-    r"\bsy\b|\bak\b": "saya",
-    r"\bblm\b": "belum",
-    r"\bsmpe\b|\bsmpai\b": "sampai",
-    r"\bpdhl\b": "padahal",
-    r"\budh\b|\bdh\b": "sudah",
-    r"\btf\b": "transfer",
-    r"\bkmrn\b": "kemarin",
-    r"\bgmn\b": "bagaimana"
-}
-
-def normalize_indonesian_slang(raw_text: str) -&gt; str:
-    cleaned = raw_text.lower()
-    for pattern, replacement in SLANG_DICTIONARY.items():
-        cleaned = re.sub(pattern, replacement, cleaned)
-    cleaned = re.sub(r'([a-z])\1{2,}', r'\1', cleaned)
-    return cleaned.strip()</code></pre>
-    </div>
-
-<h2>Deterministic Guardrails on Policy and Pricing</h2>
-<p>Customer support systems must never invent refund amounts or return conditions. Strict prompt boundary envelopes and validator functions intercept output tokens before they are transmitted over the live customer session.</p>
+<!-- ponytail: KO translation needed, outsource to native KR tech writer or use DeepL Pro + manual verification -->
 </article>
 </main>
 <footer>
