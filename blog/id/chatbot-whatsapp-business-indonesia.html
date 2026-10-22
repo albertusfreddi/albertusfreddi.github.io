@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Membuat Chatbot WhatsApp untuk Bisnis Indonesia | Albertus Freddi</title>
+<meta name="description" content="Cara WhatsApp Business Cloud API, webhook terverifikasi, state machine percakapan, dan template pesan yang disetujui membuat bisnis kopi Jakarta menyelesaikan 73% pertanyaan tanpa manusia, tanpa risiko blokir nomor.">
+<meta name="author" content="Albertus Freddi">
+<link rel="canonical" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html">
+<meta property="og:title" content="Membuat Chatbot WhatsApp untuk Bisnis Indonesia">
+<meta property="og:description" content="Cara WhatsApp Business Cloud API, webhook terverifikasi, state machine percakapan, dan template pesan yang disetujui membuat bisnis kopi Jakarta menyelesaikan 73% pertanyaan tanpa manusia, tanpa risiko blokir nomor.">
+<meta property="og:url" content="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-10-07T09:00:00+07:00">
+<meta property="article:author" content="Albertus Freddi">
+<meta name="theme-color" content="#0e0e0e">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Albertus Freddi">
+<meta property="og:locale" content="id_ID">
+<meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Membuat Chatbot WhatsApp untuk Bisnis Indonesia">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Membuat Chatbot WhatsApp untuk Bisnis Indonesia">
+<meta name="twitter:description" content="Cara WhatsApp Business Cloud API, webhook terverifikasi, state machine percakapan, dan template pesan yang disetujui membuat bisnis kopi Jakarta menyelesaikan 73% pertanyaan tanpa manusia, tanpa risiko blokir nomor.">
+<meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+<link rel="alternate" hreflang="en" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html">
+<link rel="alternate" hreflang="id" href="https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html">
+<link rel="alternate" hreflang="zh" href="https://albertusfreddi.github.io/blog/zh/chatbot-whatsapp-business-indonesia.html">
+<link rel="alternate" hreflang="ja" href="https://albertusfreddi.github.io/blog/ja/chatbot-whatsapp-business-indonesia.html">
+<link rel="alternate" hreflang="ko" href="https://albertusfreddi.github.io/blog/ko/chatbot-whatsapp-business-indonesia.html">
+<link rel="alternate" hreflang="x-default" href="https://albertusfreddi.github.io/blog/en/chatbot-whatsapp-business-indonesia.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Membuat Chatbot WhatsApp untuk Bisnis Indonesia","datePublished":"2026-10-07T09:00:00+07:00","dateModified":"2026-10-07T09:00:00+07:00","author":{"@type":"Person","name":"Albertus Freddi"},"inLanguage":"id","mainEntityOfPage":"https://albertusfreddi.github.io/blog/id/chatbot-whatsapp-business-indonesia.html"}</script>
+<style>
+:root {
+  --ink: #0e0e0e;
+  --cream: #f5f0e8;
+  --accent: #c8a96e;
+  --red: #D1161A;
+  --border: #2a2a2a;
+  --code-bg: #1a1a1a;
+  --text-secondary: #9a9a9a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background: rgba(14, 14, 14, 0.92);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+nav .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.lang-switcher a {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lang-switcher a:hover {
+  color: var(--cream);
+  border-color: var(--accent);
+}
+
+.lang-switcher a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+main {
+  max-width: 840px;
+  margin: 3rem auto 6rem;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--cream);
+}
+
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin-bottom: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+article h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 3rem 0 1.25rem;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+article h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--cream);
+}
+
+article p {
+  margin: 1.25rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+article a:hover {
+  border-bottom-color: var(--accent);
+}
+
+article ul, article ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+article li {
+  margin: 0.75rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.92);
+}
+
+.callout {
+  background: rgba(200, 169, 110, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--cream);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+
+.metric {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
+
+.metric:hover {
+  border-color: var(--accent);
+}
+
+.metric .num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric .label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.code-block {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-header {
+  background: var(--border);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+code {
+  font-family: "SF Mono", "Consolas", "Monaco", "Courier New", monospace;
+  color: #d4d4d4;
+}
+
+.diagram-container {
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  background: rgba(14, 14, 14, 0.6);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem;
+  }
+
+  article p, article li {
+    font-size: 1rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+}
+
+/* Index page specific */
+.intro {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  line-height: 1.65;
+}
+
+.post-card {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  transition: all 0.3s;
+}
+
+.post-card:hover {
+  border-color: var(--accent);
+  background: rgba(26, 26, 26, 0.8);
+  transform: translateY(-2px);
+}
+
+.post-card h2 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.35;
+}
+
+.post-card h2 a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: rgba(245, 240, 232, 0.75);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.post-card .meta {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+}
+
+/* --- Modern polish (21st.dev-inspired) --- */
+html { scroll-behavior: smooth; }
+body { scroll-padding-top: 5.5rem; }
+
+::selection { background: rgba(200, 169, 110, 0.35); color: #fff; }
+
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  z-index: 200; pointer-events: none;
+}
+#progress-bar {
+  height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+h1 { position: relative; padding-bottom: 0.25rem; }
+h1::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  margin-top: 1rem; border-radius: 2px;
+  background: linear-gradient(90deg, var(--red), var(--accent));
+}
+
+article h2, article h3 { scroll-margin-top: 5.5rem; }
+
+.hero {
+  position: relative;
+  height: clamp(220px, 32vw, 340px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin: 0 0 2.5rem;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(200, 169, 110, 0.14), transparent 55%),
+    radial-gradient(1000px 500px at 90% 110%, rgba(209, 22, 26, 0.12), transparent 55%),
+    linear-gradient(180deg, #121212, #0e0e0e);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-overlay {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(85% 85% at 50% 45%, transparent 55%, rgba(14, 14, 14, 0.5) 100%);
+}
+
+.code-block { border: 1px solid var(--border); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35); }
+.code-header::before {
+  content: ""; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--red); margin-right: 9px; vertical-align: middle;
+}
+
+.metric .num { font-variant-numeric: tabular-nums; }
+
+.post-card { position: relative; }
+.post-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: 10px; padding: 1px;
+  background: linear-gradient(135deg, rgba(200, 169, 110, 0.55), transparent 40%, transparent 60%, rgba(209, 22, 26, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.post-card:hover::before { opacity: 1; }
+
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+</head>
+<body>
+<div class="progress"><div id="progress-bar"></div></div>
+<header>
+<nav>
+<a href="/blog/id/" class="brand">Albertus Freddi</a>
+<div class="lang-switcher"><a href="/blog/en/chatbot-whatsapp-business-indonesia.html" class="">English</a><a href="/blog/id/chatbot-whatsapp-business-indonesia.html" class="active">Bahasa Indonesia</a><a href="/blog/zh/chatbot-whatsapp-business-indonesia.html" class="">中文</a><a href="/blog/ja/chatbot-whatsapp-business-indonesia.html" class="">日本語</a><a href="/blog/ko/chatbot-whatsapp-business-indonesia.html" class="">한국어</a></div>
+</nav>
+</header>
+<main>
+<div class="hero" aria-hidden="true">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+</div>
+<h1>Membuat Chatbot WhatsApp untuk Bisnis Indonesia</h1>
+<div class="meta">
+<span>16 menit</span>
+<span>•</span>
+<span>2026-10-07</span>
+</div>
+<article>
+<div class="callout">
+<p><strong>Konteks produksi:</strong> Sebuah roastery kopi di Jakarta menjalankan tiga outlet kafe, toko online, dan lini grosir. Layanan pelanggannya bertumpu pada tiga nomor WhatsApp pribadi yang dijaga staf paruh waktu secara bergilir, sehingga jawaban soal stok, profil roasting, harga reseller, dan status pesanan tidak konsisten dan terhenti saat jam kerja selesai. Kami memindahkan mereka ke satu nomor WhatsApp Business Cloud API yang ditopang layanan webhook: pesan masuk diverifikasi, ada state machine percakapan untuk alur yang paling sering, balasan di luar jam kerja memakai template yang disetujui, dan serah terima ke manusia yang rapi lengkap dengan konteks saat bot kehabisan akal. Sekarang bot menyelesaikan 73% pertanyaan tanpa manusia, balasan pertama tiba dalam kurang dari 30 detik pada jam berapa pun, dan semua lewat endpoint resmi Meta, bukan klien tidak resmi yang bisa mati semalam karena perubahan kebijakan atau blokir nomor.</p>
+</div>
+
+<h2>Mengapa Cloud API Satu-satunya Fondasi yang Bertahan</h2>
+<p>Ada dua jalur otomasi pesan WhatsApp, dan di Indonesia yang tampak lebih murah justru lebih mahal saat masuk produksi. Library tidak resmi seperti <code>baileys</code> atau <code>whatsapp-web.js</code> menggerakkan sesi WhatsApp Web lewat rekayasa balik. Demo-nya cuma butuh beberapa menit, tetapi blokirnya butuh beberapa minggu: satu nomor masuk di dua perangkat, atau ledakan pesan keluar, lalu Meta mematikan nomor itu tanpa banding. Itu risiko yang salah untuk bisnis yang relasi pelanggannya berjalan lewat nomor tersebut.</p>
+<p>Jalur lainnya adalah WhatsApp Business Cloud API yang dihosting Meta dan disediakan lewat Business Manager, atau lewat Business Solution Provider yang menjual ulang API yang sama dengan dasbor yang lebih ramah. Keduanya lewat endpoint Graph API yang sama, template pesan yang sama, dan jendela layanan pelanggan 24 jam yang sama. Perbedaan rekayasanya hanya pada siapa yang menyediakan nomor dan ke mana webhook diarahkan. Semua penjelasan di bawah mengasumsikan jalur Cloud API, karena hanya jalur ini yang menjaga nomor tetap hidup.</p>
+
+<div class="metrics-grid">
+<div class="metric"><span class="num">73%</span><span class="label">pertanyaan selesai otomatis tanpa manusia</span></div>
+<div class="metric"><span class="num">&lt;30 dtk</span><span class="label">median balasan pertama, jam berapa pun</span></div>
+<div class="metric"><span class="num">1</span><span class="label">nomor Cloud API resmi, nol risiko blokir</span></div>
+</div>
+
+<h2>Verifikasi Webhook Dulu Sebelum Percaya</h2>
+<p>Meta memanggil webhook Anda untuk dua alasan yang sangat berbeda. Saat Anda mendaftarkan URL callback, Meta mengirim handshake verifikasi dengan parameter query <code>hub.mode</code>, <code>hub.verify_token</code>, dan <code>hub.challenge</code>; Anda menjawab dengan menggemakan challenge itu kembali, dan hanya jika tokennya cocok dengan nilai yang Anda konfigurasi. Setelah itu, kejadian nyata datang sebagai JSON dengan header tanda tangan. Handler yang tidak memisahkan dua bentuk ini akan gagal verifikasi selamanya, atau memperlakukan permintaan palsu sebagai pesan pelanggan sungguhan.</p>
+<p>Pemeriksaan tanda tangan adalah batas keamanannya. Setiap body kejadian ditandatangani dengan app secret Meta Anda, dikirim di header <code>X-Hub-Signature-256</code> dengan bentuk <code>sha256=…</code>. Anda menghitung ulang HMAC atas byte mentah dan membandingkannya dalam waktu konstan. Kalau ini dilewati, siapa pun yang tahu URL webhook Anda bisa mengirim pesan palsu dan bot Anda menjawab seolah pelanggan yang bertanya.</p>
+
+<div class="code-block"><div class="code-header">webhook.py : handshake plus verifikasi tanda tangan HMAC</div><pre><code>import hashlib, hmac, os, json
+
+APP_SECRET = os.environ["WA_APP_SECRET"]
+VERIFY_TOKEN = os.environ["WA_VERIFY_TOKEN"]
+
+def verify_signature(raw_body, signature):
+    # Header datang dalam bentuk: sha256=<hex digest>
+    if not signature.startswith("sha256="):
+        return False
+    expected = signature[len("sha256="):]
+    computed = hmac.new(APP_SECRET.encode(), raw_body, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(computed, expected)
+
+def webhook(request):
+    # 1) Handshake pendaftaran: gemakan challenge kembali.
+    if request.query.get("hub.mode") == "subscribe":
+        if request.query.get("hub.verify_token") == VERIFY_TOKEN:
+            return request.query.get("hub.challenge")
+        return "verification token mismatch", 403
+
+    # 2) Kejadian nyata: tolak body yang tidak bertanda tangan.
+    signature = request.headers.get("X-Hub-Signature-256", "")
+    if not verify_signature(request.body, signature):
+        return "bad signature", 401
+
+    payload = json.loads(request.body)
+    dispatch(payload)
+    return "ok", 200</code></pre></div>
+
+<p>Dua detail yang mudah salah. HMAC dihitung atas byte permintaan yang mentah dan utuh, bukan atas JSON yang sudah diparsing, jadi framework harus menyerahkan body sebelum middleware mana pun memformat ulang. Lalu perbandingannya harus waktu konstan (<code>hmac.compare_digest</code>), bukan <code>==</code>, supaya waktu jawab Anda tidak membocorkan berapa byte digest yang cocok. Keduanya cuma satu baris, dan keduanya pembeda antara bot yang benar-benar memverifikasi dan bot yang pura-pura memverifikasi.</p>
+
+<h2>State Machine, Bukan Tumpukan If/Else</h2>
+<p>Kegagalan klasik kedua adalah memodelkan menu topik sebagai kondisional bertingkat. Versi pertama jalan: kalau pengguna bilang "harga," panggil fungsi harga; kalau "katalog," fungsi katalog. Versi ketiga tidak jalan: pengguna berubah pikiran di tengah alur, bertanya soal topik lain, atau menjawab sesuatu yang tidak diantisipasi cabang, lalu bot berputar-putar atau melempar mereka kembali ke awal yang mati.</p>
+<p>Percakapan adalah state machine kecil. Setiap state tahu apa yang sedang ditunggu dan state berikutnya apa saja yang boleh, dan semuanya dikunci dengan nomor WhatsApp di penyimpanan sesi. Tabel transisi adalah data, jadi menambah alur berarti menambah baris, bukan menambah tingkat nesting baru.</p>
+
+<div class="code-block"><div class="code-header">state_machine.py : sesi dan transisi sebagai data</div><pre><code>STATES = {
+    "menu":    ["menu", "catalog", "price", "status", "agent"],
+    "catalog": ["menu", "catalog", "price", "agent"],
+    "price":   ["menu", "price", "agent"],
+    "status":  ["menu", "status", "agent"],
+    "agent":   [],
+}
+
+def advance(session, text):
+    current = session["state"]
+    intent = classify(text)  # classifier intent kecil, lihat di bawah
+    if intent not in STATES[current] and intent not in ("menu", "agent"):
+        return reply("Saya kurang paham. Pilih: katalog, harga, cek status, atau bicara ke staf.")
+    return route(intent, session)
+
+def route(intent, session):
+    if intent == "catalog":
+        session["state"] = "catalog"
+        return reply("Katalog minggu ini: Sumatra, Flores, Bali. Ketik nama untuk detail.")
+    if intent == "price":
+        session["state"] = "price"
+        return reply("Harga retail atau reseller?")
+    if intent == "status":
+        session["state"] = "status"
+        return reply("Kirim nomor pesanan Anda, contohnya KNR-1024.")
+    if intent == "agent":
+        return escalate(session)
+    return reply_menu()</code></pre></div>
+
+<p>Transisi state ada di <code>STATES</code>, tabel masuknya, sementara <code>route</code> hanya memuat aksi. Pemisahan itulah yang membuat sistem tetap terbaca saat jumlah alur dua belas, bukan tiga. Sesi (<code>session["state"]</code> plus kolom terkumpul seperti nomor pesanan) bertahan di Redis dengan TTL 24 jam per nomor, jadi restart di tengah percakapan tidak membuat pelanggan amnesia. Saat nomor berganti, state berganti; saat layanan restart, state dipulihkan.</p>
+<p>Untuk klasifikasi intent, Anda tidak butuh model untuk dua atau tiga alur. Pencocok kata kunci dengan normalisasi ringan lebih cepat dibangun, lebih murah dijalankan, dan jauh lebih gampang didebug di produksi. Simpan model bahasa kecil untuk pertanyaan terbuka yang tidak bisa Anda buat daftarnya, dan arahkan itu ke saluran agen alih-alih menebak.</p>
+
+<h2>Template dan Jendela Layanan 24 Jam</h2>
+<p>Satu aturan yang paling sering mengejutkan pembangun: Anda tidak boleh bebas mengetik pesan kapan saja. Setelah pelanggan mengirim pesan, nomor boleh membalas bebas selama 24 jam. Di luar jendela itu, hanya pesan template yang disetujui yang boleh dikirim, dan Meta menolak kiriman bebas dengan error template-required. Ini bukan kuota atau tingkat harga; ini kontrak API, dan berlaku juga untuk akun terbesar.</p>
+<p>Template harus dikirim dan disetujui untuk kategori, locale, dan bahasa tertentu, dengan placeholder ditulis <code>{{1}}</code>, <code>{{2}}</code>, dan seterusnya. Dalam praktik Anda menyetujui terlebih dahulu segelintir yang benar-benar dipakai bisnis: konfirmasi pesanan, pembaruan status atau pesanan siap, dan fallback "staf kami akan segera membalas", masing-masing dalam bahasa Indonesia (locale <code>id</code>). Nilai yang Anda suntikkan berasal dari sistem pesanan, bukan dari teks pelanggan, jadi template tetap cukup generik untuk disetujui sekali dan dipakai ribuan kali.</p>
+
+<div class="code-block"><div class="code-header">send.py : template yang disetujui dengan parameter</div><pre><code>import requests
+
+def send_template(phone_number_id, access_token, recipient, template_name, lang, params):
+    body = {
+        "messaging_product": "whatsapp",
+        "to": recipient,
+        "type": "template",
+        "template": {
+            "name": template_name,
+            "language": {"code": lang},
+            "components": [{
+                "type": "body",
+                "parameters": [{"type": "text", "text": p} for p in params],
+            }],
+        },
+    }
+    r = requests.post(
+        f"https://graph.facebook.com/v20.0/{phone_number_id}/messages",
+        headers={"Authorization": f"Bearer {access_token}"},
+        json=body,
+    )
+    r.raise_for_status()
+    record_outbound(recipient, template_name, params)
+    return r.json()</code></pre></div>
+
+<p>Perhatikan pemisahan antara template tetap dan parameter yang disuntikkan. Body template adalah teks yang disetujui; parameter satu-satunya yang berubah per pesanan. Kalau ada parameter yang tidak tiba dari sistem pesanan, kode sebaiknya <em>tidak</em> mengirim apa pun ketimbang mengirim template dengan slot kosong ke pelanggan sungguhan. Setiap kiriman keluar juga dicatat sebelum berangkat, karena webhook pada akhirnya akan memanggil balik dengan status terkirim dan Anda butuh catatan keluar itu untuk dicocokkan.</p>
+
+<h2>Antrean, Idempotensi, dan Backpressure</h2>
+<p>Graph API memberlakukan batas throughput per nomor, dan ia mengirim ulang webhook saat server Anda tidak mengakui dengan cepat. Bot yang menghadapi dua fakta itu dengan berdoa adalah bot yang membalas ganda dan menjatuhkan pesan saat jam makan siang ramai. Perbaikannya dua potong infrastruktur kecil yang tidak seksi.</p>
+<p>Idempotensi: setiap kejadian pesan masuk membawa id pesan yang unik. Simpan di Redis dengan <code>SET NX</code> (hanya set kalau belum ada) sebelum diproses, dan lewati kejadian itu kalau kuncinya sudah ada. Webhook yang dikirim ulang lalu menjadi no-op, bukan balasan ganda.</p>
+
+<div class="code-block"><div class="code-header">dispatch.py : dedupe berdasarkan id pesan sebelum efek samping apa pun</div><pre><code>def dispatch(payload, redis):
+    value = payload["entry"][0]["changes"][0]["value"]
+    messages = value.get("messages") or []
+    if not messages:
+        return  # pembaruan status, bukan pesan masuk
+
+    msg_id = messages[0]["id"]
+    # nx=True hanya mengklaim kunci kalau belum ada. Kiriman ulang
+    # mendapati kunci sudah ada dan kembali tanpa memproses lagi.
+    claimed = redis.set(f"seen:{msg_id}", "1", nx=True, ex=86400)
+    if not claimed:
+        return
+
+    from_number = messages[0]["from"]
+    text = messages[0]["text"]["body"]
+    session = load_session(from_number)
+    reply = advance(session, text)
+    enqueue_outbound(from_number, reply)</code></pre></div>
+
+<p>Backpressure: kiriman keluar melalui antrean yang dikunci pada anggaran jendela 24 jam, bukan dilempar langsung ke Graph API. Token bucket atau loop pacing sederhana per detik menjaga nomor tetap di bawah batas throughput, jadi ledakan pembaruan status ke seribu pelanggan mengalir mulus selama beberapa menit alih-alih mentok batas dan menggagalkan setengahnya. Saat kiriman gagal dengan error yang bisa dicoba ulang, job kembali ke antrean dengan backoff eksponensial dan jitter, bukan memukul endpoint terus-menerus.</p>
+
+<h2>Serah Terima ke Manusia Tanpa Kehilangan Konteks</h2>
+<p>Cara jujur memakai bot adalah memberinya jalan keluar. Saat keyakinan intent rendah, atau pelanggan minta manusia, sistem harus eskalasi dengan rapi alih-alih diam berputar. Serah terima itu punya tiga bagian: bekukan ringkasan percakapan sejauh ini, parkir sesi supaya pesan telat tidak dijawab bot untuk kedua kalinya, dan arahkan ke manusia pertama yang tersedia dengan utas lengkap terlampir.</p>
+<p>Karena seluruh percakapan lewat state machine dan penyimpanan sesi yang sama, ringkasannya sudah terstruktur: state, kolom terkumpul, tiga pesan terakhir, dan alasan eskalasi. Manusia melanjutkan di dalam utas WhatsApp yang sama, jadi pelanggan tidak perlu mengulang ceritanya. Metrik yang dipantau bukan "percakapan yang ditangani bot" melainkan "percakapan yang ditangani bot dengan <em>baik</em>"; eskalasi yang sampai ke manusia dengan konteks lengkap adalah hasil yang bagus, bukan kegagalan.</p>
+
+<h2>Mode Kegagalan yang Penting di Produksi</h2>
+<div class="comparison-table"><table>
+<thead><tr><th>Mode kegagalan</th><th>Gejala yang teramati</th><th>Mitigasi</th></tr></thead>
+<tbody>
+<tr><td>Tanda tangan webhook tidak diverifikasi</td><td>Permintaan palsu mendapat balasan nyata</td><td>HMAC atas body mentah plus <code>hmac.compare_digest</code></td></tr>
+<tr><td>Kiriman ulang webhook diproses dua kali</td><td>Pelanggan menerima balasan ganda</td><td>Dedupe <code>SET NX</code> pada id pesan</td></tr>
+<tr><td>Kiriman bebas di luar jendela 24 jam</td><td>Error 131047: template required</td><td>Template yang sudah disetujui plus cek jendela sebelum tiap kirim</td></tr>
+<tr><td>Ledakan mentok batas throughput</td><td>Pesan keluar jatuh diam-diam</td><td>Antrean dengan pacing dan backoff eksponensial</td></tr>
+<tr><td>State sesi hilang saat restart</td><td>Bot lupa posisi pelanggan</td><td>Sesi Redis dengan TTL per nomor</td></tr>
+</tbody>
+</table></div>
+<p>Benang merah kelima baris itu satu disiplin: bot WhatsApp hidup di perbatasan aturan platform eksternal, dan ia gagal di perbatasan itu jauh lebih sering daripada gagal di tengah logikanya sendiri. Verifikasi yang masuk, dedupe yang datang dua kali, patuhi jendela pesan, dan jangan biarkan throughput Anda menyalip platform. Empat kebiasaan itu melenyapkan sebagian besar insiden yang menenggelamkan bot yang sebenarnya sudah bagus.</p>
+
+<h2>Cara Memulai Tanpa Menggarap Semuanya Sekaligus</h2>
+<p>Mulai dengan satu nomor dan satu alur. Pilih pertanyaan dengan volume tertinggi, biasanya "pesanan saya di mana" atau "kirim katalog". Sediakan nomor Cloud API lewat Business Manager atau Business Solution Provider lokal, pasang webhook dengan handshake dan pemeriksaan tanda tangan, lalu implementasikan satu alur itu saja dengan jalan keluar ke manusia. Setujui tiga template lebih dulu. Jalankan seminggu dan ukur dua angka: porsi alur yang selesai tanpa manusia, dan jumlah eskalasi yang sampai ke manusia dengan konteks lengkap. Kalau keduanya sehat, tambah alur berikutnya sebagai baris baru di <code>STATES</code>, bukan cabang baru, dan jaga template tetap sejalan dengan apa yang benar-benar dikirim bisnis. Tujuannya bukan menggantikan setiap percakapan; melainkan membuat yang berulang jadi seketika dan yang rumit mendarat pada manusia yang sudah tahu ceritanya.</p>
+</article>
+</main>
+<footer>
+<p>&copy; 2026 Albertus Freddi · <a href="mailto:albertus.freddi@gmail.com">albertus.freddi@gmail.com</a></p>
+</footer>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var hero = canvas.parentElement;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+
+  var camera = new THREE.PerspectiveCamera(55, hero.clientWidth / hero.clientHeight, 0.1, 100);
+  camera.position.z = 18;
+  var scene = new THREE.Scene();
+
+  var vh = 18.8;
+  var spreadX = vh * (hero.clientWidth / hero.clientHeight) * 0.9;
+  var spreadY = vh * 0.9;
+  var spreadZ = 14;
+  var count = Math.min(220, Math.max(90, Math.floor(hero.clientWidth * hero.clientHeight / 2100)));
+
+  var pos = new Float32Array(count * 3), vel = new Float32Array(count * 3);
+  for (var i = 0; i < count; i++) {
+    pos[i*3]   = (Math.random() - 0.5) * spreadX;
+    pos[i*3+1] = (Math.random() - 0.5) * spreadY;
+    pos[i*3+2] = (Math.random() - 0.5) * spreadZ;
+    vel[i*3]   = (Math.random() - 0.5) * 0.012;
+    vel[i*3+1] = (Math.random() - 0.5) * 0.012;
+    vel[i*3+2] = (Math.random() - 0.5) * 0.012;
+  }
+  var pointGeom = new THREE.BufferGeometry();
+  pointGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var points = new THREE.Points(pointGeom, new THREE.PointsMaterial({ color: 0xc8a96e, size: 0.16, transparent: true, opacity: 0.8, depthWrite: false }));
+  scene.add(points);
+
+  var lineGeom = new THREE.BufferGeometry();
+  lineGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(count * count * 3), 3));
+  var lines = new THREE.LineSegments(lineGeom, new THREE.LineBasicMaterial({ color: 0xc8a96e, transparent: true, opacity: 0.13 }));
+  scene.add(lines);
+
+  var t = 0, THRESH2 = 26, MAX_SEGS = 900;
+  function frame() {
+    t += 0.005;
+    for (var i = 0; i < count; i++) {
+      pos[i*3]   += vel[i*3]   + Math.sin(t + i) * 0.004;
+      pos[i*3+1] += vel[i*3+1] + Math.cos(t + i) * 0.004;
+      pos[i*3+2] += vel[i*3+2];
+      if (pos[i*3]   >  spreadX / 2) pos[i*3]   = -spreadX / 2; else if (pos[i*3]   < -spreadX / 2) pos[i*3]   = spreadX / 2;
+      if (pos[i*3+1] >  spreadY / 2) pos[i*3+1] = -spreadY / 2; else if (pos[i*3+1] < -spreadY / 2) pos[i*3+1] = spreadY / 2;
+      if (pos[i*3+2] >  spreadZ / 2) pos[i*3+2] = -spreadZ / 2; else if (pos[i*3+2] < -spreadZ / 2) pos[i*3+2] = spreadZ / 2;
+    }
+    pointGeom.attributes.position.needsUpdate = true;
+
+    var lp = lines.geometry.attributes.position.array, written = 0;
+    for (var a = 0; a < count && written < MAX_SEGS; a++) {
+      for (var b = a + 1; b < count && written < MAX_SEGS; b++) {
+        var dx = pos[a*3] - pos[b*3], dy = pos[a*3+1] - pos[b*3+1], dz = pos[a*3+2] - pos[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < THRESH2) {
+          var o = written * 6;
+          lp[o]   = pos[a*3];   lp[o+1] = pos[a*3+1]; lp[o+2] = pos[a*3+2];
+          lp[o+3] = pos[b*3];   lp[o+4] = pos[b*3+1]; lp[o+5] = pos[b*3+2];
+          written++;
+        }
+      }
+    }
+    lines.geometry.setDrawRange(0, written * 2);
+    lines.geometry.attributes.position.needsUpdate = true;
+
+    points.rotation.y += 0.0012;
+    points.rotation.x += 0.0004;
+    lines.rotation.copy(points.rotation);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      camera.aspect = hero.clientWidth / hero.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+    }, 150);
+  });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+  function update() {
+    var el = document.documentElement;
+    var max = el.scrollHeight - el.clientHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? el.scrollTop / max : 0) + ')';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>
