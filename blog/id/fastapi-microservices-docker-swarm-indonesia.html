@@ -525,7 +525,7 @@ networks:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.api.rule=Host(<code>api.logistik.id</code>)"
+        - "traefik.http.routers.api.rule=Host(`api.logistik.id`)"
         - "traefik.http.routers.api.tls.certresolver=letsencrypt"
         - "traefik.http.services.api.loadbalancer.healthcheck.path=/healthz"
       replicas: 4
