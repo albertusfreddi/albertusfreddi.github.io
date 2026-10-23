@@ -551,7 +551,10 @@ tailwind.config = {
               class="lang-pick text-[12px] tracking-wide rounded-full px-2.5 py-1.5 cursor-pointer">
         <option value="en">EN</option>
         <option value="id">ID</option>
-</select>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+        <option value="ko">한국어</option>
+      </select>
       <a href="https://albertusfreddi.github.io/blog/en/" class="nav-label text-[12.5px] tracking-wide hover:text-white transition-colors">Blog</a>
       <a href="#contact" class="flex items-center gap-2.5">
         <span class="nav-label text-[12.5px] tracking-wide">Let's Collaborate</span>
@@ -1876,7 +1879,7 @@ tailwind.config = {
    Swaps the page by matching the English text, so no markup needs tagging.
    Falls back to English, silently, if the dictionary file is not there.      */
 (function () {
-  var LANGS = { en: 'en', id: 'id' };
+  var LANGS = { en: 'en', id: 'id', ja: 'ja', zh: 'zh-Hans', ko: 'ko' };
   var pick = document.getElementById('langPick');
   if (!pick) return;
   var nodes = null, attrs = null;
@@ -1932,7 +1935,8 @@ tailwind.config = {
   try { saved = localStorage.getItem('af-lang') || ''; } catch (e) {}
   if (!saved) {
     var nav = (navigator.language || 'en').toLowerCase();
-    saved = nav.indexOf('id') === 0 ? 'id' : 'en';
+    saved = nav.indexOf('id') === 0 ? 'id' : nav.indexOf('ja') === 0 ? 'ja'
+          : nav.indexOf('zh') === 0 ? 'zh' : nav.indexOf('ko') === 0 ? 'ko' : 'en';
   }
   if (!LANGS[saved]) saved = 'en';
   pick.value = saved;
