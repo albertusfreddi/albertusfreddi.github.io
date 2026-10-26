@@ -143,7 +143,6 @@ tailwind.config = {
   * { box-sizing: border-box; }
   html {
     -webkit-text-size-adjust: 100%;
-    overflow-x: clip;
   }
   body {
     margin: 0;
@@ -153,11 +152,7 @@ tailwind.config = {
     font-size: 16px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    overflow-x: clip;
     min-height: 100%;
-  }
-  @supports not (overflow-x: clip) {
-    html, body { overflow-x: hidden; }
   }
   img { max-width: 100%; display: block; }
   [hidden] { display: none !important; }
