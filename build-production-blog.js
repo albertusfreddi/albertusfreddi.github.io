@@ -17,7 +17,8 @@ const fs = require('fs');
 const path = require('path');
 
 const publishedArticles = require('./published-30-articles.json');
-const distDir = path.join(__dirname, 'dist');
+// Di repo GitHub Pages (ada .nojekyll) tulis ke akar repo, bukan ./dist bersarang
+const distDir = fs.existsSync(path.join(__dirname, '.nojekyll')) ? __dirname : path.join(__dirname, 'dist');
 const distBlogDir = path.join(distDir, 'blog');
 
 // Existing pillar articles

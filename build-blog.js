@@ -3,7 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 const blogDataDir = path.join(__dirname, 'blog-data');
-const distDir = path.join(__dirname, 'dist');
+// Di repo GitHub Pages (ada .nojekyll) hasil build ditulis ke akar repo; di folder sumber ke ./dist.
+// Dulu selalu ./dist, sehingga Action publikasi menulis ke /dist/blog dan /blog yang publik tidak pernah ikut terbarui.
+const distDir = fs.existsSync(path.join(__dirname, '.nojekyll')) ? __dirname : path.join(__dirname, 'dist');
 const blogDir = path.join(distDir, 'blog');
 const langs = ['en', 'id'];
 
