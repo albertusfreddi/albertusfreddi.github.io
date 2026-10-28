@@ -510,7 +510,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 
 <h2>Mengapa Embedding Siap Pakai Gagal pada Bahasa Gaul Indonesia</h2>
 
-<p>Model embedding multilingual pre-trained (OpenAI ada-002, Cohere multilingual-v3, sentence-transformers) bekerja cukup baik pada teks formal Indonesia—artikel berita, Wikipedia, dokumen pemerintah. Tapi langsung ambruk pada query customer support percakapan.</p>
+<p>Model embedding multilingual pre-trained (OpenAI ada-002, Cohere multilingual-v3, sentence-transformers) bekerja cukup baik pada teks formal Indonesia, artikel berita, Wikipedia, dokumen pemerintah. Tapi langsung ambruk pada query customer support percakapan.</p>
 
 <p><strong>Kasus kegagalan nyata:</strong> Pesan pelanggan "min paket sy blm smpe pdhl udh tf kmrn" menghasilkan vektor embedding dengan cosine similarity 0,31 terhadap artikel knowledge base "Tracking Paket Belum Sampai" (butuh 0,78+ untuk retrieval yang reliabel). Model tidak mengenali:</p>
 
@@ -707,7 +707,7 @@ class SupportResponse(BaseModel):
         # ponytail: fact-check penuh butuh retrieved_context dari outer scope
         # Untuk sementara, flag pola mencurigakan (misal harga eksak)
         if re.search(r'Rp\s*\d{1,3}(\.\d{3})+', v):
-            raise ValueError("Diduga harga halusinasi—verifikasi dengan konteks retrieval")
+            raise ValueError("Diduga harga halusinasi, verifikasi dengan konteks retrieval")
         return v
 
 def generate_response(query: str, retrieved_docs: list[str]) -> SupportResponse:
@@ -793,9 +793,9 @@ for attempt in range(3):
 
 <p><strong>Sistem saat ini tidak dapat menangani:</strong></p>
 <ul>
-<li><strong>Homonim dengan konteks regional:</strong> "kok" Jawa (kenapa) vs "kok" Jakarta (terkejut negatif) — butuh deteksi dialek dari profil user/kode area (TODO)</li>
-<li><strong>Query multimodal:</strong> Pelanggan kirim screenshot pesan error — butuh OCR + vision model (evaluasi GPT-4V vs Claude Sonnet with vision)</li>
-<li><strong>Negosiasi multi-turn kompleks:</strong> Kasus refund/komplain yang butuh empati manusia — agen flag untuk eskalasi (8,2% query)</li>
+<li><strong>Homonim dengan konteks regional:</strong> "kok" Jawa (kenapa) vs "kok" Jakarta (terkejut negatif), butuh deteksi dialek dari profil user/kode area (TODO)</li>
+<li><strong>Query multimodal:</strong> Pelanggan kirim screenshot pesan error, butuh OCR + vision model (evaluasi GPT-4V vs Claude Sonnet with vision)</li>
+<li><strong>Negosiasi multi-turn kompleks:</strong> Kasus refund/komplain yang butuh empati manusia, agen flag untuk eskalasi (8,2% query)</li>
 </ul>
 
 <p><strong>Peningkatan yang direncanakan Q1 2027:</strong></p>
