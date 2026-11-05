@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perjanjian Kerahasiaan (NDA) Freelance CBA | Albertus Freddi</title>
+  <meta name="description" content="Ketentuan pelindungan informasi rahasia, data bisnis, dan hak kekayaan intelektual antara Klien dan Freelance CBA.">
+  <link rel="canonical" href="https://albertusfreddi.github.io/perjanjian-kerahasiaan/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Albertus Freddi - The Automation Architect">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:title" content="Perjanjian Kerahasiaan (NDA) Freelance CBA | Albertus Freddi">
+  <meta property="og:description" content="Ketentuan pelindungan informasi rahasia, data bisnis, dan hak kekayaan intelektual antara Klien dan Freelance CBA.">
+  <meta property="og:url" content="https://albertusfreddi.github.io/perjanjian-kerahasiaan/">
+  <meta property="og:image" content="https://albertusfreddi.github.io/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perjanjian Kerahasiaan (NDA) Freelance CBA">
+  <meta name="twitter:description" content="Ketentuan pelindungan informasi rahasia, data bisnis, dan hak kekayaan intelektual antara Klien dan Freelance CBA.">
+  <meta name="twitter:image" content="https://albertusfreddi.github.io/og-image.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #070707;
+      --panel: #0e0e0e;
+      --card: #141414;
+      --line: rgba(255, 255, 255, 0.08);
+      --red: #D1161A;
+      --red-h: #FF3336;
+      --cream: #f5f0e8;
+      --mute: rgba(245, 240, 232, 0.65);
+      --accent: #c8a96e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    header.top {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 7, 7, 0.88);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .brand-back span.arrow { color: var(--red); }
+    .brand-back:hover { color: #fff; }
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .top-link {
+      font-size: 13px;
+      color: var(--mute);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .top-link:hover { color: #fff; }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+    .doc-header {
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--red);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .meta {
+      font-size: 14px;
+      color: var(--mute);
+    }
+    .legal-nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .legal-nav-item {
+      font-size: 12.5px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--mute);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      transition: all .2s;
+    }
+    .legal-nav-item:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .legal-nav-item.active {
+      color: #fff;
+      background: var(--red);
+      border-color: var(--red);
+      font-weight: 600;
+    }
+    .legal-article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: clamp(24px, 5vw, 48px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .legal-article h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 2.5rem 0 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      letter-spacing: -0.01em;
+    }
+    .legal-article h2:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    .legal-article h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 1.75rem 0 0.75rem;
+    }
+    .legal-article p {
+      margin: 1rem 0;
+      color: rgba(245, 240, 232, 0.88);
+      font-size: 15px;
+    }
+    .legal-article strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    .legal-article ol, .legal-article ul {
+      margin: 1rem 0 1.25rem 1.75rem;
+      color: rgba(245, 240, 232, 0.88);
+      font-size: 15px;
+    }
+    .legal-article li {
+      margin: 0.5rem 0;
+    }
+    .legal-link {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .legal-link:hover {
+      color: #fff;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      text-align: left;
+    }
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    th {
+      background: var(--card);
+      color: #fff;
+      font-weight: 600;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    footer.page-footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--mute);
+    }
+    footer.page-footer a {
+      color: var(--cream);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    footer.page-footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="top-wrap">
+      <a href="/" class="brand-back">
+        <span class="arrow">&larr;</span>
+        <span>Albertus Freddi</span>
+      </a>
+      <div class="top-actions">
+        <a href="/#portfolio" class="top-link">Client Work</a>
+        <a href="/blog/en/" class="top-link">Blog</a>
+        <a href="/#contact" class="top-link">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <header class="doc-header">
+      <span class="badge">Dokumen Legal PT Connect Base Asia</span>
+      <h1>Perjanjian Kerahasiaan (NDA) Freelance CBA</h1>
+      <p class="meta">Berlaku sejak: 4 November 2026 &middot; Versi 1.0 &middot; Dokumen Resmi</p>
+    </header>
+
+    <nav class="legal-nav-bar" aria-label="Navigasi Dokumen Legal">
+      <a href="/syarat/" class="legal-nav-item ">Syarat dan Ketentuan Layanan</a>
+      <a href="/perjanjian-layanan/" class="legal-nav-item ">Perjanjian Layanan dan Hasil Kerja</a>
+      <a href="/perjanjian-kerahasiaan/" class="legal-nav-item active">Perjanjian Kerahasiaan (NDA)</a>
+      <a href="/kebijakan-privasi/" class="legal-nav-item ">Kebijakan Privasi</a>
+      <a href="/kebijakan-pengembalian-dana/" class="legal-nav-item ">Kebijakan Pengembalian Dana</a>
+    </nav>
+
+    <article class="legal-article">
+      <p><strong>Versi 1.0, berlaku sejak 4 November 2026</strong></p>
+<h2>Pasal 1. Para Pihak dan Berlakunya Perjanjian</h2>
+<ol start="1"><li>Perjanjian ini dibuat antara PT Connect Base Asia, berkedudukan di Banten, Indonesia, yang menyelenggarakan layanan Freelance CBA ("Perusahaan"), dan klien atau calon klien yang identitasnya tercantum pada persetujuan, Penawaran, Pesanan, atau akun Platform ("Mitra"). Keduanya disebut "Para Pihak".</li><li>Perjanjian ini mengikat sejak Mitra menyatakan setuju secara tertulis, termasuk melalui email, tanda tangan elektronik, atau pesan di Platform, atau sejak Mitra menyetujui Penawaran yang merujuk Perjanjian ini.</li><li>Perjanjian ini bersifat timbal balik. Setiap Pihak dapat menjadi Pihak Pengungkap maupun Pihak Penerima.</li></ol>
+<h2>Pasal 2. Hubungan dengan Syarat Platform</h2>
+<ol start="1"><li>Untuk pekerjaan yang dipesan melalui Platform, seperti Fiverr dan Upwork, syarat dan kebijakan Platform tetap berlaku, dan Perjanjian ini melengkapinya. Bila terdapat pertentangan, syarat dan kebijakan Platform didahulukan untuk pekerjaan tersebut.</li><li>Untuk klien langsung, Perjanjian ini berlaku penuh.</li><li>Percakapan dan berkas di Platform tersimpan pada sistem Platform dan tunduk pada kebijakan Platform. Karena itu, Para Pihak tidak mengirim kata sandi, kunci API, atau kredensial lain melalui pesan Platform, kecuali Platform menyediakan cara khusus untuk itu.</li></ol>
+<h2>Pasal 3. Definisi</h2>
+<ol start="1"><li><strong>Informasi Rahasia</strong> adalah setiap informasi yang tidak tersedia untuk umum, dalam bentuk apa pun, yang diungkapkan atau diperoleh dalam pembahasan atau pelaksanaan kerja sama, dan yang ditandai rahasia atau secara wajar patut dipahami sebagai rahasia.</li><li>Informasi Rahasia mencakup antara lain data usaha dan keuangan, data pelanggan, kode sumber, arsitektur sistem, kredensial, kunci API, akses akun, proses kerja, strategi, harga, isi Penawaran, dan keterangan tentang klien akhir Mitra.</li><li><strong>Pihak Pengungkap</strong> adalah Pihak yang memberikan Informasi Rahasia.</li><li><strong>Pihak Penerima</strong> adalah Pihak yang menerima atau memperoleh Informasi Rahasia.</li><li><strong>Tujuan</strong> adalah menilai, membahas, menyusun penawaran, mengerjakan, menyerahkan, dan mendukung pekerjaan antara Para Pihak.</li></ol>
+<h2>Pasal 4. Kewajiban Pihak Penerima</h2>
+<p>Pihak Penerima wajib:</p>
+<ol start="1"><li>memakai Informasi Rahasia hanya untuk Tujuan;</li><li>menjaga Informasi Rahasia dengan tingkat kehati-hatian yang sama seperti informasi rahasianya sendiri, dan tidak kurang dari kehati-hatian yang wajar;</li><li>tidak mengungkapkannya kepada pihak lain, kecuali sebagaimana diizinkan Perjanjian ini;</li><li>membatasi akses hanya kepada personel, mitra, dan penasihat yang perlu mengetahui untuk Tujuan, dan yang terikat kewajiban kerahasiaan yang setara;</li><li>memberi tahu Pihak Pengungkap secepatnya bila mengetahui adanya pengungkapan atau akses yang tidak sah; dan</li><li>tidak merekayasa balik, menyalin, atau mengambil manfaat dari Informasi Rahasia di luar Tujuan.</li></ol>
+<h2>Pasal 5. Pengecualian</h2>
+<p>Informasi tidak termasuk Informasi Rahasia bila Pihak Penerima dapat menunjukkan bahwa informasi tersebut:</p>
+<ol start="1"><li>telah atau menjadi tersedia untuk umum bukan karena kesalahan Pihak Penerima;</li><li>telah dimiliki secara sah oleh Pihak Penerima sebelum diungkapkan;</li><li>diperoleh secara sah dari pihak lain yang tidak terikat kewajiban kerahasiaan; atau</li><li>dikembangkan sendiri oleh Pihak Penerima tanpa memakai Informasi Rahasia.</li></ol>
+<p>Data pribadi tetap dilindungi menurut peraturan perundang-undangan, walaupun termasuk dalam salah satu pengecualian di atas.</p>
+<h2>Pasal 6. Pengungkapan yang Diwajibkan Hukum</h2>
+<p>Pihak Penerima boleh mengungkapkan Informasi Rahasia bila diwajibkan oleh hukum, pengadilan, atau instansi yang berwenang. Sepanjang diizinkan, Pihak Penerima memberi tahu Pihak Pengungkap lebih dahulu, dan hanya mengungkapkan bagian yang wajib diungkapkan.</p>
+<h2>Pasal 7. Alat dan Penyedia Pihak Ketiga</h2>
+<ol start="1"><li>Perusahaan dapat memakai alat dan penyedia pihak ketiga dalam pekerjaan, termasuk layanan hosting, penyimpanan, dan alat kecerdasan buatan, sepanjang diperlukan untuk Tujuan.</li><li>Mitra yang tidak mengizinkan Informasi Rahasia tertentu diproses oleh pihak ketiga wajib menyatakannya secara tertulis sebelum menyerahkan informasi tersebut, agar pengerjaan dapat disesuaikan, misalnya dijalankan di lingkungan Mitra tanpa koneksi keluar.</li><li>Perusahaan tetap bertanggung jawab atas pemenuhan Perjanjian ini oleh personel dan mitranya.</li></ol>
+<h2>Pasal 8. Kredensial dan Akses</h2>
+<ol start="1"><li>Kredensial dipakai hanya untuk pekerjaan yang disepakati. Pihak Penerima tidak menuliskannya dalam kode sumber dan tidak membagikannya kepada pihak yang tidak berkepentingan.</li><li>Setelah serah terima, Perusahaan menghentikan pemakaian kredensial Mitra, kecuali masih diperlukan untuk masa perbaikan atau retainer yang disetujui.</li><li>Mitra dianjurkan mengganti kredensial yang pernah dibagikan setelah pekerjaan selesai.</li></ol>
+<h2>Pasal 9. Data Pribadi</h2>
+<p>Bila Informasi Rahasia memuat data pribadi, Para Pihak wajib mematuhi Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi. Mitra hanya memberikan data pribadi yang diperlukan dan yang berhak dibagikannya. Pemrosesan oleh Perusahaan mengikuti Kebijakan Privasi Freelance CBA.</p>
+<h2>Pasal 10. Kepemilikan</h2>
+<ol start="1"><li>Informasi Rahasia tetap menjadi milik Pihak Pengungkap.</li><li>Perjanjian ini tidak memberi lisensi atau hak lain atas Informasi Rahasia, selain hak memakainya untuk Tujuan.</li><li>Hak atas hasil pekerjaan diatur dalam Perjanjian Layanan Freelance CBA.</li><li>Perjanjian ini tidak mewajibkan Para Pihak untuk melanjutkan kerja sama.</li></ol>
+<h2>Pasal 11. Publikasi dan Label Putih</h2>
+<ol start="1"><li>Tidak satu Pihak pun boleh mengumumkan adanya kerja sama, nama Pihak lain, atau hasil pekerjaan tanpa persetujuan tertulis Pihak lain tersebut.</li><li>Pada kerja sama label putih, keterlibatan Perusahaan dan keterangan tentang klien akhir Mitra termasuk Informasi Rahasia.</li></ol>
+<h2>Pasal 12. Pengembalian dan Penghapusan</h2>
+<ol start="1"><li>Atas permintaan tertulis Pihak Pengungkap, atau setelah Tujuan selesai, Pihak Penerima mengembalikan atau menghapus Informasi Rahasia yang ada padanya.</li><li>Pihak Penerima dapat menyimpan salinan yang wajib disimpan menurut hukum, dan salinan pada cadangan sistem yang tidak dapat dihapus secara wajar sampai masa simpannya berakhir. Salinan tersebut tetap terikat Perjanjian ini.</li></ol>
+<h2>Pasal 13. Jangka Waktu</h2>
+<ol start="1"><li>Perjanjian ini berlaku selama pembahasan dan pelaksanaan kerja sama antara Para Pihak.</li><li>Kewajiban kerahasiaan terus berlaku setelah kerja sama berakhir, selama informasi tersebut masih bersifat rahasia, kecuali Para Pihak menyepakati jangka waktu tertentu secara tertulis.</li><li>Informasi yang merupakan rahasia dagang tetap dilindungi selama memenuhi syarat menurut Undang-Undang No. 30 Tahun 2000 tentang Rahasia Dagang. Kredensial tetap rahasia sampai diganti atau dicabut.</li></ol>
+<h2>Pasal 14. Pelanggaran</h2>
+<ol start="1"><li>Pihak yang dirugikan oleh pelanggaran berhak meminta penghentian pelanggaran, serta ganti rugi atas kerugian nyata yang dapat dibuktikan.</li><li>Pihak yang dirugikan dapat meminta tindakan segera yang tersedia menurut hukum untuk mencegah kerugian lebih lanjut.</li></ol>
+<h2>Pasal 15. Ketentuan Umum</h2>
+<ol start="1"><li>Perubahan atas Perjanjian ini berlaku bila disepakati tertulis. Email dan pesan Platform termasuk tulisan.</li><li>Bila satu ketentuan tidak berlaku, ketentuan lain tetap berlaku.</li><li>Perjanjian ini disusun dalam Bahasa Indonesia. Terjemahan yang disediakan untuk kemudahan tidak menggantikan versi Bahasa Indonesia, sepanjang peraturan perundang-undangan tidak menentukan lain.</li></ol>
+<h2>Pasal 16. Hukum yang Berlaku dan Penyelesaian Sengketa</h2>
+<ol start="1"><li>Perjanjian ini tunduk pada hukum Republik Indonesia.</li><li>Sengketa diselesaikan lebih dahulu secara musyawarah dalam waktu 30 hari sejak salah satu Pihak memberitahukan sengketa secara tertulis.</li><li>Bila musyawarah tidak berhasil, sengketa diselesaikan melalui pengadilan negeri yang berwenang di wilayah kedudukan Perusahaan.</li></ol>
+<h2>Pasal 17. Kontak</h2>
+<p>Pemberitahuan mengenai Perjanjian ini dikirim ke albertus.freddi@gmail.com.</p>
+    </article>
+  </div>
+
+  <footer class="page-footer">
+    <div style="margin-bottom: 12px;">
+      <a href="/syarat/">Syarat &amp; Ketentuan</a> &middot;
+      <a href="/perjanjian-layanan/">Perjanjian Layanan</a> &middot;
+      <a href="/perjanjian-kerahasiaan/">NDA</a> &middot;
+      <a href="/kebijakan-privasi/">Privasi</a> &middot;
+      <a href="/kebijakan-pengembalian-dana/">Pengembalian Dana</a>
+    </div>
+    <p>&copy; 2026 PT Connect Base Asia &middot; albertusfreddi.github.io &middot; Seluruh hak dilindungi undang-undang.</p>
+  </footer>
+</body>
+</html>
